@@ -9,9 +9,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        black: "#050505",
+        grey: "#EBEBEB",
+        "grey-secondary": "#9B9B9B",
+        brown: "#2F2012",
+        "brown-secondary": "#584c41",
+        background: "#F8F9FD",
+        divider: "#E1E1E1",
+        yellow: "#FFE714",
+        red: "#CF061F",
       },
+      borderRadius: { DEFAULT: "4px" },
     },
   },
   plugins: [],

@@ -11,6 +11,25 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "preview.redd.it",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "www.beamng.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "www.beamng-wheels.org",
+        port: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

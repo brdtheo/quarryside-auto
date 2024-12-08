@@ -1,5 +1,23 @@
 {
   "tabWidth": 2,
   "semi": true,
-  "singleQuote": false
+  "singleQuote": false,
+  "importOrder": [
+    "^react$",
+    "next",
+    "^next/(.*)$",
+    "^@tabler/(.*)$",
+    "clsx",
+    "currency.js",
+    "^@/components/(.*)$",
+    "^@/cars/(.*)$",
+    "^@/rims-tires/(.*)$",
+    "^[a-zA-Z0-9@](.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports"
+  ]
 }

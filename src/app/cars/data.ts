@@ -1,12 +1,45 @@
 /**
  * TEMP - FAKE DATA
  */
-import { CarBrand, type Car } from "./types";
+import { Media } from "@/media/types";
+
+import { type Car, CarBrand } from "./types";
 
 export enum CarCondition {
   USED = 1,
   JUNKYARD = 2,
 }
+
+export const CAR_MEDIA_LIST: Media[] = [
+  {
+    id: 1,
+    path: "https://www.beamng.com/attachments/screenshot_2025-01-05_21-45-45-png.1196988/",
+    is_thumbnail: true,
+    car_id: null,
+    wheel_id: null,
+  },
+  {
+    id: 2,
+    path: "https://www.beamng.com/attachments/screenshot_2025-01-06_20-07-42-png.1196990/",
+    is_thumbnail: false,
+    car_id: null,
+    wheel_id: null,
+  },
+  {
+    id: 3,
+    path: "https://www.beamng.com/attachments/screenshot_2025-01-06_20-23-55-png.1196993/",
+    is_thumbnail: false,
+    car_id: null,
+    wheel_id: null,
+  },
+  {
+    id: 4,
+    path: "https://www.beamng.com/attachments/screenshot_2025-01-06_23-16-33-png.1196994/",
+    is_thumbnail: false,
+    car_id: null,
+    wheel_id: null,
+  },
+];
 
 export const CAR_LIST: Car[] = [
   {

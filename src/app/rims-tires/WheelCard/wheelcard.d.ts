@@ -3,5 +3,5 @@ export type WheelCardProps = {
   brand: string;
   model: string;
   price_cts: number;
-  average_rating: number;
+  average_rating: number | null;
 };

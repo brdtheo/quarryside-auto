@@ -1,4 +1,4 @@
-export type CarDetailSectionProps = {
+export type DetailSectionProps = {
   title: string;
   children: React.ReactElement;
 };

@@ -53,7 +53,7 @@ export default function CarCard({
     <article>
       <Link
         href={`/cars/${encodeURIComponent(carSlug)}`}
-        className="border border-grey rounded h-52 flex w-full"
+        className="border border-grey rounded h-52 flex w-full bg-white"
       >
         <div className="w-72 h-full rounded-tl rounded-bl flex items-center border-r border-r-grey">
           <Image

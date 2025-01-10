@@ -5,12 +5,14 @@ import Select from "@/components/Select";
 import type { ListFilterHeaderProps } from "./listfilterheader";
 
 export default function ListFilterHeader({
+  textSearch,
+  appliedFilterList,
   sortOptionList,
 }: ListFilterHeaderProps) {
   return (
     <>
       <div className="flex justify-between pb-2">
-        <SearchField value="etk 800" onChange={() => {}} />
+        <SearchField value={textSearch} onChange={() => {}} />
         <Select
           options={sortOptionList}
           placeholder="Sort results"
@@ -20,8 +22,11 @@ export default function ListFilterHeader({
       </div>
 
       <div className="pb-8 flex gap-2">
-        <Chip onClick={() => {}}>etk 800</Chip>
-        <Chip onClick={() => {}}>used</Chip>
+        {(appliedFilterList ?? []).map((appliedFilter, index) => (
+          <Chip key={index} onClick={() => {}}>
+            {appliedFilter.value}
+          </Chip>
+        ))}
       </div>
     </>
   );

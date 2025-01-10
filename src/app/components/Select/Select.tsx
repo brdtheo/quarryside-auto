@@ -18,9 +18,11 @@ export default function Select({
         className,
       )}
     >
-      <option value="" disabled>
-        {placeholder}
-      </option>
+      {!!placeholder && (
+        <option value="" disabled>
+          {placeholder}
+        </option>
+      )}
       {(options ?? []).map((option, index) => (
         <option key={index} value={option.value}>
           {option.label}

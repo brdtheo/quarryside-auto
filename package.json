@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next dev",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pretty": "npx prettier --write src/app",
+    "pretty-check": "npx prettier --check src/app"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.23.0",

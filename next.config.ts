@@ -28,6 +28,11 @@ const nextConfig: NextConfig = {
         hostname: "www.beamng-wheels.org",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "art.pixilart.com",
+        port: "",
+      },
     ],
   },
 };

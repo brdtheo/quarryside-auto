@@ -1,3 +1,5 @@
+import type { ListFilterAsideSectionProps } from "@/components/ListFilterAsideSection";
+
 import { CAR_LIST } from "@/cars/data";
 
 import { Wheel, WheelBrand } from "./types";
@@ -5,6 +7,59 @@ import { Wheel, WheelBrand } from "./types";
 /**
  * TEMP - FAKE DATA
  */
+export const WHEEL_LIST_FILTER_SECTION: ListFilterAsideSectionProps[] = [
+  {
+    title: "Lug number",
+    options: [
+      { label: "4 lug", value: "is_four_lug", isChecked: true },
+      { label: "5 lug", value: "is_five_lug", isChecked: true },
+      { label: "6 lug", value: "is_six_lug", isChecked: false },
+      { label: "8 lug", value: "is_eight_lug", isChecked: false },
+    ],
+    isSearchable: false,
+    onChange: () => {},
+  },
+  {
+    title: "Brand",
+    options: Object.values(WheelBrand).map((brand) => ({
+      label: brand,
+      value: brand.toLowerCase(),
+      isChecked: false,
+    })),
+    isSearchable: true,
+    onChange: () => {},
+  },
+  {
+    title: "Delivery",
+    options: [
+      {
+        label: "Available for delivery",
+        value: "delivery_available",
+        isChecked: false,
+      },
+      {
+        label: "Free on site pickup",
+        value: "free_onsite_pickup",
+        isChecked: false,
+      },
+    ],
+    isSearchable: false,
+    onChange: () => {},
+  },
+  {
+    title: "Reviews",
+    options: [
+      {
+        label: "Products with reviews only",
+        value: "average_rating",
+        isChecked: false,
+      },
+    ],
+    isSearchable: false,
+    onChange: () => {},
+  },
+];
+
 export const WHEEL_LIST: Wheel[] = [
   {
     brand: WheelBrand.IBISHU,

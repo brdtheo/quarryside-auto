@@ -9,9 +9,9 @@
     "^@tabler/(.*)$",
     "clsx",
     "currency.js",
+    "dayjs",
     "^@/components/(.*)$",
-    "^@/cars/(.*)$",
-    "^@/rims-tires/(.*)$",
+    "^@/lib/(.*)$",
     "^[a-zA-Z0-9@](.*)$",
     "^[./]"
   ],

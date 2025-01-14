@@ -50,6 +50,7 @@ model vehicles {
   fuel_type             VehicleFuelType?
   drivetrain            VehicleDrivetrain?
   transmission          VehicleTransmission?
+  condition             VehicleCondition?
   medias                medias[]
   reviews               reviews[]
   vehicles_wheels       vehicles_wheels[]
@@ -169,4 +170,9 @@ enum WheelConsumption {
   E
   F
   G
+}
+
+enum VehicleCondition {
+  USED
+  JUNKYARD
 }

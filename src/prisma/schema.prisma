@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model medias {
+  id           Int       @id @default(autoincrement())
+  vehicle      Int?      @db.SmallInt
+  wheel        Int?      @db.SmallInt
+  url          String?   @db.VarChar
+  is_thumbnail Boolean
+  date_created DateTime? @default(now()) @db.Timestamptz(6)
+  vehicles     vehicles? @relation(fields: [vehicle], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
+  wheels       wheels?   @relation(fields: [wheel], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
+}
+
+model reviews {
+  id           Int       @id @default(autoincrement())
+  vehicle      Int?      @db.SmallInt
+  wheel        Int?      @db.SmallInt
+  title        String?   @db.VarChar(128)
+  description  String?   @db.VarChar
+  rating       Decimal?  @db.Decimal
+  date_created DateTime? @default(now()) @db.Timestamptz(6)
+  vehicles     vehicles? @relation(fields: [vehicle], references: [id], onDelete: Cascade, onUpdate: NoAction, map: " fk_vehicle")
+  wheels       wheels?   @relation(fields: [wheel], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
+}
+
+model vehicles {
+  id                    Int                  @id @default(autoincrement())
+  slug                  String               @unique @db.VarChar(255)
+  thumbnail_url         String?              @db.VarChar
+  model                 String               @db.VarChar
+  mileage               Int?
+  price_cts             BigInt?
+  date_created          DateTime?            @default(now()) @db.Timestamptz(6)
+  year                  Int?                 @db.SmallInt
+  description           String?              @db.VarChar
+  brand                 VehicleBrand?
+  country               VehicleCountry?
+  body_style            VehicleBodyStyle?
+  weight_lbs            Int?
+  power_bhp             Int?
+  zero_to_sixty_seconds Decimal?             @db.Decimal
+  top_speed_mph         Int?                 @db.SmallInt
+  fuel_type             VehicleFuelType?
+  drivetrain            VehicleDrivetrain?
+  transmission          VehicleTransmission?
+  medias                medias[]
+  reviews               reviews[]
+  vehicles_wheels       vehicles_wheels[]
+}
+
+model vehicles_wheels {
+  id         Int      @id @default(autoincrement())
+  wheel_id   Int
+  vehicle_id Int
+  vehicles   vehicles @relation(fields: [vehicle_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
+  wheels     wheels   @relation(fields: [wheel_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
+}
+
+model wheels {
+  id                  Int               @id @default(autoincrement())
+  slug                String            @unique @db.VarChar(255)
+  thumbnail_url       String?           @db.VarChar
+  brand               WheelBrand?
+  model               String?           @db.VarChar(128)
+  price_cts           BigInt?
+  date_created        DateTime?         @default(now()) @db.Timestamptz(6)
+  delivery_available  Boolean
+  free_on_site_pickup Boolean
+  sizes               String[]          @db.VarChar
+  tires               String[]          @db.VarChar
+  consumption         WheelConsumption?
+  is_four_lug         Boolean
+  is_five_lug         Boolean
+  is_six_lug          Boolean
+  is_eight_lug        Boolean
+  medias              medias[]
+  reviews             reviews[]
+  vehicles_wheels     vehicles_wheels[]
+}
+
+enum VehicleBrand {
+  AUTOBELLO
+  BRUCKELL
+  BURNSIDE
+  CHERRIER
+  CIVETTA
+  ETK
+  FPU
+  GAVRIL
+  HIROSHI
+  IBISHU
+  SP
+  SOLIAD
+  WENTWARD
+}
+
+enum VehicleCountry {
+  USA
+  ITALY
+  FRANCE
+  GERMANY
+  POLAND
+  JAPAN
+}
+
+enum VehicleFuelType {
+  GASOLINE
+  DIESEL
+}
+
+enum VehicleDrivetrain {
+  RWD
+  FWD
+  AWD
+  FOURWD @map("4WD")
+}
+
+enum VehicleTransmission {
+  MANUAL
+  AUTOMATIC
+  SEQUENTIAL
+  DCT
+}
+
+enum VehicleBodyStyle {
+  PICKUP
+}
+
+enum WheelBrand {
+  ALDER
+  ARNIDA
+  AUTOBELLO
+  BETA
+  BRUCKELL
+  CHERRIER
+  CIVETTA
+  CLOCKWISE
+  DREID
+  ETK
+  FOLK
+  GAVRIL
+  GP
+  GRIP_ALL
+  HIROSHI
+  IBISHU
+  LEGNO
+  NO_BRAND
+  OKUDAI
+  SOLIAD
+  SP
+  STX
+  TIMS
+  TRIAL
+  WANGAN
+}
+
+enum WheelConsumption {
+  A
+  B
+  C
+  D
+  E
+  F
+  G
+}

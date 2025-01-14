@@ -1,4 +1,4 @@
-import type { Media } from "@/lib/media/types";
+import { Media } from "@prisma/client";
 
 export type VehicleMediaListProps = {
   mediaList: Media[];

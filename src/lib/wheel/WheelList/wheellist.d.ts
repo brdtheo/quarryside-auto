@@ -1,4 +1,4 @@
-import type { Wheel } from "@/lib/wheel/types";
+import { Wheel } from "@prisma/client";
 
 export type WheelListProps = {
   data: Wheel[];

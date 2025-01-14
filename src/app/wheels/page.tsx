@@ -8,8 +8,9 @@ import Pagination from "@/components/Pagination";
 import WheelCard from "@/lib/wheel/WheelCard";
 import WheelList from "@/lib/wheel/WheelList";
 import { wheelSortOptionList } from "@/lib/wheel/constants";
-import { WHEEL_LIST, WHEEL_LIST_FILTER_SECTION } from "@/lib/wheel/data";
-import { Wheel } from "@/lib/wheel/types";
+import { WHEEL_LIST } from "@/lib/wheel/data";
+
+import { Wheel } from "@prisma/client";
 
 export default function Page() {
   return (
@@ -17,7 +18,7 @@ export default function Page() {
       <h1 className="font-bold text-2xl">Rims & tires</h1>
 
       <div className="flex gap-8">
-        <ListFilterAside sections={WHEEL_LIST_FILTER_SECTION} />
+        <ListFilterAside />
 
         <div className="flex flex-1 flex-col">
           <ListFilterHeader
@@ -35,11 +36,11 @@ export default function Page() {
             itemRender={(wheel: Wheel) => (
               <li key={wheel.id}>
                 <WheelCard
-                  thumbnail_url={wheel.thumbnail_url}
+                  thumbnail_url={wheel.thumbnail_url ?? ""}
                   brand={wheel.brand}
                   model={wheel.model}
                   price_cts={wheel.price_cts}
-                  average_rating={wheel.average_rating}
+                  average_rating={null}
                 />
               </li>
             )}

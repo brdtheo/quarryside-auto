@@ -10,7 +10,9 @@ import Rating from "@/components/Rating";
 
 import { getVehicleSlug } from "@/lib/vehicle/utils";
 
-import { Vehicle, VehicleCondition } from "../types";
+import { VehicleCondition } from "@prisma/client";
+
+import type { VehicleCardProps } from ".";
 
 export default function VehicleCard({
   condition,
@@ -19,11 +21,16 @@ export default function VehicleCard({
   brand,
   model,
   price_cts,
-  miles,
+  mileage,
   // average_rating,
-}: Omit<Vehicle, "id">) {
+}: VehicleCardProps) {
   const vehicleSlug = useMemo(
-    () => getVehicleSlug({ year: year.toString(), brand, model }),
+    () =>
+      getVehicleSlug({
+        year: (year ?? "").toString(),
+        brand: (brand ?? "")?.toString(),
+        model,
+      }),
     [brand, model, year],
   );
 
@@ -43,10 +50,10 @@ export default function VehicleCard({
     }
   }, [condition]);
 
-  const vehicleMileage = useMemo(() => `${miles} miles`, [miles]);
+  const vehicleMileage = useMemo(() => `${mileage} miles`, [mileage]);
 
   const vehiclePrice = useMemo(
-    () => currency(price_cts, { fromCents: true }).format(),
+    () => currency(Number(price_cts) ?? "", { fromCents: true }).format(),
     [price_cts],
   );
 
@@ -61,7 +68,7 @@ export default function VehicleCard({
             className="overflow-hidden"
             width={288}
             height={206}
-            src={thumbnail_url}
+            src={thumbnail_url ?? ""}
             alt="picture"
           />
         </div>

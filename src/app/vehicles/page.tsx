@@ -9,7 +9,8 @@ import VehicleCard from "@/lib/vehicle/VehicleCard";
 import VehicleList from "@/lib/vehicle/VehicleList";
 import { vehicleSortOptionList } from "@/lib/vehicle/constants";
 import { VEHICLE_LIST } from "@/lib/vehicle/data";
-import type { Vehicle } from "@/lib/vehicle/types";
+
+import { Vehicle } from "@prisma/client";
 
 export default async function Page() {
   return (
@@ -39,8 +40,8 @@ export default async function Page() {
                   brand={vehicle.brand}
                   model={vehicle.model}
                   price_cts={vehicle.price_cts}
-                  miles={vehicle.miles}
-                  average_rating={vehicle.average_rating}
+                  mileage={vehicle.mileage}
+                  // average_rating={null}
                 />
               </li>
             )}

@@ -27,6 +27,8 @@ import { VEHICLE_LIST } from "@/lib/vehicle/data";
 import { getVehicleTitle } from "@/lib/vehicle/utils";
 import { WHEEL_LIST } from "@/lib/wheel/data";
 
+import { Prisma } from "@prisma/client";
+
 export default function Page() {
   const params = useParams<{ slug: string }>();
   const wheelTitle = getVehicleTitle(params?.slug ?? "");
@@ -35,7 +37,11 @@ export default function Page() {
   const wheel = WHEEL_LIST[0];
 
   const wheelPrice = useMemo(
-    () => currency(wheel.price_cts, { fromCents: true, symbol: "" }).format(),
+    () =>
+      currency(Number(wheel.price_cts) ?? "", {
+        fromCents: true,
+        symbol: "",
+      }).format(),
     [wheel.price_cts],
   );
 
@@ -64,7 +70,7 @@ export default function Page() {
             className="overflow-hidden"
             width={275}
             height={275}
-            src={wheel.thumbnail_url}
+            src={wheel.thumbnail_url ?? ""}
             alt="media thumbnail"
           />
 
@@ -87,8 +93,8 @@ export default function Page() {
               brand={vehicle.brand}
               model={vehicle.model}
               price_cts={vehicle.price_cts}
-              miles={vehicle.miles}
-              average_rating={vehicle.average_rating}
+              mileage={vehicle.mileage}
+              // average_rating={vehicle.average_rating}
             />
           </DetailSection>
 
@@ -98,7 +104,7 @@ export default function Page() {
                 <ReviewCard
                   date=""
                   title="I am satisfied"
-                  rating={4}
+                  rating={new Prisma.Decimal(4)}
                   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 />
               </li>
@@ -106,7 +112,7 @@ export default function Page() {
                 <ReviewCard
                   date=""
                   title="I am satisfied"
-                  rating={4}
+                  rating={new Prisma.Decimal(4)}
                   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 />
               </li>
@@ -114,7 +120,7 @@ export default function Page() {
                 <ReviewCard
                   date=""
                   title="I am satisfied"
-                  rating={4}
+                  rating={new Prisma.Decimal(4)}
                   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 />
               </li>

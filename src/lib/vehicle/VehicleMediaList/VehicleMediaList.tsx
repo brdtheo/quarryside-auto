@@ -22,7 +22,7 @@ export default function VehicleMediaList({ mediaList }: VehicleMediaListProps) {
   useEffect(() => {
     if (!selectedMediaPath && !!mediaList?.length) {
       const thumbnailMedia = mediaList.find((item) => !!item.is_thumbnail);
-      if (thumbnailMedia) setSelectedMediaPath(thumbnailMedia.path);
+      if (thumbnailMedia) setSelectedMediaPath(thumbnailMedia.url);
     }
   }, [handleSelectMedia, mediaList, selectedMediaPath]);
 
@@ -40,12 +40,12 @@ export default function VehicleMediaList({ mediaList }: VehicleMediaListProps) {
       <ul className="flex flex-wrap gap-1">
         {(mediaList ?? []).map((media, index) => (
           <li key={media.id}>
-            <button onClick={handleSelectMedia(media.path)}>
+            <button onClick={handleSelectMedia(media.url ?? "")}>
               <Image
                 className="overflow-hidden rounded"
                 width={115}
                 height={65}
-                src={media.path}
+                src={media.url ?? ""}
                 alt={`media preview number ${index + 1}`}
               />
             </button>

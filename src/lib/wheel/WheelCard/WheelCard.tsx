@@ -11,8 +11,6 @@ import {
 
 import currency from "currency.js";
 
-import Rating from "@/components/Rating";
-
 import type { WheelCardProps } from ".";
 
 export default function WheelCard({
@@ -20,7 +18,7 @@ export default function WheelCard({
   brand,
   model,
   price_cts,
-  average_rating,
+  // average_rating,
 }: WheelCardProps) {
   const wheelSlug = useMemo(
     () => [brand, model].join(" ").toLowerCase().replace(/\s/g, "-"),
@@ -28,7 +26,11 @@ export default function WheelCard({
   );
 
   const wheelPrice = useMemo(
-    () => currency(price_cts, { fromCents: true, symbol: "" }).format(),
+    () =>
+      currency(Number(price_cts) ?? "", {
+        fromCents: true,
+        symbol: "",
+      }).format(),
     [price_cts],
   );
 
@@ -43,7 +45,7 @@ export default function WheelCard({
             className="overflow-hidden"
             width={144}
             height={144}
-            src={thumbnail_url}
+            src={thumbnail_url ?? ""}
             alt="wheel preview"
           />
 
@@ -65,7 +67,7 @@ export default function WheelCard({
             </li>
           </ul>
 
-          {!!average_rating && <Rating size={14} score={average_rating} />}
+          {/* {!!average_rating && <Rating size={14} score={average_rating} />} */}
 
           <div className="bg-yellow flex border border-yellow mt-1">
             <div className="flex flex-1 items-start px-1">

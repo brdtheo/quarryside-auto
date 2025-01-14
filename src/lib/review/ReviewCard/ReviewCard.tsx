@@ -2,13 +2,13 @@ import dayjs from "dayjs";
 
 import Rating from "@/components/Rating";
 
-import { Review } from "@/lib/review/types";
+import type { ReviewCardProps } from ".";
 
 export default function ReviewCard({
   title,
   rating,
   description,
-}: Review) {
+}: ReviewCardProps) {
   const date = dayjs("2019-01-25").format("DD/MM/YYYY");
 
   return (

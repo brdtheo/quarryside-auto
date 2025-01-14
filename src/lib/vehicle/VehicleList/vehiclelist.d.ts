@@ -1,4 +1,4 @@
-import type { Vehicle } from "@/lib/vehicle/types";
+import { Vehicle } from "@prisma/client";
 
 export type VehicleListProps = {
   data: Vehicle[];

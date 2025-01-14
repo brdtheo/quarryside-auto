@@ -4,7 +4,7 @@ import ListFilterAsideSection, {
   ListFilterAsideSectionProps,
 } from "@/components/ListFilterAsideSection";
 
-import { VehicleBrand } from "@/lib/vehicle/types";
+import { VehicleBrand } from "@prisma/client";
 
 const yearFilterRange = [1980, 2024];
 

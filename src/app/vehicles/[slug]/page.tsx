@@ -20,6 +20,8 @@ import { VEHICLE_LIST, VEHICLE_MEDIA_LIST } from "@/lib/vehicle/data";
 import { getVehicleTitle } from "@/lib/vehicle/utils";
 import WheelCard from "@/lib/wheel/WheelCard";
 
+import { Prisma } from "@prisma/client";
+
 export default function Page() {
   const params = useParams<{ slug: string }>();
   const vehicleTitle = getVehicleTitle(params?.slug ?? "");
@@ -27,7 +29,8 @@ export default function Page() {
   const vehicle = VEHICLE_LIST[0];
 
   const vehiclePrice = useMemo(
-    () => currency(vehicle.price_cts, { fromCents: true }).format(),
+    () =>
+      currency(Number(vehicle.price_cts) ?? "", { fromCents: true }).format(),
     [vehicle.price_cts],
   );
 
@@ -84,7 +87,7 @@ export default function Page() {
               thumbnail_url="https://www.beamng-wheels.org/_next/image?url=https%3A%2F%2Fdiyponmokjdkfdsflogb.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fwheels%2Ffive-lug%2F18_9__etk_xsport_front_wheel.webp&w=256&q=75"
               brand="ETK"
               model="xSport"
-              price_cts={24599}
+              price_cts={BigInt(24599)}
               average_rating={3.5}
             />
           </DetailSection>
@@ -95,7 +98,7 @@ export default function Page() {
                 <ReviewCard
                   date=""
                   title="I am satisfied"
-                  rating={4}
+                  rating={new Prisma.Decimal(4)}
                   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 />
               </li>
@@ -103,7 +106,7 @@ export default function Page() {
                 <ReviewCard
                   date=""
                   title="I am satisfied"
-                  rating={4}
+                  rating={new Prisma.Decimal(4)}
                   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 />
               </li>
@@ -111,7 +114,7 @@ export default function Page() {
                 <ReviewCard
                   date=""
                   title="I am satisfied"
-                  rating={4}
+                  rating={new Prisma.Decimal(4)}
                   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 />
               </li>

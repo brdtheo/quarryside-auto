@@ -1,3 +1,5 @@
+"use client";
+
 import Chip from "@/components/Chip";
 import SearchField from "@/components/SearchField";
 import Select from "@/components/Select";

@@ -1,4 +1,4 @@
-"use client";
+"use server";
 
 import Container from "@/components/Container";
 import ListFilterAside from "@/components/ListFilterAside";
@@ -8,16 +8,16 @@ import Pagination from "@/components/Pagination";
 import VehicleCard from "@/lib/vehicle/VehicleCard";
 import VehicleList from "@/lib/vehicle/VehicleList";
 import { vehicleSortOptionList } from "@/lib/vehicle/constants";
-import { VEHICLE_LIST, VEHICLE_LIST_FILTER_SECTION } from "@/lib/vehicle/data";
+import { VEHICLE_LIST } from "@/lib/vehicle/data";
 import type { Vehicle } from "@/lib/vehicle/types";
 
-export default function Page() {
+export default async function Page() {
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <h1 className="font-bold text-2xl">Used vehicles</h1>
 
       <div className="flex gap-8">
-        <ListFilterAside sections={VEHICLE_LIST_FILTER_SECTION} />
+        <ListFilterAside />
 
         <div className="flex flex-1 flex-col">
           <ListFilterHeader

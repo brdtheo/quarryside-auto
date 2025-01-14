@@ -7,5 +7,5 @@ export type SelectProps = {
   placeholder?: string;
   options: SelectOption[];
   value: string;
-  onChange: ChangeEventHandler;
+  onChange?: ChangeEventHandler;
 };

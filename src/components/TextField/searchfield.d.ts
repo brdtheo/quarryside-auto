@@ -5,5 +5,5 @@ export type TextFieldProps = {
   isTextArea?: boolean;
   placeholder: string;
   value: string;
-  onChange: ChangeEventHandler;
+  onChange?: ChangeEventHandler;
 };

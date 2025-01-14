@@ -6,7 +6,6 @@ export default function Pagination({
   page,
   pageCount,
   disabled,
-  // onPageChange,
 }: PaginationProps) {
   const pages = [...Array(pageCount).keys()].map((page) => page + 1);
   return (

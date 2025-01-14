@@ -1,3 +1,5 @@
+"use client";
+
 import clsx from "clsx";
 
 import type { TextFieldProps } from ".";
@@ -7,7 +9,6 @@ export default function TextField({
   value,
   isTextArea,
   placeholder,
-  onChange,
 }: TextFieldProps) {
   if (isTextArea) {
     return (
@@ -34,7 +35,7 @@ export default function TextField({
           className="h-full w-full bg-transparent outline-none text-sm pr-3"
           type="search"
           value={value}
-          onChange={onChange}
+          onChange={() => {}}
         />
       )}
     </div>

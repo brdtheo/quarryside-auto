@@ -7,18 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model medias {
+model Media {
   id           Int       @id @default(autoincrement())
   vehicle      Int?      @db.SmallInt
   wheel        Int?      @db.SmallInt
   url          String?   @db.VarChar
   is_thumbnail Boolean
   date_created DateTime? @default(now()) @db.Timestamptz(6)
-  vehicles     vehicles? @relation(fields: [vehicle], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
-  wheels       wheels?   @relation(fields: [wheel], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
+  vehicles     Vehicle?  @relation(fields: [vehicle], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
+  wheels       Wheel?    @relation(fields: [wheel], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
 }
 
-model reviews {
+model Review {
   id           Int       @id @default(autoincrement())
   vehicle      Int?      @db.SmallInt
   wheel        Int?      @db.SmallInt
@@ -26,11 +26,11 @@ model reviews {
   description  String?   @db.VarChar
   rating       Decimal?  @db.Decimal
   date_created DateTime? @default(now()) @db.Timestamptz(6)
-  vehicles     vehicles? @relation(fields: [vehicle], references: [id], onDelete: Cascade, onUpdate: NoAction, map: " fk_vehicle")
-  wheels       wheels?   @relation(fields: [wheel], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
+  vehicles     Vehicle?  @relation(fields: [vehicle], references: [id], onDelete: Cascade, onUpdate: NoAction, map: " fk_vehicle")
+  wheels       Wheel?    @relation(fields: [wheel], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
 }
 
-model vehicles {
+model Vehicle {
   id                    Int                  @id @default(autoincrement())
   slug                  String               @unique @db.VarChar(255)
   thumbnail_url         String?              @db.VarChar
@@ -51,20 +51,20 @@ model vehicles {
   drivetrain            VehicleDrivetrain?
   transmission          VehicleTransmission?
   condition             VehicleCondition?
-  medias                medias[]
-  reviews               reviews[]
-  vehicles_wheels       vehicles_wheels[]
+  medias                Media[]
+  reviews               Review[]
+  vehicles_wheels       Vehicles_Wheels[]
 }
 
-model vehicles_wheels {
-  id         Int      @id @default(autoincrement())
+model Vehicles_Wheels {
+  id         Int     @id @default(autoincrement())
   wheel_id   Int
   vehicle_id Int
-  vehicles   vehicles @relation(fields: [vehicle_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
-  wheels     wheels   @relation(fields: [wheel_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
+  vehicles   Vehicle @relation(fields: [vehicle_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
+  wheels     Wheel   @relation(fields: [wheel_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
 }
 
-model wheels {
+model Wheel {
   id                  Int               @id @default(autoincrement())
   slug                String            @unique @db.VarChar(255)
   thumbnail_url       String?           @db.VarChar
@@ -81,9 +81,9 @@ model wheels {
   is_five_lug         Boolean
   is_six_lug          Boolean
   is_eight_lug        Boolean
-  medias              medias[]
-  reviews             reviews[]
-  vehicles_wheels     vehicles_wheels[]
+  medias              Media[]
+  reviews             Review[]
+  vehicles_wheels     Vehicles_Wheels[]
 }
 
 enum VehicleBrand {

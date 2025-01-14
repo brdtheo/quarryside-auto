@@ -33,6 +33,16 @@ const nextConfig: NextConfig = {
         hostname: "art.pixilart.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "qa-vehicle.s3.eu-west-3.amazonaws.com",
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "qa-wheel.s3.eu-west-3.amazonaws.com",
+        port: "",
+      },
     ],
   },
 };

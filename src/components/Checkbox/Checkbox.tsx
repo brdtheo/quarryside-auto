@@ -1,3 +1,5 @@
+"use client";
+
 import { IconCheck } from "@tabler/icons-react";
 
 import clsx from "clsx";
@@ -8,7 +10,6 @@ export default function Checkbox({
   id,
   checked,
   label,
-  onChange,
 }: CheckboxProps) {
   return (
     <div className="flex gap-3 items-center select-none cursor-pointer w-fit">
@@ -19,7 +20,7 @@ export default function Checkbox({
           type="checkbox"
           name={id}
           checked={checked}
-          onChange={onChange}
+          onChange={() => {}}
         />
         <div
           className={clsx("w-4 h-4 rounded border flex items-center", {

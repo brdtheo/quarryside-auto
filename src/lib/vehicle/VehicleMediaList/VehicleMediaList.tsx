@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback, useEffect, useState } from "react";
 
 import Image from "next/image";
@@ -29,7 +31,7 @@ export default function VehicleMediaList({ mediaList }: VehicleMediaListProps) {
   return (
     <div className="flex flex-col gap-2 flex-1">
       <Image
-        className="overflow-hidden"
+        className="overflow-hidden rounded"
         width={785}
         height={442}
         src={selectedMediaPath}
@@ -40,7 +42,7 @@ export default function VehicleMediaList({ mediaList }: VehicleMediaListProps) {
           <li key={media.id}>
             <button onClick={handleSelectMedia(media.path)}>
               <Image
-                className="overflow-hidden"
+                className="overflow-hidden rounded"
                 width={115}
                 height={65}
                 src={media.path}

@@ -1,3 +1,5 @@
+'use client'
+
 import Checkbox from "@/components/Checkbox";
 import SearchField from "@/components/SearchField";
 

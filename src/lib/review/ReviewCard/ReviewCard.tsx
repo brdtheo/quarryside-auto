@@ -8,7 +8,6 @@ export default function ReviewCard({
   title,
   rating,
   description,
-  // date,
 }: Review) {
   const date = dayjs("2019-01-25").format("DD/MM/YYYY");
 

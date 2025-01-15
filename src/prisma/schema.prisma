@@ -44,9 +44,6 @@ model Vehicle {
   country                           VehicleCountry?
   body_style                        VehicleBodyStyle?
   weight_lbs                        Int?
-  engine_cylinder_count             Int?
-  engine_layout                     VehicleEngineLayout?
-  engine_displacement_volume_liters Decimal?             @db.Decimal
   power_bhp                         Int?
   zero_to_sixty_seconds             Decimal?             @db.Decimal
   top_speed_mph                     Int?                 @db.SmallInt
@@ -54,6 +51,9 @@ model Vehicle {
   drivetrain                        VehicleDrivetrain?
   transmission                      VehicleTransmission?
   condition                         VehicleCondition?
+  engine_cylinder_count             Int?
+  engine_displacement_volume_liters Decimal?             @db.Decimal
+  engine_layout                     VehicleEngineLayout?
   medias                            Media[]
   reviews                           Review[]
   vehicles_wheels                   Vehicles_Wheels[]

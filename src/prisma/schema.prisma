@@ -46,7 +46,7 @@ model Vehicle {
   weight_lbs                        Int?
   engine_cylinder_count             Int?
   engine_layout                     VehicleEngineLayout?
-  engine_displacement_volume_liters Decimal?
+  engine_displacement_volume_liters Decimal?             @db.Decimal
   power_bhp                         Int?
   zero_to_sixty_seconds             Decimal?             @db.Decimal
   top_speed_mph                     Int?                 @db.SmallInt

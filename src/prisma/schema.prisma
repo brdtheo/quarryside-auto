@@ -31,30 +31,32 @@ model Review {
 }
 
 model Vehicle {
-  id                    Int                  @id @default(autoincrement())
-  slug                  String               @unique @db.VarChar(255)
-  thumbnail_url         String?              @db.VarChar
-  model                 String               @db.VarChar
-  mileage               Int?
-  price_cts             BigInt?
-  date_created          DateTime?            @default(now()) @db.Timestamptz(6)
-  year                  Int?                 @db.SmallInt
-  description           String?              @db.VarChar
-  brand                 VehicleBrand?
-  country               VehicleCountry?
-  body_style            VehicleBodyStyle?
-  weight_lbs            Int?
-  engine                String?
-  power_bhp             Int?
-  zero_to_sixty_seconds Decimal?             @db.Decimal
-  top_speed_mph         Int?                 @db.SmallInt
-  fuel_type             VehicleFuelType?
-  drivetrain            VehicleDrivetrain?
-  transmission          VehicleTransmission?
-  condition             VehicleCondition?
-  medias                Media[]
-  reviews               Review[]
-  vehicles_wheels       Vehicles_Wheels[]
+  id                                Int                  @id @default(autoincrement())
+  slug                              String               @unique @db.VarChar(255)
+  thumbnail_url                     String?              @db.VarChar
+  model                             String               @db.VarChar
+  mileage                           Int?
+  price_cts                         BigInt?
+  date_created                      DateTime?            @default(now()) @db.Timestamptz(6)
+  year                              Int?                 @db.SmallInt
+  description                       String?              @db.VarChar
+  brand                             VehicleBrand?
+  country                           VehicleCountry?
+  body_style                        VehicleBodyStyle?
+  weight_lbs                        Int?
+  engine_cylinder_count             Int?
+  engine_layout                     VehicleEngineLayout?
+  engine_displacement_volume_liters Decimal?
+  power_bhp                         Int?
+  zero_to_sixty_seconds             Decimal?             @db.Decimal
+  top_speed_mph                     Int?                 @db.SmallInt
+  fuel_type                         VehicleFuelType?
+  drivetrain                        VehicleDrivetrain?
+  transmission                      VehicleTransmission?
+  condition                         VehicleCondition?
+  medias                            Media[]
+  reviews                           Review[]
+  vehicles_wheels                   Vehicles_Wheels[]
 }
 
 model Vehicles_Wheels {
@@ -110,6 +112,13 @@ enum VehicleCountry {
   GERMANY
   POLAND
   JAPAN
+}
+
+enum VehicleEngineLayout {
+  L
+  F
+  V
+  W
 }
 
 enum VehicleFuelType {

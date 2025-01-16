@@ -1,6 +1,7 @@
 import { Vehicle, VehicleBrand, VehicleCondition } from "@prisma/client";
 
 export type VehicleCardProps = {
+  slug: Vehicle["slug"];
   brand: VehicleBrand | null;
   condition: VehicleCondition | null;
   mileage: Vehicle["mileage"];

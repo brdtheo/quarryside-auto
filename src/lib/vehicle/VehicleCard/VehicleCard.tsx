@@ -3,18 +3,17 @@ import { useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import currency from "currency.js";
+import { Prisma, VehicleCondition } from "@prisma/client";
 
 import Button from "@/components/Button";
 import Rating from "@/components/Rating";
 
-import { getVehicleSlug } from "@/lib/vehicle/utils";
-
-import { VehicleCondition } from "@prisma/client";
+import { getPrice } from "@/utils";
 
 import type { VehicleCardProps } from ".";
 
 export default function VehicleCard({
+  slug,
   condition,
   thumbnail_url,
   year,
@@ -22,18 +21,7 @@ export default function VehicleCard({
   model,
   price_cts,
   mileage,
-  // average_rating,
 }: VehicleCardProps) {
-  const vehicleSlug = useMemo(
-    () =>
-      getVehicleSlug({
-        year: (year ?? "").toString(),
-        brand: (brand ?? "")?.toString(),
-        model,
-      }),
-    [brand, model, year],
-  );
-
   const vehicleTitle = useMemo(
     () => `${year} ${brand} ${model}`,
     [brand, model, year],
@@ -52,15 +40,12 @@ export default function VehicleCard({
 
   const vehicleMileage = useMemo(() => `${mileage} miles`, [mileage]);
 
-  const vehiclePrice = useMemo(
-    () => currency(Number(price_cts) ?? "", { fromCents: true }).format(),
-    [price_cts],
-  );
+  const vehiclePrice = price_cts ? getPrice(price_cts) : "";
 
   return (
-    <article>
+    <article className="h-52 w-full">
       <Link
-        href={`/vehicles/${encodeURIComponent(vehicleSlug)}`}
+        href={`/vehicles/${encodeURIComponent(slug)}`}
         className="border border-grey rounded h-52 flex w-full bg-white"
       >
         <div className="w-72 h-full rounded-tl rounded-bl flex items-center border-r border-r-grey">
@@ -83,7 +68,7 @@ export default function VehicleCard({
           </div>
 
           <div className="flex justify-between items-end">
-            <Rating score={4} />
+            <Rating score={new Prisma.Decimal(4.8)} />
 
             <Button
               className="rounded text-white px-3 py-1.5 text-sm hover:opacity-90"

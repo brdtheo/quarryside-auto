@@ -37,7 +37,7 @@ export default function Table({ rows }: TableProps) {
         {(rows ?? []).map((row, index) => {
           if (Array.isArray(row.data)) {
             return (
-              <tr key={index}>
+              <tr key={index} className={getBorderClass(index)}>
                 <th
                   className={clsx(
                     "text-sm font-semibold text-left align-top",

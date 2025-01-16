@@ -1,9 +1,12 @@
 import { Wheel, WheelBrand } from "@prisma/client";
 
 export type WheelCardProps = {
-  thumbnail_url: Wheel["thumbnail_url"];
+  slug: Wheel["slug"];
+  thumbnailUrl: Wheel["thumbnail_url"];
   brand: WheelBrand | null;
   model: Wheel["model"];
-  price_cts: Wheel["price_cts"];
-  average_rating: number | null;
+  priceCts: Wheel["price_cts"];
+  isDeliveryAvailable: Wheel["delivery_available"];
+  isOnsitePickupFree: Wheel["free_on_site_pickup"];
+  averageRating: number | null;
 };

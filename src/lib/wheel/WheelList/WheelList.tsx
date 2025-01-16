@@ -1,8 +1,14 @@
-import type { WheelListProps } from "./wheellist";
+import clsx from "clsx";
 
-export default function WheelList({ data, itemRender }: WheelListProps) {
+import type { WheelListProps } from ".";
+
+export default function WheelList({
+  className,
+  data,
+  itemRender,
+}: WheelListProps) {
   return (
-    <ul className="flex-1 grid grid-cols-4 gap-8">
+    <ul className={clsx("flex-1 grid gap-8", className)}>
       {(data ?? []).map(itemRender)}
     </ul>
   );

@@ -14,63 +14,68 @@ import currency from "currency.js";
 import type { WheelCardProps } from ".";
 
 export default function WheelCard({
-  thumbnail_url,
+  slug,
+  thumbnailUrl,
   brand,
   model,
-  price_cts,
-  // average_rating,
+  priceCts,
+  isDeliveryAvailable,
+  isOnsitePickupFree,
 }: WheelCardProps) {
-  const wheelSlug = useMemo(
-    () => [brand, model].join(" ").toLowerCase().replace(/\s/g, "-"),
-    [brand, model],
-  );
-
   const wheelPrice = useMemo(
     () =>
-      currency(Number(price_cts) ?? "", {
+      currency(Number(priceCts) ?? "", {
         fromCents: true,
         symbol: "",
       }).format(),
-    [price_cts],
+    [priceCts],
   );
 
   return (
-    <article>
+    <article className="w-52">
       <Link
-        href={`/wheels/${encodeURIComponent(wheelSlug)}`}
+        href={`/wheels/${encodeURIComponent(slug)}`}
         className="border border-grey rounded flex w-52 bg-white"
       >
-        <div className="flex flex-col gap-2 px-8 py-4">
+        <div className="flex flex-col gap-2 px-5 py-4">
           <Image
-            className="overflow-hidden"
-            width={144}
-            height={144}
-            src={thumbnail_url ?? ""}
+            className="overflow-hidden rounded"
+            width={166}
+            height={166}
+            src={thumbnailUrl ?? ""}
             alt="wheel preview"
           />
 
           <span className="font-semibold text-xs text-grey-secondary leading-none">
             {brand}
           </span>
-          <span className="font-medium text-lg leading-none pb-1">{model}</span>
+          <span className="font-medium text-lg leading-6 pb-1">{model}</span>
 
-          <ul className="flex flex-col gap-1">
-            <li className="inline-flex items-start gap-1">
-              <IconBuildingStore stroke={1.6} size={18} />
-              <span className="font-medium text-xs">Free on site pickup</span>
-            </li>
-            <li className="inline-flex items-start gap-1">
-              <IconTruckDelivery stroke={1.6} size={18} />
-              <span className="font-medium text-xs">
-                Available for delivery
-              </span>
-            </li>
-          </ul>
+          {(isDeliveryAvailable || isOnsitePickupFree) && (
+            <ul className="flex flex-col gap-1">
+              {isOnsitePickupFree && (
+                <li className="inline-flex items-start gap-1">
+                  <IconBuildingStore stroke={1.6} size={18} />
+                  <span className="font-medium text-xs">
+                    Free on site pickup
+                  </span>
+                </li>
+              )}
+              {isDeliveryAvailable && (
+                <li className="inline-flex items-start gap-1">
+                  <IconTruckDelivery stroke={1.6} size={18} />
+                  <span className="font-medium text-xs">
+                    Available for delivery
+                  </span>
+                </li>
+              )}
+            </ul>
+          )}
 
           {/* {!!average_rating && <Rating size={14} score={average_rating} />} */}
 
           <div className="bg-yellow flex border border-yellow mt-1">
-            <div className="flex flex-1 items-start px-1">
+            <div className="flex flex-1 justify-center items-start px-1">
               <span className="text-red font-bold text-normal">$</span>
               <span className="text-red font-extrabold text-2xl">
                 {wheelPrice}

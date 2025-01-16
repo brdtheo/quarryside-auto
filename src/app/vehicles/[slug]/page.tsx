@@ -1,12 +1,6 @@
-"use client";
-
-import { useMemo } from "react";
-
-import { useParams } from "next/navigation";
-
 import { IconChevronRight } from "@tabler/icons-react";
 
-import currency from "currency.js";
+import { Prisma, Wheel } from "@prisma/client";
 
 import Button from "@/components/Button";
 import Container from "@/components/Container";
@@ -14,25 +8,48 @@ import DetailSection from "@/components/DetailSection";
 import Table from "@/components/Table";
 import TextField from "@/components/TextField";
 
+import { prisma } from "@/lib/prisma";
 import ReviewCard from "@/lib/review/ReviewCard";
 import VehicleMediaList from "@/lib/vehicle/VehicleMediaList";
-import { VEHICLE_LIST, VEHICLE_MEDIA_LIST } from "@/lib/vehicle/data";
-import { getVehicleTitle } from "@/lib/vehicle/utils";
 import WheelCard from "@/lib/wheel/WheelCard";
+import WheelList from "@/lib/wheel/WheelList";
 
-import { Prisma } from "@prisma/client";
+import { getPrice } from "@/utils";
 
-export default function Page() {
-  const params = useParams<{ slug: string }>();
-  const vehicleTitle = getVehicleTitle(params?.slug ?? "");
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
 
-  const vehicle = VEHICLE_LIST[0];
+export default async function Page({ params }: PageProps) {
+  const slug = (await params)?.slug ?? "";
 
-  const vehiclePrice = useMemo(
-    () =>
-      currency(Number(vehicle.price_cts) ?? "", { fromCents: true }).format(),
-    [vehicle.price_cts],
+  const vehicle = await prisma.vehicle.findUnique({
+    where: { slug: slug ?? "" },
+  });
+
+  const vehicleMediaList = vehicle?.id
+    ? await prisma.media.findMany({
+        where: { vehicle: vehicle.id },
+      })
+    : [];
+
+  const vehicleWheels = vehicle?.id
+    ? await prisma.vehicles_Wheels.findMany({
+        where: { vehicle_id: vehicle.id },
+        include: { wheels: true },
+      })
+    : [];
+
+  const parsedVehicleWheels: Wheel[] =
+    vehicleWheels.length > 0
+      ? vehicleWheels.map((vehicleWheel) => ({ ...vehicleWheel.wheels }))
+      : [];
+
+  const vehicleTitle = [vehicle?.year, vehicle?.brand, vehicle?.model].join(
+    " ",
   );
+
+  const vehiclePrice = vehicle?.price_cts ? getPrice(vehicle.price_cts) : "";
 
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
@@ -44,31 +61,47 @@ export default function Page() {
         <li className="text-sm">{vehicleTitle}</li>
       </ul>
 
-      <div className="flex gap-4">
+      <div className="flex gap-8">
         <div className="w-[785px] flex flex-col gap-16">
-          <VehicleMediaList mediaList={VEHICLE_MEDIA_LIST} />
+          <VehicleMediaList mediaList={vehicleMediaList} />
 
           <div className="flex flex-col gap-2">
             <h1>{vehicleTitle}</h1>
             <span className="font-bold text-2xl">{vehiclePrice}</span>
-            <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-              magnam doloribus minima totam unde? Dicta nesciunt, soluta
-              similique repudiandae perferendis error laudantium nostrum veniam
-              ab corporis? Expedita cumque illo laudantium.
-            </p>
+            <p className="text-sm">{vehicle?.description}</p>
           </div>
 
           <DetailSection title="Specifications">
             <Table
               rows={[
-                { name: "Brand", data: "ETK" },
-                { name: "Exterior color", data: "Beige" },
-                { name: "Interior color", data: "Black" },
-                { name: "Drivetrain", data: "Rear wheel drive" },
-                { name: "Engine", data: "3.2L L6 DOHC" },
-                { name: "Fuel type", data: "Gasoline" },
-                { name: "Mileage", data: "14,245 miles" },
+                { name: "Body style", data: vehicle?.body_style ?? "" },
+                { name: "Country", data: vehicle?.country ?? "" },
+                { name: "Brand", data: vehicle?.brand ?? "" },
+                { name: "Year", data: vehicle?.year?.toString() ?? "" },
+                { name: "Drivetrain", data: vehicle?.transmission ?? "" },
+                {
+                  name: "Engine",
+                  data: `${vehicle?.engine_displacement_volume_liters}L ${vehicle?.engine_layout}${vehicle?.engine_cylinder_count}`,
+                },
+                {
+                  name: "Power",
+                  data: `${vehicle?.power_bhp ?? ""} bhp`,
+                },
+                { name: "Fuel type", data: vehicle?.fuel_type ?? "" },
+                { name: "Mileage", data: `${vehicle?.mileage} miles` },
+                { name: "Weight", data: `${vehicle?.weight_lbs} lbs` },
+                {
+                  name: "0 to 60",
+                  data: `${vehicle?.zero_to_sixty_seconds}s`,
+                },
+                {
+                  name: "Top speed",
+                  data: `${vehicle?.top_speed_mph} mph`,
+                },
+                {
+                  name: "Transmission",
+                  data: vehicle?.transmission ?? "",
+                },
               ]}
             />
           </DetailSection>
@@ -82,15 +115,28 @@ export default function Page() {
             />
           </DetailSection>
 
-          <DetailSection title="Wheels">
-            <WheelCard
-              thumbnail_url="https://www.beamng-wheels.org/_next/image?url=https%3A%2F%2Fdiyponmokjdkfdsflogb.supabase.co%2Fstorage%2Fv1%2Fobject%2Fpublic%2Fwheels%2Ffive-lug%2F18_9__etk_xsport_front_wheel.webp&w=256&q=75"
-              brand="ETK"
-              model="xSport"
-              price_cts={BigInt(24599)}
-              average_rating={3.5}
-            />
-          </DetailSection>
+          {(vehicleWheels ?? []).length > 0 && (
+            <DetailSection title="Wheels">
+              <WheelList
+                className="auto-cols-min grid-flow-col"
+                data={parsedVehicleWheels}
+                itemRender={(wheel) => (
+                  <li key={wheel.id}>
+                    <WheelCard
+                      slug={wheel.slug}
+                      thumbnailUrl={wheel.thumbnail_url}
+                      brand={wheel.brand}
+                      model={wheel.model}
+                      priceCts={wheel.price_cts}
+                      averageRating={3.5}
+                      isDeliveryAvailable={wheel.delivery_available}
+                      isOnsitePickupFree={wheel.free_on_site_pickup}
+                    />
+                  </li>
+                )}
+              />
+            </DetailSection>
+          )}
 
           <DetailSection title="Reviews">
             <ul className="flex flex-col gap-4">
@@ -123,26 +169,25 @@ export default function Page() {
         </div>
 
         <div className="flex flex-1 p-3 bg-white h-fit rounded">
-          <div className="bg-background rounded py-8 px-4 flex flex-col gap-6">
+          <form
+            action="#"
+            noValidate
+            className="bg-background rounded py-8 px-4 flex flex-col gap-6"
+          >
             <h2 className="font-semibold text-base">
               Interested? Your new vehicle awaits you
             </h2>
 
             <div className="grid grid-cols-2 gap-2">
-              <TextField
-                placeholder="First name"
-                value=""
-                onChange={() => {}}
-              />
-              <TextField placeholder="Last name" value="" onChange={() => {}} />
-              <TextField placeholder="Email" value="" onChange={() => {}} />
-              <TextField placeholder="Phone" value="" onChange={() => {}} />
+              <TextField placeholder="First name" value="" />
+              <TextField placeholder="Last name" value="" />
+              <TextField placeholder="Email" value="" />
+              <TextField placeholder="Phone" value="" />
               <TextField
                 className="col-span-2 h-24"
                 placeholder="Message"
                 isTextArea
                 value=""
-                onChange={() => {}}
               />
             </div>
 
@@ -164,7 +209,7 @@ export default function Page() {
                 Schedule test drive
               </Button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </Container>

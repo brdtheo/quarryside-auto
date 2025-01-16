@@ -1,9 +1,4 @@
-"use client";
-
-import { useMemo } from "react";
-
 import Image from "next/image";
-import { useParams } from "next/navigation";
 
 import {
   IconBuildingStore,
@@ -12,7 +7,7 @@ import {
   IconTruckDelivery,
 } from "@tabler/icons-react";
 
-import currency from "currency.js";
+import { Prisma, Vehicle } from "@prisma/client";
 
 import Button from "@/components/Button";
 import Checkbox from "@/components/Checkbox";
@@ -21,38 +16,46 @@ import DetailSection from "@/components/DetailSection";
 import Select from "@/components/Select";
 import Table from "@/components/Table";
 
+import { prisma } from "@/lib/prisma";
 import ReviewCard from "@/lib/review/ReviewCard";
 import VehicleCard from "@/lib/vehicle/VehicleCard";
-import { VEHICLE_LIST } from "@/lib/vehicle/data";
-import { getVehicleTitle } from "@/lib/vehicle/utils";
-import { WHEEL_LIST } from "@/lib/wheel/data";
+import VehicleList from "@/lib/vehicle/VehicleList";
 
-import { Prisma } from "@prisma/client";
+import { getPrice } from "@/utils";
 
-export default function Page() {
-  const params = useParams<{ slug: string }>();
-  const wheelTitle = getVehicleTitle(params?.slug ?? "");
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
 
-  const vehicle = VEHICLE_LIST[0];
-  const wheel = WHEEL_LIST[0];
+export default async function Page({ params }: PageProps) {
+  const slug = (await params)?.slug ?? "";
 
-  const wheelPrice = useMemo(
-    () =>
-      currency(Number(wheel.price_cts) ?? "", {
-        fromCents: true,
-        symbol: "",
-      }).format(),
-    [wheel.price_cts],
-  );
+  const wheel = await prisma.wheel.findUnique({
+    where: { slug: slug ?? "" },
+  });
 
-  const wheelQuantityOptionList = useMemo(
-    () =>
-      [...new Array(10)].map((_, index) => ({
-        label: `${index + 1}`,
-        value: `${index + 1}`,
-      })),
-    [],
-  );
+  const wheelVehicles = wheel?.id
+    ? await prisma.vehicles_Wheels.findMany({
+        where: { wheel_id: wheel.id },
+        include: { vehicles: true },
+      })
+    : [];
+
+  const parsedWheelVehicles: Vehicle[] =
+    wheelVehicles.length > 0
+      ? wheelVehicles.map((vehicleWheel) => ({ ...vehicleWheel.vehicles }))
+      : [];
+
+  const wheelTitle = [wheel?.brand, wheel?.model].join(" ");
+
+  const wheelPrice = wheel?.price_cts
+    ? getPrice(wheel.price_cts, { symbol: "" })
+    : "";
+
+  const wheelQuantityOptionList = [...new Array(10)].map((_, index) => ({
+    label: `${index + 1}`,
+    value: `${index + 1}`,
+  }));
 
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
@@ -67,36 +70,45 @@ export default function Page() {
       <div className="flex gap-4">
         <div className="w-[785px] flex flex-col gap-16">
           <Image
-            className="overflow-hidden"
+            className="overflow-hidden rounded"
             width={275}
             height={275}
-            src={wheel.thumbnail_url ?? ""}
+            src={wheel?.thumbnail_url ?? ""}
             alt="media thumbnail"
           />
 
           <DetailSection title="Specifications">
             <Table
               rows={[
-                { name: "Available sizes", data: "18x9" },
-                { name: "Available tires", data: wheel.sizes },
-                { name: "Seasonality", data: "Summer" },
-                { name: "Consumption", data: "D" },
+                { name: "Brand", data: wheel?.brand ?? "" },
+                { name: "Available sizes", data: wheel?.sizes ?? "" },
+                { name: "Available tires", data: wheel?.tires ?? "" },
+                { name: "Consumption", data: wheel?.consumption ?? "" },
               ]}
             />
           </DetailSection>
 
-          <DetailSection title="Available on">
-            <VehicleCard
-              condition={vehicle.condition}
-              thumbnail_url={vehicle.thumbnail_url}
-              year={vehicle.year}
-              brand={vehicle.brand}
-              model={vehicle.model}
-              price_cts={vehicle.price_cts}
-              mileage={vehicle.mileage}
-              // average_rating={vehicle.average_rating}
-            />
-          </DetailSection>
+          {(wheelVehicles ?? []).length > 0 && (
+            <DetailSection title="Available on">
+              <VehicleList
+                data={parsedWheelVehicles}
+                itemRender={(vehicle) => (
+                  <li key={vehicle.id}>
+                    <VehicleCard
+                      slug={vehicle.slug}
+                      condition={vehicle.condition}
+                      thumbnail_url={vehicle.thumbnail_url}
+                      year={vehicle.year}
+                      brand={vehicle.brand}
+                      model={vehicle.model}
+                      price_cts={vehicle.price_cts}
+                      mileage={vehicle.mileage}
+                    />
+                  </li>
+                )}
+              />
+            </DetailSection>
+          )}
 
           <DetailSection title="Reviews">
             <ul className="flex flex-col gap-4">
@@ -140,24 +152,30 @@ export default function Page() {
             </div>
 
             <ul className="flex flex-col gap-2">
-              <li className="inline-flex items-center gap-1">
-                <IconBuildingStore
-                  className="text-brown-secondary"
-                  stroke={1.6}
-                  size={18}
-                />
-                <span className="font-medium text-xs">Free on site pickup</span>
-              </li>
-              <li className="inline-flex items-center gap-1">
-                <IconTruckDelivery
-                  className="text-brown-secondary"
-                  stroke={1.6}
-                  size={18}
-                />
-                <span className="font-medium text-xs">
-                  Available for delivery
-                </span>
-              </li>
+              {wheel?.free_on_site_pickup && (
+                <li className="inline-flex items-center gap-1">
+                  <IconBuildingStore
+                    className="text-brown-secondary"
+                    stroke={1.6}
+                    size={18}
+                  />
+                  <span className="font-medium text-xs">
+                    Free on site pickup
+                  </span>
+                </li>
+              )}
+              {wheel?.delivery_available && (
+                <li className="inline-flex items-center gap-1">
+                  <IconTruckDelivery
+                    className="text-brown-secondary"
+                    stroke={1.6}
+                    size={18}
+                  />
+                  <span className="font-medium text-xs">
+                    Available for delivery
+                  </span>
+                </li>
+              )}
               <li className="inline-flex items-center gap-1">
                 <IconFlame
                   className="text-brown-secondary"
@@ -172,7 +190,6 @@ export default function Page() {
               id="assembly-without-appointment"
               label="Assembly without appointment"
               checked={false}
-              onChange={() => {}}
             />
 
             <div className="flex flex-1 gap-2">
@@ -180,7 +197,6 @@ export default function Page() {
                 className="h-full"
                 options={wheelQuantityOptionList}
                 value="2"
-                onChange={() => {}}
               />
               <Button
                 className="text-sm py-3 flex-1 rounded hover:opacity-90"

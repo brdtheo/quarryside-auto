@@ -1,18 +1,18 @@
-"use server";
+import { Vehicle } from "@prisma/client";
 
 import Container from "@/components/Container";
 import ListFilterAside from "@/components/ListFilterAside";
 import ListFilterHeader from "@/components/ListFilterHeader";
 import Pagination from "@/components/Pagination";
 
+import { prisma } from "@/lib/prisma";
 import VehicleCard from "@/lib/vehicle/VehicleCard";
 import VehicleList from "@/lib/vehicle/VehicleList";
 import { vehicleSortOptionList } from "@/lib/vehicle/constants";
-import { VEHICLE_LIST } from "@/lib/vehicle/data";
-
-import { Vehicle } from "@prisma/client";
 
 export default async function Page() {
+  const vehicles = await prisma.vehicle.findMany({ take: 15 });
+
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <h1 className="font-bold text-2xl">Used vehicles</h1>
@@ -30,10 +30,11 @@ export default async function Page() {
             sortOptionList={vehicleSortOptionList}
           />
           <VehicleList
-            data={VEHICLE_LIST}
+            data={vehicles}
             itemRender={(vehicle: Vehicle) => (
               <li key={vehicle.id}>
                 <VehicleCard
+                  slug={vehicle.slug}
                   condition={vehicle.condition}
                   thumbnail_url={vehicle.thumbnail_url}
                   year={vehicle.year}
@@ -41,7 +42,6 @@ export default async function Page() {
                   model={vehicle.model}
                   price_cts={vehicle.price_cts}
                   mileage={vehicle.mileage}
-                  // average_rating={null}
                 />
               </li>
             )}

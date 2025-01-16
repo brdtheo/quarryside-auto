@@ -1,18 +1,18 @@
-"use client";
+import { Wheel } from "@prisma/client";
 
 import Container from "@/components/Container";
 import ListFilterAside from "@/components/ListFilterAside";
 import ListFilterHeader from "@/components/ListFilterHeader";
 import Pagination from "@/components/Pagination";
 
+import { prisma } from "@/lib/prisma";
 import WheelCard from "@/lib/wheel/WheelCard";
 import WheelList from "@/lib/wheel/WheelList";
 import { wheelSortOptionList } from "@/lib/wheel/constants";
-import { WHEEL_LIST } from "@/lib/wheel/data";
 
-import { Wheel } from "@prisma/client";
+export default async function Page() {
+  const wheels = await prisma.wheel.findMany({ take: 30 });
 
-export default function Page() {
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <h1 className="font-bold text-2xl">Rims & tires</h1>
@@ -32,15 +32,19 @@ export default function Page() {
           />
 
           <WheelList
-            data={WHEEL_LIST}
+            className="auto-cols-min grid-flow-col"
+            data={wheels}
             itemRender={(wheel: Wheel) => (
               <li key={wheel.id}>
                 <WheelCard
-                  thumbnail_url={wheel.thumbnail_url ?? ""}
+                  slug={wheel.slug}
+                  thumbnailUrl={wheel.thumbnail_url ?? ""}
                   brand={wheel.brand}
                   model={wheel.model}
-                  price_cts={wheel.price_cts}
-                  average_rating={null}
+                  priceCts={wheel.price_cts}
+                  averageRating={null}
+                  isDeliveryAvailable={wheel.delivery_available}
+                  isOnsitePickupFree={wheel.free_on_site_pickup}
                 />
               </li>
             )}

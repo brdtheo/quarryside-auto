@@ -124,13 +124,23 @@ enum VehicleEngineLayout {
 enum VehicleFuelType {
   GASOLINE
   DIESEL
+  BATTERY
 }
 
 enum VehicleDrivetrain {
   RWD
   FWD
   AWD
-  FOURWD @map("4WD")
+  FOURWD         @map("4WD")
+  EIGHT_BY_EIGHT @map("8x8")
+  EIGHT_BY_FOUR  @map("8x4")
+  EIGHT_BY_SIX   @map("8x6")
+  FIVE_BY_TWO    @map("5x2")
+  FOUR_BY_FOUR   @map("4x4")
+  SIX_BY_FOUR    @map("6x4")
+  SIX_BY_SIX     @map("6x6")
+  SIX_BY_TWO     @map("6x2")
+  THREE_BY_THREE @map("3x3")
 }
 
 enum VehicleTransmission {
@@ -138,10 +148,36 @@ enum VehicleTransmission {
   AUTOMATIC
   SEQUENTIAL
   DCT
+  CVT
+  OTHER
 }
 
 enum VehicleBodyStyle {
   PICKUP
+  AMBULANCE
+  ATV
+  BOX_TRUCK
+  BUGGY
+  BUS
+  CHASSIC_CAB
+  COUPE
+  DUMP_TRUCK
+  FIFTH_WHEEL_TRUCK
+  FLATBED
+  FLATBED_TRUCK
+  HATCHBACK
+  JATO_TRUCK
+  LIFTBACK
+  LOGGING_TRUCK
+  MINIVAN
+  MIXER_TRUCK
+  ROADSTER
+  SEDAN
+  SHOOTING_BRAKE
+  SUV
+  TANKER_TRUCK
+  VAN
+  WAGON
 }
 
 enum WheelBrand {

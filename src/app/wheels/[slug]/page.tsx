@@ -1,4 +1,4 @@
-import Image from "next/image";
+// import Image from "next/image";
 
 import {
   IconBuildingStore,
@@ -16,6 +16,7 @@ import DetailSection from "@/components/DetailSection";
 import Select from "@/components/Select";
 import Table from "@/components/Table";
 
+import MediaSkeleton from "@/lib/media/MediaSkeleton";
 import { prisma } from "@/lib/prisma";
 import ReviewCard from "@/lib/review/ReviewCard";
 import VehicleCard from "@/lib/vehicle/VehicleCard";
@@ -69,12 +70,18 @@ export default async function Page({ params }: PageProps) {
 
       <div className="flex gap-4">
         <div className="w-[785px] flex flex-col gap-16">
-          <Image
+          {/* <Image
             className="overflow-hidden rounded"
             width={275}
             height={275}
             src={wheel?.thumbnail_url ?? ""}
             alt="media thumbnail"
+          /> */}
+          <MediaSkeleton
+            iconWidth={48}
+            className="rounded"
+            width={785}
+            height={442}
           />
 
           <DetailSection title="Specifications">
@@ -190,6 +197,7 @@ export default async function Page({ params }: PageProps) {
               id="assembly-without-appointment"
               label="Assembly without appointment"
               checked={false}
+              href="#"
             />
 
             <div className="flex flex-1 gap-2">

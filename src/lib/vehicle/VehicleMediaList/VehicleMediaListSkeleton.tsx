@@ -1,44 +1,29 @@
-import { IconPhoto } from "@tabler/icons-react";
+import MediaSkeleton from "@/lib/media/MediaSkeleton";
 
 export default function VehicleMediaListSkeleton() {
   return (
     <div className="flex flex-col gap-2">
-      <div
-        className="bg-gray-200 animate-pulse rounded flex items-center justify-center"
-        style={{ width: 785, height: 442 }}
-      >
-        <IconPhoto className="text-gray-400" size={48} stroke={1} />
-      </div>
+      <MediaSkeleton
+        iconWidth={48}
+        className="rounded"
+        width={785}
+        height={442}
+      />
       <ul className="flex flex-wrap gap-1">
-        <li
-          className="bg-gray-200 animate-pulse rounded flex items-center justify-center"
-          style={{ width: 115, height: 65 }}
-        >
-          <IconPhoto className="text-gray-400" size={24} stroke={1} />
+        <li>
+          <MediaSkeleton className="rounded" width={115} height={65} />
         </li>
-        <li
-          className="bg-gray-200 animate-pulse rounded flex items-center justify-center"
-          style={{ width: 115, height: 65 }}
-        >
-          <IconPhoto className="text-gray-400" size={24} stroke={1} />
+        <li>
+          <MediaSkeleton className="rounded" width={115} height={65} />
         </li>
-        <li
-          className="bg-gray-200 animate-pulse rounded flex items-center justify-center"
-          style={{ width: 115, height: 65 }}
-        >
-          <IconPhoto className="text-gray-400" size={24} stroke={1} />
+        <li>
+          <MediaSkeleton className="rounded" width={115} height={65} />
         </li>
-        <li
-          className="bg-gray-200 animate-pulse rounded flex items-center justify-center"
-          style={{ width: 115, height: 65 }}
-        >
-          <IconPhoto className="text-gray-400" size={24} stroke={1} />
+        <li>
+          <MediaSkeleton className="rounded" width={115} height={65} />
         </li>
-        <li
-          className="bg-gray-200 animate-pulse rounded flex items-center justify-center"
-          style={{ width: 115, height: 65 }}
-        >
-          <IconPhoto className="text-gray-400" size={24} stroke={1} />
+        <li>
+          <MediaSkeleton className="rounded" width={115} height={65} />
         </li>
       </ul>
     </div>

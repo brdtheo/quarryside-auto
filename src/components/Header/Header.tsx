@@ -14,8 +14,9 @@ export default function Header() {
           src="/quarryside_logo.png"
           alt="Quarryside Auto Sales company logo"
           width="340"
-          height="30"
-          priority
+          height="38"
+          placeholder="blur"
+          blurDataURL="/quarryside_logo.png"
         />
 
         <nav className="inline-flex gap-3">

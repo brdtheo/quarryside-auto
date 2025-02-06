@@ -84,6 +84,8 @@ model Wheel {
   is_five_lug         Boolean
   is_six_lug          Boolean
   is_eight_lug        Boolean
+  is_central_lug      Boolean
+  is_three_lug        Boolean
   medias              Media[]
   reviews             Review[]
   vehicles_wheels     Vehicles_Wheels[]
@@ -206,6 +208,7 @@ enum WheelBrand {
   TIMS
   TRIAL
   WANGAN
+  UTR
 }
 
 enum WheelConsumption {

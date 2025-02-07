@@ -8,3 +8,5 @@ export const vehicleSortOptionList: SelectOption[] = [
   { label: "Year - Oldest first", value: "year-asc" },
   { label: "Year - Most recent first", value: "year-desc" },
 ];
+
+export const VEHICLE_LIST_PAGE_SIZE = 15;

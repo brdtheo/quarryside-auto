@@ -1,38 +1,51 @@
-import { Wheel } from "@prisma/client";
+import { Prisma, Wheel } from "@prisma/client";
 
 import Container from "@/components/Container";
-import ListFilterAside from "@/components/ListFilterAside";
 import ListFilterHeader from "@/components/ListFilterHeader";
 import Pagination from "@/components/Pagination";
 
 import { prisma } from "@/lib/prisma";
 import WheelCard from "@/lib/wheel/WheelCard";
 import WheelList from "@/lib/wheel/WheelList";
-import { wheelSortOptionList } from "@/lib/wheel/constants";
+import WheelListFilterAside from "@/lib/wheel/WheelListFilterAside";
+import {
+  WHEEL_LIST_PAGE_SIZE,
+  wheelSortOptionList,
+} from "@/lib/wheel/constants";
+import { getWheelFindManyArgs } from "@/lib/wheel/utils";
 
-export default async function Page() {
-  const wheels = await prisma.wheel.findMany({ take: 30 });
+import type { PageProps } from "@/types";
+
+export default async function Page({ searchParams }: PageProps) {
+  const params = await searchParams;
+  const page = params?.page ? parseInt(params?.page as string) : 1;
+
+  const prismaFindManyArgs = getWheelFindManyArgs(params);
+  const prismaFindManyCountArgs = getWheelFindManyArgs(params, true);
+
+  const wheels = await prisma.wheel.findMany(
+    prismaFindManyArgs as Prisma.WheelFindManyArgs,
+  );
+  const wheelCount =
+    (await prisma.wheel.count(
+      prismaFindManyCountArgs as Prisma.WheelCountArgs,
+    )) ?? 0;
 
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <h1 className="font-bold text-2xl">Rims & tires</h1>
-
       <div className="flex gap-8">
-        <ListFilterAside />
+        <WheelListFilterAside searchParams={params} />
 
         <div className="flex flex-1 flex-col">
           <ListFilterHeader
-            textSearch="type f"
-            appliedFilterList={[
-              { name: "q", value: "type f" },
-              { name: "is_four_lug", value: "4 lug" },
-              { name: "is_five_lug", value: "5 lug" },
-            ]}
+            textSearch=""
             sortOptionList={wheelSortOptionList}
+            resultCount={wheelCount}
           />
 
           <WheelList
-            className="auto-cols-min grid-flow-col"
+            className="grid-cols-4"
             data={wheels}
             itemRender={(wheel: Wheel) => (
               <li key={wheel.id}>
@@ -51,8 +64,11 @@ export default async function Page() {
           />
         </div>
       </div>
-
-      <Pagination page={1} pageCount={5} onPageChange={() => {}} />
+      <Pagination
+        searchParams={params}
+        page={page}
+        pageCount={Math.ceil(wheelCount / WHEEL_LIST_PAGE_SIZE) || 1}
+      />
     </Container>
   );
 }

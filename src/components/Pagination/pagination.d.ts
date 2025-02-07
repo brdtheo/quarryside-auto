@@ -1,6 +1,7 @@
+import type { PageSearchParams } from "@/types";
+
 export type PaginationProps = {
   page: number;
   pageCount: number;
-  disabled?: boolean;
-  onPageChange: (page: number) => void;
+  searchParams: PageSearchParams;
 };

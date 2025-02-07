@@ -1,5 +1,5 @@
 import Chip from "./Chip";
-import type { ChipProps } from "./chip";
+import type { ChipIconProps, ChipProps } from "./chip";
 
-export type { ChipProps };
+export type { ChipIconProps, ChipProps };
 export default Chip;

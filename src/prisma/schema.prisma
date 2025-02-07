@@ -184,7 +184,6 @@ enum VehicleBodyStyle {
 
 enum WheelBrand {
   ALDER
-  ARNIDA
   AUTOBELLO
   BETA
   BRUCKELL

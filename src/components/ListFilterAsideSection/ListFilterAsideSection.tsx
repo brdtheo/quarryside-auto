@@ -1,6 +1,7 @@
-'use client'
+"use client";
 
 import Checkbox from "@/components/Checkbox";
+import Chip from "@/components/Chip";
 import SearchField from "@/components/SearchField";
 
 import type { ListFilterAsideSectionProps } from "./listfilterasidesection";
@@ -9,11 +10,14 @@ export default function ListFilterAsideSection({
   title,
   options,
   isSearchable,
-  onChange,
+  selectedOptionCount,
 }: ListFilterAsideSectionProps) {
   return (
     <fieldset className="flex flex-col gap-2">
-      <legend className="font-semibold text-md">{title}</legend>
+      <legend className="inline-flex font-semibold text-md gap-1">
+        {title}
+        {selectedOptionCount > 0 && <Chip>{`${selectedOptionCount}`}</Chip>}
+      </legend>
 
       <div className="py-2 flex flex-col gap-1">
         {isSearchable && <SearchField value="" onChange={() => {}} />}
@@ -27,7 +31,7 @@ export default function ListFilterAsideSection({
                 .toLowerCase()
                 .replace(/\s/g, "-")}
               checked={option.isChecked}
-              onChange={onChange}
+              href={option.href}
               label={option.label}
             />
           ))}
@@ -42,8 +46,8 @@ export default function ListFilterAsideSection({
                   .toLowerCase()
                   .replace(/\s/g, "-")}
                 checked={option.isChecked}
-                onChange={onChange}
                 label={option.label}
+                href={option.href}
               />
             ))}
           </div>

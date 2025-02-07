@@ -1,6 +1,6 @@
 export type ListFilterAsideSectionProps = {
   title: string;
-  options: { label: string; value: string; isChecked: boolean }[];
+  options: { label: string; value: string; isChecked: boolean; href: string }[];
   isSearchable?: boolean;
-  onChange: React.ChangeEventHandler;
+  selectedOptionCount: number;
 };

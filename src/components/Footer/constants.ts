@@ -4,21 +4,21 @@ export const footerSections: FooterNavSectionProps[] = [
   {
     title: "Used vehicles",
     links: [
-      { title: "Used Civetta cars", to: "/vehicles?brands=Civetta&condition=1" },
-      { title: "Used Ibishu cars", to: "/vehicles?brands=Ibishu&condition=1" },
-      { title: "Used Gavril cars", to: "/vehicles?brands=Gavril&condition=1" },
-      { title: "Used ETK cars", to: "/vehicles?brands=ETK&condition=1" },
-      { title: "Used Hiroshi cars", to: "/vehicles?brands=Hiroshi&condition=1" },
+      { title: "Used Civetta cars", to: "/vehicles?brand=CIVETTA&condition=USED" },
+      { title: "Used Ibishu cars", to: "/vehicles?brand=IBISHU&condition=USED" },
+      { title: "Used Gavril cars", to: "/vehicles?brand=GAVRIL&condition=USED" },
+      { title: "Used ETK cars", to: "/vehicles?brand=ETK&condition=USED" },
+      { title: "Used Hiroshi cars", to: "/vehicles?brand=HIROSHI&condition=USED" },
     ],
   },
   {
     title: "Rims & tires",
     links: [
-      { title: "Autobello wheels", to: "/wheels?brands=Autobello" },
-      { title: "ETK wheels", to: "/wheels?brands=ETK" },
-      { title: "Folk wheels", to: "/wheels?brands=Folk" },
-      { title: "Gavril wheels", to: "/wheels?brands=Gavril" },
-      { title: "Ibishu wheels", to: "/wheels?brands=Ibishu" },
+      { title: "Autobello wheels", to: "/wheels?brand=AUTOBELLO" },
+      { title: "ETK wheels", to: "/wheels?brand=ETK" },
+      { title: "Folk wheels", to: "/wheels?brand=FOLK" },
+      { title: "Gavril wheels", to: "/wheels?brand=GAVRIL" },
+      { title: "Ibishu wheels", to: "/wheels?brand=IBISHU" },
     ],
   },
   {

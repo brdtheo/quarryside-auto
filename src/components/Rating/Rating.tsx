@@ -5,7 +5,7 @@ import { IconStar } from "@tabler/icons-react";
 import type { RatingProps } from ".";
 
 export default function Rating({ score, size }: RatingProps) {
-  const parsedScore = useMemo(() => Number(score) ?? 0, [score]);
+  const parsedScore = useMemo(() => Number(score ?? 0), [score]);
 
   return (
     <div className="flex gap-2 items-center h-fit">

@@ -70,20 +70,18 @@ export function getVehicleFindManyArgs(
       !!transmissionParam) && {
       where: {
         AND: [
-          ...(!!brandParam ? [{ brand: { in: brandParam } }] : []),
-          ...(!!conditionParam ? [{ condition: { in: conditionParam } }] : []),
-          ...(!!engineCylinderCountParam
+          ...(brandParam ? [{ brand: { in: brandParam } }] : []),
+          ...(conditionParam ? [{ condition: { in: conditionParam } }] : []),
+          ...(engineCylinderCountParam
             ? [{ engine_cylinder_count: { in: engineCylinderCountParam } }]
             : []),
-          ...(!!fuelTypeParam ? [{ fuel_type: { in: fuelTypeParam } }] : []),
-          ...(!!transmissionParam
+          ...(fuelTypeParam ? [{ fuel_type: { in: fuelTypeParam } }] : []),
+          ...(transmissionParam
             ? [{ transmission: { in: transmissionParam } }]
             : []),
-          ...(!!drivetrainParam
-            ? [{ drivetrain: { in: drivetrainParam } }]
-            : []),
-          ...(!!bodyStyleParam ? [{ body_style: { in: bodyStyleParam } }] : []),
-          ...(!!countryParam ? [{ country: { in: countryParam } }] : []),
+          ...(drivetrainParam ? [{ drivetrain: { in: drivetrainParam } }] : []),
+          ...(bodyStyleParam ? [{ body_style: { in: bodyStyleParam } }] : []),
+          ...(countryParam ? [{ country: { in: countryParam } }] : []),
         ],
       },
     }),

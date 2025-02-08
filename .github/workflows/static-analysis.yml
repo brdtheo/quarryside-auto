@@ -1,0 +1,22 @@
+name: Static Analysis
+
+on: [push]
+
+jobs:
+  static-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: ✨ Prettier ✨
+        run: yarn pretty-check
+
+      - name: 🚨 ESLint 🚨
+        run: yarn next lint

@@ -26,7 +26,7 @@ export default function WheelCard({
 }: WheelCardProps) {
   const wheelPrice = useMemo(
     () =>
-      currency(Number(priceCts) ?? "", {
+      currency(Number(priceCts ?? 0), {
         fromCents: true,
         symbol: "",
       }).format(),

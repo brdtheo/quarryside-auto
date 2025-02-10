@@ -19,6 +19,8 @@ export default {
         divider: "#E1E1E1",
         yellow: "#FFE714",
         red: "#CF061F",
+        "ad-background": "#CDCCCC",
+        "ad-text": "#00AECD",
       },
       borderRadius: { DEFAULT: "4px" },
     },

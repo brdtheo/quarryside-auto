@@ -8,6 +8,7 @@ import {
 
 import { Prisma, Vehicle } from "@prisma/client";
 
+import Advertising from "@/components/Advertising";
 import Button from "@/components/Button";
 import Checkbox from "@/components/Checkbox";
 import Container from "@/components/Container";
@@ -146,7 +147,7 @@ export default async function Page({ params }: PageProps) {
           </DetailSection>
         </div>
 
-        <div className="flex flex-1 p-3 bg-white h-fit rounded">
+        <div className="flex flex-1 flex-col p-3 bg-white h-fit rounded">
           <div className="bg-background rounded py-8 px-4 flex flex-1 flex-col gap-6">
             <div className="bg-yellow flex border border-yellow mt-1 w-fit rounded">
               <div className="flex flex-1 items-start px-1">
@@ -214,6 +215,8 @@ export default async function Page({ params }: PageProps) {
               </Button>
             </div>
           </div>
+
+          <Advertising className="m-4" ratioMode="horizontal" />
         </div>
       </div>
     </Container>

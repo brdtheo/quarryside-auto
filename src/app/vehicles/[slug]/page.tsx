@@ -2,6 +2,7 @@ import { IconChevronRight } from "@tabler/icons-react";
 
 import { Prisma, Wheel } from "@prisma/client";
 
+import Advertising from "@/components/Advertising";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import DetailSection from "@/components/DetailSection";
@@ -168,7 +169,7 @@ export default async function Page({ params }: PageProps) {
           </DetailSection>
         </div>
 
-        <div className="flex flex-1 p-3 bg-white h-fit rounded">
+        <div className="flex flex-1 flex-col p-3 bg-white h-fit rounded">
           <form
             action="#"
             noValidate
@@ -210,6 +211,8 @@ export default async function Page({ params }: PageProps) {
               </Button>
             </div>
           </form>
+
+          <Advertising className="m-4" ratioMode="horizontal" />
         </div>
       </div>
     </Container>

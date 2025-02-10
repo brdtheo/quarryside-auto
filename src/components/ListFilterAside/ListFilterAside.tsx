@@ -2,6 +2,8 @@
 
 import { useMemo } from "react";
 
+import useTranslation from "next-translate/useTranslation";
+
 import { IconX } from "@tabler/icons-react";
 
 import Advertising from "@/components/Advertising";
@@ -17,7 +19,10 @@ import useURLSearchParams from "@/hooks/useURLSearchParams";
 export default function ListFilterAside({
   sections,
   searchParams,
+  nameSpace,
 }: ListFilterAsideProps) {
+  const { t } = useTranslation(nameSpace);
+
   const { getUpdatedURLFromSearchParam } = useURLSearchParams(searchParams);
 
   const appliedFilterList = useMemo(() => {
@@ -50,7 +55,9 @@ export default function ListFilterAside({
               iconHref={appliedFilter.deleteHref}
               rightIcon={<IconX size={16} className="text-white" />}
             >
-              {appliedFilter.paramValue}
+              {t(
+                `filter.${appliedFilter.paramName}.option.${appliedFilter.paramValue}`,
+              )}
             </Chip>
           ))}
         </div>

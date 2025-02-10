@@ -19,7 +19,7 @@ export default function ListFilterAsideSection({
         {selectedOptionCount > 0 && <Chip>{`${selectedOptionCount}`}</Chip>}
       </legend>
 
-      <div className="py-2 flex flex-col gap-1">
+      <div className="py-2 flex flex-col">
         {isSearchable && <SearchField value="" onChange={() => {}} />}
 
         {!isSearchable &&
@@ -37,7 +37,7 @@ export default function ListFilterAsideSection({
           ))}
 
         {isSearchable && (
-          <div className="mt-2 flex flex-col gap-2 max-h-28 overflow-y-scroll">
+          <div className="mt-2 flex flex-col max-h-28 overflow-y-scroll">
             {(options ?? []).map((option, index) => (
               <Checkbox
                 key={option.value}

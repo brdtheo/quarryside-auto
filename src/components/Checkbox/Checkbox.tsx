@@ -39,7 +39,7 @@ export default function Checkbox({ id, checked, label, href }: CheckboxProps) {
           />
         </div>
       </div>
-      <label className="text-sm cursor-pointer" htmlFor={id}>
+      <label className="text-sm cursor-pointer leading-none" htmlFor={id}>
         {label}
       </label>
     </Link>

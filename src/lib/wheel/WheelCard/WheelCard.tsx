@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+import useTranslation from "next-translate/useTranslation";
 // import Image from "next/image";
 import Link from "next/link";
 
@@ -24,6 +25,8 @@ export default function WheelCard({
   isDeliveryAvailable,
   isOnsitePickupFree,
 }: WheelCardProps) {
+  const { t } = useTranslation("wheels");
+
   const wheelPrice = useMemo(
     () =>
       currency(Number(priceCts ?? 0), {
@@ -54,7 +57,7 @@ export default function WheelCard({
           />
 
           <span className="font-semibold text-xs text-grey-secondary leading-none">
-            {brand}
+            {t(`filter.brand.option.${brand}`)}
           </span>
           <span className="font-medium text-lg leading-6 pb-1">{model}</span>
           {(isDeliveryAvailable || isOnsitePickupFree) && (
@@ -63,7 +66,7 @@ export default function WheelCard({
                 <li className="inline-flex items-start gap-1">
                   <IconBuildingStore stroke={1.6} size={18} />
                   <span className="font-medium text-xs">
-                    Free on site pickup
+                    {t("filter.free_on_site_pickup.option.true")}
                   </span>
                 </li>
               )}
@@ -71,7 +74,7 @@ export default function WheelCard({
                 <li className="inline-flex items-start gap-1">
                   <IconTruckDelivery stroke={1.6} size={18} />
                   <span className="font-medium text-xs">
-                    Available for delivery
+                    {t("filter.delivery_available.option.true")}
                   </span>
                 </li>
               )}

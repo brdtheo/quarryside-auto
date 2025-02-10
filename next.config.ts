@@ -43,6 +43,11 @@ const nextConfig: NextConfig = {
         hostname: "qa-wheel.s3.eu-west-3.amazonaws.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "qa-advertising.s3.eu-west-3.amazonaws.com",
+        port: "",
+      },
     ],
   },
 };

@@ -1,0 +1,19 @@
+{
+  "locales": [
+    "en",
+    "ru"
+  ],
+  "defaultLocale": "en",
+  "pages": {
+    "rgx:/vehicles": [
+      "common",
+      "vehicles",
+      "wheels"
+    ],
+    "rgx:/wheels": [
+      "common",
+      "wheels",
+      "vehicles"
+    ]
+  }
+}

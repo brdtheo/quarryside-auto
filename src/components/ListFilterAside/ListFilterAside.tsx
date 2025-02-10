@@ -4,6 +4,7 @@ import { useMemo } from "react";
 
 import { IconX } from "@tabler/icons-react";
 
+import Advertising from "@/components/Advertising";
 import Chip from "@/components/Chip";
 import type {
   AppliedListFilter,
@@ -66,6 +67,9 @@ export default function ListFilterAside({
           />
         ))}
       </form>
+
+      <Advertising className="mx-auto" ratioMode="vertical" />
+      <Advertising className="mx-auto" ratioMode="vertical" />
     </aside>
   );
 }

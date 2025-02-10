@@ -1,22 +1,23 @@
+import useTranslation from "next-translate/useTranslation";
+
 import { Prisma, Wheel } from "@prisma/client";
 
 import Container from "@/components/Container";
-import ListFilterHeader from "@/components/ListFilterHeader";
 import Pagination from "@/components/Pagination";
 
 import { prisma } from "@/lib/prisma";
 import WheelCard from "@/lib/wheel/WheelCard";
 import WheelList from "@/lib/wheel/WheelList";
 import WheelListFilterAside from "@/lib/wheel/WheelListFilterAside";
-import {
-  WHEEL_LIST_PAGE_SIZE,
-  wheelSortOptionList,
-} from "@/lib/wheel/constants";
+import WheelListFilterHeader from "@/lib/wheel/WheelListFilterHeader";
+import { WHEEL_LIST_PAGE_SIZE } from "@/lib/wheel/constants";
 import { getWheelFindManyArgs } from "@/lib/wheel/utils";
 
 import type { PageProps } from "@/types";
 
 export default async function Page({ searchParams }: PageProps) {
+  const { t } = useTranslation("wheels");
+
   const params = await searchParams;
   const page = params?.page ? parseInt(params?.page as string) : 1;
 
@@ -33,16 +34,12 @@ export default async function Page({ searchParams }: PageProps) {
 
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
-      <h1 className="font-bold text-2xl">Rims & tires</h1>
+      <h1 className="font-bold text-2xl">{t("title")}</h1>
       <div className="flex gap-8">
         <WheelListFilterAside searchParams={params} />
 
         <div className="flex flex-1 flex-col">
-          <ListFilterHeader
-            textSearch=""
-            sortOptionList={wheelSortOptionList}
-            resultCount={wheelCount}
-          />
+          <WheelListFilterHeader resultCount={wheelCount} textSearch="" />
 
           <WheelList
             className="grid-cols-4"

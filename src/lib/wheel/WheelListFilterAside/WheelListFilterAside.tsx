@@ -1,5 +1,7 @@
 "use client";
 
+import useTranslation from "next-translate/useTranslation";
+
 import { WheelBrand } from "@prisma/client";
 
 import ListFilterAside from "@/components/ListFilterAside";
@@ -13,14 +15,16 @@ export default function WheelListFilterAside({
 }: {
   searchParams: PageSearchParams;
 }) {
+  const { t } = useTranslation("wheels");
+
   const { getUpdatedURLFromSearchParam, getSearchParamValueCount } =
     useURLSearchParams(searchParams);
 
   const wheelListFilterSections: ListFilterAsideSectionProps[] = [
     {
-      title: "Brand",
+      title: t("filter.brand.title"),
       options: Object.values(WheelBrand).map((brand) => ({
-        label: brand,
+        label: t(`filter.brand.option.${brand}`),
         value: brand.toLowerCase(),
         isChecked: (searchParams?.brand ?? "").includes(brand),
         href: getUpdatedURLFromSearchParam("brand", `${brand}`, true),
@@ -29,40 +33,40 @@ export default function WheelListFilterAside({
       selectedOptionCount: getSearchParamValueCount("brand"),
     },
     {
-      title: "Availability",
+      title: t("availability"),
       options: [
         {
-          label: "3 lugs",
+          label: t("filter.is_three_lug.option.true"),
           value: "is_three_lug",
           isChecked: (searchParams?.is_three_lug ?? "").includes("true"),
           href: getUpdatedURLFromSearchParam("is_three_lug", "true", true),
         },
         {
-          label: "4 lugs",
+          label: t("filter.is_four_lug.option.true"),
           value: "is_four_lug",
           isChecked: (searchParams?.is_four_lug ?? "").includes("true"),
           href: getUpdatedURLFromSearchParam("is_four_lug", "true", true),
         },
         {
-          label: "5 lugs",
+          label: t("filter.is_five_lug.option.true"),
           value: "is_five_lug",
           isChecked: (searchParams?.is_five_lug ?? "").includes("true"),
           href: getUpdatedURLFromSearchParam("is_five_lug", "true", true),
         },
         {
-          label: "6 lugs",
+          label: t("filter.is_six_lug.option.true"),
           value: "is_six_lug",
           isChecked: (searchParams?.is_six_lug ?? "").includes("true"),
           href: getUpdatedURLFromSearchParam("is_six_lug", "true", true),
         },
         {
-          label: "8 lugs",
+          label: t("filter.is_eight_lug.option.true"),
           value: "is_eight_lug",
           isChecked: (searchParams?.is_eight_lug ?? "").includes("true"),
           href: getUpdatedURLFromSearchParam("is_eight_lug", "true", true),
         },
         {
-          label: "Central lug",
+          label: t("filter.is_central_lug.option.true"),
           value: "is_central_lug",
           isChecked: (searchParams?.is_central_lug ?? "").includes("true"),
           href: getUpdatedURLFromSearchParam("is_central_lug", "true", true),
@@ -72,10 +76,10 @@ export default function WheelListFilterAside({
       selectedOptionCount: 0,
     },
     {
-      title: "Delivery",
+      title: t("filter.delivery_available.title"),
       options: [
         {
-          label: "Available for delivery",
+          label: t("filter.delivery_available.option.true"),
           value: "true",
           isChecked: (searchParams?.delivery_available ?? "").includes("true"),
           href: getUpdatedURLFromSearchParam(
@@ -89,10 +93,10 @@ export default function WheelListFilterAside({
       selectedOptionCount: getSearchParamValueCount("delivery_available"),
     },
     {
-      title: "On site pickup",
+      title: t("filter.free_on_site_pickup.title"),
       options: [
         {
-          label: "Free on site pickup",
+          label: t("filter.free_on_site_pickup.option.true"),
           value: "true",
           isChecked: (searchParams?.free_on_site_pickup ?? "").includes("true"),
           href: getUpdatedURLFromSearchParam(
@@ -109,6 +113,7 @@ export default function WheelListFilterAside({
 
   return (
     <ListFilterAside
+      nameSpace="wheels"
       sections={wheelListFilterSections}
       searchParams={searchParams}
     />

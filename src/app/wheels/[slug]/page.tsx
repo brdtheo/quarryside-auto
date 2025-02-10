@@ -1,8 +1,9 @@
 // import Image from "next/image";
+import useTranslation from "next-translate/useTranslation";
+
 import {
   IconBuildingStore,
   IconChevronRight,
-  IconFlame,
   IconTruckDelivery,
 } from "@tabler/icons-react";
 
@@ -29,6 +30,8 @@ type PageProps = {
 };
 
 export default async function Page({ params }: PageProps) {
+  const { t } = useTranslation("wheels");
+
   const slug = (await params)?.slug ?? "";
 
   const wheel = await prisma.wheel.findUnique({
@@ -61,7 +64,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <ul className="inline-flex gap-2 items-center text-sm">
-        <li>Rims & tires</li>
+        <li>{t("title")}</li>
         <li>
           <IconChevronRight size={16} />
         </li>
@@ -84,19 +87,28 @@ export default async function Page({ params }: PageProps) {
             height={442}
           />
 
-          <DetailSection title="Specifications">
+          <DetailSection title={t("details.specifications")}>
             <Table
               rows={[
-                { name: "Brand", data: wheel?.brand ?? "" },
-                { name: "Available sizes", data: wheel?.sizes ?? "" },
-                { name: "Available tires", data: wheel?.tires ?? "" },
-                { name: "Consumption", data: wheel?.consumption ?? "" },
+                { name: t("filter.brand.title"), data: wheel?.brand ?? "" },
+                {
+                  name: t("details.availableSizes.title"),
+                  data: wheel?.sizes ?? "",
+                },
+                {
+                  name: t("details.availableTires.title"),
+                  data: wheel?.tires ?? "",
+                },
+                {
+                  name: t("details.consumption.title"),
+                  data: wheel?.consumption ?? "",
+                },
               ]}
             />
           </DetailSection>
 
           {(wheelVehicles ?? []).length > 0 && (
-            <DetailSection title="Available on">
+            <DetailSection title={t("availableOn")}>
               <VehicleList
                 data={parsedWheelVehicles}
                 itemRender={(vehicle) => (
@@ -117,7 +129,7 @@ export default async function Page({ params }: PageProps) {
             </DetailSection>
           )}
 
-          <DetailSection title="Reviews">
+          <DetailSection title={t("common:reviews")}>
             <ul className="flex flex-col gap-4">
               <li>
                 <ReviewCard
@@ -167,7 +179,7 @@ export default async function Page({ params }: PageProps) {
                     size={18}
                   />
                   <span className="font-medium text-xs">
-                    Free on site pickup
+                    {t("filter.free_on_site_pickup.option.true")}
                   </span>
                 </li>
               )}
@@ -179,39 +191,31 @@ export default async function Page({ params }: PageProps) {
                     size={18}
                   />
                   <span className="font-medium text-xs">
-                    Available for delivery
+                    {t("filter.delivery_available.option.true")}
                   </span>
                 </li>
               )}
-              <li className="inline-flex items-center gap-1">
-                <IconFlame
-                  className="text-brown-secondary"
-                  stroke={1.6}
-                  size={18}
-                />
-                <span className="font-medium text-xs">21 sold this week</span>
-              </li>
             </ul>
 
             <Checkbox
               id="assembly-without-appointment"
-              label="Assembly without appointment"
+              label={t("assemblyWithoutAppointment")}
               checked={false}
               href="#"
             />
 
             <div className="flex flex-1 gap-2">
               <Select
-                className="h-full"
+                className="h-11"
                 options={wheelQuantityOptionList}
                 value="2"
               />
               <Button
-                className="text-sm py-3 flex-1 rounded hover:opacity-90"
+                className="h-11 text-sm py-3 flex-1 rounded hover:opacity-90"
                 backgroundColor="brown"
                 textColor="white"
               >
-                Add to cart
+                {t("addToCart")}
               </Button>
             </div>
           </div>

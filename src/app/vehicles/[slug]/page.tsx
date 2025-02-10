@@ -1,3 +1,5 @@
+import useTranslation from "next-translate/useTranslation";
+
 import { IconChevronRight } from "@tabler/icons-react";
 
 import { Prisma, Wheel } from "@prisma/client";
@@ -22,6 +24,8 @@ type PageProps = {
 };
 
 export default async function Page({ params }: PageProps) {
+  const { t } = useTranslation("vehicles");
+
   const slug = (await params)?.slug ?? "";
 
   const vehicle = await prisma.vehicle.findUnique({
@@ -55,7 +59,7 @@ export default async function Page({ params }: PageProps) {
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <ul className="inline-flex gap-2 items-center text-sm">
-        <li>Used vehicles</li>
+        <li>{t("title")}</li>
         <li>
           <IconChevronRight size={16} />
         </li>
@@ -72,52 +76,86 @@ export default async function Page({ params }: PageProps) {
             <p className="text-sm">{vehicle?.description}</p>
           </div>
 
-          <DetailSection title="Specifications">
+          <DetailSection title={t("details.specifications")}>
             <Table
               rows={[
-                { name: "Body style", data: vehicle?.body_style ?? "" },
-                { name: "Country", data: vehicle?.country ?? "" },
-                { name: "Brand", data: vehicle?.brand ?? "" },
-                { name: "Year", data: vehicle?.year?.toString() ?? "" },
-                { name: "Drivetrain", data: vehicle?.transmission ?? "" },
                 {
-                  name: "Engine",
-                  data: `${vehicle?.engine_displacement_volume_liters}L ${vehicle?.engine_layout}${vehicle?.engine_cylinder_count}`,
+                  name: t("filter.body_style.title"),
+                  data: t(`filter.body_style.option.${vehicle?.body_style}`),
                 },
                 {
-                  name: "Power",
-                  data: `${vehicle?.power_bhp ?? ""} bhp`,
-                },
-                { name: "Fuel type", data: vehicle?.fuel_type ?? "" },
-                { name: "Mileage", data: `${vehicle?.mileage} miles` },
-                { name: "Weight", data: `${vehicle?.weight_lbs} lbs` },
-                {
-                  name: "0 to 60",
-                  data: `${vehicle?.zero_to_sixty_seconds}s`,
+                  name: t("filter.country.title"),
+                  data: t(`filter.country.option.${vehicle?.country}`),
                 },
                 {
-                  name: "Top speed",
-                  data: `${vehicle?.top_speed_mph} mph`,
+                  name: t("filter.brand.title"),
+                  data: t(`filter.brand.option.${vehicle?.brand}`),
                 },
                 {
-                  name: "Transmission",
-                  data: vehicle?.transmission ?? "",
+                  name: t("details.year.title"),
+                  data: vehicle?.year?.toString() ?? "",
                 },
-              ]}
-            />
-          </DetailSection>
-
-          <DetailSection title="Features">
-            <Table
-              rows={[
-                { name: "Exterior", data: "Alloy wheels" },
-                { name: "Safety", data: ["Back camera", "Stability control"] },
+                {
+                  name: t("filter.drivetrain.title"),
+                  data: t(`filter.drivetrain.option.${vehicle?.drivetrain}`),
+                },
+                {
+                  name: t("details.engine.title"),
+                  data: t("details.engine.value", {
+                    engineDisplacementVolumeLiters:
+                      vehicle?.engine_displacement_volume_liters,
+                    engineLayout: vehicle?.engine_layout,
+                    engineCylinderCount: vehicle?.engine_cylinder_count,
+                  }),
+                },
+                {
+                  name: t("details.power.title"),
+                  data: t("details.power.value", {
+                    power: vehicle?.power_bhp ?? "",
+                  }),
+                },
+                {
+                  name: t("filter.fuel_type.title"),
+                  data: t(
+                    `filter.fuel_type.option.${vehicle?.fuel_type ?? ""}`,
+                  ),
+                },
+                {
+                  name: t("details.mileage.title"),
+                  data: t("details.mileage.value", {
+                    mileage: vehicle?.mileage,
+                  }),
+                },
+                {
+                  name: t("details.weight.title"),
+                  data: t("details.weight.value", {
+                    weight: vehicle?.weight_lbs,
+                  }),
+                },
+                {
+                  name: t("details.zeroToSixty.title"),
+                  data: t("details.zeroToSixty.value", {
+                    seconds: vehicle?.zero_to_sixty_seconds,
+                  }),
+                },
+                {
+                  name: t("details.topSpeed.title"),
+                  data: t("details.topSpeed.value", {
+                    speed: vehicle?.top_speed_mph,
+                  }),
+                },
+                {
+                  name: t("filter.transmission.title"),
+                  data: t(
+                    `filter.transmission.option.${vehicle?.transmission ?? ""}`,
+                  ),
+                },
               ]}
             />
           </DetailSection>
 
           {(vehicleWheels ?? []).length > 0 && (
-            <DetailSection title="Wheels">
+            <DetailSection title={t("wheels")}>
               <WheelList
                 className="auto-cols-min grid-flow-col"
                 data={parsedVehicleWheels}
@@ -139,7 +177,7 @@ export default async function Page({ params }: PageProps) {
             </DetailSection>
           )}
 
-          <DetailSection title="Reviews">
+          <DetailSection title={t("common:reviews")}>
             <ul className="flex flex-col gap-4">
               <li>
                 <ReviewCard
@@ -175,18 +213,16 @@ export default async function Page({ params }: PageProps) {
             noValidate
             className="bg-background rounded py-8 px-4 flex flex-col gap-6"
           >
-            <h2 className="font-semibold text-base">
-              Interested? Your new vehicle awaits you
-            </h2>
+            <h2 className="font-semibold text-base">{t("form.title")}</h2>
 
             <div className="grid grid-cols-2 gap-2">
-              <TextField placeholder="First name" value="" />
-              <TextField placeholder="Last name" value="" />
-              <TextField placeholder="Email" value="" />
-              <TextField placeholder="Phone" value="" />
+              <TextField placeholder={t("form.field.firstName")} value="" />
+              <TextField placeholder={t("form.field.lastName")} value="" />
+              <TextField placeholder={t("form.field.email")} value="" />
+              <TextField placeholder={t("form.field.phone")} value="" />
               <TextField
                 className="col-span-2 h-24"
-                placeholder="Message"
+                placeholder={t("form.field.message")}
                 isTextArea
                 value=""
               />
@@ -198,7 +234,7 @@ export default async function Page({ params }: PageProps) {
                 backgroundColor="brown"
                 textColor="white"
               >
-                Check availability
+                {t("checkAvailability")}
               </Button>
               <Button
                 fontWeight="regular"
@@ -207,7 +243,7 @@ export default async function Page({ params }: PageProps) {
                 textColor="brown-secondary"
                 backgroundColor="white"
               >
-                Schedule test drive
+                {t("scheduleTestDrive")}
               </Button>
             </div>
           </form>

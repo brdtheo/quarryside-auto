@@ -1,9 +1,10 @@
 import { useMemo } from "react";
 
+import useTranslation from "next-translate/useTranslation";
 // import Image from "next/image";
 import Link from "next/link";
 
-import { Prisma, VehicleCondition } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 import Button from "@/components/Button";
 import Rating from "@/components/Rating";
@@ -24,23 +25,22 @@ export default function VehicleCard({
   price_cts,
   mileage,
 }: VehicleCardProps) {
+  const { t } = useTranslation("vehicles");
+
   const vehicleTitle = useMemo(
     () => `${year} ${brand} ${model}`,
     [brand, model, year],
   );
 
-  const vehicleCondition = useMemo(() => {
-    switch (condition) {
-      case VehicleCondition.JUNKYARD:
-        return "Junkyard";
-      case VehicleCondition.USED:
-        return "Used";
-      default:
-        return null;
-    }
-  }, [condition]);
+  const vehicleCondition = useMemo(
+    () => t(`filter.condition.option.${condition}`),
+    [condition],
+  );
 
-  const vehicleMileage = useMemo(() => `${mileage} miles`, [mileage]);
+  const vehicleMileage = useMemo(
+    () => t("details.mileage.value", { mileage }),
+    [mileage],
+  );
 
   const vehiclePrice = price_cts ? getPrice(price_cts) : "";
 
@@ -77,7 +77,7 @@ export default function VehicleCard({
               className="rounded text-white px-3 py-1.5 text-sm hover:opacity-90"
               backgroundColor="brown"
             >
-              Check availability
+              {t("checkAvailability")}
             </Button>
           </div>
         </div>

@@ -1,3 +1,5 @@
+import useTranslation from "next-translate/useTranslation";
+
 import { IconSearch } from "@tabler/icons-react";
 
 import clsx from "clsx";
@@ -9,6 +11,8 @@ export default function SearchField({
   value,
   onChange,
 }: SearchFieldProps) {
+  const { t } = useTranslation("common");
+
   return (
     <div
       className={clsx(
@@ -17,7 +21,7 @@ export default function SearchField({
       )}
     >
       <input
-        placeholder="Search"
+        placeholder={t("search")}
         className="h-full w-full bg-transparent outline-none text-sm"
         type="search"
         value={value}

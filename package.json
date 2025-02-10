@@ -15,16 +15,20 @@
   "dependencies": {
     "@prisma/client": "^6.2.1",
     "@tabler/icons-react": "^3.23.0",
+    "add": "^2.0.6",
     "currency.js": "^2.0.4",
     "dayjs": "^1.11.13",
     "next": "15.0.3",
+    "next-translate": "^2.6.2",
     "react": "19.0.0-rc-66855b96-20241106",
-    "react-dom": "19.0.0-rc-66855b96-20241106"
+    "react-dom": "19.0.0-rc-66855b96-20241106",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
     "@next/eslint-plugin-next": "^15.1.6",
     "@trivago/prettier-plugin-sort-imports": "4.3.0",
+    "@types/add": "^2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

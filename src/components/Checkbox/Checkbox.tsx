@@ -10,7 +10,11 @@ import type { CheckboxProps } from ".";
 
 export default function Checkbox({ id, checked, label, href }: CheckboxProps) {
   return (
-    <Link className="flex gap-3 items-center select-none w-fit" href={href}>
+    <Link
+      className="flex gap-3 py-1.5 items-start select-none w-full"
+      href={href}
+      scroll={false}
+    >
       <div className="relative">
         <input
           id={id}

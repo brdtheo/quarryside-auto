@@ -25,11 +25,9 @@ import VehicleList from "@/lib/vehicle/VehicleList";
 
 import { getPrice } from "@/utils";
 
-type PageProps = {
-  params: Promise<{ slug: string }>;
-};
+import type { DetailsPageProps } from "@/types";
 
-export default async function Page({ params }: PageProps) {
+export default async function Page({ params }: DetailsPageProps) {
   const { t } = useTranslation("wheels");
 
   const slug = (await params)?.slug ?? "";

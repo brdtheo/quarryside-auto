@@ -15,7 +15,7 @@ export default function Select({
       defaultValue={value}
       onChange={() => {}}
       className={clsx(
-        "w-fit h-8 text-sm outline-none px-2 bg-white text-brown border border-brown rounded",
+        "w-fit text-sm outline-none px-2 bg-white text-brown border border-brown rounded",
         className,
       )}
     >

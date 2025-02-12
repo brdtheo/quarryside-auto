@@ -40,6 +40,7 @@ export default function Button({
 
   return (
     <button
+      type="button"
       disabled={isDisabled}
       className={clsx(
         "inline-flex items-center gap-1 px-2 py-1",

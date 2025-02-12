@@ -19,12 +19,10 @@ import WheelList from "@/lib/wheel/WheelList";
 
 import { getPrice } from "@/utils";
 
-type PageProps = {
-  params: Promise<{ slug: string }>;
-};
+import type { DetailsPageProps } from "@/types";
 
-export default async function Page({ params }: PageProps) {
-  const { t } = useTranslation("vehicles");
+export default async function Page({ params }: DetailsPageProps) {
+  const { t, lang } = useTranslation("vehicles");
 
   const slug = (await params)?.slug ?? "";
 
@@ -109,12 +107,6 @@ export default async function Page({ params }: PageProps) {
                   }),
                 },
                 {
-                  name: t("details.power.title"),
-                  data: t("details.power.value", {
-                    power: vehicle?.power_bhp ?? "",
-                  }),
-                },
-                {
                   name: t("filter.fuel_type.title"),
                   data: t(
                     `filter.fuel_type.option.${vehicle?.fuel_type ?? ""}`,
@@ -123,13 +115,39 @@ export default async function Page({ params }: PageProps) {
                 {
                   name: t("details.mileage.title"),
                   data: t("details.mileage.value", {
-                    mileage: vehicle?.mileage,
+                    mileage: Intl.NumberFormat(lang).format(
+                      Number(vehicle?.mileage),
+                    ),
                   }),
                 },
                 {
                   name: t("details.weight.title"),
                   data: t("details.weight.value", {
-                    weight: vehicle?.weight_lbs,
+                    weight: Intl.NumberFormat(lang).format(
+                      Number(vehicle?.weight_lbs),
+                    ),
+                  }),
+                },
+                {
+                  name: t("filter.transmission.title"),
+                  data: t(
+                    `filter.transmission.option.${vehicle?.transmission ?? ""}`,
+                  ),
+                },
+              ]}
+            />
+          </DetailSection>
+
+          <DetailSection title={t("details.performance")}>
+            <Table
+              rows={[
+                {
+                  name: t("details.power.title"),
+                  data: t("details.power.value", {
+                    power:
+                      Intl.NumberFormat(lang).format(
+                        Number(vehicle?.power_bhp),
+                      ) ?? "",
                   }),
                 },
                 {
@@ -143,12 +161,6 @@ export default async function Page({ params }: PageProps) {
                   data: t("details.topSpeed.value", {
                     speed: vehicle?.top_speed_mph,
                   }),
-                },
-                {
-                  name: t("filter.transmission.title"),
-                  data: t(
-                    `filter.transmission.option.${vehicle?.transmission ?? ""}`,
-                  ),
                 },
               ]}
             />

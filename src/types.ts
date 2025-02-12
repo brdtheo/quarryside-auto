@@ -7,3 +7,8 @@ export type PageProps = { searchParams: Promise<PageSearchParams> };
 
 /** Common type used by href from Link elements */
 export type Url = string | UrlObject;
+
+/** A common type that represents details page props */
+export type DetailsPageProps = {
+  params: Promise<{ slug: string }>;
+};

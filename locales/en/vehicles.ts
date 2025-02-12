@@ -15,6 +15,7 @@ export default {
   scheduleTestDrive: "Schedule test drive",
   details: {
     specifications: "Specifications",
+    performance: "Performance",
     year: {
       title: "Year",
     },

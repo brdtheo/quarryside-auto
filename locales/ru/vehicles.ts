@@ -15,6 +15,7 @@ export default {
   scheduleTestDrive: "Запланируйте тест-драйв",
   details: {
     specifications: "Технические характеристики",
+    performance: "Производительность",
     year: {
       title: "Год",
     },

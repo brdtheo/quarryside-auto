@@ -11,6 +11,7 @@
     "clsx",
     "currency.js",
     "dayjs",
+    "^@/app/(.*)$",
     "^@/components/(.*)$",
     "^@/lib/(.*)$",
     "^@/utils",

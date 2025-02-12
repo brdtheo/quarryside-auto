@@ -9,6 +9,8 @@ import {
 
 import { Prisma, Vehicle } from "@prisma/client";
 
+import NotFound from "@/app/not-found";
+
 import Advertising from "@/components/Advertising";
 import Button from "@/components/Button";
 import Checkbox from "@/components/Checkbox";
@@ -58,6 +60,10 @@ export default async function Page({ params }: DetailsPageProps) {
     label: `${index + 1}`,
     value: `${index + 1}`,
   }));
+
+  if (!wheel) {
+    return <NotFound />;
+  }
 
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">

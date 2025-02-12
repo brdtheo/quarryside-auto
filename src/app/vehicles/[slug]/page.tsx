@@ -4,6 +4,8 @@ import { IconChevronRight } from "@tabler/icons-react";
 
 import { Prisma, Wheel } from "@prisma/client";
 
+import NotFound from "@/app/not-found";
+
 import Advertising from "@/components/Advertising";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
@@ -53,6 +55,10 @@ export default async function Page({ params }: DetailsPageProps) {
   );
 
   const vehiclePrice = vehicle?.price_cts ? getPrice(vehicle.price_cts) : "";
+
+  if (!vehicle) {
+    return <NotFound />;
+  }
 
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">

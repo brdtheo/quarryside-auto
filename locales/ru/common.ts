@@ -1,4 +1,7 @@
 export default {
+  notFoundTitle: "ddd",
+  notFoundDescription:
+    "Похоже, что содержимое, которое вы ищете, не существует или было перемещено. Вместо этого наслаждайтесь этим прыгающим Covet:",
   reviews: "отзывы покупателей",
   search: "обыскивать",
   resultCount: "{{ count }} результат(ы)",

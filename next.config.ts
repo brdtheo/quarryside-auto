@@ -16,22 +16,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "preview.redd.it",
+        hostname: "media1.tenor.com", // TEMP
         port: "",
       },
       {
         protocol: "https",
-        hostname: "www.beamng.com",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "www.beamng-wheels.org",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "art.pixilart.com",
+        hostname: "art.pixilart.com", // ETMP
         port: "",
       },
       {

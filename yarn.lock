@@ -3852,6 +3852,7 @@ __metadata:
     typescript: "npm:^5"
     typescript-eslint: "npm:^8.23.0"
     yarn: "npm:^1.22.22"
+    yet-another-react-lightbox: "npm:^3.21.7"
   languageName: unknown
   linkType: soft
 
@@ -4911,6 +4912,16 @@ __metadata:
     yarn: bin/yarn.js
     yarnpkg: bin/yarn.js
   checksum: 10c0/8c77198c93d7542e7f4e131c63b66de357b7076ecfbcfe709ec0d674115c2dd9edaa45196e5510e6e9366d368707a802579e3402071002e1c9d9a99d491478de
+  languageName: node
+  linkType: hard
+
+"yet-another-react-lightbox@npm:^3.21.7":
+  version: 3.21.7
+  resolution: "yet-another-react-lightbox@npm:3.21.7"
+  peerDependencies:
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
+  checksum: 10c0/05f939552e16bca5d7dcf28448ff807ee93f26ec1fa6aee9f22f98657d7f7f56740529a8716c90f8cc425ae2b2e4dcb569e22d9f46e9e48eb1bab65d85b59ee5
   languageName: node
   linkType: hard
 

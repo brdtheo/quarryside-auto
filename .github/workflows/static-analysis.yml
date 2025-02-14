@@ -18,5 +18,8 @@ jobs:
       - name: ✨ Prettier ✨
         run: yarn pretty-check
 
+      - name: 👮‍♂️ TypeScript 👮‍♂️
+        run: npx tsc
+
       - name: 🚨 ESLint 🚨
         run: yarn next lint

@@ -1,0 +1,4 @@
+export const MEDIA_THUMBNAIL_WIDTH = 785;
+export const MEDIA_THUMBNAIL_HEIGHT = 442;
+export const MEDIA_PREVIEW_ITEM_WIDTH = 144;
+export const MEDIA_PREVIEW_ITEM_HEIGHT = 81;

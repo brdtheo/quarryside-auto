@@ -2,7 +2,7 @@ import useTranslation from "next-translate/useTranslation";
 
 import { IconChevronRight } from "@tabler/icons-react";
 
-import { Prisma, Wheel } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 import NotFound from "@/app/not-found";
 
@@ -13,9 +13,9 @@ import DetailSection from "@/components/DetailSection";
 import Table from "@/components/Table";
 import TextField from "@/components/TextField";
 
+import MediaList from "@/lib/media/MediaList";
 import { prisma } from "@/lib/prisma";
 import ReviewCard from "@/lib/review/ReviewCard";
-import VehicleMediaList from "@/lib/vehicle/VehicleMediaList";
 import WheelCard from "@/lib/wheel/WheelCard";
 import WheelList from "@/lib/wheel/WheelList";
 
@@ -30,24 +30,19 @@ export default async function Page({ params }: DetailsPageProps) {
 
   const vehicle = await prisma.vehicle.findUnique({
     where: { slug: slug ?? "" },
+    include: {
+      vehicles_wheels: {
+        select: { wheels: true },
+      },
+      medias: true,
+    },
   });
 
-  const vehicleMediaList = vehicle?.id
-    ? await prisma.media.findMany({
-        where: { vehicle: vehicle.id },
-      })
-    : [];
-
-  const vehicleWheels = vehicle?.id
-    ? await prisma.vehicles_Wheels.findMany({
-        where: { vehicle_id: vehicle.id },
-        include: { wheels: true },
-      })
-    : [];
-
-  const parsedVehicleWheels: Wheel[] =
-    vehicleWheels.length > 0
-      ? vehicleWheels.map((vehicleWheel) => ({ ...vehicleWheel.wheels }))
+  const parsedVehicleWheels =
+    (vehicle?.vehicles_wheels ?? []).length > 0
+      ? (vehicle?.vehicles_wheels ?? []).map((vehicleWheel) => ({
+          ...vehicleWheel.wheels,
+        }))
       : [];
 
   const vehicleTitle = [vehicle?.year, vehicle?.brand, vehicle?.model].join(
@@ -72,7 +67,7 @@ export default async function Page({ params }: DetailsPageProps) {
 
       <div className="flex gap-8">
         <div className="w-[785px] flex flex-col gap-16">
-          <VehicleMediaList mediaList={vehicleMediaList} />
+          <MediaList mediaList={vehicle.medias} />
 
           <div className="flex flex-col gap-2">
             <h1>{vehicleTitle}</h1>
@@ -172,11 +167,11 @@ export default async function Page({ params }: DetailsPageProps) {
             />
           </DetailSection>
 
-          {(vehicleWheels ?? []).length > 0 && (
+          {(parsedVehicleWheels ?? []).length > 0 && (
             <DetailSection title={t("wheels")}>
               <WheelList
                 className="auto-cols-min grid-flow-col"
-                data={parsedVehicleWheels}
+                data={parsedVehicleWheels ?? []}
                 itemRender={(wheel) => (
                   <li key={wheel.id}>
                     <WheelCard

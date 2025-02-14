@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "art.pixilart.com", // ETMP
+        hostname: "art.pixilart.com", // TEMP
         port: "",
       },
       {

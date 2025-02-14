@@ -1,4 +1,3 @@
-// import Image from "next/image";
 import useTranslation from "next-translate/useTranslation";
 
 import {
@@ -7,7 +6,7 @@ import {
   IconTruckDelivery,
 } from "@tabler/icons-react";
 
-import { Prisma, Vehicle } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 import NotFound from "@/app/not-found";
 
@@ -19,7 +18,7 @@ import DetailSection from "@/components/DetailSection";
 import Select from "@/components/Select";
 import Table from "@/components/Table";
 
-import MediaSkeleton from "@/lib/media/MediaSkeleton";
+import MediaList from "@/lib/media/MediaList";
 import { prisma } from "@/lib/prisma";
 import ReviewCard from "@/lib/review/ReviewCard";
 import VehicleCard from "@/lib/vehicle/VehicleCard";
@@ -36,18 +35,19 @@ export default async function Page({ params }: DetailsPageProps) {
 
   const wheel = await prisma.wheel.findUnique({
     where: { slug: slug ?? "" },
+    include: {
+      vehicles_wheels: {
+        select: { vehicles: true },
+      },
+      medias: true,
+    },
   });
 
-  const wheelVehicles = wheel?.id
-    ? await prisma.vehicles_Wheels.findMany({
-        where: { wheel_id: wheel.id },
-        include: { vehicles: true },
-      })
-    : [];
-
-  const parsedWheelVehicles: Vehicle[] =
-    wheelVehicles.length > 0
-      ? wheelVehicles.map((vehicleWheel) => ({ ...vehicleWheel.vehicles }))
+  const parsedVehicleWheels =
+    (wheel?.vehicles_wheels ?? []).length > 0
+      ? (wheel?.vehicles_wheels ?? []).map((vehicleWheel) => ({
+          ...vehicleWheel.vehicles,
+        }))
       : [];
 
   const wheelTitle = [wheel?.brand, wheel?.model].join(" ");
@@ -77,19 +77,7 @@ export default async function Page({ params }: DetailsPageProps) {
 
       <div className="flex gap-4">
         <div className="w-[785px] flex flex-col gap-16">
-          {/* <Image
-            className="overflow-hidden rounded"
-            width={275}
-            height={275}
-            src={wheel?.thumbnail_url ?? ""}
-            alt="media thumbnail"
-          /> */}
-          <MediaSkeleton
-            iconWidth={48}
-            className="rounded"
-            width={785}
-            height={442}
-          />
+          <MediaList mediaList={wheel.medias} />
 
           <DetailSection title={t("details.specifications")}>
             <Table
@@ -111,10 +99,10 @@ export default async function Page({ params }: DetailsPageProps) {
             />
           </DetailSection>
 
-          {(wheelVehicles ?? []).length > 0 && (
+          {(parsedVehicleWheels ?? []).length > 0 && (
             <DetailSection title={t("availableOn")}>
               <VehicleList
-                data={parsedWheelVehicles}
+                data={parsedVehicleWheels}
                 itemRender={(vehicle) => (
                   <li key={vehicle.id}>
                     <VehicleCard

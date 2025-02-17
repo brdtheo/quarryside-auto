@@ -16,6 +16,8 @@ export default {
   details: {
     specifications: "Технические характеристики",
     performance: "Производительность",
+    estimate: "оценка",
+    perMonth: "/месяц",
     year: {
       title: "Год",
     },

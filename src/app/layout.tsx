@@ -27,6 +27,9 @@ export const metadata: Metadata = {
 function WorkInProgressLayout() {
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body className={clsx(pixelify.className, "bg-white")}>
         <main
           className="flex justify-center items-center"
@@ -60,6 +63,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      </head>
       <body
         className={clsx(
           inter.className,

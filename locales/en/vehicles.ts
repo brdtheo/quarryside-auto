@@ -16,6 +16,8 @@ export default {
   details: {
     specifications: "Specifications",
     performance: "Performance",
+    estimate: "Est.",
+    perMonth: "/month",
     year: {
       title: "Year",
     },

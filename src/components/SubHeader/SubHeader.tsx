@@ -7,9 +7,9 @@ export default function SubHeader() {
   const { t } = useTranslation("common");
 
   return (
-    <div className="bg-white flex justify-center">
-      <Container className="flex justify-center items-center">
-        <nav className="inline-flex">
+    <div className="bg-background dark:bg-black flex justify-center h-10 border-b border-b-divider dark:border-y dark:border-y-dividerdark">
+      <Container className="flex justify-center items-center h-10">
+        <nav className="inline-flex items-center h-8 gap-2">
           <SubHeaderLink slug="vehicles" label={t("subHeader.usedVehicles")} />
           <SubHeaderLink slug="wheels" label={t("subHeader.rimsTires")} />
           <SubHeaderLink slug="#" label={t("subHeader.careers")} isDisabled />

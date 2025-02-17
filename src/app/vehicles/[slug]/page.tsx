@@ -2,8 +2,6 @@ import useTranslation from "next-translate/useTranslation";
 
 import { IconChevronRight } from "@tabler/icons-react";
 
-import { Prisma } from "@prisma/client";
-
 import NotFound from "@/app/not-found";
 
 import Advertising from "@/components/Advertising";
@@ -15,7 +13,6 @@ import TextField from "@/components/TextField";
 
 import MediaList from "@/lib/media/MediaList";
 import { prisma } from "@/lib/prisma";
-import ReviewCard from "@/lib/review/ReviewCard";
 import WheelCard from "@/lib/wheel/WheelCard";
 import WheelList from "@/lib/wheel/WheelList";
 
@@ -190,7 +187,7 @@ export default async function Page({ params }: DetailsPageProps) {
             </DetailSection>
           )}
 
-          <DetailSection title={t("common:reviews")}>
+          {/* <DetailSection title={t("common:reviews")}>
             <ul className="flex flex-col gap-4">
               <li>
                 <ReviewCard
@@ -217,14 +214,14 @@ export default async function Page({ params }: DetailsPageProps) {
                 />
               </li>
             </ul>
-          </DetailSection>
+          </DetailSection> */}
         </div>
 
-        <div className="flex flex-1 flex-col p-3 bg-white h-fit rounded">
+        <div className="flex flex-1 flex-col p-3 bg-white dark:bg-blacksecondary h-fit rounded">
           <form
             action="#"
             noValidate
-            className="bg-background rounded py-8 px-4 flex flex-col gap-6"
+            className="bg-background dark:bg-black rounded py-8 px-4 flex flex-col gap-6"
           >
             <h2 className="font-semibold text-base">{t("form.title")}</h2>
 
@@ -242,20 +239,10 @@ export default async function Page({ params }: DetailsPageProps) {
             </div>
 
             <div className="flex flex-col gap-2">
-              <Button
-                className="text-sm py-3 rounded hover:opacity-90"
-                backgroundColor="brown"
-                textColor="white"
-              >
+              <Button color="primary" size="lg" rounded>
                 {t("checkAvailability")}
               </Button>
-              <Button
-                fontWeight="regular"
-                className="text-center text-sm rounded border border-brown-secondary"
-                variant="outlined"
-                textColor="brown-secondary"
-                backgroundColor="white"
-              >
+              <Button color="secondary" rounded>
                 {t("scheduleTestDrive")}
               </Button>
             </div>

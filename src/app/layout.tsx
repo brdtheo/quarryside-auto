@@ -60,7 +60,12 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={clsx(inter.className, "bg-background")}>
+      <body
+        className={clsx(
+          inter.className,
+          "bg-background dark:bg-backgrounddark",
+        )}
+      >
         <Header />
         <SubHeader />
         <main

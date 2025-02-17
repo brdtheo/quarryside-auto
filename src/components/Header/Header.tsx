@@ -1,17 +1,14 @@
 import useTranslation from "next-translate/useTranslation";
 import Image from "next/image";
+import Link from "next/link";
 
-import { IconShoppingCart } from "@tabler/icons-react";
-import { IconUserCircle } from "@tabler/icons-react";
-
-import Button from "@/components/Button";
 import Container from "@/components/Container";
 
 export default function Header() {
   const { t } = useTranslation("common");
 
   return (
-    <header className="bg-brown flex justify-center h-[72px]">
+    <header className="bg-primary dark:bg-black flex justify-center h-[72px]">
       <Container className="flex justify-between items-center">
         <Image
           src="/quarryside_logo.png"
@@ -23,22 +20,12 @@ export default function Header() {
         />
 
         <nav className="inline-flex gap-3">
-          <Button
-            fontSize="xs"
-            className="rounded"
-            backgroundColor="white"
-            startIcon={<IconShoppingCart size={18} stroke={1.6} />}
-          >
+          <Link href="#" className="text-white hover:underline text-sm">
             {t("header.myCart")}
-          </Button>
-          <Button
-            fontSize="xs"
-            className="rounded"
-            backgroundColor="white"
-            startIcon={<IconUserCircle size={18} stroke={1.6} />}
-          >
+          </Link>
+          <Link href="#" className="text-white hover:underline text-sm">
             {t("header.account")}
-          </Button>
+          </Link>
         </nav>
       </Container>
     </header>

@@ -9,6 +9,8 @@ import {
   VehicleTransmission,
 } from "@prisma/client";
 
+import currency from "currency.js";
+
 import { VEHICLE_LIST_PAGE_SIZE } from "@/lib/vehicle/constants";
 
 import type { PageSearchParams } from "@/types";
@@ -87,3 +89,20 @@ export function getVehicleFindManyArgs(
     }),
   };
 }
+
+/**
+ * Get the monthly estimated price of a vehicle on 48 months
+ * @param priceCts
+ * @param options
+ * @returns {string}
+ */
+export const getMonthlyEstimatePrice = (
+  priceCts: bigint,
+  options?: currency.Options,
+) => {
+  const currencyOptions = options ?? { precision: 0 };
+  if (!priceCts) return "";
+  const price = Number(priceCts) / 100;
+  const monthlyPrice = price / 48;
+  return currency(monthlyPrice, currencyOptions).format();
+};

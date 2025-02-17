@@ -25,7 +25,7 @@ export default function Table({ rows }: TableProps) {
         case rows?.length - 1:
           return "";
         default:
-          return "border-b border-b-divider";
+          return "border-b border-b-divider dark:border-b-dividerdark";
       }
     },
     [rows?.length],

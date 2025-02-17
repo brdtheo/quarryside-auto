@@ -34,7 +34,7 @@ export default async function Page({ searchParams }: PageProps) {
 
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
-      <h1 className="font-bold text-2xl">{t("title")}</h1>
+      <h1 className="font-bold text-2xl dark:text-white">{t("title")}</h1>
       <div className="flex gap-8">
         <WheelListFilterAside searchParams={params} />
 

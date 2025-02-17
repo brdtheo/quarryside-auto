@@ -2,64 +2,82 @@ import { useMemo } from "react";
 
 import clsx from "clsx";
 
-import type { ButtonProps } from "./button";
+import type { ButtonProps } from ".";
 
 export default function Button({
   className,
   startIcon,
   children,
-  variant,
   endIcon,
-  backgroundColor,
-  textColor,
-  fontSize,
-  fontWeight,
   isDisabled,
+  size,
+  color,
+  rounded,
 }: ButtonProps) {
-  const backgroundColorClass = useMemo(() => {
-    if (backgroundColor) return `bg-${backgroundColor}`;
-    if (variant === "text" || variant == "outlined") return "bg-transparent";
-    if (variant === "contained") return "bg-white";
-  }, [backgroundColor, variant]);
+  const roundedClassname = useMemo(() => {
+    if (!rounded) return "";
+    switch (size) {
+      case "xs":
+        return "rounded-sm";
+      case "sm":
+        return "rounded";
+      case "lg":
+        return "rounded";
+      default:
+        return "rounded";
+    }
+  }, []);
 
-  const textColorClass = useMemo(() => {
-    if (isDisabled) return "text-grey";
-    if (textColor) return `text-${textColor}`;
-    if (variant === "text") return "text-black";
-  }, [isDisabled, textColor, variant]);
+  const containerClassname = useMemo(() => {
+    switch (size) {
+      case "xs":
+        return "gap-0.5 px-1 py-0.5 h-4";
+      case "sm":
+        return "gap-0.5 px-1.5 py-0.5 h-6";
+      case "lg":
+        return "gap-1 px-3 py-2 h-10";
+      default:
+        return "gap-1 px-2.5 py-1 h-8";
+    }
+  }, []);
 
-  const fontSizeClass = useMemo(() => {
-    if (fontSize) return `text-${fontSize}`;
-    return "text-md";
-  }, [fontSize]);
+  const textSizeClassname = useMemo(() => {
+    switch (size) {
+      case "xs":
+        return "text-xs";
+      case "sm":
+        return "text-sm";
+      case "lg":
+        return "text-base font-medium";
+      default:
+        return "text-base";
+    }
+  }, []);
 
-  const fontWeightClass = useMemo(() => {
-    if (fontWeight) return `font-${fontWeight}`;
-    return "font-medium";
-  }, [fontWeight]);
+  const colorClassname = useMemo(() => {
+    switch (color) {
+      case "primary":
+        return "bg-primary text-white dark:text-black dark:bg-primarydark";
+      case "secondary":
+        return "bg-secondary text-black dark:bg-secondarydark dark:text-white";
+    }
+  }, []);
 
   return (
     <button
       type="button"
       disabled={isDisabled}
       className={clsx(
-        "inline-flex items-center gap-1 px-2 py-1",
+        "inline-flex items-center h-fit hover:opacity-90 leading-none",
+        containerClassname,
+        colorClassname,
+        roundedClassname,
         className,
-        backgroundColorClass,
       )}
     >
-      {startIcon && <div className="text-xs">{startIcon}</div>}
-      <span
-        className={clsx(
-          fontSizeClass,
-          fontWeightClass,
-          textColorClass,
-          "flex-1",
-        )}
-      >
-        {children}
-      </span>
-      {endIcon && <div className="text-sm">{endIcon}</div>}
+      {startIcon && <div className={textSizeClassname}>{startIcon}</div>}
+      <span className={clsx("flex-1", textSizeClassname)}>{children}</span>
+      {endIcon && <div className={textSizeClassname}>{endIcon}</div>}
     </button>
   );
 }

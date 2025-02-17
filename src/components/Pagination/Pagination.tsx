@@ -27,7 +27,7 @@ export default function Pagination({
       {page !== 1 && (
         <Link
           href={getUpdatedURLFromSearchParam("page", "1")}
-          className="w-7 h-7 rounded inline-flex items-center justify-center hover:bg-grey transition-colors duration-100"
+          className="dark:text-white w-7 h-7 rounded inline-flex items-center justify-center hover:bg-grey transition-colors duration-100"
         >
           <IconChevronsLeft strokeWidth={1.5} size={20} />
         </Link>
@@ -46,9 +46,10 @@ export default function Pagination({
             className={clsx(
               "w-7 h-7 rounded inline-flex items-center justify-center",
               {
-                "hover:bg-grey transition-colors duration-100":
+                "hover:bg-grey transition-colors duration-100 dark:text-white":
                   currentPage !== page,
-                "bg-brown text-white": currentPage === page,
+                "bg-primary dark:bg-primarydark text-white dark:text-black":
+                  currentPage === page,
               },
             )}
             key={index}
@@ -61,7 +62,7 @@ export default function Pagination({
       {page !== lastPage && (
         <Link
           href={getUpdatedURLFromSearchParam("page", `${lastPage}`)}
-          className="w-7 h-7 rounded inline-flex items-center justify-center hover:bg-grey transition-colors duration-100"
+          className="dark:text-white w-7 h-7 rounded inline-flex items-center justify-center hover:bg-grey transition-colors duration-100"
         >
           <IconChevronsRight strokeWidth={1.5} size={20} />
         </Link>

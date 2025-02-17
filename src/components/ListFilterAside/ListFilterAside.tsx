@@ -53,7 +53,7 @@ export default function ListFilterAside({
             <Chip
               key={index}
               iconHref={appliedFilter.deleteHref}
-              rightIcon={<IconX size={16} className="text-white" />}
+              rightIcon={<IconX size={16} />}
             >
               {t(
                 `filter.${appliedFilter.paramName}.option.${appliedFilter.paramValue}`,

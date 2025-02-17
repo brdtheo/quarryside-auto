@@ -20,10 +20,8 @@ export default function SubHeaderLink({
   if (isDisabled)
     return (
       <Button
-        className={clsx("py-2 px-4")}
-        variant="text"
-        fontWeight="regular"
-        fontSize="sm"
+        size="sm"
+        className={clsx("text-gray-400 dark:text-gray-500")}
         isDisabled
       >
         {label}
@@ -31,14 +29,13 @@ export default function SubHeaderLink({
     );
 
   return (
-    <Link href={`/${slug}`}>
+    <Link className="h-fit" href={`/${slug}`}>
       <Button
-        className={clsx("py-2 px-4", {
-          "border-b-2 border-b-brown": isActive,
+        size="sm"
+        className={clsx("dark:text-white", {
+          "bg-primary text-white dark:bg-blacksecondary": isActive,
         })}
-        variant="text"
-        fontWeight="regular"
-        fontSize="sm"
+        rounded
       >
         {label}
       </Button>

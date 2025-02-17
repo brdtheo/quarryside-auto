@@ -15,7 +15,7 @@ export default function TextField({
       <textarea
         placeholder={placeholder}
         className={clsx(
-          "flex border border-brown rounded bg-white min-h-12 p-3 w-full bg-transparent outline-none text-sm resize-none",
+          "flex border border-primary dark:border-blacksecondary rounded bg-white dark:bg-transparent min-h-12 p-3 w-full bg-transparent outline-none text-sm resize-none dark:hover:border-white transition-colors duration-75",
           className,
         )}
       />
@@ -25,7 +25,7 @@ export default function TextField({
   return (
     <div
       className={clsx(
-        "flex border border-brown rounded bg-white h-8 pl-3 w-fit",
+        "flex border border-primary dark:border-blacksecondary rounded bg-white dark:bg-transparent h-8 pl-3 w-fit dark:hover:border-white transition-colors duration-75",
         className,
       )}
     >

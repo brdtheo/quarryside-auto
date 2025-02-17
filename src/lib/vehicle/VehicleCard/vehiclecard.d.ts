@@ -9,5 +9,6 @@ export type VehicleCardProps = {
   price_cts: Vehicle["price_cts"];
   thumbnail_url: Vehicle["thumbnail_url"];
   year: Vehicle["year"];
+  transmission: Vehicle["transmission"];
   average_rating?: number;
 };

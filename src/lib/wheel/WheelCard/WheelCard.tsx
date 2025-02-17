@@ -40,7 +40,7 @@ export default function WheelCard({
     <article className="w-52">
       <Link
         href={`/wheels/${encodeURIComponent(slug)}`}
-        className="border border-grey rounded flex w-52 bg-white"
+        className="border border-grey rounded flex w-52 bg-white dark:bg-blacksecondary dark:border-blacksecondary"
       >
         <div className="flex flex-col gap-2 px-5 py-4">
           {/* <Image
@@ -81,14 +81,14 @@ export default function WheelCard({
             </ul>
           )}
           {/* {!!average_rating && <Rating size={14} score={average_rating} />} */}
-          <div className="bg-yellow flex border border-yellow mt-1">
-            <div className="flex flex-1 justify-center items-start px-1">
+          <div className="flex border border-yellow mt-1">
+            <div className="bg-yellow flex flex-1 justify-center items-start px-1">
               <span className="text-red font-bold text-normal">$</span>
               <span className="text-red font-extrabold text-2xl">
                 {wheelPrice}
               </span>
             </div>
-            <div className="bg-white w-8 h-8 flex justify-center items-center">
+            <div className="bg-white dark:bg-blacksecondary w-8 h-8 flex justify-center items-center">
               <IconChevronRight size={18} />
             </div>
           </div>

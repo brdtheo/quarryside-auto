@@ -15,7 +15,7 @@ export default function Select({
       defaultValue={value}
       onChange={() => {}}
       className={clsx(
-        "w-fit text-sm outline-none px-2 bg-white text-brown border border-brown rounded",
+        "w-fit text-sm outline-none px-2 bg-white text-primary border border-primary rounded dark:text-white dark:border-blacksecondary dark:bg-transparent",
         className,
       )}
     >
@@ -25,7 +25,7 @@ export default function Select({
         </option>
       )}
       {(options ?? []).map((option, index) => (
-        <option key={index} value={option.value}>
+        <option className="dark:text-black" key={index} value={option.value}>
           {option.label}
         </option>
       ))}

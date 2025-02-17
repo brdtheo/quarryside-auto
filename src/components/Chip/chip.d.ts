@@ -3,6 +3,7 @@ import { ReactNode } from "react";
 import type { Url } from "@/types";
 
 export type ChipProps = {
+  className?: string;
   children: string;
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;

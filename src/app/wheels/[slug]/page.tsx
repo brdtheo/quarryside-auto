@@ -6,8 +6,6 @@ import {
   IconTruckDelivery,
 } from "@tabler/icons-react";
 
-import { Prisma } from "@prisma/client";
-
 import NotFound from "@/app/not-found";
 
 import Advertising from "@/components/Advertising";
@@ -20,7 +18,6 @@ import Table from "@/components/Table";
 
 import MediaList from "@/lib/media/MediaList";
 import { prisma } from "@/lib/prisma";
-import ReviewCard from "@/lib/review/ReviewCard";
 import VehicleCard from "@/lib/vehicle/VehicleCard";
 import VehicleList from "@/lib/vehicle/VehicleList";
 
@@ -106,6 +103,7 @@ export default async function Page({ params }: DetailsPageProps) {
                 itemRender={(vehicle) => (
                   <li key={vehicle.id}>
                     <VehicleCard
+                      transmission={vehicle.transmission}
                       slug={vehicle.slug}
                       condition={vehicle.condition}
                       thumbnail_url={vehicle.thumbnail_url}
@@ -121,7 +119,7 @@ export default async function Page({ params }: DetailsPageProps) {
             </DetailSection>
           )}
 
-          <DetailSection title={t("common:reviews")}>
+          {/* <DetailSection title={t("common:reviews")}>
             <ul className="flex flex-col gap-4">
               <li>
                 <ReviewCard
@@ -148,11 +146,11 @@ export default async function Page({ params }: DetailsPageProps) {
                 />
               </li>
             </ul>
-          </DetailSection>
+          </DetailSection> */}
         </div>
 
-        <div className="flex flex-1 flex-col p-3 bg-white h-fit rounded">
-          <div className="bg-background rounded py-8 px-4 flex flex-1 flex-col gap-6">
+        <div className="flex flex-1 flex-col p-3 bg-white dark:bg-blacksecondary h-fit rounded">
+          <div className="bg-background dark:bg-black rounded py-8 px-4 flex flex-1 flex-col gap-6">
             <div className="bg-yellow flex border border-yellow mt-1 w-fit rounded">
               <div className="flex flex-1 items-start px-1">
                 <span className="text-red font-bold text-normal">$</span>
@@ -166,7 +164,7 @@ export default async function Page({ params }: DetailsPageProps) {
               {wheel?.free_on_site_pickup && (
                 <li className="inline-flex items-center gap-1">
                   <IconBuildingStore
-                    className="text-brown-secondary"
+                    className="text-primary dark:text-primarydark"
                     stroke={1.6}
                     size={18}
                   />
@@ -178,7 +176,7 @@ export default async function Page({ params }: DetailsPageProps) {
               {wheel?.delivery_available && (
                 <li className="inline-flex items-center gap-1">
                   <IconTruckDelivery
-                    className="text-brown-secondary"
+                    className="text-primary dark:text-primarydark"
                     stroke={1.6}
                     size={18}
                   />
@@ -198,15 +196,11 @@ export default async function Page({ params }: DetailsPageProps) {
 
             <div className="flex flex-1 gap-2">
               <Select
-                className="h-11"
+                className="h-10"
                 options={wheelQuantityOptionList}
                 value="2"
               />
-              <Button
-                className="h-11 text-sm py-3 flex-1 rounded hover:opacity-90"
-                backgroundColor="brown"
-                textColor="white"
-              >
+              <Button size="lg" className="w-full" color="primary" rounded>
                 {t("addToCart")}
               </Button>
             </div>

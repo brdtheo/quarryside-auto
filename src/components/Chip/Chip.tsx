@@ -9,7 +9,7 @@ const ChipIcon = ({ className, children, href }: ChipIconProps) => {
     return (
       <div
         className={clsx(
-          "pl-1 pr-2 flex items-center dark:bg-primarydark dark:text-black",
+          "pl-1 pr-2 flex text-white items-center dark:bg-primarydark dark:text-black",
           className,
         )}
       >
@@ -21,7 +21,7 @@ const ChipIcon = ({ className, children, href }: ChipIconProps) => {
     <div className={clsx("pl-1 pr-2 flex items-center", className)}>
       <Link
         href={href}
-        className="bg-primary dark:bg-primarydark dark:text-black hover:opacity-80 rounded w-fit h-fit"
+        className="bg-primary text-white dark:bg-primarydark dark:text-black hover:opacity-80 rounded w-fit h-fit"
       >
         {children}
       </Link>
@@ -52,7 +52,7 @@ export default function Chip({
         {children}
       </span>
       {!!rightIcon && (
-        <ChipIcon className="pl-1 pr-2 " href={iconHref}>
+        <ChipIcon className="pl-1 pr-2" href={iconHref}>
           {rightIcon}
         </ChipIcon>
       )}

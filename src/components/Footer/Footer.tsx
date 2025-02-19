@@ -1,110 +1,111 @@
-import useTranslation from "next-translate/useTranslation";
-
 import Container from "@/components/Container";
-import FooterNavSection from "@/components/FooterNavSection";
+import NavSection from "@/components/NavSection";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function Footer() {
-  const { t } = useTranslation("common");
-
   return (
-    <footer className="bg-primary dark:bg-black flex justify-center dark:border-t dark:border-t-dividerdark">
-      <Container className="py-8">
-        <div className="grid grid-flow-col auto-cols-auto">
-          <FooterNavSection
-            title={t("footer.section.usedVehicles.title")}
+    <footer className="bg-primary dark:bg-black flex justify-center dark:border-t dark:border-t-dividerdark @container/footer">
+      <Container className="py-8 ">
+        <div className="grid grid-cols-1 gap-8 @sm/footer:grid-cols-2 @lg:grid-cols-3 @3xl:grid-cols-4 @4xl:grid-cols-5">
+          <NavSection
+            titleHref="/vehicles"
+            title="Used vehicles"
             links={[
               {
-                title: t("footer.section.usedVehicles.usedCivettaCars"),
-                to: "/vehicles?brand=CIVETTA&condition=USED",
+                title: "Used Civetta cars",
+                href: "/vehicles?brand=CIVETTA&condition=USED",
               },
               {
-                title: t("footer.section.usedVehicles.usedIbishuCars"),
-                to: "/vehicles?brand=IBISHU&condition=USED",
+                title: "Used Ibishu cars",
+                href: "/vehicles?brand=IBISHU&condition=USED",
               },
               {
-                title: t("footer.section.usedVehicles.usedGavrilCars"),
-                to: "/vehicles?brand=GAVRIL&condition=USED",
+                title: "Used Gavril cars",
+                href: "/vehicles?brand=GAVRIL&condition=USED",
               },
               {
-                title: t("footer.section.usedVehicles.usedEtkCars"),
-                to: "/vehicles?brand=ETK&condition=USED",
+                title: "Used ETK cars",
+                href: "/vehicles?brand=ETK&condition=USED",
               },
               {
-                title: t("footer.section.usedVehicles.usedHiroshiCars"),
-                to: "/vehicles?brand=HIROSHI&condition=USED",
+                title: "Used Hiroshi cars",
+                href: "/vehicles?brand=HIROSHI&condition=USED",
               },
             ]}
           />
-          <FooterNavSection
-            title={t("footer.section.rimsTires.title")}
+          <NavSection
+            titleHref="/wheels"
+            title="Rims & tires"
             links={[
               {
-                title: t("footer.section.rimsTires.autobelloWheels"),
-                to: "/wheels?brand=AUTOBELLO",
+                title: "Autobello wheels",
+                href: "/wheels?brand=AUTOBELLO",
               },
               {
-                title: t("footer.section.rimsTires.etkWheels"),
-                to: "/wheels?brand=ETK",
+                title: "ETK wheels",
+                href: "/wheels?brand=ETK",
               },
               {
-                title: t("footer.section.rimsTires.folkWheels"),
-                to: "/wheels?brand=FOLK",
+                title: "Folk wheels",
+                href: "/wheels?brand=FOLK",
               },
               {
-                title: t("footer.section.rimsTires.gavrilWheels"),
-                to: "/wheels?brand=GAVRIL",
+                title: "Gavril wheels",
+                href: "/wheels?brand=GAVRIL",
               },
               {
-                title: t("footer.section.rimsTires.ibishuWheels"),
-                to: "/wheels?brand=IBISHU",
+                title: "Ibishu wheels",
+                href: "/wheels?brand=IBISHU",
               },
             ]}
           />
-          <FooterNavSection
-            title={t("footer.section.careers.title")}
+          <NavSection
+            titleHref="#"
+            title="Careers"
             links={[
               {
-                title: t("footer.section.careers.openPositions"),
-                to: "#",
+                title: "Open positions",
+                href: "#",
               },
               {
-                title: t("footer.section.careers.internshipProgram"),
-                to: "#",
+                title: "Internship program",
+                href: "#",
               },
               {
-                title: t("footer.section.careers.carJockeyRequirements"),
-                to: "#",
+                title: "Car jockey requirements",
+                href: "#",
               },
             ]}
           />
-          <FooterNavSection
-            title={t("footer.section.helpCenter.title")}
+          <NavSection
+            titleHref="#"
+            title="Help center"
             links={[
               {
-                title: t("footer.section.helpCenter.questionAnswers"),
-                to: "#",
+                title: "Q&As",
+                href: "#",
               },
               {
-                title: t("footer.section.helpCenter.delivery"),
-                to: "#",
+                title: "Delivery",
+                href: "#",
               },
               {
-                title: t("footer.section.helpCenter.contact"),
-                to: "#",
+                title: "Contact",
+                href: "#",
               },
             ]}
           />
-          <FooterNavSection
-            title={t("footer.section.about.title")}
+          <NavSection
+            titleHref="#"
+            title="About"
             links={[
               {
-                title: t("footer.section.about.ourCompany"),
-                to: "#",
+                title: "Our company",
+                href: "#",
               },
               {
-                title: t("footer.section.about.whereToFindUs"),
-                to: "#",
+                title: "Where to find us",
+                href: "#",
               },
             ]}
           />

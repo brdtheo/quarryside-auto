@@ -27,41 +27,40 @@ export default {
     helpCenter: "Центр помощи",
     about: "предложение",
   },
-  footer: {
-    section: {
-      usedVehicles: {
-        title: "Подержанные автомобили",
-        usedCivettaCars: "Подержанные автомобили Civetta",
-        usedIbishuCars: "Подержанные автомобили Ibishu",
-        usedGavrilCars: "Подержанные автомобили Gavril",
-        usedEtkCars: "Подержанные автомобили ETK",
-        usedHiroshiCars: "Подержанные автомобили Hiroshi",
-      },
-      rimsTires: {
-        title: "Обода и шины",
-        autobelloWheels: "Колеса Autobello",
-        etkWheels: "Колеса ETK",
-        folkWheels: "Колеса Folk",
-        gavrilWheels: "Колеса Gavril",
-        ibishuWheels: "Колеса Ibishu",
-      },
-      careers: {
-        title: "Карьера",
-        openPositions: "Открытые позиции",
-        internshipProgram: "Программа стажировки",
-        carJockeyRequirements: "Требования к жокею автомобиля",
-      },
-      helpCenter: {
-        title: "Центр помощи",
-        questionAnswers: "вопросы и ответы",
-        delivery: "Доставка",
-        contact: "Связаться с",
-      },
-      about: {
-        title: "о нашей компании",
-        ourCompany: "Наша компания",
-        whereToFindUs: "Где нас найти",
-      },
+  navigation: {
+    home: "дом",
+    usedVehicles: {
+      title: "Подержанные автомобили",
+      usedCivettaCars: "Подержанные автомобили Civetta",
+      usedIbishuCars: "Подержанные автомобили Ibishu",
+      usedGavrilCars: "Подержанные автомобили Gavril",
+      usedEtkCars: "Подержанные автомобили ETK",
+      usedHiroshiCars: "Подержанные автомобили Hiroshi",
+    },
+    rimsTires: {
+      title: "Обода и шины",
+      autobelloWheels: "Колеса Autobello",
+      etkWheels: "Колеса ETK",
+      folkWheels: "Колеса Folk",
+      gavrilWheels: "Колеса Gavril",
+      ibishuWheels: "Колеса Ibishu",
+    },
+    careers: {
+      title: "Карьера",
+      openPositions: "Открытые позиции",
+      internshipProgram: "Программа стажировки",
+      carJockeyRequirements: "Требования к жокею автомобиля",
+    },
+    helpCenter: {
+      title: "Центр помощи",
+      questionAnswers: "вопросы и ответы",
+      delivery: "Доставка",
+      contact: "Связаться с",
+    },
+    about: {
+      title: "о нашей компании",
+      ourCompany: "Наша компания",
+      whereToFindUs: "Где нас найти",
     },
   },
 };

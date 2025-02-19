@@ -27,41 +27,40 @@ export default {
     helpCenter: "Help center",
     about: "About",
   },
-  footer: {
-    section: {
-      usedVehicles: {
-        title: "Used vehicles",
-        usedCivettaCars: "Used Civetta cars",
-        usedIbishuCars: "Used Ibishu cars",
-        usedGavrilCars: "Used Gavril cars",
-        usedEtkCars: "Used ETK cars",
-        usedHiroshiCars: "Used Hiroshi cars",
-      },
-      rimsTires: {
-        title: "Rims & tires",
-        autobelloWheels: "Autobello wheels",
-        etkWheels: "ETK wheels",
-        folkWheels: "Folk wheels",
-        gavrilWheels: "Gavril wheels",
-        ibishuWheels: "Ibishu wheels",
-      },
-      careers: {
-        title: "Careers",
-        openPositions: "Open positions",
-        internshipProgram: "Internship program",
-        carJockeyRequirements: "Car jockey requirements",
-      },
-      helpCenter: {
-        title: "Help Center",
-        questionAnswers: "Q&As",
-        delivery: "Delivery",
-        contact: "Contact",
-      },
-      about: {
-        title: "About",
-        ourCompany: "Our company",
-        whereToFindUs: "Where to find us",
-      },
+  navigation: {
+    home: "Home",
+    usedVehicles: {
+      title: "Used vehicles",
+      usedCivettaCars: "Used Civetta cars",
+      usedIbishuCars: "Used Ibishu cars",
+      usedGavrilCars: "Used Gavril cars",
+      usedEtkCars: "Used ETK cars",
+      usedHiroshiCars: "Used Hiroshi cars",
+    },
+    rimsTires: {
+      title: "Rims & tires",
+      autobelloWheels: "Autobello wheels",
+      etkWheels: "ETK wheels",
+      folkWheels: "Folk wheels",
+      gavrilWheels: "Gavril wheels",
+      ibishuWheels: "Ibishu wheels",
+    },
+    careers: {
+      title: "Careers",
+      openPositions: "Open positions",
+      internshipProgram: "Internship program",
+      carJockeyRequirements: "Car jockey requirements",
+    },
+    helpCenter: {
+      title: "Help Center",
+      questionAnswers: "Q&As",
+      delivery: "Delivery",
+      contact: "Contact",
+    },
+    about: {
+      title: "About",
+      ourCompany: "Our company",
+      whereToFindUs: "Where to find us",
     },
   },
 };

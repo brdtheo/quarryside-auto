@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import useTranslation from "next-translate/useTranslation";
 import { Inter, Pixelify_Sans } from "next/font/google";
 import Image from "next/image";
 
@@ -57,12 +58,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactElement;
 }>) {
+  const { lang } = useTranslation("common");
+
   const isProduction = process.env.VERCEL_ENV === "production";
 
   if (isProduction) return <WorkInProgressLayout />;
 
   return (
-    <html lang="en">
+    <html lang={lang}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
@@ -75,6 +78,7 @@ export default function RootLayout({
         <Header />
         <SubHeader />
         <main
+          className="pt-[72px] md:pt-0"
           style={{
             minHeight: "calc(100dvh - 72px - 38px)",
           }}

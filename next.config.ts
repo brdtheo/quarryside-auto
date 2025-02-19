@@ -2,21 +2,11 @@ import type { NextConfig } from "next";
 import nextTranslate from "next-translate-plugin";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/vehicles",
-        permanent: true,
-      },
-    ];
-  },
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "media1.tenor.com", // TEMP
+        hostname: "i.ibb.co", // TEMP
         port: "",
       },
       {

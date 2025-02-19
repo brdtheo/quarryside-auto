@@ -8,18 +8,18 @@ export default function NotFound() {
 
   return (
     <Container className="m-auto gap-8 flex flex-col py-12">
-      <div className="flex flex-col gap-2 w-96">
+      <div className="flex flex-col gap-2 w-full md:w-96">
         <h1 className="text-2xl font-bold">{t("notFoundTitle")}</h1>
         <p>{t("notFoundDescription")}</p>
-      </div>
 
-      <Image
-        className="rounded shadow-sm w-[320px] h-[180px]"
-        width={320}
-        height={180}
-        src="https://media1.tenor.com/m/Rf4oINrw45AAAAAC/beam-ng-drive-beam.gif"
-        alt="Bouncing covet GIF"
-      />
+        <Image
+          className="rounded"
+          width={320}
+          height={182}
+          src="https://i.ibb.co/dwFfzdbQ/covet-3.gif"
+          alt="Bouncing covet GIF"
+        />
+      </div>
     </Container>
   );
 }

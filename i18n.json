@@ -9,12 +9,10 @@
       "common"
     ],
     "rgx:^/vehicles": [
-      "common",
       "vehicles",
       "wheels"
     ],
     "rgx:^/wheels": [
-      "common",
       "wheels",
       "vehicles"
     ]

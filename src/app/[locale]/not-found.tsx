@@ -1,10 +1,10 @@
-import useTranslation from "next-translate/useTranslation";
+import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import Container from "@/components/Container";
 
-export default function NotFound() {
-  const { t } = useTranslation("common");
+export default async function NotFound() {
+  const t = await getTranslations("common");
 
   return (
     <Container className="m-auto gap-8 flex flex-col py-12">

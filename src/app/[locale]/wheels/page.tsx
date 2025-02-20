@@ -1,4 +1,4 @@
-import useTranslation from "next-translate/useTranslation";
+import { getTranslations } from "next-intl/server";
 
 import { Prisma, Wheel } from "@prisma/client";
 
@@ -16,7 +16,7 @@ import { getWheelFindManyArgs } from "@/lib/wheel/utils";
 import type { PageProps } from "@/types";
 
 export default async function Page({ searchParams }: PageProps) {
-  const { t } = useTranslation("wheels");
+  const t = await getTranslations("wheels");
 
   const params = await searchParams;
   const page = params?.page ? parseInt(params?.page as string) : 1;

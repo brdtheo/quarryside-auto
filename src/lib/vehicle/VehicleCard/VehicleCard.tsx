@@ -1,7 +1,8 @@
+"use client";
+
 import { useMemo } from "react";
 
-import useTranslation from "next-translate/useTranslation";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import Button from "@/components/Button";
 
@@ -9,6 +10,8 @@ import MediaSkeleton from "@/lib/media/MediaSkeleton";
 import { getMonthlyEstimatePrice } from "@/lib/vehicle/utils";
 
 import { getPrice } from "@/utils";
+
+import { Link } from "@/i18n/routing";
 
 import type { VehicleCardProps } from ".";
 
@@ -22,7 +25,7 @@ export default function VehicleCard({
   mileage,
   transmission,
 }: VehicleCardProps) {
-  const { t } = useTranslation("vehicles");
+  const t = useTranslations("vehicles");
 
   const vehicleTitle = useMemo(
     () => `${year} ${brand} ${model}`,

@@ -2,7 +2,7 @@
 
 import { useMemo } from "react";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 
 import { IconX } from "@tabler/icons-react";
 
@@ -24,7 +24,7 @@ export default function ListFilterAside({
   searchParams,
   nameSpace,
 }: ListFilterAsideProps) {
-  const { t } = useTranslation(nameSpace);
+  const t = useTranslations(nameSpace);
 
   const { getUpdatedURLFromSearchParam } = useURLSearchParams(searchParams);
 

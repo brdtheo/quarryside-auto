@@ -72,8 +72,8 @@ export default async function Page({ params }: DetailsPageProps) {
         <li className="text-sm">{wheelTitle}</li>
       </ul>
 
-      <div className="flex gap-4">
-        <div className="w-[785px] flex flex-col gap-16">
+      <div className="flex flex-col xl:flex-row gap-4">
+        <div className="w-full xl:w-[785px] flex flex-col gap-16">
           <MediaList mediaList={wheel.medias} />
 
           <DetailSection title={t("details.specifications")}>
@@ -118,38 +118,9 @@ export default async function Page({ params }: DetailsPageProps) {
               />
             </DetailSection>
           )}
-
-          {/* <DetailSection title={t("common:reviews")}>
-            <ul className="flex flex-col gap-4">
-              <li>
-                <ReviewCard
-                  date=""
-                  title="I am satisfied"
-                  rating={new Prisma.Decimal(4)}
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                />
-              </li>
-              <li>
-                <ReviewCard
-                  date=""
-                  title="I am satisfied"
-                  rating={new Prisma.Decimal(4)}
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                />
-              </li>
-              <li>
-                <ReviewCard
-                  date=""
-                  title="I am satisfied"
-                  rating={new Prisma.Decimal(4)}
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                />
-              </li>
-            </ul>
-          </DetailSection> */}
         </div>
 
-        <div className="flex flex-1 flex-col p-3 bg-white dark:bg-blacksecondary h-fit rounded">
+        <div className="flex flex-1 flex-col p-3 bg-white dark:bg-blacksecondary h-fit rounded @container/wheelform">
           <div className="bg-background dark:bg-black rounded py-8 px-4 flex flex-1 flex-col gap-6">
             <div className="bg-yellow flex border border-yellow mt-1 w-fit rounded">
               <div className="flex flex-1 items-start px-1">
@@ -194,7 +165,7 @@ export default async function Page({ params }: DetailsPageProps) {
               href="#"
             />
 
-            <div className="flex flex-1 gap-2">
+            <div className="flex flex-col flex-1 gap-2">
               <Select
                 className="h-10"
                 options={wheelQuantityOptionList}

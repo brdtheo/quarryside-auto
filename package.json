@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx prisma generate && next build",
     "start": "next dev",
     "lint": "npx tsc && next lint",
     "pretty": "npx prettier --write src locales",
     "pretty-check": "npx prettier --check src/app",
-    "generate": "npx prisma generate",
+    "postinstall": "npx prisma generate",
     "migrate": "npx prisma migrate dev"
   },
   "dependencies": {

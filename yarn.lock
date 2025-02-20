@@ -3344,27 +3344,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next-translate-plugin@npm:3.0.0-canary.5":
-  version: 3.0.0-canary.5
-  resolution: "next-translate-plugin@npm:3.0.0-canary.5"
-  dependencies:
-    typescript: "npm:5.3.3"
-  peerDependencies:
-    next-translate: ">= 2.4.1"
-  checksum: 10c0/428aa23613d94fb4ef4e535891f67ab20530c888497b3091ad475bb697c381261fadfc5da34f1860afc47c5d0978a2616deee4ab6b66ac957eb448d7e29ee298
-  languageName: node
-  linkType: hard
-
-"next-translate@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "next-translate@npm:2.6.2"
-  peerDependencies:
-    next: ">= 13.2.5"
-    react: ">= 18.0.0"
-  checksum: 10c0/6cc61dd41c44cfd695508ba7c0342029b5e9b3617c8633edb64bac0b02852b5589f84861f6f388dc6d0074fa552b2dcc6f56a70cb2a9022ebacf0e66f8e6ed1a
-  languageName: node
-  linkType: hard
-
 "next@npm:^15.1.7":
   version: 15.1.7
   resolution: "next@npm:15.1.7"
@@ -3851,8 +3830,6 @@ __metadata:
     eslint-config-prettier: "npm:^10.0.1"
     globals: "npm:^15.14.0"
     next: "npm:^15.1.7"
-    next-translate: "npm:^2.6.2"
-    next-translate-plugin: "npm:3.0.0-canary.5"
     postcss: "npm:^8"
     prettier: "npm:3.4.1"
     prisma: "npm:^6.2.1"
@@ -4689,16 +4666,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.3.3":
-  version: 5.3.3
-  resolution: "typescript@npm:5.3.3"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/e33cef99d82573624fc0f854a2980322714986bc35b9cb4d1ce736ed182aeab78e2cb32b385efa493b2a976ef52c53e20d6c6918312353a91850e2b76f1ea44f
-  languageName: node
-  linkType: hard
-
 "typescript@npm:^5":
   version: 5.7.2
   resolution: "typescript@npm:5.7.2"
@@ -4706,16 +4673,6 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/a873118b5201b2ef332127ef5c63fb9d9c155e6fdbe211cbd9d8e65877283797cca76546bad742eea36ed7efbe3424a30376818f79c7318512064e8625d61622
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>":
-  version: 5.3.3
-  resolution: "typescript@patch:typescript@npm%3A5.3.3#optional!builtin<compat/typescript>::version=5.3.3&hash=e012d7"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 10c0/1d0a5f4ce496c42caa9a30e659c467c5686eae15d54b027ee7866744952547f1be1262f2d40de911618c242b510029d51d43ff605dba8fb740ec85ca2d3f9500
   languageName: node
   linkType: hard
 

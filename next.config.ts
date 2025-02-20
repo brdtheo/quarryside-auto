@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
-import nextTranslate from "next-translate-plugin";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig: NextConfig = {
   images: {
@@ -33,4 +35,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextTranslate(nextConfig);
+export default withNextIntl(nextConfig);

@@ -20,7 +20,9 @@ import { PageSearchParams } from "@/types";
 
 export default function VehicleListFilterAside({
   searchParams,
+  className,
 }: {
+  className?: string;
   searchParams: PageSearchParams;
 }) {
   const { t } = useTranslation("vehicles");
@@ -77,7 +79,7 @@ export default function VehicleListFilterAside({
       title: t("filter.engine_cylinder_count.title"),
       options: [
         {
-          label: t("filter.engine_cylinder_count.option", { count: 3 }),
+          label: t("filter.engine_cylinder_count.option.3"),
           value: "3",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("3"),
           href: getUpdatedURLFromSearchParam(
@@ -87,7 +89,7 @@ export default function VehicleListFilterAside({
           ),
         },
         {
-          label: t("filter.engine_cylinder_count.option", { count: 4 }),
+          label: t("filter.engine_cylinder_count.option.4"),
           value: "4",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("4"),
           href: getUpdatedURLFromSearchParam(
@@ -97,7 +99,7 @@ export default function VehicleListFilterAside({
           ),
         },
         {
-          label: t("filter.engine_cylinder_count.option", { count: 5 }),
+          label: t("filter.engine_cylinder_count.option.5"),
           value: "5",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("5"),
           href: getUpdatedURLFromSearchParam(
@@ -107,7 +109,7 @@ export default function VehicleListFilterAside({
           ),
         },
         {
-          label: t("filter.engine_cylinder_count.option", { count: 6 }),
+          label: t("filter.engine_cylinder_count.option.6"),
           value: "6",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("6"),
           href: getUpdatedURLFromSearchParam(
@@ -117,7 +119,7 @@ export default function VehicleListFilterAside({
           ),
         },
         {
-          label: t("filter.engine_cylinder_count.option", { count: 8 }),
+          label: t("filter.engine_cylinder_count.option.8"),
           value: "8",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("8"),
           href: getUpdatedURLFromSearchParam(
@@ -127,7 +129,7 @@ export default function VehicleListFilterAside({
           ),
         },
         {
-          label: t("filter.engine_cylinder_count.option", { count: 10 }),
+          label: t("filter.engine_cylinder_count.option.10"),
           value: "10",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("10"),
           href: getUpdatedURLFromSearchParam(
@@ -181,6 +183,7 @@ export default function VehicleListFilterAside({
 
   return (
     <ListFilterAside
+      className={className}
       nameSpace="vehicles"
       sections={vehicleListFilterSections}
       searchParams={searchParams}

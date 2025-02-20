@@ -35,17 +35,27 @@ export default async function Page({ searchParams }: PageProps) {
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <h1 className="font-bold text-2xl dark:text-white">{t("title")}</h1>
+
       <div className="flex gap-8">
-        <WheelListFilterAside searchParams={params} />
+        <WheelListFilterAside
+          className="hidden md:flex"
+          searchParams={params}
+        />
 
         <div className="flex flex-1 flex-col">
-          <WheelListFilterHeader resultCount={wheelCount} textSearch="" />
+          <WheelListFilterHeader
+            searchParams={params}
+            resultCount={wheelCount}
+            textSearch=""
+          />
 
           <WheelList
-            className="grid-cols-4"
             data={wheels}
             itemRender={(wheel: Wheel) => (
-              <li key={wheel.id}>
+              <li
+                className="col-span-4 @md/wheellist:col-span-2 @2xl/wheellist:col-span-1"
+                key={wheel.id}
+              >
                 <WheelCard
                   slug={wheel.slug}
                   thumbnailUrl={wheel.thumbnail_url ?? ""}

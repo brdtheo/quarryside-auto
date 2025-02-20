@@ -3,6 +3,7 @@ import type { ListFilterAsideSectionProps } from "@/components/ListFilterAsideSe
 import type { PageSearchParams } from "@/types";
 
 export type ListFilterAsideProps = {
+  className?: string;
   sections: ListFilterAsideSectionProps[];
   searchParams: Record<PageSearchParams>;
   nameSpace: string;

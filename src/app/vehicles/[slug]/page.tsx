@@ -55,15 +55,15 @@ export default async function Page({ params }: DetailsPageProps) {
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <ul className="inline-flex gap-2 items-center text-sm">
-        <li>{t("title")}</li>
+        <li className="whitespace-nowrap">{t("title")}</li>
         <li>
           <IconChevronRight size={16} />
         </li>
-        <li className="text-sm">{vehicleTitle}</li>
+        <li className="text-sm line-clamp-1">{vehicleTitle}</li>
       </ul>
 
-      <div className="flex gap-8">
-        <div className="w-[785px] flex flex-col gap-16">
+      <div className="flex flex-col xl:flex-row gap-8">
+        <div className="w-full xl:w-[785px] flex flex-col gap-16">
           <MediaList mediaList={vehicle.medias} />
 
           <div className="flex flex-col gap-2">
@@ -95,15 +95,21 @@ export default async function Page({ params }: DetailsPageProps) {
                   name: t("filter.drivetrain.title"),
                   data: t(`filter.drivetrain.option.${vehicle?.drivetrain}`),
                 },
-                {
-                  name: t("details.engine.title"),
-                  data: t("details.engine.value", {
-                    engineDisplacementVolumeLiters:
-                      vehicle?.engine_displacement_volume_liters,
-                    engineLayout: vehicle?.engine_layout,
-                    engineCylinderCount: vehicle?.engine_cylinder_count,
-                  }),
-                },
+                ...(vehicle?.engine_displacement_volume_liters &&
+                vehicle?.engine_layout &&
+                vehicle?.engine_cylinder_count
+                  ? [
+                      {
+                        name: t("details.engine.title"),
+                        data: t("details.engine.value", {
+                          engineDisplacementVolumeLiters:
+                            vehicle.engine_displacement_volume_liters,
+                          engineLayout: vehicle.engine_layout,
+                          engineCylinderCount: vehicle.engine_cylinder_count,
+                        }),
+                      },
+                    ]
+                  : []),
                 {
                   name: t("filter.fuel_type.title"),
                   data: t(
@@ -136,41 +142,60 @@ export default async function Page({ params }: DetailsPageProps) {
             />
           </DetailSection>
 
-          <DetailSection title={t("details.performance")}>
-            <Table
-              rows={[
-                {
-                  name: t("details.power.title"),
-                  data: t("details.power.value", {
-                    power:
-                      Intl.NumberFormat(lang).format(
-                        Number(vehicle?.power_bhp),
-                      ) ?? "",
-                  }),
-                },
-                {
-                  name: t("details.zeroToSixty.title"),
-                  data: t("details.zeroToSixty.value", {
-                    seconds: vehicle?.zero_to_sixty_seconds,
-                  }),
-                },
-                {
-                  name: t("details.topSpeed.title"),
-                  data: t("details.topSpeed.value", {
-                    speed: vehicle?.top_speed_mph,
-                  }),
-                },
-              ]}
-            />
-          </DetailSection>
+          {(vehicle?.power_bhp ||
+            vehicle?.zero_to_sixty_seconds ||
+            vehicle?.top_speed_mph) && (
+            <DetailSection title={t("details.performance")}>
+              <Table
+                rows={[
+                  ...(vehicle?.power_bhp
+                    ? [
+                        {
+                          name: t("details.power.title"),
+                          data: t("details.power.value", {
+                            power:
+                              Intl.NumberFormat(lang).format(
+                                Number(vehicle.power_bhp),
+                              ) ?? "",
+                          }),
+                        },
+                      ]
+                    : []),
+                  ...(vehicle.zero_to_sixty_seconds
+                    ? [
+                        {
+                          name: t("details.zeroToSixty.title"),
+                          data: t("details.zeroToSixty.value", {
+                            seconds: vehicle?.zero_to_sixty_seconds,
+                          }),
+                        },
+                      ]
+                    : []),
+                  ...(vehicle.top_speed_mph
+                    ? [
+                        {
+                          name: t("details.topSpeed.title"),
+                          data: t("details.topSpeed.value", {
+                            speed: vehicle?.top_speed_mph,
+                          }),
+                        },
+                      ]
+                    : []),
+                ]}
+              />
+            </DetailSection>
+          )}
 
           {(parsedVehicleWheels ?? []).length > 0 && (
             <DetailSection title={t("wheels")}>
               <WheelList
-                className="auto-cols-min grid-flow-col"
+                className=""
                 data={parsedVehicleWheels ?? []}
                 itemRender={(wheel) => (
-                  <li key={wheel.id}>
+                  <li
+                    className="col-span-4 @sm/wheellist:col-span-2 @3xl/wheellist:col-span-1"
+                    key={wheel.id}
+                  >
                     <WheelCard
                       slug={wheel.slug}
                       thumbnailUrl={wheel.thumbnail_url}
@@ -186,38 +211,9 @@ export default async function Page({ params }: DetailsPageProps) {
               />
             </DetailSection>
           )}
-
-          {/* <DetailSection title={t("common:reviews")}>
-            <ul className="flex flex-col gap-4">
-              <li>
-                <ReviewCard
-                  date=""
-                  title="I am satisfied"
-                  rating={new Prisma.Decimal(4)}
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                />
-              </li>
-              <li>
-                <ReviewCard
-                  date=""
-                  title="I am satisfied"
-                  rating={new Prisma.Decimal(4)}
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                />
-              </li>
-              <li>
-                <ReviewCard
-                  date=""
-                  title="I am satisfied"
-                  rating={new Prisma.Decimal(4)}
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                />
-              </li>
-            </ul>
-          </DetailSection> */}
         </div>
 
-        <div className="flex flex-1 flex-col p-3 bg-white dark:bg-blacksecondary h-fit rounded">
+        <div className="flex flex-1 flex-col p-3 bg-white dark:bg-blacksecondary h-fit rounded @container/vehicleform">
           <form
             action="#"
             noValidate
@@ -226,10 +222,26 @@ export default async function Page({ params }: DetailsPageProps) {
             <h2 className="font-semibold text-base">{t("form.title")}</h2>
 
             <div className="grid grid-cols-2 gap-2">
-              <TextField placeholder={t("form.field.firstName")} value="" />
-              <TextField placeholder={t("form.field.lastName")} value="" />
-              <TextField placeholder={t("form.field.email")} value="" />
-              <TextField placeholder={t("form.field.phone")} value="" />
+              <TextField
+                className="col-span-2 @md/vehicleform:col-span-1 w-full"
+                placeholder={t("form.field.firstName")}
+                value=""
+              />
+              <TextField
+                className="col-span-2 @md/vehicleform:col-span-1 w-full"
+                placeholder={t("form.field.lastName")}
+                value=""
+              />
+              <TextField
+                className="col-span-2 @md/vehicleform:col-span-1 w-full"
+                placeholder={t("form.field.email")}
+                value=""
+              />
+              <TextField
+                className="col-span-2 @md/vehicleform:col-span-1 w-full"
+                placeholder={t("form.field.phone")}
+                value=""
+              />
               <TextField
                 className="col-span-2 h-24"
                 placeholder={t("form.field.message")}
@@ -248,7 +260,7 @@ export default async function Page({ params }: DetailsPageProps) {
             </div>
           </form>
 
-          <Advertising className="m-4" ratioMode="horizontal" />
+          <Advertising className="m-4 mx-auto" ratioMode="horizontal" />
         </div>
       </div>
     </Container>

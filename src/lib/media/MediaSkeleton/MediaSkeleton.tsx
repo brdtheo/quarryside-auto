@@ -2,7 +2,7 @@ import { IconPhoto } from "@tabler/icons-react";
 
 import clsx from "clsx";
 
-import type { MediaSkeletonProps } from "./mediaskeleton";
+import type { MediaSkeletonProps } from ".";
 
 export default function MediaSkeleton({
   className,

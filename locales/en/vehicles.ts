@@ -123,7 +123,14 @@ export default {
     },
     engine_cylinder_count: {
       title: "Cylinders",
-      option: "{{ count }} cylinders",
+      option: {
+        3: "3 cylinders",
+        4: "4 cylinders",
+        5: "5 cylinders",
+        6: "6 cylinders",
+        8: "8 cylinders",
+        10: "10 cylinders",
+      },
     },
     transmission: {
       title: "Transmission",

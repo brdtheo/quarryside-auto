@@ -12,8 +12,10 @@ import { PageSearchParams } from "@/types";
 
 export default function WheelListFilterAside({
   searchParams,
+  className,
 }: {
   searchParams: PageSearchParams;
+  className?: string;
 }) {
   const { t } = useTranslation("wheels");
 
@@ -113,6 +115,7 @@ export default function WheelListFilterAside({
 
   return (
     <ListFilterAside
+      className={className}
       nameSpace="wheels"
       sections={wheelListFilterSections}
       searchParams={searchParams}

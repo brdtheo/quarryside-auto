@@ -5,5 +5,6 @@ export type IconButtonProps = {
   children: ReactElement;
   size?: "xs" | "sm" | "lg";
   isDisabled?: boolean;
+  badgeCount?: number;
   onClick: () => void;
 };

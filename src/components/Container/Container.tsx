@@ -4,7 +4,6 @@ import type { ContainerProps } from "./container";
 
 /**
  * Wraps the children node in a 1200px container
- * @prop children The children node
  */
 export default function Container({ children, className }: ContainerProps) {
   if (!children) {
@@ -12,7 +11,7 @@ export default function Container({ children, className }: ContainerProps) {
   }
 
   return (
-    <div className={clsx("w-[1200px]", className)}>
+    <div className={clsx("w-full px-8 xl:px-0 xl:w-[1200px]", className)}>
       <>{children}</>
     </div>
   );

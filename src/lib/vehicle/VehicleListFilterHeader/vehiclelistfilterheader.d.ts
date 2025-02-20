@@ -2,5 +2,8 @@ import type { ListFilterHeaderProps } from "@/components/ListFilterHeader";
 
 export type VehicleListFilterHeaderProps = Omit<
   ListFilterHeaderProps,
-  "sortOptionList"
->;
+  "sortOptionList" | "handleOpenFilterDrawer" | "activeFilterCount"
+> & {
+  className?: string;
+  searchParams: PageSearchParams;
+};

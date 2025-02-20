@@ -32,7 +32,7 @@ export default function Table({ rows }: TableProps) {
   );
 
   return (
-    <table className="w-3/4">
+    <table className="w-full @md:w-3/4">
       <tbody>
         {(rows ?? []).map((row, index) => {
           if (Array.isArray(row.data)) {

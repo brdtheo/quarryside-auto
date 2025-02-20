@@ -9,6 +9,7 @@ export default function IconButton({
   children,
   isDisabled,
   size,
+  badgeCount,
   onClick,
 }: IconButtonProps) {
   const containerClassname = useMemo(() => {
@@ -30,12 +31,18 @@ export default function IconButton({
       type="button"
       disabled={isDisabled}
       className={clsx(
-        "hover:opacity-90 rounded w-fit h-fit",
+        "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 disabled:dark:bg-gray-600 disabled:opacity-40 relative",
+        "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 disabled:dark:bg-gray-600 disabled:opacity-40 relative",
         containerClassname,
         className,
       )}
     >
       {children}
+      {!!badgeCount && (
+        <span className="bg-primary text-white text-xs font-semibold rounded px-1 py-0.5 inline-flex items-center justify-center absolute top-[-5px] right-[-5px] leading-none z-10">
+          {badgeCount}
+        </span>
+      )}
     </button>
   );
 }

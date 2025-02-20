@@ -6,6 +6,8 @@ import useTranslation from "next-translate/useTranslation";
 
 import { IconX } from "@tabler/icons-react";
 
+import clsx from "clsx";
+
 import Advertising from "@/components/Advertising";
 import Chip from "@/components/Chip";
 import type {
@@ -17,6 +19,7 @@ import ListFilterAsideSection from "@/components/ListFilterAsideSection";
 import useURLSearchParams from "@/hooks/useURLSearchParams";
 
 export default function ListFilterAside({
+  className,
   sections,
   searchParams,
   nameSpace,
@@ -29,9 +32,11 @@ export default function ListFilterAside({
     return Object.entries<string>(searchParams).reduce<AppliedListFilter[]>(
       (prev, current) => {
         const paramName = current[0];
-        const paramValues = current[1]?.split(",");
+        const paramValues = (current[1] ?? [])?.split(",");
 
-        if (paramName === "page") return prev;
+        if (["page"].includes(paramName)) {
+          return prev;
+        }
 
         const paramItems = (paramValues ?? "").map((paramValue: string) => ({
           paramName,
@@ -46,7 +51,7 @@ export default function ListFilterAside({
   }, [getUpdatedURLFromSearchParam, searchParams]);
 
   return (
-    <aside className="w-60 flex flex-col gap-4">
+    <aside className={clsx("w-full md:w-60 flex flex-col gap-4", className)}>
       {(appliedFilterList ?? []).length > 0 && (
         <div className="pb-2 flex gap-2 flex-wrap">
           {(appliedFilterList ?? []).map((appliedFilter, index) => (
@@ -75,8 +80,8 @@ export default function ListFilterAside({
         ))}
       </form>
 
-      <Advertising className="mx-auto" ratioMode="vertical" />
-      <Advertising className="mx-auto" ratioMode="vertical" />
+      <Advertising className="hidden md:block mx-auto" ratioMode="vertical" />
+      <Advertising className="hidden md:block mx-auto" ratioMode="vertical" />
     </aside>
   );
 }

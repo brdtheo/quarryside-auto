@@ -13,12 +13,23 @@ export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
   const searchParams = useSearchParams();
 
   /**
+   * Retrieve the total number of search params
+   */
+  const getActiveFilterCount = useCallback(() => {
+    const paramList = [];
+    for (const key of searchParams.keys().filter((param) => param !== "page")) {
+      paramList.push(key);
+    }
+    return paramList.length;
+  }, [searchParams]);
+
+  /**
    * Retrieve the number of values associated with a search param
    */
-  const getSearchParamValueCount = (paramName: string) => {
+  const getSearchParamValueCount = useCallback((paramName: string) => {
     const values = pageSearchParams[paramName]?.split(",") ?? [];
     return values.length;
-  };
+  }, []);
 
   /**
    * Returns an URL while handling the search param with a single value
@@ -95,5 +106,9 @@ export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
     [createQueryString, createQueryStringMulti, pathname],
   );
 
-  return { getUpdatedURLFromSearchParam, getSearchParamValueCount };
+  return {
+    getUpdatedURLFromSearchParam,
+    getSearchParamValueCount,
+    getActiveFilterCount,
+  };
 }

@@ -2,17 +2,19 @@
 
 import { useCallback, useState } from "react";
 
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 
 import { IconMenu2 } from "@tabler/icons-react";
 
 import Container from "@/components/Container";
 import HeaderSideDrawer from "@/components/HeaderSideDrawer";
+import IconButton from "@/components/IconButton";
 
-import IconButton from "../IconButton";
+import { Link } from "@/i18n/routing";
 
 export default function Header() {
+  const t = useTranslations("common");
   const [isSideDrawerOpen, setIsSideDrawerOpen] = useState(false);
 
   const handleOpenSideDrawer = useCallback(() => {
@@ -51,10 +53,10 @@ export default function Header() {
 
         <nav className="hidden md:inline-flex gap-3">
           <Link href="#" className="text-white hover:underline text-sm">
-            My Cart
+            {t("header.myCart")}
           </Link>
           <Link href="#" className="text-white hover:underline text-sm">
-            Account
+            {t("header.account")}
           </Link>
         </nav>
 

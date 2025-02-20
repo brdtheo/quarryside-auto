@@ -1,9 +1,10 @@
+"use client";
+
 import { useMemo } from "react";
 
-import useTranslation from "next-translate/useTranslation";
-// import Image from "next/image";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 
+// import Image from "next/image";
 import {
   IconBuildingStore,
   IconChevronRight,
@@ -13,6 +14,8 @@ import {
 import currency from "currency.js";
 
 import MediaSkeleton from "@/lib/media/MediaSkeleton";
+
+import { Link } from "@/i18n/routing";
 
 import type { WheelCardProps } from ".";
 
@@ -25,7 +28,7 @@ export default function WheelCard({
   isDeliveryAvailable,
   isOnsitePickupFree,
 }: WheelCardProps) {
-  const { t } = useTranslation("wheels");
+  const t = useTranslations("wheels");
 
   const wheelPrice = useMemo(
     () =>

@@ -1,4 +1,4 @@
-import useTranslation from "next-translate/useTranslation";
+import { getTranslations } from "next-intl/server";
 
 import {
   IconBuildingStore,
@@ -6,7 +6,7 @@ import {
   IconTruckDelivery,
 } from "@tabler/icons-react";
 
-import NotFound from "@/app/not-found";
+import NotFound from "@/app/[locale]/not-found";
 
 import Advertising from "@/components/Advertising";
 import Button from "@/components/Button";
@@ -26,7 +26,7 @@ import { getPrice } from "@/utils";
 import type { DetailsPageProps } from "@/types";
 
 export default async function Page({ params }: DetailsPageProps) {
-  const { t } = useTranslation("wheels");
+  const t = await getTranslations("wheels");
 
   const slug = (await params)?.slug ?? "";
 

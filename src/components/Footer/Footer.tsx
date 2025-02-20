@@ -1,110 +1,114 @@
+import { getTranslations } from "next-intl/server";
+
 import Container from "@/components/Container";
 import NavSection from "@/components/NavSection";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
-export default function Footer() {
+export default async function Footer() {
+  const t = await getTranslations("common");
+
   return (
     <footer className="bg-primary dark:bg-black flex justify-center dark:border-t dark:border-t-dividerdark @container/footer">
       <Container className="py-8 ">
         <div className="grid grid-cols-1 gap-8 @sm/footer:grid-cols-2 @lg:grid-cols-3 @3xl:grid-cols-4 @4xl:grid-cols-5">
           <NavSection
             titleHref="/vehicles"
-            title="Used vehicles"
+            title={t("navigation.usedVehicles.title")}
             links={[
               {
-                title: "Used Civetta cars",
+                title: t("navigation.usedVehicles.usedCivettaCars"),
                 href: "/vehicles?brand=CIVETTA&condition=USED",
               },
               {
-                title: "Used Ibishu cars",
+                title: t("navigation.usedVehicles.usedIbishuCars"),
                 href: "/vehicles?brand=IBISHU&condition=USED",
               },
               {
-                title: "Used Gavril cars",
+                title: t("navigation.usedVehicles.usedGavrilCars"),
                 href: "/vehicles?brand=GAVRIL&condition=USED",
               },
               {
-                title: "Used ETK cars",
+                title: t("navigation.usedVehicles.usedEtkCars"),
                 href: "/vehicles?brand=ETK&condition=USED",
               },
               {
-                title: "Used Hiroshi cars",
+                title: t("navigation.usedVehicles.usedHiroshiCars"),
                 href: "/vehicles?brand=HIROSHI&condition=USED",
               },
             ]}
           />
           <NavSection
             titleHref="/wheels"
-            title="Rims & tires"
+            title={t("navigation.rimsTires.title")}
             links={[
               {
-                title: "Autobello wheels",
+                title: t("navigation.rimsTires.autobelloWheels"),
                 href: "/wheels?brand=AUTOBELLO",
               },
               {
-                title: "ETK wheels",
+                title: t("navigation.rimsTires.etkWheels"),
                 href: "/wheels?brand=ETK",
               },
               {
-                title: "Folk wheels",
+                title: t("navigation.rimsTires.folkWheels"),
                 href: "/wheels?brand=FOLK",
               },
               {
-                title: "Gavril wheels",
+                title: t("navigation.rimsTires.gavrilWheels"),
                 href: "/wheels?brand=GAVRIL",
               },
               {
-                title: "Ibishu wheels",
+                title: t("navigation.rimsTires.ibishuWheels"),
                 href: "/wheels?brand=IBISHU",
               },
             ]}
           />
           <NavSection
             titleHref="#"
-            title="Careers"
+            title={t("navigation.careers.title")}
             links={[
               {
-                title: "Open positions",
+                title: t("navigation.careers.openPositions"),
                 href: "#",
               },
               {
-                title: "Internship program",
+                title: t("navigation.careers.internshipProgram"),
                 href: "#",
               },
               {
-                title: "Car jockey requirements",
+                title: t("navigation.careers.carJockeyRequirements"),
                 href: "#",
               },
             ]}
           />
           <NavSection
             titleHref="#"
-            title="Help center"
+            title={t("navigation.helpCenter.title")}
             links={[
               {
-                title: "Q&As",
+                title: t("navigation.helpCenter.questionAnswers"),
                 href: "#",
               },
               {
-                title: "Delivery",
+                title: t("navigation.helpCenter.delivery"),
                 href: "#",
               },
               {
-                title: "Contact",
+                title: t("navigation.helpCenter.contact"),
                 href: "#",
               },
             ]}
           />
           <NavSection
             titleHref="#"
-            title="About"
+            title={t("navigation.about.title")}
             links={[
               {
-                title: "Our company",
+                title: t("navigation.about.ourCompany"),
                 href: "#",
               },
               {
-                title: "Where to find us",
+                title: t("navigation.about.whereToFindUs"),
                 href: "#",
               },
             ]}

@@ -1,6 +1,6 @@
 "use client";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 
 import {
   IconAdjustmentsHorizontal,
@@ -21,7 +21,7 @@ export default function ListFilterHeader({
   activeFilterCount,
   handleOpenFilterDrawer,
 }: ListFilterHeaderProps) {
-  const { t } = useTranslation("common");
+  const t = useTranslations("common");
 
   return (
     <>

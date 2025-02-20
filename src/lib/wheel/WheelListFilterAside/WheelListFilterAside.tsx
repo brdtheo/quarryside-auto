@@ -1,6 +1,6 @@
 "use client";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 
 import { WheelBrand } from "@prisma/client";
 
@@ -17,7 +17,7 @@ export default function WheelListFilterAside({
   searchParams: PageSearchParams;
   className?: string;
 }) {
-  const { t } = useTranslation("wheels");
+  const t = useTranslations("wheels");
 
   const { getUpdatedURLFromSearchParam, getSearchParamValueCount } =
     useURLSearchParams(searchParams);

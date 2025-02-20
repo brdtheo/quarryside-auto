@@ -1,8 +1,8 @@
-import useTranslation from "next-translate/useTranslation";
+import { getTranslations } from "next-intl/server";
 
 import { IconChevronRight } from "@tabler/icons-react";
 
-import NotFound from "@/app/not-found";
+import NotFound from "@/app/[locale]/not-found";
 
 import Advertising from "@/components/Advertising";
 import Button from "@/components/Button";
@@ -21,7 +21,7 @@ import { getPrice } from "@/utils";
 import type { DetailsPageProps } from "@/types";
 
 export default async function Page({ params }: DetailsPageProps) {
-  const { t, lang } = useTranslation("vehicles");
+  const t = await getTranslations("vehicles");
 
   const slug = (await params)?.slug ?? "";
 
@@ -55,7 +55,7 @@ export default async function Page({ params }: DetailsPageProps) {
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <ul className="inline-flex gap-2 items-center text-sm">
-        <li className="whitespace-nowrap">{t("title")}</li>
+        <li className="whitespace-nowrap">{"title"}</li>
         <li>
           <IconChevronRight size={16} />
         </li>
@@ -102,10 +102,11 @@ export default async function Page({ params }: DetailsPageProps) {
                       {
                         name: t("details.engine.title"),
                         data: t("details.engine.value", {
-                          engineDisplacementVolumeLiters:
+                          engine_displacement_volume_liters: Number(
                             vehicle.engine_displacement_volume_liters,
-                          engineLayout: vehicle.engine_layout,
-                          engineCylinderCount: vehicle.engine_cylinder_count,
+                          ),
+                          engine_layout: vehicle.engine_layout,
+                          engine_cylinder_count: vehicle.engine_cylinder_count,
                         }),
                       },
                     ]
@@ -119,17 +120,13 @@ export default async function Page({ params }: DetailsPageProps) {
                 {
                   name: t("details.mileage.title"),
                   data: t("details.mileage.value", {
-                    mileage: Intl.NumberFormat(lang).format(
-                      Number(vehicle?.mileage),
-                    ),
+                    mileage: Number(vehicle?.mileage),
                   }),
                 },
                 {
                   name: t("details.weight.title"),
                   data: t("details.weight.value", {
-                    weight: Intl.NumberFormat(lang).format(
-                      Number(vehicle?.weight_lbs),
-                    ),
+                    weight: Number(vehicle?.weight_lbs),
                   }),
                 },
                 {
@@ -153,10 +150,7 @@ export default async function Page({ params }: DetailsPageProps) {
                         {
                           name: t("details.power.title"),
                           data: t("details.power.value", {
-                            power:
-                              Intl.NumberFormat(lang).format(
-                                Number(vehicle.power_bhp),
-                              ) ?? "",
+                            power: Number(vehicle.power_bhp),
                           }),
                         },
                       ]
@@ -166,7 +160,7 @@ export default async function Page({ params }: DetailsPageProps) {
                         {
                           name: t("details.zeroToSixty.title"),
                           data: t("details.zeroToSixty.value", {
-                            seconds: vehicle?.zero_to_sixty_seconds,
+                            seconds: Number(vehicle?.zero_to_sixty_seconds),
                           }),
                         },
                       ]
@@ -219,7 +213,7 @@ export default async function Page({ params }: DetailsPageProps) {
             noValidate
             className="bg-background dark:bg-black rounded py-8 px-4 flex flex-col gap-6"
           >
-            <h2 className="font-semibold text-base">{t("form.title")}</h2>
+            <h2 className="font-semibold text-base">{"form.title"}</h2>
 
             <div className="grid grid-cols-2 gap-2">
               <TextField

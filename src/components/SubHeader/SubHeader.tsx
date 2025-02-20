@@ -1,10 +1,10 @@
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 
 import Container from "@/components/Container";
 import SubHeaderLink from "@/components/SubHeaderLink";
 
 export default function SubHeader() {
-  const { t } = useTranslation("common");
+  const t = useTranslations("common");
 
   return (
     <div className="bg-background dark:bg-black hidden md:flex justify-center h-10 border-b border-b-divider dark:border-y dark:border-y-dividerdark">

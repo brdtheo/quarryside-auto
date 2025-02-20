@@ -1,11 +1,12 @@
 "use client";
 
-import Link from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 
 import clsx from "clsx";
 
 import Button from "@/components/Button";
+
+import { Link } from "@/i18n/routing";
 
 import type { SubHeaderLinkProps } from ".";
 

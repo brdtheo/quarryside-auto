@@ -1,4 +1,4 @@
-import useTranslation from "next-translate/useTranslation";
+import { getTranslations } from "next-intl/server";
 
 import { Prisma, Vehicle } from "@prisma/client";
 
@@ -16,8 +16,6 @@ import { getVehicleFindManyArgs } from "@/lib/vehicle/utils";
 import type { PageProps } from "@/types";
 
 export default async function Page({ searchParams }: PageProps) {
-  const { t } = useTranslation("vehicles");
-
   const params = await searchParams;
   const page = params?.page ? parseInt(params?.page as string) : 1;
 
@@ -31,6 +29,8 @@ export default async function Page({ searchParams }: PageProps) {
     (await prisma.vehicle.count(
       prismaFindManyCountArgs as Prisma.VehicleCountArgs,
     )) ?? 0;
+
+  const t = await getTranslations("vehicles");
 
   return (
     <Container className="m-auto gap-4 md:gap-8 flex flex-col py-8">

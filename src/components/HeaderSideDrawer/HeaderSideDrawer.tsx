@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import {
   IconBriefcase,
   IconCar,
@@ -12,6 +10,8 @@ import {
 } from "@tabler/icons-react";
 
 import SideDrawer from "@/components/SideDrawer";
+
+import { Link } from "@/i18n/routing";
 
 import type { HeaderSideDrawerProps } from ".";
 

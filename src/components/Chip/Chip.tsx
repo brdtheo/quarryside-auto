@@ -1,6 +1,6 @@
-import Link from "next/link";
-
 import clsx from "clsx";
+
+import { Link } from "@/i18n/routing";
 
 import type { ChipIconProps, ChipProps } from ".";
 

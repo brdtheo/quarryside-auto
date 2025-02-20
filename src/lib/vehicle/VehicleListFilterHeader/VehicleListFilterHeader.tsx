@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 
 import ListFilterHeader from "@/components/ListFilterHeader";
 import SideDrawer from "@/components/SideDrawer";
@@ -20,7 +20,7 @@ export default function VehicleListFilterHeader({
 }: VehicleListFilterHeaderProps) {
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
 
-  const { t } = useTranslation("common");
+  const t = useTranslations("common");
 
   const handleOpenFilterDrawer = useCallback(() => {
     document.body.classList.toggle("overflow-hidden");

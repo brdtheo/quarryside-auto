@@ -1,6 +1,6 @@
 "use client";
 
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 
 import {
   VehicleBodyStyle,
@@ -25,7 +25,7 @@ export default function VehicleListFilterAside({
   className?: string;
   searchParams: PageSearchParams;
 }) {
-  const { t } = useTranslation("vehicles");
+  const t = useTranslations("vehicles");
 
   const { getUpdatedURLFromSearchParam, getSearchParamValueCount } =
     useURLSearchParams(searchParams);

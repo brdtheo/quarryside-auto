@@ -1,4 +1,4 @@
-import useTranslation from "next-translate/useTranslation";
+import { useTranslations } from "next-intl";
 
 import { IconSearch } from "@tabler/icons-react";
 
@@ -12,7 +12,7 @@ export default function SearchField({
   isDisabled,
   onChange,
 }: SearchFieldProps) {
-  const { t } = useTranslation("common");
+  const t = useTranslations("common");
 
   return (
     <div

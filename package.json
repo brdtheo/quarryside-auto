@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "postinstall": "npx prisma generate --schema src/prisma/schema.prisma",
     "start": "next dev",
     "lint": "npx tsc && next lint",
     "pretty": "npx prettier --write src locales",
     "pretty-check": "npx prettier --check src/app",
-    "migrate": "npx prisma migrate dev --schema src/prisma/schema.prisma"
+    "generate": "npx prisma generate",
+    "migrate": "npx prisma migrate dev"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",

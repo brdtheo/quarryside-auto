@@ -1,10 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-import {
-  IconBuildingStore,
-  IconChevronRight,
-  IconTruckDelivery,
-} from "@tabler/icons-react";
+import { IconBuildingStore, IconTruckDelivery } from "@tabler/icons-react";
 
 import NotFound from "@/app/[locale]/not-found";
 
@@ -13,6 +9,7 @@ import Button from "@/components/Button";
 import Checkbox from "@/components/Checkbox";
 import Container from "@/components/Container";
 import DetailSection from "@/components/DetailSection";
+import PageTitle from "@/components/PageTitle";
 import Select from "@/components/Select";
 import Table from "@/components/Table";
 
@@ -47,7 +44,10 @@ export default async function Page({ params }: DetailsPageProps) {
         }))
       : [];
 
-  const wheelTitle = [wheel?.brand, wheel?.model].join(" ");
+  const wheelTitle = [
+    t(`filter.brand.option.${wheel?.brand}`),
+    wheel?.model,
+  ].join(" ");
 
   const wheelPrice = wheel?.price_cts
     ? getPrice(wheel.price_cts, { symbol: "" })
@@ -63,14 +63,8 @@ export default async function Page({ params }: DetailsPageProps) {
   }
 
   return (
-    <Container className="m-auto gap-8 flex flex-col py-8">
-      <ul className="inline-flex gap-2 items-center text-sm">
-        <li>{t("title")}</li>
-        <li>
-          <IconChevronRight size={16} />
-        </li>
-        <li className="text-sm">{wheelTitle}</li>
-      </ul>
+    <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">
+      <PageTitle>{wheelTitle}</PageTitle>
 
       <div className="flex flex-col xl:flex-row gap-4">
         <div className="w-full xl:w-[785px] flex flex-col gap-16">

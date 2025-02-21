@@ -33,7 +33,7 @@ export default async function Page({ searchParams }: PageProps) {
     )) ?? 0;
 
   return (
-    <Container className="m-auto gap-8 flex flex-col py-8">
+    <Container className="m-auto gap-4 md:gap-8 flex flex-col py-8">
       <h1 className="font-bold text-2xl dark:text-white">{t("title")}</h1>
 
       <div className="flex gap-8">

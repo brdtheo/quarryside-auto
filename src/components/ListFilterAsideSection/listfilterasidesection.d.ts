@@ -1,6 +1,13 @@
 export type ListFilterAsideSectionProps = {
   title: string;
-  options: { label: string; value: string; isChecked: boolean; href: string }[];
+  options: ListFilterAsideSectionOption[];
   isSearchable?: boolean;
   selectedOptionCount: number;
+};
+
+export type ListFilterAsideSectionOption = {
+  label: string;
+  value: string;
+  isChecked: boolean;
+  href: string;
 };

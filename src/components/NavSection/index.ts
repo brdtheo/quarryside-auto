@@ -1,5 +1,5 @@
 import NavSection from "./NavSection";
-import { NavSectionProps } from "./navsection";
+import { NavSectionLink, NavSectionProps } from "./navsection";
 
-export type { NavSectionProps };
+export type { NavSectionProps, NavSectionLink };
 export default NavSection;

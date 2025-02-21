@@ -55,7 +55,7 @@ export default async function Page({ params }: DetailsPageProps) {
   return (
     <Container className="m-auto gap-8 flex flex-col py-8">
       <ul className="inline-flex gap-2 items-center text-sm">
-        <li className="whitespace-nowrap">{"title"}</li>
+        <li className="whitespace-nowrap">{t("title")}</li>
         <li>
           <IconChevronRight size={16} />
         </li>
@@ -213,7 +213,7 @@ export default async function Page({ params }: DetailsPageProps) {
             noValidate
             className="bg-background dark:bg-black rounded py-8 px-4 flex flex-col gap-6"
           >
-            <h2 className="font-semibold text-base">{"form.title"}</h2>
+            <h2 className="font-semibold text-base">{t("form.title")}</h2>
 
             <div className="grid grid-cols-2 gap-2">
               <TextField

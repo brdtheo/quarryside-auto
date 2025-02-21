@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Prisma, Wheel } from "@prisma/client";
 
 import Container from "@/components/Container";
+import PageTitle from "@/components/PageTitle";
 import Pagination from "@/components/Pagination";
 
 import { prisma } from "@/lib/prisma";
@@ -33,8 +34,8 @@ export default async function Page({ searchParams }: PageProps) {
     )) ?? 0;
 
   return (
-    <Container className="m-auto gap-4 md:gap-8 flex flex-col py-8">
-      <h1 className="font-bold text-2xl dark:text-white">{t("title")}</h1>
+    <Container className="m-auto gap-4 md:gap-8 flex flex-col pt-6 pb-8">
+      <PageTitle>{t("title")}</PageTitle>
 
       <div className="flex gap-8">
         <WheelListFilterAside

@@ -1,13 +1,12 @@
 import { getTranslations } from "next-intl/server";
 
-import { IconChevronRight } from "@tabler/icons-react";
-
 import NotFound from "@/app/[locale]/not-found";
 
 import Advertising from "@/components/Advertising";
 import Button from "@/components/Button";
 import Container from "@/components/Container";
 import DetailSection from "@/components/DetailSection";
+import PageTitle from "@/components/PageTitle";
 import Table from "@/components/Table";
 import TextField from "@/components/TextField";
 
@@ -42,9 +41,11 @@ export default async function Page({ params }: DetailsPageProps) {
         }))
       : [];
 
-  const vehicleTitle = [vehicle?.year, vehicle?.brand, vehicle?.model].join(
-    " ",
-  );
+  const vehicleTitle = [
+    vehicle?.year,
+    t(`filter.brand.option.${vehicle?.brand}`),
+    vehicle?.model,
+  ].join(" ");
 
   const vehiclePrice = vehicle?.price_cts ? getPrice(vehicle.price_cts) : "";
 
@@ -53,21 +54,14 @@ export default async function Page({ params }: DetailsPageProps) {
   }
 
   return (
-    <Container className="m-auto gap-8 flex flex-col py-8">
-      <ul className="inline-flex gap-2 items-center text-sm">
-        <li className="whitespace-nowrap">{t("title")}</li>
-        <li>
-          <IconChevronRight size={16} />
-        </li>
-        <li className="text-sm line-clamp-1">{vehicleTitle}</li>
-      </ul>
+    <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">
+      <PageTitle>{vehicleTitle}</PageTitle>
 
       <div className="flex flex-col xl:flex-row gap-8">
         <div className="w-full xl:w-[785px] flex flex-col gap-16">
           <MediaList mediaList={vehicle.medias} />
 
           <div className="flex flex-col gap-2">
-            <h1>{vehicleTitle}</h1>
             <span className="font-bold text-2xl">{vehiclePrice}</span>
             <p className="text-sm">{vehicle?.description}</p>
           </div>

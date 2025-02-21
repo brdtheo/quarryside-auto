@@ -18,6 +18,8 @@ import ListFilterAsideSection from "@/components/ListFilterAsideSection";
 
 import useURLSearchParams from "@/hooks/useURLSearchParams";
 
+import { APPLIED_FILTER_BLACKLIST } from "@/constants";
+
 export default function ListFilterAside({
   className,
   sections,
@@ -34,7 +36,7 @@ export default function ListFilterAside({
         const paramName = current[0];
         const paramValues = (current[1] ?? [])?.split(",");
 
-        if (["page"].includes(paramName)) {
+        if (APPLIED_FILTER_BLACKLIST.includes(paramName)) {
           return prev;
         }
 

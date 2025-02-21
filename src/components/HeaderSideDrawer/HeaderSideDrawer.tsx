@@ -11,11 +11,14 @@ import {
   IconWheel,
 } from "@tabler/icons-react";
 
+import HeaderSideDrawerListItem from "@/components/HeaderSideDrawerListItem";
 import SideDrawer from "@/components/SideDrawer";
 
-import { Link } from "@/i18n/routing";
-
-import type { HeaderSideDrawerProps } from ".";
+import {
+  HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE,
+  HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE,
+  type HeaderSideDrawerProps,
+} from ".";
 
 export default function HeaderSideDrawer({
   isOpen,
@@ -27,89 +30,105 @@ export default function HeaderSideDrawer({
     <SideDrawer isOpen={isOpen} onClose={onClose}>
       <nav className="flex flex-col justify-between flex-1">
         <ul className="flex flex-col">
-          <li className="border-b border-b-divider px-2 py-3">
-            <Link
-              onClick={onClose}
-              className="flex items-center gap-3"
-              href="/"
-            >
-              <IconHome size={20} stroke={1.75} />
-              <h5 className="text-sm">{t("navigation.home")}</h5>
-            </Link>
-          </li>
-          <li className="border-b border-b-divider px-2 py-3">
-            <Link
-              onClick={onClose}
-              className="flex items-center gap-3"
-              href="/vehicles"
-            >
-              <IconCar size={20} stroke={1.75} />
-              <h5 className="text-sm">{t("navigation.usedVehicles.title")}</h5>
-            </Link>
-          </li>
-          <li className="border-b border-b-divider px-2 py-3">
-            <Link
-              onClick={onClose}
-              className="flex items-center gap-3"
-              href="/wheels"
-            >
-              <IconWheel size={20} stroke={1.75} />
-              <h5 className="text-sm">{t("navigation.rimsTires.title")}</h5>
-            </Link>
-          </li>
-          <li className="border-b border-b-divider px-2 py-3">
-            <Link
-              onClick={onClose}
-              className="flex items-center gap-3"
-              href="#"
-            >
-              <IconBriefcase size={20} stroke={1.75} />
-              <h5 className="text-sm">{t("navigation.careers.title")}</h5>
-            </Link>
-          </li>
-          <li className="border-b border-b-divider px-2 py-3">
-            <Link
-              onClick={onClose}
-              className="flex items-center gap-3"
-              href="#"
-            >
-              <IconLifebuoy size={20} stroke={1.75} />
-              <h5 className="text-sm">{t("navigation.helpCenter.title")}</h5>
-            </Link>
-          </li>
-          <li className="px-2 py-3">
-            <Link
-              onClick={onClose}
-              className="flex items-center gap-3"
-              href="#"
-            >
-              <IconInfoCircle size={20} stroke={1.75} />
-              <h5 className="text-sm">{t("navigation.about.title")}</h5>
-            </Link>
-          </li>
+          <HeaderSideDrawerListItem
+            icon={
+              <IconHome
+                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
+                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
+              />
+            }
+            href="/"
+            onClick={onClose}
+          >
+            {t("navigation.home")}
+          </HeaderSideDrawerListItem>
+          <HeaderSideDrawerListItem
+            icon={
+              <IconCar
+                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
+                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
+              />
+            }
+            href="/vehicles"
+            onClick={onClose}
+          >
+            {t("navigation.usedVehicles.title")}
+          </HeaderSideDrawerListItem>
+          <HeaderSideDrawerListItem
+            icon={
+              <IconWheel
+                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
+                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
+              />
+            }
+            href="/wheels"
+            onClick={onClose}
+          >
+            {t("navigation.rimsTires.title")}
+          </HeaderSideDrawerListItem>
+          <HeaderSideDrawerListItem
+            icon={
+              <IconBriefcase
+                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
+                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
+              />
+            }
+            href="#"
+            onClick={onClose}
+          >
+            {t("navigation.careers.title")}
+          </HeaderSideDrawerListItem>
+          <HeaderSideDrawerListItem
+            icon={
+              <IconLifebuoy
+                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
+                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
+              />
+            }
+            href="#"
+            onClick={onClose}
+          >
+            {t("navigation.helpCenter.title")}
+          </HeaderSideDrawerListItem>
+          <HeaderSideDrawerListItem
+            icon={
+              <IconInfoCircle
+                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
+                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
+              />
+            }
+            href="#"
+            onClick={onClose}
+          >
+            {t("navigation.about.title")}
+          </HeaderSideDrawerListItem>
         </ul>
 
         <ul>
-          <li className="border-b border-b-divider px-2 py-3">
-            <Link
-              onClick={onClose}
-              className="flex items-center gap-3"
-              href="#"
-            >
-              <IconShoppingCart size={20} stroke={1.75} />
-              <h5 className="text-sm">{t("header.myCart")}</h5>
-            </Link>
-          </li>
-          <li className="px-2 py-3">
-            <Link
-              onClick={onClose}
-              className="flex items-center gap-3"
-              href="#"
-            >
-              <IconUser size={20} stroke={1.75} />
-              <h5 className="text-sm">{t("header.account")}</h5>
-            </Link>
-          </li>
+          <HeaderSideDrawerListItem
+            icon={
+              <IconShoppingCart
+                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
+                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
+              />
+            }
+            href="#"
+            onClick={onClose}
+          >
+            {t("header.myCart")}
+          </HeaderSideDrawerListItem>
+          <HeaderSideDrawerListItem
+            icon={
+              <IconUser
+                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
+                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
+              />
+            }
+            href="#"
+            onClick={onClose}
+          >
+            {t("header.account")}
+          </HeaderSideDrawerListItem>
         </ul>
       </nav>
     </SideDrawer>

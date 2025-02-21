@@ -2,7 +2,7 @@ import Checkbox from "@/components/Checkbox";
 import Chip from "@/components/Chip";
 import SearchField from "@/components/SearchField";
 
-import type { ListFilterAsideSectionProps } from "./listfilterasidesection";
+import type { ListFilterAsideSectionProps } from ".";
 
 export default function ListFilterAsideSection({
   title,
@@ -10,6 +10,9 @@ export default function ListFilterAsideSection({
   isSearchable,
   selectedOptionCount,
 }: ListFilterAsideSectionProps) {
+  const getCheckboxId = (label: string, index: number) =>
+    [index, label].join(" ").toLowerCase().replace(/\s/g, "-");
+
   return (
     <fieldset className="flex flex-col gap-2">
       <legend className="inline-flex font-semibold text-md gap-1 dark:text-white">
@@ -26,10 +29,7 @@ export default function ListFilterAsideSection({
           (options ?? []).map((option, index) => (
             <Checkbox
               key={option.value}
-              id={[index, option.label]
-                .join(" ")
-                .toLowerCase()
-                .replace(/\s/g, "-")}
+              id={getCheckboxId(option.label, index)}
               checked={option.isChecked}
               href={option.href}
               label={option.label}
@@ -41,10 +41,7 @@ export default function ListFilterAsideSection({
             {(options ?? []).map((option, index) => (
               <Checkbox
                 key={option.value}
-                id={[index, option.label]
-                  .join(" ")
-                  .toLowerCase()
-                  .replace(/\s/g, "-")}
+                id={getCheckboxId(option.label, index)}
                 checked={option.isChecked}
                 label={option.label}
                 href={option.href}

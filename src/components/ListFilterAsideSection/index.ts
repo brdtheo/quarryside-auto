@@ -1,5 +1,8 @@
 import ListFilterAsideSection from "./ListFilterAsideSection";
-import type { ListFilterAsideSectionProps } from "./listfilterasidesection";
+import type {
+  ListFilterAsideSectionOption,
+  ListFilterAsideSectionProps,
+} from "./listfilterasidesection";
 
-export type { ListFilterAsideSectionProps };
+export type { ListFilterAsideSectionProps, ListFilterAsideSectionOption };
 export default ListFilterAsideSection;

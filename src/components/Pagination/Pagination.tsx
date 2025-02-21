@@ -8,14 +8,13 @@ import clsx from "clsx";
 
 import useURLSearchParams from "@/hooks/useURLSearchParams";
 
-import type { PaginationProps } from ".";
+import { PAGINATION_PAGE_INDEX_THRESHOLD, type PaginationProps } from ".";
 
 export default function Pagination({
   page = 1,
   pageCount,
   searchParams,
 }: PaginationProps) {
-  const pageIndexThreshold = 2;
   const pages = [...Array(pageCount).keys()].map((page) => page + 1);
 
   const lastPage = pages.length;
@@ -35,8 +34,8 @@ export default function Pagination({
 
       {(pages ?? []).map((currentPage, index) => {
         if (
-          currentPage < page - pageIndexThreshold ||
-          currentPage > page + pageIndexThreshold
+          currentPage < page - PAGINATION_PAGE_INDEX_THRESHOLD ||
+          currentPage > page + PAGINATION_PAGE_INDEX_THRESHOLD
         ) {
           return null;
         }

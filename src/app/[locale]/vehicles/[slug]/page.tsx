@@ -102,11 +102,11 @@ export default async function Page({ params }: DetailsPageProps) {
                       {
                         name: t("details.engine.title"),
                         data: t("details.engine.value", {
-                          engine_displacement_volume_liters: Number(
+                          engineDisplacementVolumeLiters: Number(
                             vehicle.engine_displacement_volume_liters,
                           ),
-                          engine_layout: vehicle.engine_layout,
-                          engine_cylinder_count: vehicle.engine_cylinder_count,
+                          engineLayout: vehicle.engine_layout,
+                          engineCylinderCount: vehicle.engine_cylinder_count,
                         }),
                       },
                     ]

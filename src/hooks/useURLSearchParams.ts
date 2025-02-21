@@ -2,6 +2,8 @@ import { useCallback } from "react";
 
 import { usePathname, useSearchParams } from "next/navigation";
 
+import { APPLIED_FILTER_BLACKLIST } from "@/constants";
+
 import type { PageSearchParams } from "@/types";
 
 /**
@@ -16,9 +18,15 @@ export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
    * Retrieve the total number of search params
    */
   const getActiveFilterCount = useCallback(() => {
-    const paramList = [];
-    for (const key of searchParams.keys().filter((param) => param !== "page")) {
-      paramList.push(key);
+    const paramList: string[] = [];
+    if (!searchParams) {
+      return paramList.length;
+    }
+
+    for (const [param, value] of searchParams.entries()) {
+      if (!APPLIED_FILTER_BLACKLIST.includes(param)) {
+        paramList.push(value);
+      }
     }
     return paramList.length;
   }, [searchParams]);

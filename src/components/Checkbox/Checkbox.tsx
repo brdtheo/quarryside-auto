@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 import { IconCheck } from "@tabler/icons-react";

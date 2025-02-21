@@ -1,5 +1,3 @@
-"use client";
-
 import Checkbox from "@/components/Checkbox";
 import Chip from "@/components/Chip";
 import SearchField from "@/components/SearchField";

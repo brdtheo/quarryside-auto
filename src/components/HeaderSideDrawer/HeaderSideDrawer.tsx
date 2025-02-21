@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import {
   IconBriefcase,
   IconCar,
@@ -19,6 +21,8 @@ export default function HeaderSideDrawer({
   isOpen,
   onClose,
 }: HeaderSideDrawerProps) {
+  const t = useTranslations("common");
+
   return (
     <SideDrawer isOpen={isOpen} onClose={onClose}>
       <nav className="flex flex-col justify-between flex-1">
@@ -30,7 +34,7 @@ export default function HeaderSideDrawer({
               href="/"
             >
               <IconHome size={20} stroke={1.75} />
-              <h5 className="text-sm">Home</h5>
+              <h5 className="text-sm">{t("navigation.home")}</h5>
             </Link>
           </li>
           <li className="border-b border-b-divider px-2 py-3">
@@ -40,7 +44,7 @@ export default function HeaderSideDrawer({
               href="/vehicles"
             >
               <IconCar size={20} stroke={1.75} />
-              <h5 className="text-sm">Used vehicles</h5>
+              <h5 className="text-sm">{t("navigation.usedVehicles.title")}</h5>
             </Link>
           </li>
           <li className="border-b border-b-divider px-2 py-3">
@@ -50,7 +54,7 @@ export default function HeaderSideDrawer({
               href="/wheels"
             >
               <IconWheel size={20} stroke={1.75} />
-              <h5 className="text-sm">Rims & tires</h5>
+              <h5 className="text-sm">{t("navigation.rimsTires.title")}</h5>
             </Link>
           </li>
           <li className="border-b border-b-divider px-2 py-3">
@@ -60,7 +64,7 @@ export default function HeaderSideDrawer({
               href="#"
             >
               <IconBriefcase size={20} stroke={1.75} />
-              <h5 className="text-sm">Careers</h5>
+              <h5 className="text-sm">{t("navigation.careers.title")}</h5>
             </Link>
           </li>
           <li className="border-b border-b-divider px-2 py-3">
@@ -70,7 +74,7 @@ export default function HeaderSideDrawer({
               href="#"
             >
               <IconLifebuoy size={20} stroke={1.75} />
-              <h5 className="text-sm">Help center</h5>
+              <h5 className="text-sm">{t("navigation.helpCenter.title")}</h5>
             </Link>
           </li>
           <li className="px-2 py-3">
@@ -80,7 +84,7 @@ export default function HeaderSideDrawer({
               href="#"
             >
               <IconInfoCircle size={20} stroke={1.75} />
-              <h5 className="text-sm">About</h5>
+              <h5 className="text-sm">{t("navigation.about.title")}</h5>
             </Link>
           </li>
         </ul>
@@ -93,7 +97,7 @@ export default function HeaderSideDrawer({
               href="#"
             >
               <IconShoppingCart size={20} stroke={1.75} />
-              <h5 className="text-sm">My cart</h5>
+              <h5 className="text-sm">{t("header.myCart")}</h5>
             </Link>
           </li>
           <li className="px-2 py-3">
@@ -103,7 +107,7 @@ export default function HeaderSideDrawer({
               href="#"
             >
               <IconUser size={20} stroke={1.75} />
-              <h5 className="text-sm">Account</h5>
+              <h5 className="text-sm">{t("header.account")}</h5>
             </Link>
           </li>
         </ul>

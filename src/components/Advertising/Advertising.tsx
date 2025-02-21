@@ -7,11 +7,13 @@ import { IconInfoTriangle, IconX } from "@tabler/icons-react";
 
 import clsx from "clsx";
 
-import type { AdvertisingProps, AdvertisingRatioMode } from ".";
-
-const RATIO_MODE_LIST: AdvertisingRatioMode[] = ["vertical", "horizontal"];
-
-const BASE_URL = "https://qa-advertising.s3.eu-west-3.amazonaws.com";
+import {
+  ADVERTISING_BASE_URL,
+  ADVERTISING_RATIO_MODE_LIST,
+  type AdvertisingProps,
+  type AdvertisingRatioMode,
+  MAX_IMAGE_COUNT_PER_RATIO_MODE_MAPPER,
+} from ".";
 
 export default function Advertising({
   className,
@@ -26,14 +28,12 @@ export default function Advertising({
     }
     const generatedMode =
       ratioMode ??
-      RATIO_MODE_LIST[Math.floor(Math.random() * RATIO_MODE_LIST.length)];
-    const modeMaxMapper = {
-      horizontal: 9, // max available image count
-      vertical: 23, // max available image count
-    };
+      ADVERTISING_RATIO_MODE_LIST[
+        Math.floor(Math.random() * ADVERTISING_RATIO_MODE_LIST.length)
+      ];
 
-    const generatedImageURL = `${BASE_URL}/${generatedMode}/${generatedMode}_${Math.floor(
-      Math.random() * modeMaxMapper[generatedMode],
+    const generatedImageURL = `${ADVERTISING_BASE_URL}/${generatedMode}/${generatedMode}_${Math.floor(
+      Math.random() * MAX_IMAGE_COUNT_PER_RATIO_MODE_MAPPER[generatedMode],
     )}.jpg`;
 
     setMode(generatedMode);

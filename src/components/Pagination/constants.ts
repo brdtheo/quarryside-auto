@@ -1,0 +1,1 @@
+export const PAGINATION_PAGE_INDEX_THRESHOLD = 2;

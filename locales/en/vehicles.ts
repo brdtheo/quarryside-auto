@@ -25,7 +25,7 @@ export default {
       engine: {
         title: "Engine",
         value:
-          "{engine_displacement_volume_liters}L {engine_layout}{engine_cylinder_count}",
+          "{engineDisplacementVolumeLiters}L {engineLayout}{engineCylinderCount}",
       },
       power: {
         title: "Power",

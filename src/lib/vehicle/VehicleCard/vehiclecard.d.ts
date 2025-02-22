@@ -1,14 +1,5 @@
-import { Vehicle, VehicleBrand, VehicleCondition } from "@prisma/client";
+import { Vehicle } from "@prisma/client";
 
 export type VehicleCardProps = {
-  slug: Vehicle["slug"];
-  brand: VehicleBrand | null;
-  condition: VehicleCondition | null;
-  mileage: Vehicle["mileage"];
-  model: Vehicle["model"];
-  price_cts: Vehicle["price_cts"];
-  thumbnail_url: Vehicle["thumbnail_url"];
-  year: Vehicle["year"];
-  transmission: Vehicle["transmission"];
-  average_rating?: number;
+  vehicle: Vehicle;
 };

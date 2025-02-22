@@ -1,66 +1,31 @@
-"use client";
-
-import { useMemo } from "react";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 import Button from "@/components/Button";
 
 import MediaSkeleton from "@/lib/media/MediaSkeleton";
-import { getMonthlyEstimatePrice } from "@/lib/vehicle/utils";
-
-import { getPrice } from "@/utils";
+import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
 
 import { Link } from "@/i18n/routing";
 
 import type { VehicleCardProps } from ".";
 
-export default function VehicleCard({
-  slug,
-  condition,
-  year,
-  brand,
-  model,
-  price_cts,
-  mileage,
-  transmission,
-}: VehicleCardProps) {
-  const t = useTranslations("vehicles");
+export default async function VehicleCard({ vehicle }: VehicleCardProps) {
+  const t = await getTranslations("vehicles");
 
-  const vehicleTitle = useMemo(
-    () => `${year} ${brand} ${model}`,
-    [brand, model, year],
-  );
-
-  const vehicleCondition = useMemo(
-    () => t(`filter.condition.option.${condition}`),
-    [condition],
-  );
-
-  const vehicleMileage = useMemo(
-    () => t("details.mileage.value", { mileage }),
-    [mileage],
-  );
-
-  const vehicleTransmission = useMemo(
-    () => t(`filter.transmission.option.${transmission}`),
-    [mileage],
-  );
-
-  const vehiclePrice = useMemo(
-    () => (price_cts ? getPrice(price_cts) : ""),
-    [price_cts],
-  );
-
-  const vehicleMonthlyEstimatePrice = useMemo(
-    () => (price_cts ? getMonthlyEstimatePrice(price_cts) : ""),
-    [price_cts],
-  );
+  const {
+    condition,
+    href,
+    mileage,
+    monthlyEstimatePrice,
+    price,
+    title,
+    transmission,
+  } = await useVehicleDetails(vehicle);
 
   return (
     <article className="@container/vehiclecard w-full">
       <Link
-        href={`/vehicles/${encodeURIComponent(slug)}`}
+        href={href}
         className="border border-grey dark:border-blacksecondary rounded flex flex-col @lg/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary"
       >
         <div className="@lg/vehiclecard:w-[288px] @md/vehiclecard:h-[206px] w-full flex self-center h-64">
@@ -68,23 +33,23 @@ export default function VehicleCard({
         </div>
         <div className="flex flex-1 flex-col px-3 py-4 gap-2 @md/vehiclecard:gap-0 border-l border-l-divider dark:border-l-transparent">
           <div className="flex-1 text-left dark:text-white">
-            <span className="font-light text-xs">{vehicleCondition}</span>
+            <span className="font-light text-xs">{condition}</span>
             <div className="flex flex-col">
               <h2 className="text-lg font-medium leading-6 my-1 line-clamp-2">
-                {vehicleTitle}
+                {title}
               </h2>
-              <span className="text-sm">{vehicleMileage}</span>
-              <span className="text-sm">{vehicleTransmission}</span>
+              <span className="text-sm">{mileage}</span>
+              <span className="text-sm">{transmission}</span>
             </div>
           </div>
 
           <div className="flex flex-col @2xl/vehiclecard:flex-row justify-between @2xl/vehiclecard:items-end">
             <div className="flex flex-col">
-              <span className="font-semibold text-xl">{vehiclePrice}</span>
+              <span className="font-semibold text-xl">{price}</span>
               <div className="flex items-baseline">
                 <span className="text-xs">{t("details.estimate")}</span>
                 <span className="ml-1 font-semibold text-sm">
-                  {vehicleMonthlyEstimatePrice}
+                  {monthlyEstimatePrice}
                 </span>
                 <span className="text-xs">{t("details.perMonth")}</span>
               </div>

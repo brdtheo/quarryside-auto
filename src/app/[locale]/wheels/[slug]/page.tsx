@@ -96,17 +96,7 @@ export default async function Page({ params }: DetailsPageProps) {
                 data={parsedVehicleWheels}
                 itemRender={(vehicle) => (
                   <li key={vehicle.id}>
-                    <VehicleCard
-                      transmission={vehicle.transmission}
-                      slug={vehicle.slug}
-                      condition={vehicle.condition}
-                      thumbnail_url={vehicle.thumbnail_url}
-                      year={vehicle.year}
-                      brand={vehicle.brand}
-                      model={vehicle.model}
-                      price_cts={vehicle.price_cts}
-                      mileage={vehicle.mileage}
-                    />
+                    <VehicleCard vehicle={vehicle} />
                   </li>
                 )}
               />

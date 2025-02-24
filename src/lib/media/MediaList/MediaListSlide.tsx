@@ -2,14 +2,13 @@ import Image from "next/image";
 
 import {
   RenderSlideProps,
-  Slide,
   SlideImage,
   isImageFitCover,
   isImageSlide,
   useLightboxProps,
 } from "yet-another-react-lightbox";
 
-function isNextJsImage(slide: Slide) {
+function isNextJsImage(slide: SlideImage) {
   return (
     isImageSlide(slide) &&
     typeof slide.width === "number" &&
@@ -17,7 +16,9 @@ function isNextJsImage(slide: Slide) {
   );
 }
 
-export default function MediaListSlide({ slide }: RenderSlideProps<Slide>) {
+export default function MediaListSlide({
+  slide,
+}: RenderSlideProps<SlideImage>) {
   const {
     on: { click },
     carousel: { imageFit },
@@ -30,11 +31,11 @@ export default function MediaListSlide({ slide }: RenderSlideProps<Slide>) {
   }
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="relative">
       <Image
         fill
-        alt={slide.description as string}
-        src={(slide as SlideImage)?.src}
+        alt={slide.alt as string}
+        src={slide.src}
         loading="eager"
         draggable={false}
         style={{

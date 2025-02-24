@@ -14,14 +14,12 @@ import {
 } from "@/lib/media/MediaList/constants";
 
 import Lightbox from "yet-another-react-lightbox";
-import { Captions } from "yet-another-react-lightbox/plugins";
-import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
 
 import type { MediaListProps } from ".";
 
-export default function MediaList({ mediaList }: MediaListProps) {
+export default function MediaList({ mediaList, alt }: MediaListProps) {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
   const [index, setIndex] = useState<number | null>(null);
 
@@ -46,6 +44,7 @@ export default function MediaList({ mediaList }: MediaListProps) {
     () =>
       mediaList.map((media) => ({
         src: media.url,
+        alt,
       })),
     [],
   );
@@ -61,7 +60,7 @@ export default function MediaList({ mediaList }: MediaListProps) {
           width={MEDIA_THUMBNAIL_WIDTH}
           height={MEDIA_THUMBNAIL_HEIGHT}
           src={thumbnail.url}
-          alt={thumbnail.url}
+          alt={alt}
         />
       </button>
       <ul className="flex flex-wrap gap-1">
@@ -75,7 +74,7 @@ export default function MediaList({ mediaList }: MediaListProps) {
                     width={MEDIA_PREVIEW_ITEM_WIDTH}
                     height={MEDIA_PREVIEW_ITEM_HEIGHT}
                     src={media.url}
-                    alt={thumbnail.url}
+                    alt={alt}
                   />
                 </button>
               </li>
@@ -84,13 +83,16 @@ export default function MediaList({ mediaList }: MediaListProps) {
       </ul>
 
       <Lightbox
+        carousel={{ finite: lightboxSlides.length <= 1 }}
         index={index ?? undefined}
         open={isLightboxOpen}
         close={toggleOpenLightbox}
         slides={lightboxSlides}
-        render={{ slide: MediaListSlide }}
-        plugins={[Captions]}
-        captions={{ showToggle: true, descriptionTextAlign: "center" }}
+        render={{
+          slide: MediaListSlide,
+          buttonPrev: lightboxSlides.length <= 1 ? () => null : undefined,
+          buttonNext: lightboxSlides.length <= 1 ? () => null : undefined,
+        }}
       />
     </div>
   );

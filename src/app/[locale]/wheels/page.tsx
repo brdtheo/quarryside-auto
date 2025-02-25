@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-import { Prisma, Wheel } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 import Container from "@/components/Container";
 import PageTitle from "@/components/PageTitle";
@@ -12,6 +12,7 @@ import WheelList from "@/lib/wheel/WheelList";
 import WheelListFilterAside from "@/lib/wheel/WheelListFilterAside";
 import WheelListFilterHeader from "@/lib/wheel/WheelListFilterHeader";
 import { WHEEL_LIST_PAGE_SIZE } from "@/lib/wheel/constants";
+import { WheelWithMedias } from "@/lib/wheel/types";
 import { getWheelFindManyArgs } from "@/lib/wheel/utils";
 
 import type { PageProps } from "@/types";
@@ -51,8 +52,8 @@ export default async function Page({ searchParams }: PageProps) {
           />
 
           <WheelList
-            data={wheels}
-            itemRender={(wheel: Wheel) => (
+            data={wheels as WheelWithMedias[]}
+            itemRender={(wheel) => (
               <li
                 className="col-span-4 @md/wheellist:col-span-2 @2xl/wheellist:col-span-1"
                 key={wheel.id}

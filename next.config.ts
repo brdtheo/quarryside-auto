@@ -31,6 +31,11 @@ const nextConfig: NextConfig = {
         hostname: "qa-advertising.s3.eu-west-3.amazonaws.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "quarryside-auto-misc.s3.eu-west-3.amazonaws.com",
+        port: "",
+      },
     ],
   },
 };

@@ -20,7 +20,13 @@ export default async function Page({ params }: DetailsPageProps) {
     where: { slug: slug ?? "" },
     include: {
       vehicles_wheels: {
-        select: { vehicles: true },
+        select: {
+          vehicles: {
+            include: {
+              medias: { where: { is_thumbnail: true } },
+            },
+          },
+        },
       },
       medias: true,
     },
@@ -37,7 +43,7 @@ export default async function Page({ params }: DetailsPageProps) {
       <PageTitle>{title}</PageTitle>
       <div className="flex flex-col xl:flex-row gap-4">
         <div className="w-full xl:w-[785px] flex flex-col gap-16">
-          <MediaList mediaList={wheel.medias} />
+          <MediaList mediaList={wheel.medias} alt={title} />
 
           <WheelSpecificationSection wheel={wheel} />
           <WheelRelatedVehiclesSection vehicles={wheel.vehicles_wheels} />

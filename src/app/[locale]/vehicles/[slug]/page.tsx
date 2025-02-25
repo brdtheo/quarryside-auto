@@ -31,11 +31,11 @@ export default async function Page({ params }: DetailsPageProps) {
     return <NotFound />;
   }
 
-  const { title, price } = await useVehicleDetails(vehicle);
+  const { titleWithoutYear, price } = await useVehicleDetails(vehicle);
 
   return (
     <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">
-      <PageTitle>{title}</PageTitle>
+      <PageTitle>{titleWithoutYear}</PageTitle>
       <div className="flex flex-col xl:flex-row gap-8">
         <div className="w-full xl:w-[785px] flex flex-col gap-16">
           <MediaList mediaList={vehicle.medias} />

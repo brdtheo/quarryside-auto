@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-import { Prisma, Vehicle } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 import Container from "@/components/Container";
 import PageTitle from "@/components/PageTitle";
@@ -12,6 +12,7 @@ import VehicleList from "@/lib/vehicle/VehicleList";
 import VehicleListFilterAside from "@/lib/vehicle/VehicleListFilterAside";
 import VehicleListFilterHeader from "@/lib/vehicle/VehicleListFilterHeader";
 import { VEHICLE_LIST_PAGE_SIZE } from "@/lib/vehicle/constants";
+import { VehicleWithMedias } from "@/lib/vehicle/types";
 import { getVehicleFindManyArgs } from "@/lib/vehicle/utils";
 
 import type { PageProps } from "@/types";
@@ -51,8 +52,8 @@ export default async function Page({ searchParams }: PageProps) {
           />
 
           <VehicleList
-            data={vehicles}
-            itemRender={(vehicle: Vehicle) => (
+            data={vehicles as VehicleWithMedias[]}
+            itemRender={(vehicle) => (
               <li key={vehicle.id}>
                 <VehicleCard vehicle={vehicle} />
               </li>

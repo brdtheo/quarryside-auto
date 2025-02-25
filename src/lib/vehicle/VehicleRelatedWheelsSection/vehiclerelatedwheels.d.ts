@@ -1,5 +1,5 @@
-import { Wheel } from "@prisma/client";
+import type { WheelWithMedias } from "@/lib/wheel/types";
 
 export type VehicleRelatedWheelsSectionProps = {
-  wheels: { wheels: Wheel }[];
+  wheels: { wheels: WheelWithMedias }[];
 };

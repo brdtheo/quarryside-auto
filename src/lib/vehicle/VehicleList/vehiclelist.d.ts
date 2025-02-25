@@ -1,6 +1,6 @@
-import { Vehicle } from "@prisma/client";
+import { VehicleWithMedias } from "@/lib/vehicle/types";
 
 export type VehicleListProps = {
-  data: Vehicle[];
-  itemRender: (item: Vehicle) => JSX.Element;
+  data: VehicleWithMedias[];
+  itemRender: (item: VehicleWithMedias) => JSX.Element;
 };

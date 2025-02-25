@@ -21,7 +21,13 @@ export default async function Page({ params }: DetailsPageProps) {
     where: { slug: slug ?? "" },
     include: {
       vehicles_wheels: {
-        select: { wheels: true },
+        select: {
+          wheels: {
+            include: {
+              medias: { where: { is_thumbnail: true } },
+            },
+          },
+        },
       },
       medias: true,
     },
@@ -38,7 +44,7 @@ export default async function Page({ params }: DetailsPageProps) {
       <PageTitle>{titleWithoutYear}</PageTitle>
       <div className="flex flex-col xl:flex-row gap-8">
         <div className="w-full xl:w-[785px] flex flex-col gap-16">
-          <MediaList mediaList={vehicle.medias} />
+          <MediaList mediaList={vehicle.medias} alt={titleWithoutYear} />
 
           <div className="flex flex-col gap-2">
             <span className="font-bold text-2xl">{price}</span>

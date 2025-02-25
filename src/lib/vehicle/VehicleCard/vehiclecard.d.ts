@@ -1,5 +1,5 @@
-import { Vehicle } from "@prisma/client";
+import type { VehicleWithMedias } from "@/lib/vehicle/types";
 
 export type VehicleCardProps = {
-  vehicle: Vehicle;
+  vehicle: VehicleWithMedias;
 };

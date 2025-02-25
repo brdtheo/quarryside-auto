@@ -33,6 +33,7 @@ export default async function useVehicleDetails(vehicle: VehicleBase) {
       power: "",
       price: "",
       title: "",
+      titleWithoutYear: "",
       topSpeed: "",
       transmission: "",
       weight: "",
@@ -47,6 +48,11 @@ export default async function useVehicleDetails(vehicle: VehicleBase) {
           t(`filter.brand.option.${vehicle.brand}`),
           vehicle.model,
         ].join(" ")
+      : "";
+
+  const titleWithoutYear =
+    vehicle.brand && vehicle.model
+      ? [t(`filter.brand.option.${vehicle.brand}`), vehicle.model].join(" ")
       : "";
 
   const bodyStyle = vehicle.body_style
@@ -136,6 +142,7 @@ export default async function useVehicleDetails(vehicle: VehicleBase) {
     power,
     price,
     title,
+    titleWithoutYear,
     topSpeed,
     transmission,
     weight,

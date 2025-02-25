@@ -43,7 +43,7 @@ export default async function Page({ params }: DetailsPageProps) {
     <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">
       <PageTitle>{titleWithoutYear}</PageTitle>
       <div className="flex flex-col xl:flex-row gap-8">
-        <div className="w-full xl:w-[785px] flex flex-col gap-16">
+        <div className="w-full xl:w-[785px] flex flex-col gap-16 @container/detailsrightcolumn">
           <MediaList mediaList={vehicle.medias} alt={titleWithoutYear} />
 
           <div className="flex flex-col gap-2">

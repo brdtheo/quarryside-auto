@@ -53,8 +53,8 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
     return <MediaListSkeleton />;
 
   return (
-    <div className="flex flex-col gap-2 flex-1">
-      <button onClick={handleMediaClick(0)}>
+    <div className="flex flex-col items-start gap-2 flex-1 @4xl/detailsrightcolumn:flex-row @7xl/detailsrightcolumn:flex-col">
+      <button className="w-fit" onClick={handleMediaClick(0)}>
         <Image
           className="overflow-hidden rounded"
           width={MEDIA_THUMBNAIL_WIDTH}
@@ -63,7 +63,7 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
           alt={alt}
         />
       </button>
-      <ul className="flex flex-wrap gap-1">
+      <ul className="flex flex-wrap gap-1 @4xl/detailsrightcolumn:max-w-[300px] @7xl/detailsrightcolumn:max-w-none">
         {(mediaList ?? []).map(
           (media, index) =>
             media && (

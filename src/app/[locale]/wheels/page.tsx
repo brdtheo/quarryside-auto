@@ -57,16 +57,7 @@ export default async function Page({ searchParams }: PageProps) {
                 className="col-span-4 @md/wheellist:col-span-2 @2xl/wheellist:col-span-1"
                 key={wheel.id}
               >
-                <WheelCard
-                  slug={wheel.slug}
-                  thumbnailUrl={wheel.thumbnail_url ?? ""}
-                  brand={wheel.brand}
-                  model={wheel.model}
-                  priceCts={wheel.price_cts}
-                  averageRating={null}
-                  isDeliveryAvailable={wheel.delivery_available}
-                  isOnsitePickupFree={wheel.free_on_site_pickup}
-                />
+                <WheelCard wheel={wheel} />
               </li>
             )}
           />

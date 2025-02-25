@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 
 import {
   IconBuildingStore,
@@ -16,24 +17,26 @@ import type { WheelCardProps } from ".";
 export default async function WheelCard({ wheel }: WheelCardProps) {
   const t = await getTranslations("wheels");
 
-  const { price, href, brand } = await useWheelDetails(wheel);
+  const { title, price, href, brand } = await useWheelDetails(wheel);
 
   return (
     <article className="@container/wheelcard w-full @md/wheelcard:w-52">
       <Link
         href={href}
-        className="border border-grey rounded flex w-full @md/wheelcard:w-52 bg-white dark:bg-blacksecondary dark:border-blacksecondary"
+        className="border border-grey rounded flex w-full @md/wheelcard:w-52 bg-white dark:bg-blacksecondary dark:border-blacksecondary bg-clip-content overflow-hidden"
       >
         <div className="w-full flex flex-col gap-2">
-          {/* <Image
-            className="overflow-hidden rounded"
-            width={166}
-            height={166}
-            src={thumbnailUrl ?? ""}
-            alt="wheel preview"
-          /> */}
-          <div className="w-full flex self-center h-36">
-            <MediaSkeleton className="overflow-hidden w-full h-full" />
+          <div className="w-full flex self-center h-36 relative">
+            {!wheel.medias[0] && <MediaSkeleton className="w-full h-full" />}
+            {!!wheel.medias[0] && (
+              <Image
+                src={wheel.medias[0].url}
+                sizes="218px"
+                alt={title}
+                fill
+                className="object-cover"
+              />
+            )}
           </div>
 
           <div className="flex flex-col gap-2 px-4 pt-2 pb-4">

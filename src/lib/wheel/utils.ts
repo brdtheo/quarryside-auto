@@ -50,8 +50,13 @@ export function getWheelFindManyArgs(
     : null;
 
   return {
-    ...(!isCountArgs && { take: WHEEL_LIST_PAGE_SIZE }),
-    ...(!isCountArgs && !!prismaSkipParam && { skip: prismaSkipParam }),
+    ...(!isCountArgs && {
+      include: {
+        medias: { where: { is_thumbnail: true } },
+      },
+      take: WHEEL_LIST_PAGE_SIZE,
+      ...(prismaSkipParam ? { skip: prismaSkipParam } : {}),
+    }),
     ...((!!brandParam ||
       !!deliveryAvailableParm ||
       !!freeOnSitePickupParm ||

@@ -1,7 +1,7 @@
-import { Wheel } from "@prisma/client";
+import { WheelWithMedias } from "@/lib/wheel/types";
 
 export type WheelListProps = {
   className?: string;
-  data: Wheel[];
-  itemRender: (item: Wheel) => JSX.Element;
+  data: WheelWithMedias[];
+  itemRender: (item: WheelWithMedias) => JSX.Element;
 };

@@ -1,5 +1,5 @@
-import { Wheel } from "@prisma/client";
+import type { WheelWithMedias } from "@/lib/wheel/types";
 
 export type WheelCardProps = {
-  wheel: Wheel;
+  wheel: WheelWithMedias;
 };

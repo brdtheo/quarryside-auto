@@ -46,7 +46,6 @@ export default function MediaList({ mediaList }: MediaListProps) {
     () =>
       mediaList.map((media) => ({
         src: media.url,
-        description: media.caption,
       })),
     [],
   );
@@ -62,7 +61,7 @@ export default function MediaList({ mediaList }: MediaListProps) {
           width={MEDIA_THUMBNAIL_WIDTH}
           height={MEDIA_THUMBNAIL_HEIGHT}
           src={thumbnail.url}
-          alt={thumbnail.caption}
+          alt={thumbnail.url}
         />
       </button>
       <ul className="flex flex-wrap gap-1">
@@ -76,7 +75,7 @@ export default function MediaList({ mediaList }: MediaListProps) {
                     width={MEDIA_PREVIEW_ITEM_WIDTH}
                     height={MEDIA_PREVIEW_ITEM_HEIGHT}
                     src={media.url}
-                    alt={thumbnail.caption}
+                    alt={thumbnail.url}
                   />
                 </button>
               </li>

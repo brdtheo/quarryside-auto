@@ -36,7 +36,6 @@ export default async function Page({ params }: DetailsPageProps) {
   return (
     <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">
       <PageTitle>{title}</PageTitle>
-
       <div className="flex flex-col xl:flex-row gap-8">
         <div className="w-full xl:w-[785px] flex flex-col gap-16">
           <MediaList mediaList={vehicle.medias} />
@@ -45,17 +44,13 @@ export default async function Page({ params }: DetailsPageProps) {
             <span className="font-bold text-2xl">{price}</span>
             <p className="text-sm">{vehicle.description}</p>
           </div>
-
           <VehicleSpecificationSection vehicle={vehicle} />
-
           <VehiclePerformanceSection vehicle={vehicle} />
-
           <VehicleRelatedWheelsSection wheels={vehicle.vehicles_wheels} />
         </div>
 
         <div className="flex flex-1 flex-col p-3 bg-white dark:bg-blacksecondary h-fit rounded @container/vehicleform">
           <VehicleForm />
-
           <Advertising className="m-4 mx-auto" ratioMode="horizontal" />
         </div>
       </div>

@@ -60,8 +60,13 @@ export function getVehicleFindManyArgs(
     : null;
 
   return {
-    ...(!isCountArgs && { take: VEHICLE_LIST_PAGE_SIZE }),
-    ...(!isCountArgs && !!prismaSkipParam && { skip: prismaSkipParam }),
+    ...(!isCountArgs && {
+      include: {
+        medias: { where: { is_thumbnail: true } },
+      },
+      take: VEHICLE_LIST_PAGE_SIZE,
+      ...(prismaSkipParam ? { skip: prismaSkipParam } : {}),
+    }),
     ...((!!brandParam ||
       !!conditionParam ||
       !!engineCylinderCountParam ||

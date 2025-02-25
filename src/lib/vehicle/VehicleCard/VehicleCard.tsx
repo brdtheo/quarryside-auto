@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 
 import Button from "@/components/Button";
 
@@ -26,10 +27,21 @@ export default async function VehicleCard({ vehicle }: VehicleCardProps) {
     <article className="@container/vehiclecard w-full">
       <Link
         href={href}
-        className="border border-grey dark:border-blacksecondary rounded flex flex-col @lg/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary"
+        className="border border-grey dark:border-blacksecondary rounded flex flex-col @lg/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary bg-clip-content overflow-hidden"
       >
-        <div className="@lg/vehiclecard:w-[288px] @md/vehiclecard:h-[206px] w-full flex self-center h-64">
-          <MediaSkeleton className="overflow-hidden w-full h-full" />
+        <div className="@lg/vehiclecard:w-[288px] @md/vehiclecard:h-[206px] w-full flex self-center h-48 @sm/vehiclecard:h-64 relative">
+          {!vehicle.medias?.[0] && (
+            <MediaSkeleton className="w-full h-full" />
+          )}
+          {!!vehicle.medias?.[0] && (
+            <Image
+              src={vehicle.medias[0].url}
+              sizes="288px"
+              alt={title}
+              fill
+              className="object-cover"
+            />
+          )}
         </div>
         <div className="flex flex-1 flex-col px-3 py-4 gap-2 @md/vehiclecard:gap-0 border-l border-l-divider dark:border-l-transparent">
           <div className="flex-1 text-left dark:text-white">

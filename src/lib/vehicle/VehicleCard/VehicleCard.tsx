@@ -30,9 +30,7 @@ export default async function VehicleCard({ vehicle }: VehicleCardProps) {
         className="border border-grey dark:border-blacksecondary rounded flex flex-col @lg/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary bg-clip-content overflow-hidden"
       >
         <div className="@lg/vehiclecard:w-[288px] @md/vehiclecard:h-[206px] w-full flex self-center h-48 @sm/vehiclecard:h-64 relative">
-          {!vehicle.medias?.[0] && (
-            <MediaSkeleton className="w-full h-full" />
-          )}
+          {!vehicle.medias?.[0] && <MediaSkeleton className="w-full h-full" />}
           {!!vehicle.medias?.[0] && (
             <Image
               src={vehicle.medias[0].url}
@@ -47,7 +45,10 @@ export default async function VehicleCard({ vehicle }: VehicleCardProps) {
           <div className="flex-1 text-left dark:text-white">
             <span className="font-light text-xs">{condition}</span>
             <div className="flex flex-col">
-              <h2 className="text-lg font-medium leading-6 my-1 line-clamp-2">
+              <h2
+                title={title}
+                className="text-lg font-medium leading-6 my-1 line-clamp-2"
+              >
                 {title}
               </h2>
               <span className="text-sm">{mileage}</span>

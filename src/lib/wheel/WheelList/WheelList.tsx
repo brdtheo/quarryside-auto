@@ -10,7 +10,7 @@ export default function WheelList({
   return (
     <ul
       className={clsx(
-        "flex-1 grid grid-cols-4 gap-4 @container/wheellist",
+        "flex-1 grid grid-cols-4 gap-4 @container/wheellist content-start",
         className,
       )}
     >

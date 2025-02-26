@@ -1,7 +1,26 @@
+import BenefitList from "@/components/BenefitList";
+import ClientFeedbackList from "@/components/ClientFeedbackList";
+import Container from "@/components/Container";
+import HomeHero from "@/components/HomeHero";
+import PopularModelsList from "@/components/PopularModelsList";
+
+import BlogPostList from "@/lib/blog/BlogPostList/BlogPostList";
+import { prisma } from "@/lib/prisma";
+import { VehicleWithMedias } from "@/lib/vehicle/types";
+
+import { getHomeFindManyArgs } from "@/utils";
+
 export default async function Page() {
+  const popularVehicles = await prisma.vehicle.findMany(getHomeFindManyArgs());
   return (
-    <div className="text-center py-8">
-      <h1>Home</h1>
-    </div>
+    <>
+      <HomeHero />
+      <Container className="m-auto flex flex-col gap-16 pt-6 pb-8 @container/homecontainer">
+        <BenefitList />
+        <PopularModelsList vehicles={popularVehicles as VehicleWithMedias[]} />
+        <ClientFeedbackList />
+        <BlogPostList />
+      </Container>
+    </>
   );
 }

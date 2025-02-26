@@ -8,6 +8,9 @@ export default {
       browseUsedCars: "подержанные автомобили",
       browseRimsTires: "обода и шины",
     },
+    popularModels: {
+      title: "Самые популярные модели автомобилей",
+    },
     feedback: {
       title: "Отзывы наших клиентов",
       0: {

@@ -8,6 +8,9 @@ export default {
       browseUsedCars: "Browse used cars",
       browseRimsTires: "Browse rims and tires",
     },
+    popularModels: {
+      title: "Most popular models",
+    },
     feedback: {
       title: "Feeback from our clients",
       0: {

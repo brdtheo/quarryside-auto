@@ -32,5 +32,32 @@ export default {
         date: "2 years ago",
       },
     },
+    post: {
+      title: "Latest blog posts",
+      0: {
+        title:
+          "Cherrier Tango: The French frog widely appreciated in Europe",
+        content:
+          "The Cherrier Tango was produced from 1992 to 1996 alongside the Cherrier Picnic, it sold ~30000 units in total being discontinued due to the higher popularity of the Picnic. All the models of the Tango came with either a 1.2L or 1.4L MPFI 4 cylinder engine that produced 64PS/100NM and 89PS/118NM respectively. The Tango had a trendy digital speedometer in the center of the dash and a warning light strip above the steering wheel, which were both very rare features previously exclusive to only luxury cars.",
+        author: "Bacon Zez",
+        date: "03/02/2025",
+      },
+      1: {
+        title:
+          "Gavril Barstow IV: An affordable muscle car for performance amateurs",
+        content:
+          "The Barstow IV represents the fourth evolution of Gavril's iconic mid-size muscle car. Sticking to the 3rd gen platform, Gavril proved that you don't need to fix what isn’t broken, even if it kinda is. Sometimes, the best way to have fun is in a somewhat straight line.",
+        author: "Luc Asbe",
+        date: "18/01/2025",
+      },
+      2: {
+        title:
+          "Hiroshi Talent: Farmer truck became popular multi-purpose vehicle over time",
+        content:
+          "Hirochi launched the next-generation kei truck, the Talent, in 1992 to compete with other kei trucks. The Talent features a rear engine, unlike other kei trucks. It used a 4-Cylinder engine and supercharger to show more powerful performance than competing models. There was an Actif model that applied a classic style design that was popular in Japan. It went through a facelift once in 1996, and it was produced until 2002.",
+        author: "Doc Roswagge",
+        date: "13/12/2024",
+      },
+    },
   },
 };

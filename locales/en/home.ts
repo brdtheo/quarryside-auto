@@ -8,6 +8,29 @@ export default {
       browseUsedCars: "Browse used cars",
       browseRimsTires: "Browse rims and tires",
     },
+    benefitList: {
+      title: "We offer zen benefits",
+      delivery: {
+        title: "Delivery service",
+        description:
+          "Not available? Our car jockey team will take care of your car and drive it safely to the destination of your choice.",
+      },
+      guarantee: {
+        title: "Guarantee 30 days",
+        description:
+          "Not satisfied or something broke? With our 30 days guarantee, our mechanics in Belasco City garage will ensure you have everything you need to hit the road safely.",
+      },
+      financing: {
+        title: "Easy financing",
+        description:
+          "Don't have the money? We propose multiple options for you to be able to buy your next dream car! Contact Fast Auto Group for a quote through Belasco City Bank",
+      },
+      community: {
+        title: "Community support",
+        description:
+          "Our driver community across all of the West Coast is available if you have any question or feedback. Trust +10,000 happy client experiences.",
+      },
+    },
     popularModels: {
       title: "Most popular models",
     },
@@ -35,8 +58,7 @@ export default {
     post: {
       title: "Latest blog posts",
       0: {
-        title:
-          "Cherrier Tango: The French frog widely appreciated in Europe",
+        title: "Cherrier Tango: The French frog widely appreciated in Europe",
         content:
           "The Cherrier Tango was produced from 1992 to 1996 alongside the Cherrier Picnic, it sold ~30000 units in total being discontinued due to the higher popularity of the Picnic. All the models of the Tango came with either a 1.2L or 1.4L MPFI 4 cylinder engine that produced 64PS/100NM and 89PS/118NM respectively. The Tango had a trendy digital speedometer in the center of the dash and a warning light strip above the steering wheel, which were both very rare features previously exclusive to only luxury cars.",
         author: "Bacon Zez",

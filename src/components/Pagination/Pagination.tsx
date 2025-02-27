@@ -25,6 +25,7 @@ export default function Pagination({
     <div className="flex flex-1 justify-center gap-1">
       {page !== 1 && (
         <Link
+          aria-label="Previous page"
           href={getUpdatedURLFromSearchParam("page", "1")}
           className="dark:text-white w-7 h-7 rounded inline-flex items-center justify-center hover:bg-grey transition-colors duration-100"
         >
@@ -41,6 +42,7 @@ export default function Pagination({
         }
         return (
           <Link
+            aria-label={`Page ${currentPage}`}
             href={getUpdatedURLFromSearchParam("page", `${currentPage}`)}
             className={clsx(
               "w-7 h-7 rounded inline-flex items-center justify-center",
@@ -60,6 +62,7 @@ export default function Pagination({
 
       {page !== lastPage && (
         <Link
+          aria-label="Next page"
           href={getUpdatedURLFromSearchParam("page", `${lastPage}`)}
           className="dark:text-white w-7 h-7 rounded inline-flex items-center justify-center hover:bg-grey transition-colors duration-100"
         >

@@ -9,9 +9,9 @@ export default function NavSection({
 }: NavSectionProps) {
   return (
     <div className="text-white flex flex-col gap-4">
-      <h5 className="font-semibold text-base">
+      <h3 className="font-semibold text-base">
         <Link href={titleHref}>{title}</Link>
-      </h5>
+      </h3>
       <nav>
         <ul className="gap-2 flex flex-col">
           {(links ?? []).map((link, index) => (

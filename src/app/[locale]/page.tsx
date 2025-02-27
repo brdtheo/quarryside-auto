@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import BenefitList from "@/components/BenefitList";
 import ClientFeedbackList from "@/components/ClientFeedbackList";
 import Container from "@/components/Container";
@@ -9,6 +11,14 @@ import { prisma } from "@/lib/prisma";
 import { VehicleWithMedias } from "@/lib/vehicle/types";
 
 import { getHomeFindManyArgs } from "@/utils";
+
+export async function generateMetadata() {
+  const t = await getTranslations("home");
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+  };
+}
 
 export default async function Page() {
   const popularVehicles = await prisma.vehicle.findMany(getHomeFindManyArgs());

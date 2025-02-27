@@ -10,11 +10,19 @@ import {
 
 export default {
   vehicles: {
+    meta: {
+      title: "Browse used vehicles for sale - Quarryside Auto",
+      description:
+        "Discover our wide range of used vehicles for sale at Quarryside Auto. Find your next dream car now and contact us for a test drive.",
+    },
     title: "Used vehicles",
     wheels: "Wheels",
     checkAvailability: "Check availability",
     scheduleTestDrive: "Schedule test drive",
     details: {
+      meta: {
+        title: "{ vehicle } - Quarryside Auto",
+      },
       specifications: "Specifications",
       performance: "Performance",
       estimate: "Est.",

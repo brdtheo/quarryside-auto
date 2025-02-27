@@ -54,7 +54,12 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
 
   return (
     <div className="flex flex-col items-start gap-2 flex-1 @4xl/detailsrightcolumn:flex-row @7xl/detailsrightcolumn:flex-col">
-      <button className="w-fit" onClick={handleMediaClick(0)}>
+      <button
+        aria-label="Expand media thumbnail image"
+        role="button"
+        className="w-fit"
+        onClick={handleMediaClick(0)}
+      >
         <Image
           className="overflow-hidden rounded"
           width={MEDIA_THUMBNAIL_WIDTH}
@@ -68,7 +73,11 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
           (media, index) =>
             media && (
               <li key={index}>
-                <button onClick={handleMediaClick(index)}>
+                <button
+                  aria-label="Select and expand media image"
+                  role="button"
+                  onClick={handleMediaClick(index)}
+                >
                   <Image
                     className="overflow-hidden rounded"
                     width={MEDIA_PREVIEW_ITEM_WIDTH}

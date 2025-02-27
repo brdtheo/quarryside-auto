@@ -2,12 +2,22 @@ import { WheelBrand } from "@prisma/client";
 
 export default {
   wheels: {
+    meta: {
+      title: "Browse rims and tires for your vehicle - Quarryside Auto",
+      description:
+        "Discover our selection of wheels and tires for your vehicle at Quarryside Auto.",
+    },
     title: "Rims & tires",
     availability: "Availability",
     availableOn: "Available on",
     addToCart: "Add to cart",
     assemblyWithoutAppointment: "Assembly without appointment",
     details: {
+      meta: {
+        title: "{ wheel } - Quarryside Auto",
+        description:
+          "Check out available sizes, tires and related vehicles to { wheel } on Quarryside Auto",
+      },
       specifications: "Specifications",
       availableSizes: {
         title: "Available sizes",

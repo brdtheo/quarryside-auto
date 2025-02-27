@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import NotFound from "@/app/[locale]/not-found";
 
 import Advertising from "@/components/Advertising";
@@ -12,6 +14,28 @@ import WheelSpecificationSection from "@/lib/wheel/WheelSpecificationSection";
 import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 
 import type { DetailsPageProps } from "@/types";
+
+export async function generateMetadata({ params }: DetailsPageProps) {
+  const t = await getTranslations("wheels");
+  const slug = (await params)?.slug ?? "";
+
+  const wheel = await prisma.wheel.findUnique({
+    where: { slug: slug ?? "" },
+  });
+
+  if (!wheel) {
+    return {
+      title: "Quarryside Auto",
+    };
+  }
+
+  const { title } = await useWheelDetails(wheel);
+
+  return {
+    title: t("meta.details.title", { wheel: title }),
+    description: t("meta.details.description", { wheel: title }),
+  };
+}
 
 export default async function Page({ params }: DetailsPageProps) {
   const slug = (await params)?.slug ?? "";

@@ -2,12 +2,22 @@ import { WheelBrand } from "@prisma/client";
 
 export default {
   wheels: {
+    meta: {
+      title: "Обзор колесных дисков и шин для вашего автомобиля - Quarryside Auto",
+      description:
+        "Откройте для себя наш выбор колес и шин для вашего автомобиля в Quarryside Auto.",
+    },
     title: "Обода и шины",
     availability: "Доступность",
     availableOn: "Доступно на",
     addToCart: "Добавить в корзину",
     assemblyWithoutAppointment: "Сбор без предварительной записи",
     details: {
+      meta: {
+        title: "{ wheel } - Quarryside Auto",
+        description:
+          "Проверьте доступные размеры, шины и сопутствующие автомобили для { wheel } на Quarryside Auto",
+      },
       specifications: "Технические характеристики",
       availableSizes: {
         title: "Доступные размеры",

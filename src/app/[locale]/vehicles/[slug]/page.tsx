@@ -1,3 +1,5 @@
+import { getTranslations } from "next-intl/server";
+
 import NotFound from "@/app/[locale]/not-found";
 
 import Advertising from "@/components/Advertising";
@@ -13,6 +15,28 @@ import VehicleSpecificationSection from "@/lib/vehicle/VehicleSpecificationSecti
 import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
 
 import type { DetailsPageProps } from "@/types";
+
+export async function generateMetadata({ params }: DetailsPageProps) {
+  const t = await getTranslations("vehicles");
+  const slug = (await params)?.slug ?? "";
+
+  const vehicle = await prisma.vehicle.findUnique({
+    where: { slug: slug ?? "" },
+  });
+
+  if (!vehicle) {
+    return {
+      title: "Quarryside Auto",
+    };
+  }
+
+  const { titleWithoutYear } = await useVehicleDetails(vehicle);
+
+  return {
+    title: t("meta..details.title", { vehicle: titleWithoutYear }),
+    description: vehicle.description,
+  };
+}
 
 export default async function Page({ params }: DetailsPageProps) {
   const slug = (await params)?.slug ?? "";

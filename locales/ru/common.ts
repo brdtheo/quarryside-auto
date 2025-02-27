@@ -55,6 +55,7 @@ export default {
       helpCenter: {
         title: "Центр помощи",
         questionAnswers: "вопросы и ответы",
+        sellYourCar: "Продайте свой автомобиль",
         delivery: "Доставка",
         contact: "Связаться с",
       },
@@ -62,6 +63,7 @@ export default {
         title: "о нашей компании",
         ourCompany: "Наша компания",
         whereToFindUs: "Где нас найти",
+        feedback: "Отправить отзыв",
       },
     },
   },

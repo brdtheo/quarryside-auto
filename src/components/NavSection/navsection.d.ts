@@ -7,5 +7,6 @@ export type NavSectionProps = {
 export type NavSectionLink = {
   title: string;
   href: string;
+  isTargetBlank?: boolean;
   onClick?: () => void;
 };

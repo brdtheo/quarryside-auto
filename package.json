@@ -15,6 +15,7 @@
   "dependencies": {
     "@prisma/client": "^6.2.1",
     "@tabler/icons-react": "^3.23.0",
+    "@vercel/analytics": "^1.5.0",
     "add": "^2.0.6",
     "currency.js": "^2.0.4",
     "dayjs": "^1.11.13",

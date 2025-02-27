@@ -10,11 +10,19 @@ import {
 
 export default {
   vehicles: {
+    meta: {
+      title: "Обзор подержанных автомобилей на продажу - Quarryside Auto",
+      description:
+        "Откройте для себя широкий выбор подержанных автомобилей, выставленных на продажу в Quarryside Auto. Найдите свой следующий автомобиль мечты прямо сейчас и свяжитесь с нами для тест-драйва.",
+    },
     title: "Подержанные автомобили",
     wheels: "колеса",
     checkAvailability: "Проверить наличие",
     scheduleTestDrive: "Запланируйте тест-драйв",
     details: {
+      meta: {
+        title: "{ vehicle } - Quarryside Auto",
+      },
       specifications: "Технические характеристики",
       performance: "Производительность",
       estimate: "оценка",

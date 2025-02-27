@@ -17,6 +17,14 @@ import { getVehicleFindManyArgs } from "@/lib/vehicle/utils";
 
 import type { PageProps } from "@/types";
 
+export async function generateMetadata() {
+  const t = await getTranslations("vehicles");
+  return {
+    title: t("meta.title"),
+    description: t("meta.description"),
+  };
+}
+
 export default async function Page({ searchParams }: PageProps) {
   const params = await searchParams;
   const page = params?.page ? parseInt(params?.page as string) : 1;

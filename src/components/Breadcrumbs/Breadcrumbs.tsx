@@ -11,9 +11,11 @@ import { Link } from "@/i18n/routing";
 
 function BreadcrumbSeparator() {
   return (
-    <span className="w-6 inline-flex justify-center items-center select-none text-xs">
-      <IconChevronRight size={16} />
-    </span>
+    <li>
+      <span className="w-6 inline-flex justify-center items-center select-none text-xs">
+        <IconChevronRight size={16} />
+      </span>
+    </li>
   );
 }
 

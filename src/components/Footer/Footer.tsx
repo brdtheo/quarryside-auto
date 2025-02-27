@@ -90,6 +90,10 @@ export default async function Footer() {
                 href: "#",
               },
               {
+                title: t("navigation.helpCenter.sellYourCar"),
+                href: "#",
+              },
+              {
                 title: t("navigation.helpCenter.delivery"),
                 href: "#",
               },
@@ -110,6 +114,11 @@ export default async function Footer() {
               {
                 title: t("navigation.about.whereToFindUs"),
                 href: "#",
+              },
+              {
+                title: t("navigation.about.feedback"),
+                isTargetBlank: true,
+                href: "https://quarrysideauto.featurebase.app/",
               },
             ]}
           />

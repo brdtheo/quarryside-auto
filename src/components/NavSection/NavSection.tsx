@@ -1,3 +1,5 @@
+import { IconExternalLink } from "@tabler/icons-react";
+
 import { Link } from "@/i18n/routing";
 
 import type { NavSectionProps } from ".";
@@ -17,11 +19,13 @@ export default function NavSection({
           {(links ?? []).map((link, index) => (
             <li key={index} className="text-sm">
               <Link
+                target={link.isTargetBlank ? "_blank" : undefined}
                 onClick={link.onClick}
                 href={link.href}
-                className="hover:underline"
+                className="hover:underline flex items-center gap-1"
               >
                 {link.title}
+                {link.isTargetBlank && <IconExternalLink size={14} stroke={2} />}
               </Link>
             </li>
           ))}

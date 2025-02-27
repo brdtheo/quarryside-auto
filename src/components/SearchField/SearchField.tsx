@@ -34,7 +34,7 @@ export default function SearchField({
         value={value}
         onChange={onChange}
       />
-      <button className="flex justify-center items-center w-8 h-full">
+      <button aria-label="Search" role="button" className="flex justify-center items-center w-8 h-full">
         <IconSearch className="text-primary dark:text-white" size={16} />
       </button>
     </div>

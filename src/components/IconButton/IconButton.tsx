@@ -27,6 +27,7 @@ export default function IconButton({
 
   return (
     <button
+      role="button"
       onClick={onClick}
       type="button"
       disabled={isDisabled}

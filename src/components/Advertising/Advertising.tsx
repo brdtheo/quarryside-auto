@@ -68,7 +68,7 @@ export default function Advertising({
       )}
     >
       <div className="absolute top-0 right-0 flex bg-ad-background">
-        <button>
+        <button aria-label="Advertisement details" role="button">
           <IconInfoTriangle
             className="text-ad-text cursor-pointer hover:bg-gray-400"
             stroke={2}
@@ -76,7 +76,7 @@ export default function Advertising({
             height={16}
           />
         </button>
-        <button>
+        <button aria-label="Close advertisement" role="button">
           <IconX
             className="text-ad-text cursor-pointer hover:bg-gray-400"
             stroke={2}
@@ -85,7 +85,7 @@ export default function Advertising({
           />
         </button>
       </div>
-      <button className={clsx("w-fit h-fit")}>
+      <button aria-label="Follow advertisement link" role="button" className={clsx("w-fit h-fit")}>
         {!imageURL && !mode && !!imageDimensions && (
           <div
             style={{

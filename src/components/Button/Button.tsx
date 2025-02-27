@@ -65,6 +65,7 @@ export default function Button({
 
   return (
     <button
+      role="button"
       type="button"
       disabled={isDisabled}
       className={clsx(

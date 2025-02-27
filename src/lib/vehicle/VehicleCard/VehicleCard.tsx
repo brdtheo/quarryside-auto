@@ -20,6 +20,7 @@ export default async function VehicleCard({ vehicle }: VehicleCardProps) {
     monthlyEstimatePrice,
     price,
     title,
+    titleWithoutYear,
     transmission,
   } = await useVehicleDetails(vehicle);
 
@@ -35,7 +36,7 @@ export default async function VehicleCard({ vehicle }: VehicleCardProps) {
             <Image
               src={vehicle.medias[0].url}
               sizes="288px"
-              alt={title}
+              alt={titleWithoutYear}
               fill
               className="object-cover"
             />

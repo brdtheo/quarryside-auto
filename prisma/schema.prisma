@@ -12,7 +12,7 @@ model Media {
   vehicle      Int?      @db.SmallInt
   wheel        Int?      @db.SmallInt
   url          String    @db.VarChar
-  is_thumbnail Boolean
+  is_thumbnail Boolean   @default(false)
   date_created DateTime? @default(now()) @db.Timestamptz(6)
   vehicles     Vehicle?  @relation(fields: [vehicle], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
   wheels       Wheel?    @relation(fields: [wheel], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
@@ -75,17 +75,18 @@ model Wheel {
   model               String?           @db.VarChar(128)
   price_cts           BigInt?
   date_created        DateTime?         @default(now()) @db.Timestamptz(6)
-  delivery_available  Boolean
-  free_on_site_pickup Boolean
+  delivery_available  Boolean           @default(false)
+  free_on_site_pickup Boolean           @default(false)
   sizes               String[]          @db.VarChar
   tires               String[]          @db.VarChar
   consumption         WheelConsumption?
-  is_four_lug         Boolean
-  is_five_lug         Boolean
-  is_six_lug          Boolean
-  is_eight_lug        Boolean
-  is_central_lug      Boolean
-  is_three_lug        Boolean
+  is_four_lug         Boolean           @default(false)
+  is_five_lug         Boolean           @default(false)
+  is_six_lug          Boolean           @default(false)
+  is_eight_lug        Boolean           @default(false)
+  is_central_lug      Boolean           @default(false)
+  is_three_lug        Boolean           @default(false)
+  is_ten_lug          Boolean           @default(false)
   medias              Media[]
   reviews             Review[]
   vehicles_wheels     Vehicles_Wheels[]

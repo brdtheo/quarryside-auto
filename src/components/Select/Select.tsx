@@ -9,11 +9,12 @@ export default function Select({
   placeholder,
   value,
   options,
+  onChange,
 }: SelectProps) {
   return (
     <select
       defaultValue={value}
-      onChange={() => {}}
+      onChange={onChange}
       className={clsx(
         "w-fit text-sm outline-none px-2 bg-white text-primary border border-primary rounded dark:text-white dark:border-blacksecondary dark:bg-transparent",
         className,

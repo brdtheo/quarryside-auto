@@ -79,7 +79,7 @@ export default async function Page({ params }: DetailsPageProps) {
             isDeliveryAvailable={wheel.delivery_available}
             isFreeOnSitePickup={wheel.free_on_site_pickup}
           />
-          <Advertising className="m-4" ratioMode="horizontal" />
+          <Advertising className="mt-4" ratioMode="horizontal" />
         </div>
       </div>
     </Container>

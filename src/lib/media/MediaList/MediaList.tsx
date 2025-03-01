@@ -68,28 +68,30 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
           alt={alt}
         />
       </button>
-      <ul className="flex flex-wrap gap-1 @4xl/detailsrightcolumn:max-w-[300px] @7xl/detailsrightcolumn:max-w-none">
-        {(mediaList ?? []).map(
-          (media, index) =>
-            media && (
-              <li key={index}>
-                <button
-                  aria-label="Select and expand media image"
-                  role="button"
-                  onClick={handleMediaClick(index)}
-                >
-                  <Image
-                    className="overflow-hidden rounded"
-                    width={MEDIA_PREVIEW_ITEM_WIDTH}
-                    height={MEDIA_PREVIEW_ITEM_HEIGHT}
-                    src={media.url}
-                    alt={alt}
-                  />
-                </button>
-              </li>
-            ),
-        )}
-      </ul>
+      {(mediaList ?? []).length > 1 && (
+        <ul className="flex flex-wrap gap-1 @4xl/detailsrightcolumn:max-w-[300px] @7xl/detailsrightcolumn:max-w-none">
+          {(mediaList ?? []).map(
+            (media, index) =>
+              media && (
+                <li key={index}>
+                  <button
+                    aria-label="Select and expand media image"
+                    role="button"
+                    onClick={handleMediaClick(index)}
+                  >
+                    <Image
+                      className="overflow-hidden rounded"
+                      width={MEDIA_PREVIEW_ITEM_WIDTH}
+                      height={MEDIA_PREVIEW_ITEM_HEIGHT}
+                      src={media.url}
+                      alt={alt}
+                    />
+                  </button>
+                </li>
+              ),
+          )}
+        </ul>
+      )}
 
       <Lightbox
         carousel={{ finite: lightboxSlides.length <= 1 }}

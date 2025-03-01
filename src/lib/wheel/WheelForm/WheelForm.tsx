@@ -1,6 +1,12 @@
-import { getTranslations } from "next-intl/server";
+"use client";
+
+import { ChangeEvent, useCallback, useMemo, useState } from "react";
+
+import { useTranslations } from "next-intl";
 
 import { IconBuildingStore, IconTruckDelivery } from "@tabler/icons-react";
+
+import currency from "currency.js";
 
 import Button from "@/components/Button";
 import Checkbox from "@/components/Checkbox";
@@ -8,17 +14,35 @@ import Select from "@/components/Select";
 
 import { WheelFormProps } from ".";
 
-export default async function WheelForm({
+export default function WheelForm({
   price,
   isDeliveryAvailable,
   isFreeOnSitePickup,
 }: WheelFormProps) {
-  const t = await getTranslations("wheels");
+  const [quantity, setQuantity] = useState<number>(2);
+  const t = useTranslations("wheels");
 
-  const wheelQuantityOptionList = [...new Array(10)].map((_, index) => ({
-    label: `${index + 1}`,
-    value: `${index + 1}`,
-  }));
+  const wheelQuantityOptionList = useMemo(
+    () =>
+      [...new Array(10)].map((_, index) => ({
+        label: `${index + 1}`,
+        value: `${index + 1}`,
+      })),
+    [],
+  );
+
+  const computedPrice = useMemo(
+    () => currency(price).multiply(quantity).format({ symbol: "" }),
+    [price, quantity],
+  );
+
+  const handleChangeQuantity = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      const value = Number(event.target.value);
+      setQuantity(value);
+    },
+    [],
+  );
 
   return (
     <form
@@ -29,7 +53,9 @@ export default async function WheelForm({
       <div className="bg-yellow flex border border-yellow mt-1 w-fit rounded">
         <div className="flex flex-1 items-start px-1">
           <span className="text-red font-bold text-normal">$</span>
-          <span className="text-red font-extrabold text-3xl">{price}</span>
+          <span className="text-red font-extrabold text-3xl">
+            {computedPrice}
+          </span>
         </div>
       </div>
 
@@ -68,7 +94,12 @@ export default async function WheelForm({
       />
 
       <div className="flex flex-col flex-1 gap-2">
-        <Select className="h-10" options={wheelQuantityOptionList} value="2" />
+        <Select
+          className="h-10"
+          options={wheelQuantityOptionList}
+          value={quantity.toString()}
+          onChange={handleChangeQuantity}
+        />
         <Button size="lg" className="w-full" color="primary" rounded>
           {t("addToCart")}
         </Button>

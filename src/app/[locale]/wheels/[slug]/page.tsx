@@ -32,8 +32,8 @@ export async function generateMetadata({ params }: DetailsPageProps) {
   const { title } = await useWheelDetails(wheel);
 
   return {
-    title: t("meta.details.title", { wheel: title }),
-    description: t("meta.details.description", { wheel: title }),
+    title: t("details.meta.title", { wheel: title }),
+    description: t("details.meta.description", { wheel: title }),
   };
 }
 

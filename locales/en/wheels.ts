@@ -75,6 +75,9 @@ export default {
       is_eight_lug: {
         option: { true: "8 lugs" },
       },
+      is_ten_lug: {
+        option: { true: "10 lugs" },
+      },
       is_central_lug: {
         option: { true: "Central lug" },
       },

@@ -69,6 +69,12 @@ export default function WheelListFilterAside({
           href: getUpdatedURLFromSearchParam("is_eight_lug", "true", true),
         },
         {
+          label: t("filter.is_ten_lug.option.true"),
+          value: "is_ten_lug",
+          isChecked: (searchParams?.is_ten_lug ?? "").includes("true"),
+          href: getUpdatedURLFromSearchParam("is_ten_lug", "true", true),
+        },
+        {
           label: t("filter.is_central_lug.option.true"),
           value: "is_central_lug",
           isChecked: (searchParams?.is_central_lug ?? "").includes("true"),

@@ -14,6 +14,8 @@ import {
 } from "@/lib/media/MediaList/constants";
 
 import Lightbox from "yet-another-react-lightbox";
+import { Counter, Zoom } from "yet-another-react-lightbox/plugins";
+import "yet-another-react-lightbox/plugins/counter.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 import "yet-another-react-lightbox/styles.css";
 
@@ -99,10 +101,17 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
         open={isLightboxOpen}
         close={toggleOpenLightbox}
         slides={lightboxSlides}
+        plugins={[Counter, Zoom]}
         render={{
           slide: MediaListSlide,
           buttonPrev: lightboxSlides.length <= 1 ? () => null : undefined,
           buttonNext: lightboxSlides.length <= 1 ? () => null : undefined,
+          iconZoomIn: () => null,
+          iconZoomOut: () => null,
+        }}
+        zoom={{
+          maxZoomPixelRatio: 4,
+          scrollToZoom: true,
         }}
       />
     </div>

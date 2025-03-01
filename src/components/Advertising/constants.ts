@@ -1,9 +1,4 @@
-import type { AdvertisingRatioMode } from ".";
-
-export const ADVERTISING_RATIO_MODE_LIST: AdvertisingRatioMode[] = [
-  "vertical",
-  "horizontal",
-];
+import { AdvertisingRatioMode } from ".";
 
 export const ADVERTISING_BASE_URL =
   "https://qa-advertising.s3.eu-west-3.amazonaws.com";

@@ -81,7 +81,7 @@ export default async function Page({ params }: DetailsPageProps) {
 
         <div className="flex flex-1 flex-col p-3 bg-white dark:bg-blacksecondary h-fit rounded @container/vehicleform">
           <VehicleForm />
-          <Advertising className="m-4 mx-auto" ratioMode="horizontal" />
+          <Advertising className="mt-4" ratioMode="horizontal" />
         </div>
       </div>
     </Container>

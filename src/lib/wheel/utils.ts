@@ -41,6 +41,9 @@ export function getWheelFindManyArgs(
   const isEightLugParam = searchParams?.is_eight_lug
     ? searchParams?.is_eight_lug
     : null;
+  const isTenLugParam = searchParams?.is_ten_lug
+    ? searchParams?.is_ten_lug
+    : null;
   const isCentralLugParam = searchParams?.is_central_lug
     ? searchParams?.is_central_lug
     : null;
@@ -65,6 +68,7 @@ export function getWheelFindManyArgs(
       !!isFiveLugParam ||
       !!isSixLugParam ||
       !!isEightLugParam ||
+      !!isTenLugParam ||
       !!isCentralLugParam) && {
       where: {
         AND: [
@@ -76,6 +80,7 @@ export function getWheelFindManyArgs(
           ...(isFiveLugParam ? [{ is_five_lug: true }] : []),
           ...(isSixLugParam ? [{ is_six_lug: true }] : []),
           ...(isEightLugParam ? [{ is_eight_lug: true }] : []),
+          ...(isTenLugParam ? [{ is_ten_lug: true }] : []),
           ...(isCentralLugParam ? [{ is_central_lug: true }] : []),
         ],
       },

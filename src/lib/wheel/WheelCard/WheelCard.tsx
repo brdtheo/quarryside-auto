@@ -26,12 +26,12 @@ export default async function WheelCard({ wheel }: WheelCardProps) {
         className="border border-grey rounded flex w-full @md/wheelcard:w-52 bg-white dark:bg-blacksecondary dark:border-blacksecondary bg-clip-content overflow-hidden"
       >
         <div className="w-full flex flex-col gap-2">
-          <div className="w-full flex self-center h-36 relative">
+          <div className="w-full flex self-center h-48 @sm/wheelcard:h-60 relative">
             {!wheel.medias[0] && <MediaSkeleton className="w-full h-full" />}
             {!!wheel.medias[0] && (
               <Image
                 src={wheel.medias[0].url}
-                sizes="218px"
+                sizes="450px"
                 alt={title}
                 fill
                 className="object-cover"

@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: DetailsPageProps) {
   const { titleWithoutYear } = await useVehicleDetails(vehicle);
 
   return {
-    title: t("meta..details.title", { vehicle: titleWithoutYear }),
+    title: t("details.meta.title", { vehicle: titleWithoutYear }),
     description: vehicle.description,
   };
 }

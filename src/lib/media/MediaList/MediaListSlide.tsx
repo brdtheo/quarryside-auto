@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import {
   RenderSlideProps,
+  Slide,
   SlideImage,
   isImageFitCover,
   isImageSlide,
@@ -16,9 +17,7 @@ function isNextJsImage(slide: SlideImage) {
   );
 }
 
-export default function MediaListSlide({
-  slide,
-}: RenderSlideProps<SlideImage>) {
+export default function MediaListSlide({ slide }: RenderSlideProps<Slide>) {
   const {
     on: { click },
     carousel: { imageFit },
@@ -26,7 +25,7 @@ export default function MediaListSlide({
 
   const cover = isImageSlide(slide) && isImageFitCover(slide, imageFit);
 
-  if (!isNextJsImage(slide) || !slide) {
+  if (!isNextJsImage(slide as SlideImage) || !slide) {
     return undefined;
   }
 
@@ -34,8 +33,8 @@ export default function MediaListSlide({
     <div className="relative">
       <Image
         fill
-        alt={slide.alt as string}
-        src={slide.src}
+        alt={(slide as SlideImage).alt as string}
+        src={(slide as SlideImage).src}
         loading="eager"
         draggable={false}
         style={{

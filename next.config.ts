@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "qa-wheel.s3.eu-west-3.amazonaws.com",
+        hostname: "quarryside-auto-wheel.s3.eu-west-3.amazonaws.com",
         port: "",
       },
       {

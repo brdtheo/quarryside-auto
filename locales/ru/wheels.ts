@@ -75,6 +75,9 @@ export default {
       is_eight_lug: {
         option: { true: "8 наконечник" },
       },
+      is_ten_lug: {
+        option: { true: "10 наконечник" },
+      },
       is_central_lug: {
         option: { true: "центральный наконечник" },
       },

@@ -13,6 +13,7 @@ export default function Button({
   size,
   color,
   rounded,
+  type = "button",
 }: ButtonProps) {
   const roundedClassname = useMemo(() => {
     if (!rounded) return "";
@@ -66,7 +67,7 @@ export default function Button({
   return (
     <button
       role="button"
-      type="button"
+      type={type}
       disabled={isDisabled}
       className={clsx(
         "inline-flex items-center h-fit hover:opacity-90 leading-none",

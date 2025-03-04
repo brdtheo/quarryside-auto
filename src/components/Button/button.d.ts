@@ -9,4 +9,5 @@ export type ButtonProps = {
   color?: "primary" | "secondary";
   rounded?: boolean;
   isDisabled?: boolean;
+  type?: "submit" | "reset" | "button" | undefined;
 };

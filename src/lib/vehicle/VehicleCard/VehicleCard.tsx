@@ -28,21 +28,21 @@ export default async function VehicleCard({ vehicle }: VehicleCardProps) {
     <article className="@container/vehiclecard w-full">
       <Link
         href={href}
-        className="border border-grey dark:border-blacksecondary rounded flex flex-col @lg/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary bg-clip-content overflow-hidden"
+        className="border border-divider dark:border-blacksecondary rounded flex flex-col @lg/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary bg-clip-content overflow-hidden"
       >
-        <div className="@lg/vehiclecard:w-[288px] @md/vehiclecard:h-[206px] w-full flex self-center h-48 @sm/vehiclecard:h-64 relative">
+        <div className="w-full @lg/vehiclecard:w-[340px] flex self-center h-48 @sm/vehiclecard:h-64 @md/vehiclecard:h-56 relative">
           {!vehicle.medias?.[0] && <MediaSkeleton className="w-full h-full" />}
           {!!vehicle.medias?.[0] && (
             <Image
               src={vehicle.medias[0].url}
-              sizes="288px"
+              sizes="340px"
               alt={titleWithoutYear}
               fill
-              className="object-cover"
+              className="object-contain"
             />
           )}
         </div>
-        <div className="flex flex-1 flex-col px-3 py-4 gap-2 @md/vehiclecard:gap-0 border-l border-l-divider dark:border-l-transparent">
+        <div className="flex flex-1 flex-col px-3 py-4 gap-2 @md/vehiclecard:gap-0 border-t border-t-divider @lg/vehiclecard:border-t-0 @lg/vehiclecard:border-l @lg/vehiclecard:border-l-divider dark:border-l-transparent">
           <div className="flex-1 text-left dark:text-white">
             <span className="font-light text-xs">{condition}</span>
             <div className="flex flex-col">

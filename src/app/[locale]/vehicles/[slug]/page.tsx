@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import NotFound from "@/app/[locale]/not-found";
 
+import AdminTools from "@/components/AdminTools/AdminTools";
 import Advertising from "@/components/Advertising";
 import Container from "@/components/Container";
 import PageTitle from "@/components/PageTitle";
@@ -69,6 +70,8 @@ export default async function Page({ params }: DetailsPageProps) {
       <div className="flex flex-col xl:flex-row gap-8">
         <div className="w-full xl:w-[785px] flex flex-col gap-16 @container/detailsrightcolumn">
           <MediaList mediaList={vehicle.medias} alt={titleWithoutYear} />
+
+          <AdminTools slug={slug} id={vehicle.id} />
 
           <div className="flex flex-col gap-2">
             <span className="font-bold text-2xl">{price}</span>

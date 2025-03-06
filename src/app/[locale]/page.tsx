@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import BenefitList from "@/components/BenefitList";
@@ -12,7 +13,7 @@ import { VehicleWithMedias } from "@/lib/vehicle/types";
 
 import { getHomeFindManyArgs } from "@/utils";
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("home");
   return {
     title: t("meta.title"),

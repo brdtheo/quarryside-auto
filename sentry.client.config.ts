@@ -11,4 +11,9 @@ Sentry.init({
 
   // Setting this option to true will print useful information to the console while you're setting up Sentry.
   debug: false,
+
+  // Restrict error reporting to production environments
+  enabled: ["production", "preview"].includes(
+    process?.env?.NEXT_PUBLIC_VERCEL_ENV ?? "",
+  ),
 });

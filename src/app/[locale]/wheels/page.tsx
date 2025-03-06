@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import { Prisma } from "@prisma/client";
@@ -17,11 +18,20 @@ import { getWheelFindManyArgs } from "@/lib/wheel/utils";
 
 import type { PageProps } from "@/types";
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("wheels");
   return {
     title: t("meta.title"),
     description: t("meta.description"),
+    openGraph: {
+      title: t("meta.title"),
+      description: t("meta.description"),
+      siteName: "Quarryside Auto",
+    },
+    twitter: {
+      title: t("meta.title"),
+      description: t("meta.description"),
+    },
   };
 }
 

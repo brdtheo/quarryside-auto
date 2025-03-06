@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
 import NotFound from "@/app/[locale]/not-found";
@@ -15,12 +16,15 @@ import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 
 import type { DetailsPageProps } from "@/types";
 
-export async function generateMetadata({ params }: DetailsPageProps) {
+export async function generateMetadata({
+  params,
+}: DetailsPageProps): Promise<Metadata> {
   const t = await getTranslations("wheels");
   const slug = (await params)?.slug ?? "";
 
   const wheel = await prisma.wheel.findUnique({
     where: { slug: slug ?? "" },
+    include: { medias: { where: { is_thumbnail: true } } },
   });
 
   if (!wheel) {
@@ -34,6 +38,28 @@ export async function generateMetadata({ params }: DetailsPageProps) {
   return {
     title: t("details.meta.title", { wheel: title }),
     description: t("details.meta.description", { wheel: title }),
+    openGraph: {
+      title: t("details.meta.title", { wheel: title }),
+      description: t("details.meta.description", { wheel: title }),
+      siteName: "Quarryside Auto",
+      images: {
+        url: wheel.medias[0].url,
+        alt: title,
+        width: 1562,
+        height: 878,
+      },
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("details.meta.title", { wheel: title }),
+      description: t("details.meta.description", { wheel: title }),
+      images: {
+        url: wheel.medias[0].url,
+        alt: title,
+        width: 1562,
+        height: 878,
+      },
+    },
   };
 }
 

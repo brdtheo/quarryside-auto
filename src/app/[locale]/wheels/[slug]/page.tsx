@@ -43,7 +43,7 @@ export async function generateMetadata({
       description: t("details.meta.description", { wheel: title }),
       siteName: "Quarryside Auto",
       images: {
-        url: wheel.medias[0].url,
+        url: wheel?.medias?.[0]?.url,
         alt: title,
         width: 1562,
         height: 878,
@@ -54,7 +54,7 @@ export async function generateMetadata({
       title: t("details.meta.title", { wheel: title }),
       description: t("details.meta.description", { wheel: title }),
       images: {
-        url: wheel.medias[0].url,
+        url: wheel?.medias?.[0]?.url,
         alt: title,
         width: 1562,
         height: 878,

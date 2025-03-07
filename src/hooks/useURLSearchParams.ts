@@ -34,10 +34,13 @@ export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
   /**
    * Retrieve the number of values associated with a search param
    */
-  const getSearchParamValueCount = useCallback((paramName: string) => {
-    const values = pageSearchParams[paramName]?.split(",") ?? [];
-    return values.length;
-  }, []);
+  const getSearchParamValueCount = useCallback(
+    (paramName: string) => {
+      const values = pageSearchParams[paramName]?.split(",") ?? [];
+      return values.length;
+    },
+    [pageSearchParams],
+  );
 
   /**
    * Returns an URL while handling the search param with a single value

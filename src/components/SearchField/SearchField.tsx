@@ -1,3 +1,7 @@
+"use client";
+
+import { useCallback, useRef } from "react";
+
 import { useTranslations } from "next-intl";
 
 import { IconSearch } from "@tabler/icons-react";
@@ -14,11 +18,19 @@ export default function SearchField({
 }: SearchFieldProps) {
   const t = useTranslations("common");
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+
+  const handleFocusInput = useCallback(() => {
+    if (inputRef && inputRef?.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+
   return (
     <div
       aria-disabled={isDisabled}
       className={clsx(
-        "flex border border-primary dark:border-blacksecondary dark:hover:border-white rounded h-8 pl-3 w-fit transition-colors duration-75",
+        "flex border border-gray-300 dark:border-blacksecondary dark:hover:border-white rounded h-8 pl-3 w-fit transition-colors duration-75",
         {
           "bg-white dark:bg-transparent": !isDisabled,
           "disabled:bg-red-500 disabled:opacity-40": isDisabled,
@@ -27,6 +39,7 @@ export default function SearchField({
       )}
     >
       <input
+        ref={inputRef}
         disabled={isDisabled}
         placeholder={t("search")}
         className="h-full w-full bg-transparent outline-none text-sm dark:text-white"
@@ -34,9 +47,13 @@ export default function SearchField({
         value={value}
         onChange={onChange}
       />
-      <button aria-label="Search" role="button" className="flex justify-center items-center w-8 h-full">
-        <IconSearch className="text-primary dark:text-white" size={16} />
-      </button>
+      <div
+        onClick={handleFocusInput}
+        role="button"
+        className="w-8 h-8 flex justify-center items-center cursor-text"
+      >
+        <IconSearch className="text-gray-500 dark:text-white" size={14} />
+      </div>
     </div>
   );
 }

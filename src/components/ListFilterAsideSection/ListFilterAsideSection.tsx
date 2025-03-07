@@ -1,8 +1,17 @@
+"use client";
+
+import { ChangeEvent, useCallback, useMemo, useState } from "react";
+
 import Checkbox from "@/components/Checkbox";
 import Chip from "@/components/Chip";
 import SearchField from "@/components/SearchField";
 
-import type { ListFilterAsideSectionProps } from ".";
+import Fuse, { FuseResult } from "fuse.js";
+
+import type {
+  ListFilterAsideSectionOption,
+  ListFilterAsideSectionProps,
+} from ".";
 
 export default function ListFilterAsideSection({
   title,
@@ -10,8 +19,40 @@ export default function ListFilterAsideSection({
   isSearchable,
   selectedOptionCount,
 }: ListFilterAsideSectionProps) {
-  const getCheckboxId = (label: string, index: number) =>
-    [index, label].join(" ").toLowerCase().replace(/\s/g, "-");
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [searchResults, setSearchResults] = useState<
+    FuseResult<ListFilterAsideSectionOption>[]
+  >([]);
+
+  const fuse = new Fuse(options, { keys: ["label"] });
+
+  const getCheckboxId = useCallback(
+    (label: string, index: number) =>
+      [index, label].join(" ").toLowerCase().replace(/\s/g, "-"),
+    [],
+  );
+
+  const handleSearchFieldChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const value = event.target?.value ?? "";
+      setSearchValue(value);
+      const results = fuse.search(value);
+      setSearchResults(results);
+    },
+    [options],
+  );
+
+  const handleResetSearchResults = useCallback(() => {
+    setSearchValue("");
+    setSearchResults([]);
+  }, []);
+
+  const optionList: ListFilterAsideSectionOption[] = useMemo(() => {
+    if (searchResults.length > 0) {
+      return (searchResults ?? []).map((result) => ({ ...result.item }));
+    }
+    return options ?? [];
+  }, [searchResults, options]);
 
   return (
     <fieldset className="flex flex-col gap-2">
@@ -23,7 +64,9 @@ export default function ListFilterAsideSection({
       </legend>
 
       <div className="py-2 flex flex-col">
-        {isSearchable && <SearchField value="" onChange={() => {}} />}
+        {isSearchable && (
+          <SearchField value={searchValue} onChange={handleSearchFieldChange} />
+        )}
 
         {!isSearchable &&
           (options ?? []).map((option, index) => (
@@ -37,9 +80,10 @@ export default function ListFilterAsideSection({
           ))}
 
         {isSearchable && (
-          <div className="mt-2 flex flex-col max-h-28 overflow-y-scroll">
-            {(options ?? []).map((option, index) => (
+          <div className="mt-2 flex flex-col h-28 overflow-y-auto">
+            {optionList.map((option, index) => (
               <Checkbox
+                onClick={handleResetSearchResults}
                 key={option.value}
                 id={getCheckboxId(option.label, index)}
                 checked={option.isChecked}

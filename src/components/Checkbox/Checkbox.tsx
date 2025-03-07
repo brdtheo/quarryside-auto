@@ -6,12 +6,19 @@ import clsx from "clsx";
 
 import type { CheckboxProps } from ".";
 
-export default function Checkbox({ id, checked, label, href }: CheckboxProps) {
+export default function Checkbox({
+  id,
+  checked,
+  label,
+  href,
+  onClick,
+}: CheckboxProps) {
   return (
     <Link
       className="flex gap-3 py-1.5 items-start select-none w-full"
       href={href}
       scroll={false}
+      onClick={onClick}
     >
       <div className="relative">
         <input

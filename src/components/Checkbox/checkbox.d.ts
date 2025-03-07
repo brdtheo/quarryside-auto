@@ -3,4 +3,5 @@ export type CheckboxProps = {
   label: string;
   checked: boolean;
   href: string;
+  onClick?: () => void;
 };

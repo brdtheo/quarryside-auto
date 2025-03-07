@@ -2,12 +2,10 @@
 
 ## Description
 
-> [!TIP]
 > Explain and provide details about all of the changes within your commits
 
 ## Preview
 
-> [!TIP]
 > If possible, add screenshots to have a better idea of the rendering
 
 ## Checklist

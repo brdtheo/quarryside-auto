@@ -35,6 +35,32 @@ export default async function WheelSpecificationSection({
             data: wheel.tires ?? "",
           },
           {
+            name: t("availability"),
+            data: [
+              ...(wheel.is_three_lug
+                ? [t("filter.is_three_lug.option.true")]
+                : []),
+              ...(wheel.is_four_lug
+                ? [t("filter.is_four_lug.option.true")]
+                : []),
+              ...(wheel.is_five_lug
+                ? [t("filter.is_five_lug.option.true")]
+                : []),
+              ...(wheel.is_six_lug
+                ? [t("filter.is_six_lug.option.true")]
+                : []),
+              ...(wheel.is_eight_lug
+                ? [t("filter.is_eight_lug.option.true")]
+                : []),
+              ...(wheel.is_ten_lug
+                ? [t("filter.is_ten_lug.option.true")]
+                : []),
+              ...(wheel.is_central_lug
+                ? [t("filter.is_central_lug.option.true")]
+                : []),
+            ],
+          },
+          {
             name: t("details.consumption.title"),
             data: wheel.consumption ?? "",
           },

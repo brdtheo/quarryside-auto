@@ -20,3 +20,6 @@ jobs:
 
       - name: 🚨 ESLint 🚨
         run: yarn next lint
+
+      - name: 🧪 Vitest 🧪
+        run: yarn test

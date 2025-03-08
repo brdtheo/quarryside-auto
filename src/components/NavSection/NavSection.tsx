@@ -25,7 +25,9 @@ export default function NavSection({
                 className="hover:underline flex items-center gap-1"
               >
                 {link.title}
-                {link.isTargetBlank && <IconExternalLink size={14} stroke={2} />}
+                {link.isTargetBlank && (
+                  <IconExternalLink size={14} stroke={2} />
+                )}
               </Link>
             </li>
           ))}

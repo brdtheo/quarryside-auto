@@ -15,7 +15,7 @@ export function getWheelFindManyArgs(
   isCountArgs?: boolean,
 ): Prisma.WheelFindManyArgs | Prisma.WheelCountArgs {
   const pageParam = searchParams?.page
-    ? parseInt(searchParams?.page as string)
+    ? parseInt(searchParams?.page as string, 10)
     : 1;
   const brandParam = searchParams?.brand
     ? (searchParams?.brand?.split(",") as WheelBrand[])

@@ -39,7 +39,7 @@ export default async function Page({ searchParams }: PageProps) {
   const t = await getTranslations("wheels");
 
   const params = await searchParams;
-  const page = params?.page ? parseInt(params?.page as string) : 1;
+  const page = params?.page ? parseInt(params?.page as string, 10) : 1;
 
   const prismaFindManyArgs = getWheelFindManyArgs(params);
   const prismaFindManyCountArgs = getWheelFindManyArgs(params, true);

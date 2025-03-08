@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Page({ searchParams }: PageProps) {
   const params = await searchParams;
-  const page = params?.page ? parseInt(params?.page as string) : 1;
+  const page = params?.page ? parseInt(params?.page as string, 10) : 1;
 
   const prismaFindManyArgs = getVehicleFindManyArgs(params);
   const prismaFindManyCountArgs = getVehicleFindManyArgs(params, true);

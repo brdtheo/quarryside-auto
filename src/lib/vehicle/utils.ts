@@ -26,7 +26,7 @@ export function getVehicleFindManyArgs(
   isCountArgs?: boolean,
 ): Prisma.VehicleFindManyArgs | Prisma.VehicleCountArgs {
   const pageParam = searchParams?.page
-    ? parseInt(searchParams?.page as string)
+    ? parseInt(searchParams?.page as string, 10)
     : 1;
   const conditionParam = searchParams?.condition
     ? (searchParams?.condition?.split(",") as VehicleCondition[])

@@ -46,15 +46,11 @@ export default async function WheelSpecificationSection({
               ...(wheel.is_five_lug
                 ? [t("filter.is_five_lug.option.true")]
                 : []),
-              ...(wheel.is_six_lug
-                ? [t("filter.is_six_lug.option.true")]
-                : []),
+              ...(wheel.is_six_lug ? [t("filter.is_six_lug.option.true")] : []),
               ...(wheel.is_eight_lug
                 ? [t("filter.is_eight_lug.option.true")]
                 : []),
-              ...(wheel.is_ten_lug
-                ? [t("filter.is_ten_lug.option.true")]
-                : []),
+              ...(wheel.is_ten_lug ? [t("filter.is_ten_lug.option.true")] : []),
               ...(wheel.is_central_lug
                 ? [t("filter.is_central_lug.option.true")]
                 : []),

@@ -3,7 +3,8 @@ import { WheelBrand } from "@prisma/client";
 export default {
   wheels: {
     meta: {
-      title: "Обзор колесных дисков и шин для вашего автомобиля - Quarryside Auto",
+      title:
+        "Обзор колесных дисков и шин для вашего автомобиля - Quarryside Auto",
       description:
         "Откройте для себя наш выбор колес и шин для вашего автомобиля в Quarryside Auto.",
     },

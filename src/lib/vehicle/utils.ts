@@ -28,38 +28,84 @@ export function getVehicleFindManyArgs(
   const pageParam = searchParams?.page
     ? parseInt(searchParams?.page as string, 10)
     : 1;
-  const conditionParam = searchParams?.condition
-    ? (searchParams?.condition?.split(",") as VehicleCondition[])
-    : null;
-  const brandParam = searchParams?.brand
-    ? (searchParams?.brand?.split(",") as VehicleBrand[])
-    : null;
-  const fuelTypeParam = searchParams?.fuel_type
-    ? (searchParams?.fuel_type?.split(",") as VehicleFuelType[])
-    : null;
-  const engineCylinderCountParam = searchParams?.engine_cylinder_count
+  const conditionParam =
+    !!searchParams?.condition &&
+    Object.values(VehicleCondition).includes(
+      searchParams?.condition as VehicleCondition,
+    )
+      ? (searchParams?.condition?.split(",") as VehicleCondition[])
+      : null;
+
+  const brandParam =
+    !!searchParams?.brand &&
+    Object.values(VehicleBrand).includes(searchParams?.brand as VehicleBrand)
+      ? (searchParams?.brand?.split(",") as VehicleBrand[])
+      : null;
+
+  const fuelTypeParam =
+    !!searchParams?.fuel_type &&
+    Object.values(VehicleFuelType).includes(
+      searchParams?.fuel_type as VehicleFuelType,
+    )
+      ? (searchParams?.fuel_type?.split(",") as VehicleFuelType[])
+      : null;
+
+  const engineCylinderCountParamValues = searchParams?.engine_cylinder_count
     ? searchParams?.engine_cylinder_count
-        ?.split(",")
+        .split(",")
         .map((value) => parseInt(value, 10))
+        .filter(
+          (value) => !!value && typeof value === "number" && !isNaN(value),
+        )
     : null;
-  const transmissionParam = searchParams?.transmission
-    ? (searchParams?.transmission?.split(",") as VehicleTransmission[])
-    : null;
-  const drivetrainParam = searchParams?.drivetrain
-    ? (searchParams?.drivetrain?.split(",") as VehicleDrivetrain[])
-    : null;
-  const bodyStyleParam = searchParams?.body_style
-    ? (searchParams?.body_style?.split(",") as VehicleBodyStyle[])
-    : null;
-  const countryParam = searchParams?.country
-    ? (searchParams?.country?.split(",") as VehicleCountry[])
-    : null;
+  const engineCylinderCountParam =
+    !!engineCylinderCountParamValues &&
+    engineCylinderCountParamValues.length > 0
+      ? engineCylinderCountParamValues
+      : null;
+
+  const transmissionParam =
+    !!searchParams?.transmission &&
+    Object.values(VehicleTransmission).includes(
+      searchParams?.transmission as VehicleTransmission,
+    )
+      ? (searchParams?.transmission?.split(",") as VehicleTransmission[])
+      : null;
+
+  const drivetrainParam =
+    !!searchParams?.drivetrain &&
+    Object.values(VehicleDrivetrain).includes(
+      searchParams?.drivetrain as VehicleDrivetrain,
+    )
+      ? (searchParams?.drivetrain?.split(",") as VehicleDrivetrain[])
+      : null;
+
+  const bodyStyleParam =
+    !!searchParams?.body_style &&
+    Object.values(VehicleBodyStyle).includes(
+      searchParams?.body_style as VehicleBodyStyle,
+    )
+      ? (searchParams?.body_style?.split(",") as VehicleBodyStyle[])
+      : null;
+
+  const countryParam =
+    !!searchParams?.country &&
+    Object.values(VehicleCountry).includes(
+      searchParams?.country as VehicleCountry,
+    )
+      ? (searchParams?.country?.split(",") as VehicleCountry[])
+      : null;
 
   const prismaSkipParam = searchParams?.page
     ? VEHICLE_LIST_PAGE_SIZE * (pageParam - 1)
     : null;
 
-  return {
+  if (isCountArgs) {
+    const countArgs: Prisma.VehicleCountArgs = {};
+    return countArgs;
+  }
+
+  const args: Prisma.VehicleFindManyArgs = {
     ...(!isCountArgs && {
       include: {
         medias: { where: { is_thumbnail: true } },
@@ -93,6 +139,7 @@ export function getVehicleFindManyArgs(
       },
     }),
   };
+  return args;
 }
 
 /**
@@ -106,7 +153,7 @@ export const getMonthlyEstimatePrice = (
   options?: currency.Options,
 ) => {
   const currencyOptions = options ?? { precision: 0 };
-  if (!priceCts) return "";
+  if (!priceCts || typeof priceCts !== "bigint") return "";
   const price = Number(priceCts) / 100;
   const monthlyPrice = price / 48;
   return currency(monthlyPrice, currencyOptions).format();

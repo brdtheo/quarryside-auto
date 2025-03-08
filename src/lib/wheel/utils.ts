@@ -17,49 +17,51 @@ export function getWheelFindManyArgs(
   const pageParam = searchParams?.page
     ? parseInt(searchParams?.page as string, 10)
     : 1;
-  const brandParam = searchParams?.brand
-    ? (searchParams?.brand?.split(",") as WheelBrand[])
-    : null;
-  const deliveryAvailableParm = searchParams?.delivery_available
-    ? searchParams?.delivery_available
-    : null;
-  const freeOnSitePickupParm = searchParams?.free_on_site_pickup
-    ? searchParams?.free_on_site_pickup
-    : null;
-  const isThreeLugParam = searchParams?.is_three_lug
-    ? searchParams?.is_three_lug
-    : null;
-  const isFourLugParam = searchParams?.is_four_lug
-    ? searchParams?.is_four_lug
-    : null;
-  const isFiveLugParam = searchParams?.is_five_lug
-    ? searchParams?.is_five_lug
-    : null;
-  const isSixLugParam = searchParams?.is_six_lug
-    ? searchParams?.is_six_lug
-    : null;
-  const isEightLugParam = searchParams?.is_eight_lug
-    ? searchParams?.is_eight_lug
-    : null;
-  const isTenLugParam = searchParams?.is_ten_lug
-    ? searchParams?.is_ten_lug
-    : null;
-  const isCentralLugParam = searchParams?.is_central_lug
-    ? searchParams?.is_central_lug
-    : null;
+  const brandParam =
+    !!searchParams?.brand &&
+    Object.values(WheelBrand).includes(searchParams?.brand as WheelBrand)
+      ? (searchParams?.brand?.split(",") as WheelBrand[])
+      : null;
+  const deliveryAvailableParm =
+    searchParams?.delivery_available === "true"
+      ? searchParams?.delivery_available
+      : null;
+  const freeOnSitePickupParm =
+    searchParams?.free_on_site_pickup === "true"
+      ? searchParams?.free_on_site_pickup
+      : null;
+  const isThreeLugParam =
+    searchParams?.is_three_lug === "true" ? searchParams?.is_three_lug : null;
+  const isFourLugParam =
+    searchParams?.is_four_lug === "true" ? searchParams?.is_four_lug : null;
+  const isFiveLugParam =
+    searchParams?.is_five_lug === "true" ? searchParams?.is_five_lug : null;
+  const isSixLugParam =
+    searchParams?.is_six_lug === "true" ? searchParams?.is_six_lug : null;
+  const isEightLugParam =
+    searchParams?.is_eight_lug === "true" ? searchParams?.is_eight_lug : null;
+  const isTenLugParam =
+    searchParams?.is_ten_lug === "true" ? searchParams?.is_ten_lug : null;
+  const isCentralLugParam =
+    searchParams?.is_central_lug === "true"
+      ? searchParams?.is_central_lug
+      : null;
 
   const prismaSkipParam = searchParams?.page
     ? WHEEL_LIST_PAGE_SIZE * (pageParam - 1)
     : null;
 
-  return {
-    ...(!isCountArgs && {
-      include: {
-        medias: { where: { is_thumbnail: true } },
-      },
-      take: WHEEL_LIST_PAGE_SIZE,
-      ...(prismaSkipParam ? { skip: prismaSkipParam } : {}),
-    }),
+  if (isCountArgs) {
+    const countArgs: Prisma.WheelCountArgs = {};
+    return countArgs;
+  }
+
+  const args: Prisma.WheelFindManyArgs = {
+    include: {
+      medias: { where: { is_thumbnail: true } },
+    },
+    take: WHEEL_LIST_PAGE_SIZE,
+    ...(prismaSkipParam ? { skip: prismaSkipParam } : {}),
     ...((!!brandParam ||
       !!deliveryAvailableParm ||
       !!freeOnSitePickupParm ||
@@ -86,4 +88,5 @@ export function getWheelFindManyArgs(
       },
     }),
   };
+  return args;
 }

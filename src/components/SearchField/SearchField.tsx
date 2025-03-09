@@ -28,6 +28,7 @@ export default function SearchField({
 
   return (
     <div
+      role="search"
       aria-disabled={isDisabled}
       className={clsx(
         "flex border border-gray-300 dark:border-blacksecondary dark:hover:border-white rounded h-8 pl-3 w-fit transition-colors duration-75",

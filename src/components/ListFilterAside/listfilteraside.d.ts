@@ -5,7 +5,7 @@ import type { PageSearchParams } from "@/types";
 export type ListFilterAsideProps = {
   className?: string;
   sections: ListFilterAsideSectionProps[];
-  searchParams: Record<PageSearchParams>;
+  searchParams: PageSearchParams;
   nameSpace: string;
 };
 

@@ -29,15 +29,13 @@ export default function TextField({
         className,
       )}
     >
-      {!isTextArea && (
-        <input
-          placeholder={placeholder}
-          className="h-full w-full bg-transparent outline-none text-sm pr-3"
-          type="search"
-          value={value}
-          onChange={() => {}}
-        />
-      )}
+      <input
+        placeholder={placeholder}
+        className="h-full w-full bg-transparent outline-none text-sm pr-3"
+        type="text"
+        value={value}
+        onChange={() => {}}
+      />
     </div>
   );
 }

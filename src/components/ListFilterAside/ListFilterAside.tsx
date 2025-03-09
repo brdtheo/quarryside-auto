@@ -31,7 +31,7 @@ export default function ListFilterAside({
   const { getUpdatedURLFromSearchParam } = useURLSearchParams(searchParams);
 
   const appliedFilterList = useMemo(() => {
-    return Object.entries<string>(searchParams).reduce<AppliedListFilter[]>(
+    return Object.entries(searchParams).reduce<AppliedListFilter[]>(
       (prev, current) => {
         const paramName = current[0];
         const paramValues = (current[1] ?? [])?.split(",");
@@ -70,7 +70,7 @@ export default function ListFilterAside({
         </div>
       )}
 
-      <form className="flex flex-col gap-4">
+      <form role="form" className="flex flex-col gap-4">
         {(sections ?? []).map((section, index) => (
           <ListFilterAsideSection
             key={index}

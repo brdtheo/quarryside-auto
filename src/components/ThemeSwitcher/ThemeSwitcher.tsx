@@ -73,6 +73,7 @@ export default function ThemeSwitcher() {
         <IconMoon color="currentColor" size={ICON_SIZE} stroke={2} />
       </button>
       <button
+        name="light"
         aria-label="Set color theme to light"
         role="button"
         className={clsx(baseButtonClassname, {

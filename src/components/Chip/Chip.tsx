@@ -36,7 +36,10 @@ export default function Chip({
   iconHref,
 }: ChipProps) {
   return (
-    <div className="inline-flex rounded bg-primary dark:bg-primarydark">
+    <div
+      data-testid="chip"
+      className="inline-flex rounded bg-primary dark:bg-primarydark"
+    >
       {!!leftIcon && (
         <ChipIcon className="pr-1 pl-2" href={iconHref}>
           {leftIcon}

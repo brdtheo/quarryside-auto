@@ -18,8 +18,8 @@ export default function ClientFeedback({
       </div>
 
       <div className="text-gray-500 flex justify-between text-sm pt-4">
-        <span>{author}</span>
-        <span>{date}</span>
+        <address>{author}</address>
+        <time>{date}</time>
       </div>
     </article>
   );

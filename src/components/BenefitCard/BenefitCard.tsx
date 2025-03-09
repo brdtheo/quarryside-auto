@@ -1,6 +1,6 @@
 import type { BenefitCardProps } from ".";
 
-export default async function BenefitCard({
+export default function BenefitCard({
   title,
   description,
   icon,

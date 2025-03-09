@@ -25,6 +25,7 @@ export default function Checkbox({
           id={id}
           className="invisible absolute"
           type="checkbox"
+          role="checkbox"
           name={id}
           checked={checked}
           readOnly

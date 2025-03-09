@@ -88,5 +88,11 @@ vi.mock("next/navigation", () => {
       faker.seed();
       return searchParams;
     },
+    useSelectedLayoutSegment: () => {
+      faker.seed(777);
+      const segment = faker.string.alpha({ casing: "lower", length: 15 });
+      faker.seed();
+      return segment;
+    },
   };
 });

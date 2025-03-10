@@ -10,6 +10,7 @@ export default defineConfig({
     coverage: {
       provider: "v8",
     },
+    setupFiles: "src/setupTests.tsx",
   },
   plugins: [tsconfigPaths(), react()],
 });

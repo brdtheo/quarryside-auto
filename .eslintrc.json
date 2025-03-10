@@ -4,6 +4,7 @@
     "next/typescript",
     "plugin:prettier/recommended"
   ],
+  "plugins": ["testing-library"],
   "settings": {
     "react": {
       "version": "detect"

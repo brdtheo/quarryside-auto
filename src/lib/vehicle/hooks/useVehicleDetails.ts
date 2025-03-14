@@ -18,7 +18,7 @@ interface VehicleBase extends Vehicle {
 export default async function useVehicleDetails(vehicle: VehicleBase) {
   const t = await getTranslations("vehicles");
 
-  if (!vehicle) {
+  if (!vehicle || Object.keys(vehicle).length === 0) {
     return {
       bodyStyle: "",
       brand: "",

@@ -37,13 +37,15 @@ export default async function BlogPost({
         </div>
 
         <div className="flex flex-col pt-4 pb-3 px-4">
-          <ul className="flex flex-wrap gap-1">
-            {(tags ?? []).map((tag, index) => (
-              <li key={index}>
-                <Chip>{tag}</Chip>
-              </li>
-            ))}
-          </ul>
+          {tags?.length > 0 && (
+            <ul className="flex flex-wrap gap-1">
+              {(tags ?? []).map((tag, index) => (
+                <li key={index}>
+                  <Chip>{tag}</Chip>
+                </li>
+              ))}
+            </ul>
+          )}
           <h2
             title={title}
             className="text-lg font-medium leading-6 line-clamp-3 @xs/postcard:line-clamp-2 pt-2 pb-1"
@@ -55,10 +57,10 @@ export default async function BlogPost({
           </p>
         </div>
 
-        <div className="flex justify-between pt-1 px-4 pb-2 text-xs">
+        <footer className="flex justify-between pt-1 px-4 pb-2 text-xs">
           <span>{author}</span>
           <span>{date}</span>
-        </div>
+        </footer>
       </Link>
     </article>
   );

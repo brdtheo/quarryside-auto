@@ -12,6 +12,7 @@ export default function MediaSkeleton({
 }: MediaSkeletonProps) {
   return (
     <div
+      data-testid="media-skeleton"
       className={clsx(
         "bg-gray-200 dark:bg-gray-600 flex items-center justify-center w-full h-full",
         className,

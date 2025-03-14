@@ -1,7 +1,8 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
-
 import { faker } from "@faker-js/faker";
+
 import { cleanup, render, screen } from "@testing-library/react";
+
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import Checkbox from ".";
 

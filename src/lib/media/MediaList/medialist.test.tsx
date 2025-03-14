@@ -1,10 +1,7 @@
 import { Media } from "@prisma/client";
 
-import dayjs from "dayjs";
-
-import { afterEach, describe, expect, it } from "vitest";
-
 import { faker } from "@faker-js/faker";
+
 import {
   cleanup,
   fireEvent,
@@ -12,6 +9,10 @@ import {
   screen,
   within,
 } from "@testing-library/react";
+
+import dayjs from "dayjs";
+
+import { afterEach, describe, expect, it } from "vitest";
 
 import MediaList from ".";
 
@@ -60,25 +61,22 @@ describe("MediaList", () => {
     expect(listItem).not.toBeInTheDocument();
   });
 
-  it(
-    "Renders a list with a list item containg the preview for each media item",
-    () => {
-      render(<MediaList mediaList={mediaList} alt={alt} />);
-      const list = screen.getByRole("list");
-      const listItem = screen.getAllByRole("listitem");
-      expect(list).toBeInTheDocument();
-      expect(listItem).toHaveLength(5);
-      listItem.forEach((listItem) => {
-        const button = within(listItem).getByRole("button");
-        const image = within(button).getByRole("img");
-        expect(button).toBeInTheDocument();
-        expect(listItem).toBeInTheDocument();
-        expect(image).toBeInTheDocument();
-        expect(image).toHaveAttribute("src");
-        expect(image).toHaveAttribute("alt");
-      });
-    },
-  );
+  it("Renders a list with a list item containg the preview for each media item", () => {
+    render(<MediaList mediaList={mediaList} alt={alt} />);
+    const list = screen.getByRole("list");
+    const listItem = screen.getAllByRole("listitem");
+    expect(list).toBeInTheDocument();
+    expect(listItem).toHaveLength(5);
+    listItem.forEach((listItem) => {
+      const button = within(listItem).getByRole("button");
+      const image = within(button).getByRole("img");
+      expect(button).toBeInTheDocument();
+      expect(listItem).toBeInTheDocument();
+      expect(image).toBeInTheDocument();
+      expect(image).toHaveAttribute("src");
+      expect(image).toHaveAttribute("alt");
+    });
+  });
 
   it("Renders the expanded view when clicking on a media", () => {
     render(<MediaList mediaList={mediaList} alt={alt} />);

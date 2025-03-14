@@ -8,6 +8,8 @@
     "^next/(.*)$",
     "^@tabler/(.*)$",
     "^@prisma/(.*)$",
+    "^@faker-js/(.*)$",
+    "^@testing-library/(.*)$",
     "clsx",
     "currency.js",
     "dayjs",

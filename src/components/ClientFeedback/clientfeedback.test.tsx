@@ -1,10 +1,11 @@
+import { faker } from "@faker-js/faker";
+
+import { cleanup, render, screen } from "@testing-library/react";
+
 import dayjs from "dayjs";
 
 import { afterEach, describe, expect, it } from "vitest";
 import { beforeEach } from "vitest";
-
-import { faker } from "@faker-js/faker";
-import { cleanup, render, screen } from "@testing-library/react";
 
 import ClientFeedback from ".";
 

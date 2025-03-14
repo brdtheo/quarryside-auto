@@ -2,10 +2,11 @@ import { ReactNode } from "react";
 
 import { NextIntlClientProvider } from "next-intl";
 
-import "@testing-library/jest-dom/vitest";
-import { vi } from "vitest";
-
 import { faker } from "@faker-js/faker";
+
+import "@testing-library/jest-dom/vitest";
+
+import { vi } from "vitest";
 
 import messages from "../messages/en";
 

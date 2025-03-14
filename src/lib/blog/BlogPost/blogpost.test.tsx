@@ -1,10 +1,12 @@
+import { faker } from "@faker-js/faker";
+
+import { cleanup, render, screen, within } from "@testing-library/react";
+
 import dayjs from "dayjs";
 
 import { afterEach, describe, expect, it } from "vitest";
 
 import { NextIntlClientWrapper } from "@/setupTests";
-import { faker } from "@faker-js/faker";
-import { cleanup, render, screen, within } from "@testing-library/react";
 
 import BlogPost from ".";
 

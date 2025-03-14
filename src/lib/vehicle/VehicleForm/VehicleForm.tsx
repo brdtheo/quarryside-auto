@@ -8,6 +8,7 @@ export default async function VehicleForm() {
 
   return (
     <form
+      aria-label="Vehicle Form"
       action="#"
       noValidate
       className="bg-background dark:bg-black rounded py-8 px-4 flex flex-col gap-6"

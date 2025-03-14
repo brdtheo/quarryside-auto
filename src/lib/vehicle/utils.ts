@@ -1,5 +1,6 @@
 import {
   Prisma,
+  Vehicle,
   VehicleBodyStyle,
   VehicleBrand,
   VehicleCondition,
@@ -149,7 +150,7 @@ export function getVehicleFindManyArgs(
  * @returns {string}
  */
 export const getMonthlyEstimatePrice = (
-  priceCts: bigint,
+  priceCts: Vehicle["price_cts"],
   options?: currency.Options,
 ) => {
   const currencyOptions = options ?? { precision: 0 };

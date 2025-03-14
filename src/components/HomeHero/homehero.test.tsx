@@ -1,10 +1,11 @@
 import { getTranslations } from "next-intl/server";
 
+import { cleanup, render, screen, within } from "@testing-library/react";
+
 import { afterEach, describe, expect, it } from "vitest";
 import { beforeEach } from "vitest";
 
 import { NextIntlClientWrapper } from "@/setupTests";
-import { cleanup, render, screen, within } from "@testing-library/react";
 
 import HomeHero from ".";
 

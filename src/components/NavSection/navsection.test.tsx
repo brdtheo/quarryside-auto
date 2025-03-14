@@ -1,8 +1,10 @@
+import { faker } from "@faker-js/faker";
+
+import { cleanup, render, screen, within } from "@testing-library/react";
+
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { NextIntlClientWrapper } from "@/setupTests";
-import { faker } from "@faker-js/faker";
-import { cleanup, render, screen, within } from "@testing-library/react";
 
 import NavSection from ".";
 

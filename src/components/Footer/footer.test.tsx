@@ -1,7 +1,8 @@
+import { cleanup, render } from "@testing-library/react";
+
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { NextIntlClientWrapper } from "@/setupTests";
-import { cleanup, render } from "@testing-library/react";
 
 import Footer from ".";
 

@@ -1,7 +1,8 @@
+import { cleanup, render, screen } from "@testing-library/react";
+
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { NextIntlClientWrapper } from "@/setupTests";
-import { cleanup, render, screen } from "@testing-library/react";
 
 import Header from ".";
 

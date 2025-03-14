@@ -1,9 +1,9 @@
 import { getTranslations } from "next-intl/server";
 
+import { cleanup, render, screen } from "@testing-library/react";
+
 import { afterEach, describe, expect, it } from "vitest";
 import { beforeEach } from "vitest";
-
-import { cleanup, render, screen } from "@testing-library/react";
 
 import ClientFeedbackList from ".";
 

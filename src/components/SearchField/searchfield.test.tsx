@@ -1,8 +1,10 @@
+import { faker } from "@faker-js/faker";
+
+import { cleanup, render, screen } from "@testing-library/react";
+
 import { afterEach, describe, expect, it } from "vitest";
 
 import { NextIntlClientWrapper } from "@/setupTests";
-import { faker } from "@faker-js/faker";
-import { cleanup, render, screen } from "@testing-library/react";
 
 import SearchField from ".";
 

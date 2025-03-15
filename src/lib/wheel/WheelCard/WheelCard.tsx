@@ -27,8 +27,8 @@ export default async function WheelCard({ wheel }: WheelCardProps) {
       >
         <div className="w-full flex flex-col gap-2">
           <div className="w-full flex self-center h-48 @sm/wheelcard:h-60 relative">
-            {!wheel.medias[0] && <MediaSkeleton className="w-full h-full" />}
-            {!!wheel.medias[0] && (
+            {!wheel.medias?.[0] && <MediaSkeleton className="w-full h-full" />}
+            {!!wheel.medias?.[0] && (
               <Image
                 src={wheel.medias[0].url}
                 sizes="450px"

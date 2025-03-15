@@ -83,6 +83,10 @@ export default async function useVehicleDetails(vehicle: VehicleBase) {
 
   const price = vehicle.price_cts ? getPrice(vehicle.price_cts) : "";
 
+  const priceWithoutCurrency = vehicle.price_cts
+    ? getPrice(vehicle.price_cts, { symbol: "" })
+    : "";
+
   const power = vehicle.power_bhp
     ? t("details.power.value", {
         power: Number(vehicle.power_bhp),
@@ -141,6 +145,7 @@ export default async function useVehicleDetails(vehicle: VehicleBase) {
     monthlyEstimatePrice,
     power,
     price,
+    priceWithoutCurrency,
     title,
     titleWithoutYear,
     topSpeed,

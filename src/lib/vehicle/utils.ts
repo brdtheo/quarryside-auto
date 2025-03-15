@@ -13,6 +13,7 @@ import {
 import currency from "currency.js";
 
 import { VEHICLE_LIST_PAGE_SIZE } from "@/lib/vehicle/constants";
+import { VehicleRichDataParams } from "@/lib/vehicle/types";
 
 import type { PageSearchParams } from "@/types";
 
@@ -159,3 +160,37 @@ export const getMonthlyEstimatePrice = (
   const monthlyPrice = price / 48;
   return currency(monthlyPrice, currencyOptions).format();
 };
+
+/**
+ * Returns JSON-LD schema data for vehicle details page
+ */
+export function getVehicleRichData({
+  brand,
+  thumbnail,
+  description,
+  name,
+  price,
+  slug,
+}: VehicleRichDataParams) {
+  return {
+    __html: `{
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "${name}",
+      "description": "${description}",
+      "image": "${thumbnail}",
+      "brand": {
+        "@type": "Brand",
+        "name": "${brand}"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "url": "https://quarryside-auto.com/en/vehicles/${slug}",
+        "priceCurrency": "USD",
+        "price": "${price}"
+      }
+    }
+  `,
+  };
+}

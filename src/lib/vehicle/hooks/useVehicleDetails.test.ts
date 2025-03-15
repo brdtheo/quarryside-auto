@@ -132,6 +132,16 @@ describe("useVehicleDetails", async () => {
     expect(vehicleDetails.price).toBe(getPrice(vehicle.price_cts));
   });
 
+  it("Returns the vehicle's price without currency", () => {
+    expectTypeOf(
+      vehicleDetails.priceWithoutCurrency ?? "",
+    ).toEqualTypeOf<string>();
+    expect(vehicleDetails.priceWithoutCurrency).toBeTruthy();
+    expect(vehicleDetails.priceWithoutCurrency).toBe(
+      getPrice(vehicle.price_cts, { symbol: "" }),
+    );
+  });
+
   it("Returns the vehicle's title", () => {
     expectTypeOf(vehicleDetails.title).toEqualTypeOf<string>();
     expect(vehicleDetails.title).toBeTruthy();

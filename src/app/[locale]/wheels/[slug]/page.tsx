@@ -11,6 +11,7 @@ import MediaList from "@/lib/media/MediaList";
 import { prisma } from "@/lib/prisma";
 import WheelForm from "@/lib/wheel/WheelForm";
 import WheelRelatedVehiclesSection from "@/lib/wheel/WheelRelatedVehiclesSection";
+import WheelRichData from "@/lib/wheel/WheelRichData";
 import WheelSpecificationSection from "@/lib/wheel/WheelSpecificationSection";
 import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 
@@ -86,7 +87,7 @@ export default async function Page({ params }: DetailsPageProps) {
     return <NotFound />;
   }
 
-  const { title, price } = await useWheelDetails(wheel);
+  const { title, price, brand } = await useWheelDetails(wheel);
 
   return (
     <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">
@@ -108,6 +109,14 @@ export default async function Page({ params }: DetailsPageProps) {
           <Advertising className="mt-4" ratioMode="horizontal" />
         </div>
       </div>
+
+      <WheelRichData
+        brand={brand}
+        medias={wheel.medias}
+        name={title}
+        price={price}
+        slug={slug}
+      />
     </Container>
   );
 }

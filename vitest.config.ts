@@ -9,6 +9,13 @@ export default defineConfig({
     environment: "happy-dom",
     coverage: {
       provider: "v8",
+      include: [
+        "src/app/[locale]/**",
+        "src/components/**",
+        "src/hooks/**",
+        "src/lib/**",
+        "src/utils",
+      ],
     },
     setupFiles: "src/setupTests.tsx",
   },

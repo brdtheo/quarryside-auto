@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import dayjs from "dayjs";
+
 import Chip from "@/components/Chip";
 
 import MediaSkeleton from "@/lib/media/MediaSkeleton";
@@ -17,6 +19,8 @@ export default async function BlogPost({
   author,
   date,
 }: BlogPostProps) {
+  const formattedDatetime = dayjs(date).format('YYYY-MM-DD');
+
   return (
     <article className="@container/postcard">
       <Link
@@ -58,8 +62,8 @@ export default async function BlogPost({
         </div>
 
         <footer className="flex justify-between pt-1 px-4 pb-2 text-xs">
-          <span>{author}</span>
-          <span>{date}</span>
+          <address>{author}</address>
+          <time dateTime={formattedDatetime}>{date}</time>
         </footer>
       </Link>
     </article>

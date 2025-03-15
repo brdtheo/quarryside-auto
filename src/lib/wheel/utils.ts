@@ -1,6 +1,7 @@
 import { Prisma, WheelBrand } from "@prisma/client";
 
 import { WHEEL_LIST_PAGE_SIZE } from "@/lib/wheel/constants";
+import type { WheelRichDataParams } from "@/lib/wheel/types";
 
 import type { PageSearchParams } from "@/types";
 
@@ -89,4 +90,36 @@ export function getWheelFindManyArgs(
     }),
   };
   return args;
+}
+
+/**
+ * Returns JSON-LD schema data for wheel details page
+ */
+export function getWheelRichData({
+  brand,
+  thumbnail,
+  name,
+  price,
+  slug,
+}: WheelRichDataParams) {
+  return {
+    __html: `{
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "${name}",
+      "image": "${thumbnail}",
+      "brand": {
+        "@type": "Brand",
+        "name": "${brand}"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/InStock",
+        "url": "https://quarryside-auto.com/en/wheels/${slug}",
+        "priceCurrency": "USD",
+        "price": "${price}"
+      }
+    }
+  `,
+  };
 }

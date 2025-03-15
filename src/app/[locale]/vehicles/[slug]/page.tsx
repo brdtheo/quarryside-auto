@@ -12,6 +12,7 @@ import { prisma } from "@/lib/prisma";
 import VehicleForm from "@/lib/vehicle/VehicleForm";
 import VehiclePerformanceSection from "@/lib/vehicle/VehiclePerformanceSection";
 import VehicleRelatedWheelsSection from "@/lib/vehicle/VehicleRelatedWheelsSection";
+import VehicleRichData from "@/lib/vehicle/VehicleRichData";
 import VehicleSpecificationSection from "@/lib/vehicle/VehicleSpecificationSection";
 import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
 
@@ -87,7 +88,8 @@ export default async function Page({ params }: DetailsPageProps) {
     return <NotFound />;
   }
 
-  const { titleWithoutYear, price } = await useVehicleDetails(vehicle);
+  const { titleWithoutYear, price, priceWithoutCurrency, brand } =
+    await useVehicleDetails(vehicle);
 
   return (
     <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">
@@ -110,6 +112,15 @@ export default async function Page({ params }: DetailsPageProps) {
           <Advertising className="mt-4" ratioMode="horizontal" />
         </div>
       </div>
+
+      <VehicleRichData
+        description={vehicle.description ?? ""}
+        brand={brand}
+        medias={vehicle.medias}
+        name={titleWithoutYear}
+        price={priceWithoutCurrency ?? ""}
+        slug={slug}
+      />
     </Container>
   );
 }

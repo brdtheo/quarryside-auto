@@ -46,6 +46,7 @@ export default function WheelForm({
 
   return (
     <form
+      aria-label="Wheel Form"
       action="#"
       noValidate
       className="bg-background dark:bg-black rounded py-8 px-4 flex flex-1 flex-col gap-6"
@@ -59,32 +60,34 @@ export default function WheelForm({
         </div>
       </div>
 
-      <ul className="flex flex-col gap-2">
-        {isFreeOnSitePickup && (
-          <li className="inline-flex items-center gap-1">
-            <IconBuildingStore
-              className="text-primary dark:text-primarydark"
-              stroke={1.6}
-              size={18}
-            />
-            <span className="font-medium text-xs">
-              {t("filter.free_on_site_pickup.option.true")}
-            </span>
-          </li>
-        )}
-        {isDeliveryAvailable && (
-          <li className="inline-flex items-center gap-1">
-            <IconTruckDelivery
-              className="text-primary dark:text-primarydark"
-              stroke={1.6}
-              size={18}
-            />
-            <span className="font-medium text-xs">
-              {t("filter.delivery_available.option.true")}
-            </span>
-          </li>
-        )}
-      </ul>
+      {(!!isFreeOnSitePickup || !!isDeliveryAvailable) && (
+        <ul className="flex flex-col gap-2">
+          {!!isFreeOnSitePickup && (
+            <li className="inline-flex items-center gap-1">
+              <IconBuildingStore
+                className="text-primary dark:text-primarydark"
+                stroke={1.6}
+                size={18}
+              />
+              <span className="font-medium text-xs">
+                {t("filter.free_on_site_pickup.option.true")}
+              </span>
+            </li>
+          )}
+          {!!isDeliveryAvailable && (
+            <li className="inline-flex items-center gap-1">
+              <IconTruckDelivery
+                className="text-primary dark:text-primarydark"
+                stroke={1.6}
+                size={18}
+              />
+              <span className="font-medium text-xs">
+                {t("filter.delivery_available.option.true")}
+              </span>
+            </li>
+          )}
+        </ul>
+      )}
 
       <Checkbox
         id="assembly-without-appointment"

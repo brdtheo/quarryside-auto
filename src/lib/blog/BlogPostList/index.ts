@@ -1,5 +1,3 @@
-import LatestPostList from "./BlogPostList";
-import type { LatestPostListProps } from "./blogpostlist";
+import BlogPostList from "./BlogPostList";
 
-export type { LatestPostListProps };
-export default LatestPostList;
+export default BlogPostList;

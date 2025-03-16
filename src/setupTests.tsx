@@ -82,9 +82,9 @@ vi.mock("next/navigation", () => {
     useSearchParams: () => {
       faker.seed(777);
       const searchParams = new URLSearchParams({
-        [faker.lorem.word()]: `${faker.string.alphanumeric()}`,
-        [faker.lorem.word()]: `${faker.string.alphanumeric()}`,
-        [faker.lorem.word()]: `${faker.string.alphanumeric()}`,
+        a: `${faker.string.numeric(5)}`,
+        b: `${faker.string.numeric(5)},${faker.string.numeric(5)}`,
+        c: `${faker.string.numeric(5)}`,
       });
       faker.seed();
       return searchParams;

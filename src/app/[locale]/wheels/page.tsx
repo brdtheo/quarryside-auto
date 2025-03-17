@@ -16,6 +16,8 @@ import { WHEEL_LIST_PAGE_SIZE } from "@/lib/wheel/constants";
 import { WheelWithMedias } from "@/lib/wheel/types";
 import { getWheelFindManyArgs } from "@/lib/wheel/utils";
 
+import { OPEN_GRAPH_IMAGE_URL } from "@/constants";
+
 import type { PageProps } from "@/types";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,15 +29,27 @@ export async function generateMetadata(): Promise<Metadata> {
       title: t("meta.title"),
       description: t("meta.description"),
       siteName: "Quarryside Auto",
+      images: {
+        url: OPEN_GRAPH_IMAGE_URL,
+        alt: t("meta.title"),
+        width: 1920,
+        height: 1017,
+      },
     },
     twitter: {
       title: t("meta.title"),
       description: t("meta.description"),
+      images: {
+        url: OPEN_GRAPH_IMAGE_URL,
+        alt: t("meta.title"),
+        width: 1920,
+        height: 1017,
+      },
     },
     alternates: {
       canonical: "/en/wheels",
       languages: {
-        "ru": "/ru/wheels",
+        ru: "/ru/wheels",
       },
     },
   };

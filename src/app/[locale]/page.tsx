@@ -18,6 +18,12 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: t("meta.title"),
     description: t("meta.description"),
+    alternates: {
+      canonical: "/en",
+      languages: {
+        ru: "/ru",
+      },
+    },
   };
 }
 

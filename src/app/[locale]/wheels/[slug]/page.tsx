@@ -61,6 +61,12 @@ export async function generateMetadata({
         height: 878,
       },
     },
+    alternates: {
+      canonical: `/en/wheels/${wheel.slug}`,
+      languages: {
+        ru: `/ru/wheels/${wheel.slug}`,
+      },
+    },
   };
 }
 

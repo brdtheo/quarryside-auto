@@ -15,7 +15,7 @@ export default function TextField({
       <textarea
         placeholder={placeholder}
         className={clsx(
-          "flex border border-primary dark:border-blacksecondary rounded bg-white dark:bg-transparent min-h-12 p-3 w-full bg-transparent outline-none text-sm resize-none dark:hover:border-white transition-colors duration-75",
+          "flex border border-primary dark:border-blacksecondary rounded dark:bg-transparent min-h-12 p-3 w-full bg-transparent outline-hidden text-sm resize-none dark:hover:border-white transition-colors duration-75",
           className,
         )}
       />
@@ -31,7 +31,7 @@ export default function TextField({
     >
       <input
         placeholder={placeholder}
-        className="h-full w-full bg-transparent outline-none text-sm pr-3"
+        className="h-full w-full bg-transparent outline-hidden text-sm pr-3"
         type="text"
         value={value}
         onChange={() => {}}

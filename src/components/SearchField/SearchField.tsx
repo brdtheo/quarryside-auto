@@ -43,7 +43,7 @@ export default function SearchField({
         ref={inputRef}
         disabled={isDisabled}
         placeholder={t("search")}
-        className="h-full w-full bg-transparent outline-none text-sm dark:text-white"
+        className="h-full w-full bg-transparent outline-hidden text-sm dark:text-white"
         type="search"
         value={value}
         onChange={onChange}

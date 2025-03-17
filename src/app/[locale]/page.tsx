@@ -13,11 +13,34 @@ import { VehicleWithMedias } from "@/lib/vehicle/types";
 
 import { getHomeFindManyArgs } from "@/utils";
 
+import { OPEN_GRAPH_IMAGE_URL } from "@/constants";
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("home");
   return {
     title: t("meta.title"),
     description: t("meta.description"),
+    openGraph: {
+      title: t("meta.title"),
+      description: t("meta.description"),
+      siteName: "Quarryside Auto",
+      images: {
+        url: OPEN_GRAPH_IMAGE_URL,
+        alt: t("meta.title"),
+        width: 1920,
+        height: 1017,
+      },
+    },
+    twitter: {
+      title: t("meta.title"),
+      description: t("meta.description"),
+      images: {
+        url: OPEN_GRAPH_IMAGE_URL,
+        alt: t("meta.title"),
+        width: 1920,
+        height: 1017,
+      },
+    },
     alternates: {
       canonical: "/en",
       languages: {

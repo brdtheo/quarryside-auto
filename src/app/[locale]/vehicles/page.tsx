@@ -16,6 +16,8 @@ import { VEHICLE_LIST_PAGE_SIZE } from "@/lib/vehicle/constants";
 import { VehicleWithMedias } from "@/lib/vehicle/types";
 import { getVehicleFindManyArgs } from "@/lib/vehicle/utils";
 
+import { OPEN_GRAPH_IMAGE_URL } from "@/constants";
+
 import type { PageProps } from "@/types";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -27,10 +29,22 @@ export async function generateMetadata(): Promise<Metadata> {
       title: t("meta.title"),
       description: t("meta.description"),
       siteName: "Quarryside Auto",
+      images: {
+        url: OPEN_GRAPH_IMAGE_URL,
+        alt: t("meta.title"),
+        width: 1920,
+        height: 1017,
+      },
     },
     twitter: {
       title: t("meta.title"),
       description: t("meta.description"),
+      images: {
+        url: OPEN_GRAPH_IMAGE_URL,
+        alt: t("meta.title"),
+        width: 1920,
+        height: 1017,
+      },
     },
     alternates: {
       canonical: "/en/vehicles",

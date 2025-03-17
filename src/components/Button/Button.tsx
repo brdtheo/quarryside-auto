@@ -18,7 +18,7 @@ export default function Button({
     if (!rounded) return "";
     switch (size) {
       case "xs":
-        return "rounded-sm";
+        return "rounded-xs";
       case "sm":
         return "rounded";
       case "lg":

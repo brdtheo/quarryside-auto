@@ -32,8 +32,8 @@ export default function IconButton({
       type="button"
       disabled={isDisabled}
       className={clsx(
-        "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 disabled:dark:bg-gray-600 disabled:opacity-40 relative",
-        "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 disabled:dark:bg-gray-600 disabled:opacity-40 relative",
+        "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:opacity-40 relative",
+        "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:opacity-40 relative",
         containerClassname,
         className,
       )}

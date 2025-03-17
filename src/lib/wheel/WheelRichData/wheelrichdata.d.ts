@@ -4,6 +4,6 @@ export type WheelRichDataProps = {
   brand: string;
   medias: Media[];
   name: string;
-  price: string
+  price: string;
   slug: Wheel["slug"];
 };

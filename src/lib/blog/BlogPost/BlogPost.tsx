@@ -19,7 +19,7 @@ export default async function BlogPost({
   author,
   date,
 }: BlogPostProps) {
-  const formattedDatetime = dayjs(date).format('YYYY-MM-DD');
+  const formattedDatetime = dayjs(date).format("YYYY-MM-DD");
 
   return (
     <article className="@container/postcard">

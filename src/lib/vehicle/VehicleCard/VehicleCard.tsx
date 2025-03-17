@@ -13,6 +13,8 @@ import type { VehicleCardProps } from ".";
 export default async function VehicleCard({ vehicle }: VehicleCardProps) {
   const t = await getTranslations("vehicles");
 
+  const thumbnail = (vehicle?.medias ?? []).find((media) => media.is_thumbnail);
+
   const {
     condition,
     href,
@@ -31,10 +33,10 @@ export default async function VehicleCard({ vehicle }: VehicleCardProps) {
         className="border border-divider dark:border-blacksecondary rounded flex flex-col @lg/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary bg-clip-content overflow-hidden"
       >
         <div className="w-full @lg/vehiclecard:w-[340px] flex self-center h-48 @sm/vehiclecard:h-64 @md/vehiclecard:h-56 relative">
-          {!vehicle.medias?.[0] && <MediaSkeleton className="w-full h-full" />}
-          {!!vehicle.medias?.[0] && (
+          {!thumbnail && <MediaSkeleton className="w-full h-full" />}
+          {!!thumbnail && (
             <Image
-              src={vehicle.medias[0].url}
+              src={thumbnail.url}
               sizes="340px"
               alt={titleWithoutYear}
               fill

@@ -9,20 +9,23 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
       - name: Install dependencies
-        run: yarn install --immutable
+        run: pnpm install
 
       - name: ✨ Prettier ✨
-        run: yarn pretty-check
+        run: pnpm pretty-check
 
       - name: 👮‍♂️ TypeScript 👮‍♂️
-        run: npx tsc
+        run: pnpm tsc
 
       - name: 🚨 ESLint 🚨
-        run: yarn next lint
+        run: pnpm next lint
 
       - name: 🧪 Vitest 🧪
-        run: yarn test
+        run: pnpm test
 
       - name: ☂️ Upload coverage reports to Codecov ☂️
         uses: codecov/codecov-action@v5

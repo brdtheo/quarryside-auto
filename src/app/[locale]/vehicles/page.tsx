@@ -32,6 +32,12 @@ export async function generateMetadata(): Promise<Metadata> {
       title: t("meta.title"),
       description: t("meta.description"),
     },
+    alternates: {
+      canonical: "/en/vehicles",
+      languages: {
+        ru: "/ru/vehicles",
+      },
+    },
   };
 }
 

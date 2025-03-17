@@ -17,6 +17,8 @@ import type { WheelCardProps } from ".";
 export default async function WheelCard({ wheel }: WheelCardProps) {
   const t = await getTranslations("wheels");
 
+  const thumbnail = (wheel?.medias ?? []).find((media) => media.is_thumbnail);
+
   const { title, price, href, brand } = await useWheelDetails(wheel);
 
   return (
@@ -27,8 +29,8 @@ export default async function WheelCard({ wheel }: WheelCardProps) {
       >
         <div className="w-full flex flex-col gap-2">
           <div className="w-full flex self-center h-48 @sm/wheelcard:h-60 relative">
-            {!wheel.medias?.[0] && <MediaSkeleton className="w-full h-full" />}
-            {!!wheel.medias?.[0] && (
+            {!thumbnail && <MediaSkeleton className="w-full h-full" />}
+            {!!thumbnail && (
               <Image
                 src={wheel.medias[0].url}
                 sizes="450px"

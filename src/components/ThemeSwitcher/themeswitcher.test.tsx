@@ -1,4 +1,5 @@
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
@@ -34,26 +35,20 @@ describe("ThemeSwitcher", () => {
     });
   });
 
-  it("Changes the theme to light mode when on user click", () => {
+  it("Changes the theme to light mode when on user click", async () => {
     const lightModeButton = screen.getByRole("button", {
       name: "Set color theme to light",
     });
-    fireEvent(
-      lightModeButton,
-      new MouseEvent("click", { bubbles: true, cancelable: true }),
-    );
+    await userEvent.click(lightModeButton);
     const theme = localStorage.getItem("theme");
     expect(theme).toBe("light");
   });
 
-  it("Changes the theme to dark mode when on user click", () => {
+  it("Changes the theme to dark mode when on user click", async () => {
     const darkModeButton = screen.getByRole("button", {
       name: "Set color theme to dark",
     });
-    fireEvent(
-      darkModeButton,
-      new MouseEvent("click", { bubbles: true, cancelable: true }),
-    );
+    await userEvent.click(darkModeButton);
     const theme = localStorage.getItem("theme");
     expect(theme).toBe("dark");
   });

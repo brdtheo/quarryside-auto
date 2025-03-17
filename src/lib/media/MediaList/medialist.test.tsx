@@ -2,13 +2,8 @@ import { Media } from "@prisma/client";
 
 import { faker } from "@faker-js/faker";
 
-import {
-  cleanup,
-  fireEvent,
-  render,
-  screen,
-  within,
-} from "@testing-library/react";
+import { cleanup, render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import dayjs from "dayjs";
 
@@ -78,15 +73,12 @@ describe("MediaList", () => {
     });
   });
 
-  it("Renders the expanded view when clicking on a media", () => {
+  it("Renders the expanded view when clicking on a media", async () => {
     render(<MediaList mediaList={mediaList} alt={alt} />);
     const button = screen.getByRole("button", {
       name: "Expand media thumbnail image",
     });
-    fireEvent(
-      button,
-      new MouseEvent("click", { bubbles: true, cancelable: true }),
-    );
+    await userEvent.click(button);
     const body = document.body;
     const yarlRoot = screen.getByRole("presentation");
     const yarlPreviousButton = within(yarlRoot).getByRole("button", {

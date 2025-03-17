@@ -5,8 +5,10 @@ import { prisma } from "@/lib/prisma";
 import { DOMAIN_URL } from "@/constants";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const vehicles = await prisma.vehicle.findMany({ select: { slug: true } });
-  const wheels = await prisma.wheel.findMany({ select: { slug: true } });
+  const vehicles = await prisma.vehicle.findMany({
+    include: { medias: true },
+  });
+  const wheels = await prisma.wheel.findMany({ include: { medias: true } });
 
   const vehiclesMapped = vehicles.map((vehicle) => ({
     url: `${DOMAIN_URL}/en/vehicles/${vehicle.slug}`,
@@ -16,6 +18,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
     },
     lastModified: new Date(),
+    images: (vehicle.medias ?? []).map((media) => media.url),
     priority: 1,
   }));
   const wheelsMapped = wheels.map((wheel) => ({
@@ -26,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
     },
     lastModified: new Date(),
+    images: (wheel.medias ?? []).map((media) => media.url),
     priority: 1,
   }));
 

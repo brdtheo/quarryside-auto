@@ -1,5 +1,10 @@
 export default {
   common: {
+    locale: {
+      label: "Language",
+      en: "English",
+      ru: "Russian",
+    },
     notFoundTitle: "Not found",
     notFoundDescription:
       "It looks like the content you're looking for does not exist or has been moved. Enjoy this bouncing Covet instead:",

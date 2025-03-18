@@ -17,7 +17,7 @@ export default function ClientFeedback({
         <IconQuote className="w-5" size={20} />
       </div>
 
-      <div className="text-gray-500 flex justify-between text-sm pt-4">
+      <div className="text-gray-500 dark:text-white/80 flex justify-between text-sm pt-4">
         <address>{author}</address>
         <time>{date}</time>
       </div>

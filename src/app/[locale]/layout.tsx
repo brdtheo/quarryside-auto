@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import type { Viewport } from "next";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
 
@@ -38,14 +37,9 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as "en" | "ru")) {
+  if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
-
-  // Providing all messages to the client
-  // side is the easiest way to get started
-  const messages = await getMessages();
 
   return (
     <html lang={locale}>
@@ -55,7 +49,7 @@ export default async function LocaleLayout({
           "bg-background dark:bg-backgrounddark",
         )}
       >
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider>
           <Header />
           <SubHeader />
           <main

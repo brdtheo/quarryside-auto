@@ -13,7 +13,7 @@ import { VehicleWithMedias } from "@/lib/vehicle/types";
 
 import { getHomeFindManyArgs } from "@/utils";
 
-import { OPEN_GRAPH_IMAGE_URL } from "@/constants";
+import { DOMAIN_URL, OPEN_GRAPH_IMAGE_URL } from "@/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getTranslations("home");
@@ -42,9 +42,9 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     alternates: {
-      canonical: "/en",
+      canonical: `${DOMAIN_URL}/en`,
       languages: {
-        ru: "/ru",
+        "ru-RU": `${DOMAIN_URL}/ru`,
       },
     },
   };

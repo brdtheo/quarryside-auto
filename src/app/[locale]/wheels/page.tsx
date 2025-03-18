@@ -16,7 +16,7 @@ import { WHEEL_LIST_PAGE_SIZE } from "@/lib/wheel/constants";
 import { WheelWithMedias } from "@/lib/wheel/types";
 import { getWheelFindManyArgs } from "@/lib/wheel/utils";
 
-import { OPEN_GRAPH_IMAGE_URL } from "@/constants";
+import { DOMAIN_URL, OPEN_GRAPH_IMAGE_URL } from "@/constants";
 
 import type { PageProps } from "@/types";
 
@@ -47,9 +47,9 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     alternates: {
-      canonical: "/en/wheels",
+      canonical: `${DOMAIN_URL}/en/wheels`,
       languages: {
-        ru: "/ru/wheels",
+        "ru-RU": `${DOMAIN_URL}/ru/wheels`,
       },
     },
   };

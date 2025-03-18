@@ -16,7 +16,7 @@ import { VEHICLE_LIST_PAGE_SIZE } from "@/lib/vehicle/constants";
 import { VehicleWithMedias } from "@/lib/vehicle/types";
 import { getVehicleFindManyArgs } from "@/lib/vehicle/utils";
 
-import { OPEN_GRAPH_IMAGE_URL } from "@/constants";
+import { DOMAIN_URL, OPEN_GRAPH_IMAGE_URL } from "@/constants";
 
 import type { PageProps } from "@/types";
 
@@ -47,9 +47,9 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     alternates: {
-      canonical: "/en/vehicles",
+      canonical: `${DOMAIN_URL}/en/vehicles`,
       languages: {
-        ru: "/ru/vehicles",
+        "ru-RU": `${DOMAIN_URL}/ru/vehicles`,
       },
     },
   };

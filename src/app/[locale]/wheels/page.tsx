@@ -47,7 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
     },
     alternates: {
-      canonical: `${DOMAIN_URL}/en/wheels`,
+      canonical: `${DOMAIN_URL}/wheels`,
       languages: {
         "ru-RU": `${DOMAIN_URL}/ru/wheels`,
       },

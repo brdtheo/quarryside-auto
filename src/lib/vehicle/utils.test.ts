@@ -148,7 +148,7 @@ describe("Vehicle - utils", () => {
       offers: {
         "@type": "Offer",
         availability: "https://schema.org/InStock",
-        url: `https://quarryside-auto.com/en/vehicles/${vehicle.slug}`,
+        url: `https://quarryside-auto.com/vehicles/${vehicle.slug}`,
         priceCurrency: "USD",
         price: `${vehicle.price_cts}`,
       },

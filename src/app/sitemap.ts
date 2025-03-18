@@ -11,7 +11,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const wheels = await prisma.wheel.findMany({ include: { medias: true } });
 
   const vehiclesMapped = vehicles.map((vehicle) => ({
-    url: `${DOMAIN_URL}/en/vehicles/${vehicle.slug}`,
+    url: `${DOMAIN_URL}/vehicles/${vehicle.slug}`,
     alternates: {
       languages: {
         ru: `${DOMAIN_URL}/ru/vehicles/${vehicle.slug}`,
@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 1,
   }));
   const wheelsMapped = wheels.map((wheel) => ({
-    url: `${DOMAIN_URL}/en/wheels/${wheel.slug}`,
+    url: `${DOMAIN_URL}/wheels/${wheel.slug}`,
     alternates: {
       languages: {
         ru: `${DOMAIN_URL}/ru/wheels/${wheel.slug}`,
@@ -35,7 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     {
-      url: `${DOMAIN_URL}/en`,
+      url: DOMAIN_URL,
       lastModified: new Date(),
       priority: 1,
       alternates: {
@@ -45,7 +45,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
     },
     {
-      url: `${DOMAIN_URL}/en/vehicles`,
+      url: `${DOMAIN_URL}/vehicles`,
       lastModified: new Date(),
       priority: 1,
       alternates: {
@@ -55,7 +55,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       },
     },
     {
-      url: `${DOMAIN_URL}/en/wheels`,
+      url: `${DOMAIN_URL}/wheels`,
       lastModified: new Date(),
       priority: 1,
       alternates: {

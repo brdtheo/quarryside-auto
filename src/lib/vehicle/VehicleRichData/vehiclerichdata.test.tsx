@@ -53,7 +53,7 @@ describe("VehicleRichData", async () => {
     expect(scriptData.offers).toMatchObject({
       "@type": "Offer",
       availability: "https://schema.org/InStock",
-      url: `https://quarryside-auto.com/en/vehicles/${vehicle.slug}`,
+      url: `https://quarryside-auto.com/vehicles/${vehicle.slug}`,
       priceCurrency: "USD",
       price: vehicleDetails.priceWithoutCurrency,
     });

@@ -56,7 +56,7 @@ export default async function BlogPost({
           >
             {title}
           </h2>
-          <p className="line-clamp-3 @xs/postcard:line-clamp-4 text-gray-500 text-sm">
+          <p className="line-clamp-3 @xs/postcard:line-clamp-4 text-gray-500 dark:text-white/80 text-sm">
             {content}
           </p>
         </div>

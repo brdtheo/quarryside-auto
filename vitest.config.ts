@@ -25,6 +25,12 @@ export default defineConfig({
       ],
     },
     setupFiles: "src/setupTests.tsx",
+    server: {
+      deps: {
+        // https://github.com/vercel/next.js/issues/77200
+        inline: ["next-intl"],
+      },
+    },
   },
   plugins: [tsconfigPaths(), react()],
 });

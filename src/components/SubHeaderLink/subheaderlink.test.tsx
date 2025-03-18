@@ -24,7 +24,7 @@ describe("SubHeaderLink", () => {
     const linkHref = link.getAttribute("href");
     const linkButton = screen.getByText(label);
     expect(link).toBeInTheDocument();
-    expect(linkHref).toBe(`/en/${slug}`);
+    expect(linkHref).toBe(`/${slug}`);
     expect(linkButton).toBeInTheDocument();
   });
 

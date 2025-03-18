@@ -81,7 +81,7 @@ describe("useVehicleDetails", async () => {
           engineDisplacementVolumeLiters: Number(
             vehicle.engine_displacement_volume_liters,
           ),
-          engineLayout: vehicle.engine_layout,
+          engineLayout: vehicle.engine_layout ?? "",
           engineCylinderCount: vehicle.engine_cylinder_count,
         }),
       );
@@ -103,7 +103,7 @@ describe("useVehicleDetails", async () => {
     expect(vehicleDetails.mileage).toBeTruthy();
     expect(vehicleDetails.mileage).toBe(
       t("details.mileage.value", {
-        mileage: vehicle.mileage,
+        mileage: vehicle.mileage ?? "",
       }),
     );
   });
@@ -167,7 +167,7 @@ describe("useVehicleDetails", async () => {
     expect(vehicleDetails.topSpeed).toBeTruthy();
     expect(vehicleDetails.topSpeed).toBe(
       t("details.topSpeed.value", {
-        speed: vehicle.top_speed_mph,
+        speed: vehicle.top_speed_mph ?? "",
       }),
     );
   });

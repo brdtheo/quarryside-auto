@@ -115,7 +115,7 @@ export function getWheelRichData({
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
-        "url": "https://quarryside-auto.com/en/wheels/${slug}",
+        "url": "https://quarryside-auto.com/wheels/${slug}",
         "priceCurrency": "USD",
         "price": "${price}"
       }

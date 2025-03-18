@@ -51,7 +51,7 @@ describe("WheelRichData", async () => {
     expect(scriptData.offers).toMatchObject({
       "@type": "Offer",
       availability: "https://schema.org/InStock",
-      url: `https://quarryside-auto.com/en/wheels/${wheel.slug}`,
+      url: `https://quarryside-auto.com/wheels/${wheel.slug}`,
       priceCurrency: "USD",
       price: wheelDetails.price,
     });

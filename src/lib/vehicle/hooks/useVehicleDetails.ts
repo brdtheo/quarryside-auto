@@ -75,9 +75,11 @@ export default async function useVehicleDetails(vehicle: VehicleBase) {
 
   const href = `/vehicles/${encodeURIComponent(vehicle.slug ?? "")}`;
 
-  const mileage = t("details.mileage.value", {
-    mileage: vehicle.mileage,
-  });
+  const mileage = vehicle.mileage
+    ? t("details.mileage.value", {
+        mileage: vehicle.mileage,
+      })
+    : "";
 
   const transmission = t(`filter.transmission.option.${vehicle.transmission}`);
 
@@ -94,9 +96,9 @@ export default async function useVehicleDetails(vehicle: VehicleBase) {
     : "";
 
   const engine =
-    vehicle.engine_displacement_volume_liters &&
-    vehicle.engine_layout &&
-    vehicle.engine_cylinder_count
+    !!vehicle.engine_displacement_volume_liters &&
+    !!vehicle.engine_layout &&
+    !!vehicle.engine_cylinder_count
       ? t("details.engine.value", {
           engineDisplacementVolumeLiters: Number(
             vehicle.engine_displacement_volume_liters,

@@ -186,7 +186,7 @@ export function getVehicleRichData({
       "offers": {
         "@type": "Offer",
         "availability": "https://schema.org/InStock",
-        "url": "https://quarryside-auto.com/en/vehicles/${slug}",
+        "url": "https://quarryside-auto.com/vehicles/${slug}",
         "priceCurrency": "USD",
         "price": "${price}"
       }

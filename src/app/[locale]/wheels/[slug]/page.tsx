@@ -64,7 +64,7 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: `${DOMAIN_URL}/en/wheels/${wheel.slug}`,
+      canonical: `${DOMAIN_URL}/wheels/${wheel.slug}`,
       languages: {
         "ru-RU": `${DOMAIN_URL}/ru/wheels/${wheel.slug}`,
       },

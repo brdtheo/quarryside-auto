@@ -16,6 +16,8 @@ import VehicleRichData from "@/lib/vehicle/VehicleRichData";
 import VehicleSpecificationSection from "@/lib/vehicle/VehicleSpecificationSection";
 import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
 
+import { DOMAIN_URL } from "@/constants";
+
 import type { DetailsPageProps } from "@/types";
 
 export async function generateMetadata({
@@ -63,9 +65,9 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: `/en/vehicles/${vehicle.slug}`,
+      canonical: `${DOMAIN_URL}/en/vehicles/${vehicle.slug}`,
       languages: {
-        ru: `/ru/vehicles/${vehicle.slug}`,
+        "ru-RU": `${DOMAIN_URL}/ru/vehicles/${vehicle.slug}`,
       },
     },
   };

@@ -15,6 +15,8 @@ import WheelRichData from "@/lib/wheel/WheelRichData";
 import WheelSpecificationSection from "@/lib/wheel/WheelSpecificationSection";
 import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 
+import { DOMAIN_URL } from "@/constants";
+
 import type { DetailsPageProps } from "@/types";
 
 export async function generateMetadata({
@@ -62,9 +64,9 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: `/en/wheels/${wheel.slug}`,
+      canonical: `${DOMAIN_URL}/en/wheels/${wheel.slug}`,
       languages: {
-        ru: `/ru/wheels/${wheel.slug}`,
+        "ru-RU": `${DOMAIN_URL}/ru/wheels/${wheel.slug}`,
       },
     },
   };

@@ -65,7 +65,7 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: `${DOMAIN_URL}/en/vehicles/${vehicle.slug}`,
+      canonical: `${DOMAIN_URL}/vehicles/${vehicle.slug}`,
       languages: {
         "ru-RU": `${DOMAIN_URL}/ru/vehicles/${vehicle.slug}`,
       },

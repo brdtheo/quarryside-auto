@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import Container from "@/components/Container";
+import LocaleSwitcher from "@/components/LocaleSwitcher";
 import NavSection from "@/components/NavSection";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
@@ -124,8 +125,9 @@ export default async function Footer() {
           />
         </div>
 
-        <div className="pt-8">
+        <div className="pt-8 flex justify-between gap-2">
           <ThemeSwitcher />
+          <LocaleSwitcher />
         </div>
       </Container>
     </footer>

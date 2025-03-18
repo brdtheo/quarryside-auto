@@ -27,7 +27,7 @@ describe("Breadcrumbs", () => {
     const href = link.getAttribute("href");
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute("href");
-    expect(href).toBe("/en");
+    expect(href).toBe("/");
   });
 
   it("Renders a list item for each URL slug", () => {

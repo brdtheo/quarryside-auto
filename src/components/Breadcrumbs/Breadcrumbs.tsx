@@ -11,9 +11,9 @@ import { Link } from "@/i18n/routing";
 
 function BreadcrumbSeparator() {
   return (
-    <li>
+    <li className="inline-flex">
       <span className="w-6 inline-flex justify-center items-center select-none text-xs">
-        <IconChevronRight size={16} />
+        <IconChevronRight size={14} />
       </span>
     </li>
   );
@@ -23,7 +23,7 @@ export default function Breadcrumbs() {
   const t = useTranslations("common");
   const paths = usePathname();
   const pathNames = useMemo(
-    () => paths.split("/").filter((path, index) => path && index !== 1),
+    () => paths.split("/").filter((path) => path),
     [paths],
   );
 

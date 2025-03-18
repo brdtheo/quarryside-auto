@@ -49,7 +49,7 @@ describe("HomeHero", () => {
     const linkText = screen.getByText(t("hero.browseUsedCars"));
     expect(vehicleLink).toBeInTheDocument();
     expect(vehicleLink).toHaveAttribute("href");
-    expect(vehicleLinkHref).toBe("/en/vehicles");
+    expect(vehicleLinkHref).toBe("/vehicles");
     expect(linkText).toBeInTheDocument();
   });
 
@@ -60,7 +60,7 @@ describe("HomeHero", () => {
     const linkText = screen.getByText(t("hero.browseRimsTires"));
     expect(wheelLink).toBeInTheDocument();
     expect(wheelLink).toHaveAttribute("href");
-    expect(wheelLinkHref).toBe("/en/wheels");
+    expect(wheelLinkHref).toBe("/wheels");
     expect(linkText).toBeInTheDocument();
   });
 });

@@ -22,7 +22,7 @@ describe("IconButton", () => {
 
   it("Set the button disabled if provided from props", () => {
     render(
-      <IconButton isDisabled onClick={() => {}}>
+      <IconButton disabled onClick={() => {}}>
         {IconMenu}
       </IconButton>,
     );

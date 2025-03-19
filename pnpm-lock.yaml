@@ -52,7 +52,7 @@ importers:
         version: 3.21.8(@types/react-dom@19.0.4(@types/react@19.0.10))(@types/react@19.0.10)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
     devDependencies:
       '@chromatic-com/storybook':
-        specifier: ^3
+        specifier: ^3.2.6
         version: 3.2.6(react@19.0.0)(storybook@8.6.7(prettier@3.5.3))
       '@eslint/js':
         specifier: ^9.20.0

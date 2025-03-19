@@ -7,10 +7,10 @@ import type { IconButtonProps } from ".";
 export default function IconButton({
   className,
   children,
-  isDisabled,
   size,
   badgeCount,
   onClick,
+  ...props
 }: IconButtonProps) {
   const containerClassname = useMemo(() => {
     switch (size) {
@@ -50,16 +50,17 @@ export default function IconButton({
 
   return (
     <button
-      role="button"
+      role={props.role ?? "button"}
       onClick={onClick}
-      type="button"
-      disabled={isDisabled}
+      type={props.type ?? "button"}
+      disabled={props.disabled}
       className={clsx(
         "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:opacity-40 relative",
         "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:opacity-40 relative",
         containerClassname,
         className,
       )}
+      {...props}
     >
       <icon.children size={iconSize} />
       {!!badgeCount && (

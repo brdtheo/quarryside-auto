@@ -1,10 +1,10 @@
 import { TablerIcon } from "@tabler/icons-react";
+import { ComponentProps } from "react";
 
-export type IconButtonProps = {
+export type IconButtonProps = ComponentProps<"button"> & {
   className?: string;
   children: TablerIcon;
   size?: "xs" | "sm" | "lg";
-  isDisabled?: boolean;
   badgeCount?: number;
   onClick: () => void;
 };

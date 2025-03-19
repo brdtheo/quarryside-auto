@@ -5,6 +5,19 @@ import react from "@vitejs/plugin-react";
 import tsconfigPaths from "./node_modules/vite-tsconfig-paths/dist/index.js";
 
 export default defineConfig({
+  optimizeDeps: {
+    include: [
+      "@faker-js/faker",
+      "@prisma/client",
+      "@storybook/experimental-nextjs-vite",
+      "@tabler/icons-react",
+      "clsx",
+      "next-intl",
+      "next/link",
+      "react",
+      "@storybook/test",
+    ],
+  },
   test: {
     environment: "happy-dom",
     coverage: {

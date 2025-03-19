@@ -20,8 +20,12 @@ import { DOMAIN_URL, OPEN_GRAPH_IMAGE_URL } from "@/constants";
 
 import type { PageProps } from "@/types";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  searchParams,
+}: PageProps): Promise<Metadata> {
   const t = await getTranslations("vehicles");
+  const params = await searchParams;
+  const hasSearchParams = (Object.entries(params ?? {}) ?? []).length > 0;
   return {
     title: t("meta.title"),
     description: t("meta.description"),
@@ -52,6 +56,13 @@ export async function generateMetadata(): Promise<Metadata> {
         "ru-RU": `${DOMAIN_URL}/ru/vehicles`,
       },
     },
+    ...(hasSearchParams
+      ? {
+          robots: {
+            index: false,
+          },
+        }
+      : {}),
   };
 }
 

@@ -48,7 +48,7 @@ export default function LocaleSwitcher() {
 
       <DropdownMenu.Portal>
         <DropdownMenu.Content
-          className="min-w-44 rounded bg-white p-1"
+          className="min-w-44 rounded bg-white dark:bg-blacksecondary p-1"
           sideOffset={5}
           align="end"
         >
@@ -56,7 +56,7 @@ export default function LocaleSwitcher() {
             <DropdownMenu.Item
               onClick={onSelectChange(locale)}
               key={locale}
-              className="cursor-pointer gap-1 px-2 relative flex h-6 items-center text-sm hover:bg-black/10 rounded outline-0"
+              className="cursor-pointer gap-1 px-2 relative flex h-6 items-center text-sm hover:bg-black/10 dark:hover:bg-white/10 rounded outline-0"
             >
               <IconCheck
                 className={clsx("invisible", {

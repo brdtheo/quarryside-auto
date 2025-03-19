@@ -1,6 +1,7 @@
 import pluginNext from "@next/eslint-plugin-next";
 
 import eslintReact from "@eslint-react/eslint-plugin";
+import eslintPluginTestingLibrary from "eslint-plugin-testing-library";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -68,6 +69,7 @@ export default [
   },
   { languageOptions: { globals: globals.browser } },
   { plugins: { "@next/next": pluginNext } },
+  { plugins: { "testing-library": eslintPluginTestingLibrary } },
   {
     rules: {
       "react/react-in-jsx-scope": "off",

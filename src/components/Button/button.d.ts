@@ -1,6 +1,6 @@
-import { ReactElement } from "react";
+import { ComponentProps, ReactElement } from "react";
 
-export type ButtonProps = {
+export type ButtonProps = ComponentProps<'button'> & {
   className?: string;
   startIcon?: ReactElement;
   endIcon?: ReactElement;
@@ -8,5 +8,4 @@ export type ButtonProps = {
   size?: "xs" | "sm" | "lg";
   color?: "primary" | "secondary";
   rounded?: boolean;
-  isDisabled?: boolean;
 };

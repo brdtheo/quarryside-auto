@@ -1,10 +1,9 @@
-import { ReactElement } from "react";
+import { ComponentProps, ReactElement } from "react";
 
-export type IconButtonProps = {
+export type IconButtonProps = ComponentProps<"button"> & {
   className?: string;
   children: ReactElement;
   size?: "xs" | "sm" | "lg";
-  isDisabled?: boolean;
   badgeCount?: number;
   onClick: () => void;
 };

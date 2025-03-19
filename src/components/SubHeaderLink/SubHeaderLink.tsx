@@ -36,7 +36,7 @@ export default function SubHeaderLink({
               !isDisabled,
             "text-gray-400 dark:text-gray-500": isDisabled,
           })}
-          isDisabled={isDisabled}
+          disabled={isDisabled}
           rounded
         >
           {label}

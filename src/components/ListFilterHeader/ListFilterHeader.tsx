@@ -75,7 +75,7 @@ export default function ListFilterHeader({
             {IconAdjustmentsHorizontal}
           </IconButton>
           <IconButton
-            isDisabled
+            disabled
             className="rounded border border-divider"
             onClick={() => {}}
           >

@@ -23,7 +23,7 @@ export default function ListFilterHeader({
     <>
       <div className="flex md:hidden justify-between pb-6 gap-4">
         <IconButton
-          isDisabled
+          disabled
           className="rounded border border-divider"
           onClick={() => {}}
         >
@@ -39,7 +39,7 @@ export default function ListFilterHeader({
             <IconAdjustmentsHorizontal size={16} stroke={1.5} />
           </IconButton>
           <IconButton
-            isDisabled
+            disabled
             className="rounded border border-divider"
             onClick={() => {}}
           >

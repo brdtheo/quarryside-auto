@@ -23,7 +23,7 @@ export default function SubHeaderLink({
       <Button
         size="sm"
         className={clsx("text-gray-400 dark:text-gray-500")}
-        isDisabled
+        disabled
       >
         {label}
       </Button>

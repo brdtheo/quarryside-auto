@@ -9,10 +9,10 @@ export default function Button({
   startIcon,
   children,
   endIcon,
-  isDisabled,
   size,
   color,
   rounded,
+  ...props
 }: ButtonProps) {
   const roundedClassname = useMemo(() => {
     if (!rounded) return "";
@@ -65,9 +65,9 @@ export default function Button({
 
   return (
     <button
-      role="button"
-      type="button"
-      disabled={isDisabled}
+      role={props.role ?? "button"}
+      type={props.type ?? "button"}
+      disabled={props.disabled}
       className={clsx(
         "inline-flex items-center h-fit hover:opacity-90 leading-none",
         containerClassname,
@@ -75,6 +75,7 @@ export default function Button({
         roundedClassname,
         className,
       )}
+      {...props}
     >
       {startIcon && <div className={textSizeClassname}>{startIcon}</div>}
       <span className={clsx("flex-1", textSizeClassname)}>{children}</span>

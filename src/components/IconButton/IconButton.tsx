@@ -25,6 +25,14 @@ export default function IconButton({
     }
   }, []);
 
+  const badgeValue = useMemo(() => {
+    if (!badgeCount) return null;
+    if (badgeCount > 99) {
+      return "99+";
+    }
+    return badgeCount;
+  }, []);
+
   return (
     <button
       role={props.role ?? "button"}
@@ -40,9 +48,9 @@ export default function IconButton({
       {...props}
     >
       {children}
-      {!!badgeCount && (
+      {!!badgeValue && (
         <span className="bg-primary dark:bg-primarydark text-white dark:text-black text-xs font-semibold rounded px-1 py-0.5 inline-flex items-center justify-center absolute top-[-5px] right-[-5px] leading-none z-10">
-          {badgeCount}
+          {badgeValue}
         </span>
       )}
     </button>

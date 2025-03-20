@@ -13,7 +13,6 @@ const meta = {
   parameters: {
     layout: "centered",
   },
-  tags: ["autodocs"],
   argTypes: {
     size: { control: "select", options: ["xs", "sm", "lg"] },
     color: { control: "select", options: ["primary", "secondary"] },
@@ -70,5 +69,12 @@ export const EndIcon: Story = {
     color: "primary",
     children: text,
     endIcon: endIcon,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    children: text,
+    disabled: true,
   },
 };

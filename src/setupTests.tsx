@@ -26,8 +26,8 @@ export const NextIntlClientWrapper = ({
 /**
  * Mock translations getter used in server components
  */
-vi.mock("next-intl/server", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("next-intl/server")>();
+vi.mock("next-intl", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next-intl")>();
   /**
    * Returns the i18n translation from a given message object and path
    * @param messages Messages from the current namespace
@@ -58,7 +58,7 @@ vi.mock("next-intl/server", async (importOriginal) => {
   };
   return {
     ...actual,
-    getTranslations: (namespace: string) => {
+    useTranslations: (namespace: string) => {
       return (key: string, variables = {}) => {
         const string = getTranslation(
           messages[namespace as keyof typeof messages],

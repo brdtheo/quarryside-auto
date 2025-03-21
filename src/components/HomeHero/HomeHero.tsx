@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import { IconArrowRight } from "@tabler/icons-react";
@@ -7,8 +7,8 @@ import Button from "@/components/Button";
 
 import { Link } from "@/i18n/routing";
 
-export default async function HomeHero() {
-  const t = await getTranslations("home");
+export default function HomeHero() {
+  const t = useTranslations("home");
   return (
     <div
       className="w-full h-[200px] xl:h-[400px] relative flex items-center justify-center flex-col gap-3 select-none px-8 py-4"

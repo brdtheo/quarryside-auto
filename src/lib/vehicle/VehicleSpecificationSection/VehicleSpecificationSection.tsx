@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import DetailSection from "@/components/DetailSection";
 import Table from "@/components/Table";
@@ -7,10 +7,10 @@ import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
 
 import { VehicleSpecificationSectionProps } from ".";
 
-export default async function VehicleSpecificationSection({
+export default function VehicleSpecificationSection({
   vehicle,
 }: VehicleSpecificationSectionProps) {
-  const t = await getTranslations("vehicles");
+  const t = useTranslations("vehicles");
 
   const {
     bodyStyle,
@@ -22,7 +22,7 @@ export default async function VehicleSpecificationSection({
     mileage,
     transmission,
     weight,
-  } = await useVehicleDetails(vehicle);
+  } = useVehicleDetails(vehicle);
 
   return (
     <DetailSection title={t("details.specifications")}>

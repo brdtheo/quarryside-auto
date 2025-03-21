@@ -10,7 +10,7 @@ import { Link } from "@/i18n/routing";
 
 import type { BlogPostProps } from ".";
 
-export default async function BlogPost({
+export default function BlogPost({
   thumbnailUrl,
   thumbnailAlt,
   tags,

@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import DetailSection from "@/components/DetailSection";
 import Table from "@/components/Table";
@@ -7,13 +7,12 @@ import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
 
 import { VehiclePerformanceSectionProps } from ".";
 
-export default async function VehiclePerformanceSection({
+export default function VehiclePerformanceSection({
   vehicle,
 }: VehiclePerformanceSectionProps) {
-  const t = await getTranslations("vehicles");
+  const t = useTranslations("vehicles");
 
-  const { power, zeroToSixtySeconds, topSpeed } =
-    await useVehicleDetails(vehicle);
+  const { power, zeroToSixtySeconds, topSpeed } = useVehicleDetails(vehicle);
 
   return (
     (power || zeroToSixtySeconds || topSpeed) && (

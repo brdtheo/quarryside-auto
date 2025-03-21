@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import DetailSection from "@/components/DetailSection";
 
@@ -7,10 +7,10 @@ import WheelList from "@/lib/wheel/WheelList";
 
 import { VehicleRelatedWheelsSectionProps } from ".";
 
-export default async function VehicleRelatedWheelsSection({
+export default function VehicleRelatedWheelsSection({
   wheels,
 }: VehicleRelatedWheelsSectionProps) {
-  const t = await getTranslations("vehicles");
+  const t = useTranslations("vehicles");
 
   const parsedVehicleWheels =
     (wheels ?? []).length > 0

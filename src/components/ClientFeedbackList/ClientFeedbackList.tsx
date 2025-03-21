@@ -1,10 +1,10 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import ClientFeedback from "@/components/ClientFeedback";
 import HomeSection from "@/components/HomeSection";
 
-export default async function ClientFeedbackList() {
-  const t = await getTranslations("home");
+export default function ClientFeedbackList() {
+  const t = useTranslations("home");
   return (
     <HomeSection title={t("feedback.title")}>
       <ul className="grid grid-cols-1 gap-4 @md/homecontainer:grid-cols-2 @3xl/homecontainer:grid-cols-3">

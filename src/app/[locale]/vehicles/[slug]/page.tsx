@@ -37,7 +37,7 @@ export async function generateMetadata({
     };
   }
 
-  const { titleWithoutYear } = await useVehicleDetails(vehicle);
+  const { titleWithoutYear } = useVehicleDetails(vehicle);
 
   return {
     title: t("details.meta.title", { vehicle: titleWithoutYear }),
@@ -97,7 +97,7 @@ export default async function Page({ params }: DetailsPageProps) {
   }
 
   const { titleWithoutYear, price, priceWithoutCurrency, brand } =
-    await useVehicleDetails(vehicle);
+    useVehicleDetails(vehicle);
 
   return (
     <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">

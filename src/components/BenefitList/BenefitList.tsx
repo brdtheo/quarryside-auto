@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import {
   IconHeartHandshake,
@@ -10,8 +10,8 @@ import {
 import BenefitCard from "@/components/BenefitCard";
 import HomeSection from "@/components/HomeSection";
 
-export default async function BenefitList() {
-  const t = await getTranslations("home");
+export default function BenefitList() {
+  const t = useTranslations("home");
   return (
     <HomeSection title={t("benefitList.title")}>
       <ul className="grid grid-cols-1 gap-4 @md/homecontainer:grid-cols-2 @4xl/homecontainer:grid-cols-4">

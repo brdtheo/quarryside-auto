@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import { Wheel } from "@prisma/client";
 
@@ -13,8 +13,8 @@ interface WheelBase extends Wheel {
  * Returns each wording relatedt to a vehicle value
  * @param {Wheel} wheel
  */
-export default async function useWheelDetails(wheel: WheelBase) {
-  const t = await getTranslations("wheels");
+export default function useWheelDetails(wheel: WheelBase) {
+  const t = useTranslations("wheels");
 
   if (!wheel) {
     return {

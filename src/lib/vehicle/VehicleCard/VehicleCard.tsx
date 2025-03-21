@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import Button from "@/components/Button";
@@ -10,8 +10,8 @@ import { Link } from "@/i18n/routing";
 
 import type { VehicleCardProps } from ".";
 
-export default async function VehicleCard({ vehicle }: VehicleCardProps) {
-  const t = await getTranslations("vehicles");
+export default function VehicleCard({ vehicle }: VehicleCardProps) {
+  const t = useTranslations("vehicles");
 
   const thumbnail = (vehicle?.medias ?? []).find((media) => media.is_thumbnail);
 
@@ -24,7 +24,7 @@ export default async function VehicleCard({ vehicle }: VehicleCardProps) {
     title,
     titleWithoutYear,
     transmission,
-  } = await useVehicleDetails(vehicle);
+  } = useVehicleDetails(vehicle);
 
   return (
     <article className="@container/vehiclecard w-full">

@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import DetailSection from "@/components/DetailSection";
 import Table from "@/components/Table";
@@ -7,12 +7,12 @@ import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 
 import { WheelSpecificationSectionProps } from ".";
 
-export default async function WheelSpecificationSection({
+export default function WheelSpecificationSection({
   wheel,
 }: WheelSpecificationSectionProps) {
-  const t = await getTranslations("wheels");
+  const t = useTranslations("wheels");
 
-  const { brand } = await useWheelDetails(wheel);
+  const { brand } = useWheelDetails(wheel);
 
   return (
     <DetailSection title={t("details.specifications")}>

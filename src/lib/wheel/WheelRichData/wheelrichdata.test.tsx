@@ -6,14 +6,18 @@ import { wheelFactory } from "@/lib/wheel/factory";
 import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 import { WheelWithMedias } from "@/lib/wheel/types";
 
+import { NextIntlClientWrapper } from "@/setupTests";
+
 import WheelRichData from ".";
 
-describe("WheelRichData", async () => {
+describe("WheelRichData", () => {
   const wheel = wheelFactory({ withMedia: true }) as WheelWithMedias;
   const {
     result: { current },
-  } = renderHook(async () => await useWheelDetails(wheel));
-  const wheelDetails = await current;
+  } = renderHook(() => useWheelDetails(wheel), {
+    wrapper: NextIntlClientWrapper,
+  });
+  const wheelDetails = current;
 
   beforeEach(() => {
     render(

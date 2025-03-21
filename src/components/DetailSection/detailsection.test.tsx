@@ -29,7 +29,7 @@ describe("DetailSection", () => {
     expect(heading).toHaveTextContent(sectionTitle);
   });
 
-  it("Renders a children element correctly", async () => {
+  it("Renders a children element correctly", () => {
     render(
       <DetailSection title={sectionTitle}>
         <button>{buttonText}</button>
@@ -40,7 +40,7 @@ describe("DetailSection", () => {
     expect(button).toHaveTextContent(buttonText);
   });
 
-  it("Renders an array of children element correctly", async () => {
+  it("Renders an array of children element correctly", () => {
     render(
       <DetailSection title={sectionTitle}>
         <p>{paragraphText}</p>

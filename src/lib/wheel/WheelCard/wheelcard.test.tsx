@@ -12,22 +12,19 @@ import { NextIntlClientWrapper } from "@/setupTests";
 
 import WheelCard from ".";
 
-describe("WheelCard", async () => {
+describe("WheelCard", () => {
   const wheel = wheelFactory({ withMedia: true }) as WheelWithMedias;
   const {
     result: { current },
-  } = renderHook(async () => await useWheelDetails(wheel));
-  const wheelDetails = await current;
+  } = renderHook(() => useWheelDetails(wheel), {
+    wrapper: NextIntlClientWrapper,
+  });
+  const wheelDetails = current;
 
-  beforeEach(async () => {
-    render(
-      await WheelCard({
-        wheel,
-      }),
-      {
-        wrapper: NextIntlClientWrapper,
-      },
-    );
+  beforeEach(() => {
+    render(<WheelCard wheel={wheel} />, {
+      wrapper: NextIntlClientWrapper,
+    });
   });
 
   afterEach(() => {

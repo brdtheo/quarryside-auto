@@ -1,5 +1,3 @@
-import { getTranslations } from "next-intl/server";
-
 import { cleanup, render, renderHook, screen } from "@testing-library/react";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
@@ -11,12 +9,14 @@ import { NextIntlClientWrapper } from "@/setupTests";
 
 import WheelForm from ".";
 
-describe("WheelForm", async () => {
+describe("WheelForm", () => {
   const wheel = wheelFactory();
   const {
     result: { current },
-  } = renderHook(async () => await useWheelDetails(wheel));
-  const wheelDetails = await current;
+  } = renderHook(() => useWheelDetails(wheel), {
+    wrapper: NextIntlClientWrapper,
+  });
+  const wheelDetails = current;
 
   beforeEach(() => {
     render(
@@ -65,9 +65,8 @@ describe("WheelForm", async () => {
     expect(checkbox).toBeInTheDocument();
   });
 
-  it("Renders a button containing text Add To Cart", async () => {
-    const t = await getTranslations("wheels");
-    const buttonText = screen.getByText(t("addToCart"));
+  it("Renders a button containing text Add To Cart", () => {
+    const buttonText = screen.getByText(/add to cart/i);
     const button = buttonText.closest("button");
     expect(button).toBeInTheDocument();
     expect(buttonText).toBeInTheDocument();

@@ -59,6 +59,10 @@ export default function Advertising({
     );
   }, []);
 
+  if (!generatedImageURL) {
+    return null;
+  }
+
   return (
     <div
       className={clsx("relative", className, {

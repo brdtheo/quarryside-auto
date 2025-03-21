@@ -1,5 +1,3 @@
-import { getTranslations } from "next-intl/server";
-
 import {
   cleanup,
   render,
@@ -18,20 +16,19 @@ import { NextIntlClientWrapper } from "@/setupTests";
 
 import VehicleCard from ".";
 
-describe("VehicleCard", async () => {
+describe("VehicleCard", () => {
   const vehicle = vehicleFactory({ withMedia: true }) as VehicleWithMedias;
   const {
     result: { current },
-  } = renderHook(async () => await useVehicleDetails(vehicle));
-  const vehicleDetails = await current;
+  } = renderHook(() => useVehicleDetails(vehicle), {
+    wrapper: NextIntlClientWrapper,
+  });
+  const vehicleDetails = current;
 
-  beforeEach(async () => {
-    render(
-      await VehicleCard({
-        vehicle,
-      }),
-      { wrapper: NextIntlClientWrapper },
-    );
+  beforeEach(() => {
+    render(<VehicleCard vehicle={vehicle} />, {
+      wrapper: NextIntlClientWrapper,
+    });
   });
 
   afterEach(() => {
@@ -101,10 +98,9 @@ describe("VehicleCard", async () => {
     expect(monthlyEstimatePrice).toBeInTheDocument();
   });
 
-  it("Renders a Check Availability button", async () => {
-    const t = await getTranslations("vehicles");
+  it("Renders a Check Availability button", () => {
     const button = screen.getByRole("button");
-    const buttonText = within(button).getByText(t("checkAvailability"));
+    const buttonText = within(button).getByText(/check availability/i);
     expect(button).toBeInTheDocument();
     expect(buttonText).toBeInTheDocument();
   });

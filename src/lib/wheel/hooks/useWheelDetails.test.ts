@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import { renderHook } from "@testing-library/react-hooks/server";
 
@@ -9,20 +9,26 @@ import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 
 import { getPrice } from "@/utils";
 
-describe("useWheelDetails", async () => {
-  const t = await getTranslations("wheels");
+import { NextIntlClientWrapper } from "@/setupTests";
+
+describe("useWheelDetails", () => {
+  const t = useTranslations("wheels");
   const wheel = wheelFactory();
   const {
     result: { current },
-  } = renderHook(async () => await useWheelDetails(wheel));
-  const wheelDetails = await current;
+  } = renderHook(() => useWheelDetails(wheel), {
+    wrapper: NextIntlClientWrapper,
+  });
+  const wheelDetails = current;
 
-  it("Returns an object with empty values if param is empty", async () => {
+  it("Returns an object with empty values if param is empty", () => {
     const {
       result: { current },
       // @ts-expect-error We simulate an unexpected behavior
-    } = renderHook(async () => await useWheelDetails(undefined));
-    const result = await current;
+    } = renderHook(() => useWheelDetails(undefined), {
+      wrapper: NextIntlClientWrapper,
+    });
+    const result = current;
     expect(result).toBeDefined();
     Object.entries(current).forEach((entry) => {
       const key = entry[0];

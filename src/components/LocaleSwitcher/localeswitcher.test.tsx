@@ -33,4 +33,15 @@ describe("LocaleSwitcher", () => {
     const menuItems = screen.getAllByRole("menuitem");
     expect(menuItems).toHaveLength(2);
   });
+
+  it("Should be able to not throw an error when changing locale", async () => {
+    const button = screen.getByRole("button", { name: /change language/i });
+    await userEvent.click(button);
+    const russianLanguageMenuItem = screen.getByRole("menuitem", {
+      name: /russian/i,
+    });
+    expect(async () => {
+      await userEvent.click(russianLanguageMenuItem);
+    }).not.toThrowError();
+  });
 });

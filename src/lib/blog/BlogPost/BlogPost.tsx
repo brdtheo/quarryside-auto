@@ -50,12 +50,12 @@ export default function BlogPost({
               ))}
             </ul>
           )}
-          <h2
+          <h3
             title={title}
             className="text-lg font-medium leading-6 line-clamp-3 @xs/postcard:line-clamp-2 pt-2 pb-1"
           >
             {title}
-          </h2>
+          </h3>
           <p className="line-clamp-3 @xs/postcard:line-clamp-4 text-gray-500 dark:text-white/80 text-sm">
             {content}
           </p>

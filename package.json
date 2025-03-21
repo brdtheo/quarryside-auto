@@ -14,7 +14,8 @@
     "pretty-check": "npx prettier --check src/app",
     "postinstall": "npx prisma generate",
     "migrate": "npx prisma migrate dev",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "e2e": "npx playwright test"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",

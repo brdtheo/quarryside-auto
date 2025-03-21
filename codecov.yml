@@ -1,3 +1,7 @@
 comment:
-    layout: "condensed_header, condensed_files, condensed_footer"
-    hide_project_coverage: TRUE
+  layout: "condensed_header, condensed_files, condensed_footer"
+coverage:
+  status:
+    project:
+      default:
+        threshold: 1%

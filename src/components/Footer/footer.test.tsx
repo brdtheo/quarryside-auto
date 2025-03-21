@@ -7,8 +7,8 @@ import { NextIntlClientWrapper } from "@/setupTests";
 import Footer from ".";
 
 describe("Footer", () => {
-  beforeEach(async () => {
-    render(await Footer(), { wrapper: NextIntlClientWrapper });
+  beforeEach(() => {
+    render(<Footer />, { wrapper: NextIntlClientWrapper });
   });
 
   afterEach(() => {

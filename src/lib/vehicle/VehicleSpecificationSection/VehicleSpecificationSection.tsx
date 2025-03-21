@@ -12,6 +12,10 @@ export default function VehicleSpecificationSection({
 }: VehicleSpecificationSectionProps) {
   const t = useTranslations("vehicles");
 
+  if (!vehicle) {
+    return null;
+  }
+
   const {
     bodyStyle,
     brand,

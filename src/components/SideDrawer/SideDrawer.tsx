@@ -14,6 +14,7 @@ export default function SideDrawer({
       <div className="w-dvw h-dvh fixed top-0 left-0 z-30">
         <button
           role="button"
+          aria-label="Close side drawer"
           className="bg-black opacity-80 w-dvw h-dvh"
           onClick={onClose}
         />

@@ -6,14 +6,18 @@ import { vehicleFactory } from "@/lib/vehicle/factory";
 import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
 import { VehicleWithMedias } from "@/lib/vehicle/types";
 
+import { NextIntlClientWrapper } from "@/setupTests";
+
 import VehicleRichData from ".";
 
-describe("VehicleRichData", async () => {
+describe("VehicleRichData", () => {
   const vehicle = vehicleFactory({ withMedia: true }) as VehicleWithMedias;
   const {
     result: { current },
-  } = renderHook(async () => await useVehicleDetails(vehicle));
-  const vehicleDetails = await current;
+  } = renderHook(() => useVehicleDetails(vehicle), {
+    wrapper: NextIntlClientWrapper,
+  });
+  const vehicleDetails = current;
 
   beforeEach(() => {
     render(

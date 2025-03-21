@@ -2,11 +2,13 @@ import { cleanup, render, screen } from "@testing-library/react";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
+import { NextIntlClientWrapper } from "@/setupTests";
+
 import BenefitList from ".";
 
 describe("BenefitList", () => {
-  beforeEach(async () => {
-    render(await BenefitList());
+  beforeEach(() => {
+    render(<BenefitList />, { wrapper: NextIntlClientWrapper });
   });
 
   afterEach(() => {

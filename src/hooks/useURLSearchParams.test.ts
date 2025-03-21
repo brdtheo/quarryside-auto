@@ -8,19 +8,17 @@ import { describe, expect, expectTypeOf, it } from "vitest";
 
 import useURLSearchParams from "@/hooks/useURLSearchParams";
 
-describe("useURLSearchParams", async () => {
+describe("useURLSearchParams", () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const {
     result: { current },
-  } = renderHook(
-    async () => await useURLSearchParams(Object.fromEntries(searchParams)),
-  );
+  } = renderHook(() => useURLSearchParams(Object.fromEntries(searchParams)));
   const {
     getActiveFilterCount,
     getSearchParamValueCount,
     getUpdatedURLFromSearchParam,
-  } = await current;
+  } = current;
 
   it("Retrieves the total number of search params", () => {
     const activeFilterCount = getActiveFilterCount();

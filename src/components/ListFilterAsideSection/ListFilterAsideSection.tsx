@@ -63,37 +63,41 @@ export default function ListFilterAsideSection({
         )}
       </legend>
 
-      <div className="py-2 flex flex-col">
+      <ul className="py-2 flex flex-col">
         {isSearchable && (
           <SearchField value={searchValue} onChange={handleSearchFieldChange} />
         )}
 
         {!isSearchable &&
           (options ?? []).map((option, index) => (
-            <Checkbox
-              key={option.value}
-              id={getCheckboxId(option.label, index)}
-              checked={option.isChecked}
-              href={option.href}
-              label={option.label}
-            />
+            <li key={index}>
+              <Checkbox
+                key={option.value}
+                id={getCheckboxId(option.label, index)}
+                checked={option.isChecked}
+                href={option.href}
+                label={option.label}
+              />
+            </li>
           ))}
 
         {isSearchable && (
           <div className="mt-2 flex flex-col h-28 overflow-y-auto">
             {optionList.map((option, index) => (
-              <Checkbox
-                onClick={handleResetSearchResults}
-                key={option.value}
-                id={getCheckboxId(option.label, index)}
-                checked={option.isChecked}
-                label={option.label}
-                href={option.href}
-              />
+              <li key={index}>
+                <Checkbox
+                  onClick={handleResetSearchResults}
+                  key={option.value}
+                  id={getCheckboxId(option.label, index)}
+                  checked={option.isChecked}
+                  label={option.label}
+                  href={option.href}
+                />
+              </li>
             ))}
           </div>
         )}
-      </div>
+      </ul>
     </fieldset>
   );
 }

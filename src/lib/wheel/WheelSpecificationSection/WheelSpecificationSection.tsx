@@ -12,6 +12,10 @@ export default function WheelSpecificationSection({
 }: WheelSpecificationSectionProps) {
   const t = useTranslations("wheels");
 
+  if (!wheel) {
+    return null;
+  }
+
   const { brand } = useWheelDetails(wheel);
 
   return (

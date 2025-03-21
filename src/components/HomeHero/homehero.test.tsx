@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import { cleanup, render, screen, within } from "@testing-library/react";
 
@@ -10,8 +10,8 @@ import { NextIntlClientWrapper } from "@/setupTests";
 import HomeHero from ".";
 
 describe("HomeHero", () => {
-  beforeEach(async () => {
-    render(await HomeHero(), { wrapper: NextIntlClientWrapper });
+  beforeEach(() => {
+    render(<HomeHero />, { wrapper: NextIntlClientWrapper });
   });
 
   afterEach(() => {
@@ -42,8 +42,8 @@ describe("HomeHero", () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it("Renders a link that leads to vehicles page", async () => {
-    const t = await getTranslations("home");
+  it("Renders a link that leads to vehicles page", () => {
+    const t = useTranslations("home");
     const vehicleLink = screen.getAllByRole("link")[0];
     const vehicleLinkHref = vehicleLink.getAttribute("href");
     const linkText = screen.getByText(t("hero.browseUsedCars"));
@@ -53,8 +53,8 @@ describe("HomeHero", () => {
     expect(linkText).toBeInTheDocument();
   });
 
-  it("Renders a link that leads to wheels page", async () => {
-    const t = await getTranslations("home");
+  it("Renders a link that leads to wheels page", () => {
+    const t = useTranslations("home");
     const wheelLink = screen.getAllByRole("link")[1];
     const wheelLinkHref = wheelLink.getAttribute("href");
     const linkText = screen.getByText(t("hero.browseRimsTires"));

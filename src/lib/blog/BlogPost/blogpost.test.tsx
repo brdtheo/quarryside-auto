@@ -23,17 +23,17 @@ describe("BlogPost", () => {
     cleanup();
   });
 
-  it("Renders an article element with a link within", async () => {
+  it("Renders an article element with a link within", () => {
     render(
-      await BlogPost({
-        author,
-        content,
-        date,
-        tags,
-        thumbnailAlt,
-        thumbnailUrl,
-        title,
-      }),
+      <BlogPost
+        author={author}
+        content={content}
+        date={date}
+        tags={tags}
+        thumbnailAlt={thumbnailAlt}
+        thumbnailUrl={thumbnailUrl}
+        title={title}
+      />,
       { wrapper: NextIntlClientWrapper },
     );
     const article = screen.getByRole("article");
@@ -43,17 +43,17 @@ describe("BlogPost", () => {
     expect(link).toHaveAttribute("href");
   });
 
-  it("Renders an image is thumbnail url is provided", async () => {
+  it("Renders an image is thumbnail url is provided", () => {
     render(
-      await BlogPost({
-        author,
-        content,
-        date,
-        tags,
-        thumbnailAlt,
-        thumbnailUrl,
-        title,
-      }),
+      <BlogPost
+        author={author}
+        content={content}
+        date={date}
+        tags={tags}
+        thumbnailAlt={thumbnailAlt}
+        thumbnailUrl={thumbnailUrl}
+        title={title}
+      />,
       { wrapper: NextIntlClientWrapper },
     );
     const image = screen.getByRole("img");
@@ -63,17 +63,17 @@ describe("BlogPost", () => {
     expect(image).toHaveAttribute("sizes");
   });
 
-  it("Does not render an image is thumbnail url is not provided", async () => {
+  it("Does not render an image is thumbnail url is not provided", () => {
     render(
-      await BlogPost({
-        author,
-        content,
-        date,
-        tags,
-        thumbnailAlt,
-        thumbnailUrl: "",
-        title,
-      }),
+      <BlogPost
+        author={author}
+        content={content}
+        date={date}
+        tags={tags}
+        thumbnailAlt={thumbnailAlt}
+        thumbnailUrl=""
+        title={title}
+      />,
       { wrapper: NextIntlClientWrapper },
     );
     const image = screen.queryByRole("img");
@@ -82,17 +82,17 @@ describe("BlogPost", () => {
     expect(mediaSkeleton).toBeInTheDocument();
   });
 
-  it("Renders a list with list items if tags are provided", async () => {
+  it("Renders a list with list items if tags are provided", () => {
     render(
-      await BlogPost({
-        author,
-        content,
-        date,
-        tags,
-        thumbnailAlt,
-        thumbnailUrl,
-        title,
-      }),
+      <BlogPost
+        author={author}
+        content={content}
+        date={date}
+        tags={tags}
+        thumbnailAlt={thumbnailAlt}
+        thumbnailUrl={thumbnailUrl}
+        title={title}
+      />,
       { wrapper: NextIntlClientWrapper },
     );
     const list = screen.getByRole("list");
@@ -104,17 +104,17 @@ describe("BlogPost", () => {
     });
   });
 
-  it("Does not render a list with list items if tags are not provided", async () => {
+  it("Does not render a list with list items if tags are not provided", () => {
     render(
-      await BlogPost({
-        author,
-        content,
-        date,
-        tags: [],
-        thumbnailAlt,
-        thumbnailUrl,
-        title,
-      }),
+      <BlogPost
+        author={author}
+        content={content}
+        date={date}
+        tags={[]}
+        thumbnailAlt={thumbnailAlt}
+        thumbnailUrl={thumbnailUrl}
+        title={title}
+      />,
       { wrapper: NextIntlClientWrapper },
     );
     const list = screen.queryByRole("list");
@@ -123,35 +123,35 @@ describe("BlogPost", () => {
     expect(listItem).not.toBeInTheDocument();
   });
 
-  it("Renders a heading of level 2 with the correct title", async () => {
+  it("Renders a heading of level 3 with the correct title", () => {
     render(
-      await BlogPost({
-        author,
-        content,
-        date,
-        tags,
-        thumbnailAlt,
-        thumbnailUrl,
-        title,
-      }),
+      <BlogPost
+        author={author}
+        content={content}
+        date={date}
+        tags={tags}
+        thumbnailAlt={thumbnailAlt}
+        thumbnailUrl={thumbnailUrl}
+        title={title}
+      />,
       { wrapper: NextIntlClientWrapper },
     );
-    const heading = screen.getByRole("heading", { level: 2, name: title });
+    const heading = screen.getByRole("heading", { level: 3, name: title });
     expect(heading).toBeInTheDocument();
     expect(heading).toHaveTextContent(title);
   });
 
-  it("Renders a paragraph with the text content within", async () => {
+  it("Renders a paragraph with the text content within", () => {
     render(
-      await BlogPost({
-        author,
-        content,
-        date,
-        tags,
-        thumbnailAlt,
-        thumbnailUrl,
-        title,
-      }),
+      <BlogPost
+        author={author}
+        content={content}
+        date={date}
+        tags={tags}
+        thumbnailAlt={thumbnailAlt}
+        thumbnailUrl={thumbnailUrl}
+        title={title}
+      />,
       { wrapper: NextIntlClientWrapper },
     );
     const paragraph = screen.getByRole("paragraph");
@@ -159,17 +159,17 @@ describe("BlogPost", () => {
     expect(paragraph).toHaveTextContent(content);
   });
 
-  it("Renders a footer element with the author 's name and date within", async () => {
+  it("Renders a footer element with the author 's name and date within", () => {
     render(
-      await BlogPost({
-        author,
-        content,
-        date,
-        tags,
-        thumbnailAlt,
-        thumbnailUrl,
-        title,
-      }),
+      <BlogPost
+        author={author}
+        content={content}
+        date={date}
+        tags={tags}
+        thumbnailAlt={thumbnailAlt}
+        thumbnailUrl={thumbnailUrl}
+        title={title}
+      />,
       { wrapper: NextIntlClientWrapper },
     );
     const footer = screen.getByRole("contentinfo");

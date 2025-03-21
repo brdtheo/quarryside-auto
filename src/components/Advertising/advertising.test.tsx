@@ -1,19 +1,27 @@
 import { cleanup, render, screen } from "@testing-library/react";
 
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it } from "vitest";
 
 import Advertising, { ADVERTISING_BASE_URL } from ".";
 
 describe("Advertising", () => {
-  beforeEach(() => {
-    render(<Advertising ratioMode="horizontal" />);
-  });
-
   afterEach(() => {
     cleanup();
   });
 
+  it("Should not render anything if no image is generated", () => {
+    const { container } = render(<Advertising />);
+    const image = screen.queryByRole("img", { name: "advertisement" });
+    const link = screen.queryByRole("link", {
+      name: "Follow advertisement link",
+    });
+    expect(image).not.toBeInTheDocument();
+    expect(link).not.toBeInTheDocument();
+    expect(container).toBeEmptyDOMElement();
+  });
+
   it("Renders header buttons and a link", () => {
+    render(<Advertising ratioMode="horizontal" />);
     const headerInfoButton = screen.getByRole("button", {
       name: "Advertisement details",
     });
@@ -29,6 +37,7 @@ describe("Advertising", () => {
   });
 
   it("Renders an image with a random URL", () => {
+    render(<Advertising ratioMode="horizontal" />);
     const image = screen.getByRole("img", { name: "advertisement" });
     const src = image.getAttribute("src");
     expect(image).toBeInTheDocument();

@@ -27,7 +27,7 @@ describe("HomeSection", () => {
     expect(heading).toHaveTextContent(sectionTitle);
   });
 
-  it("Renders a children element correctly", async () => {
+  it("Renders a children element correctly", () => {
     render(
       <HomeSection title={sectionTitle}>
         <p>{paragraphText}</p>

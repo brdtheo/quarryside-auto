@@ -54,6 +54,33 @@ describe("ListFilterAsideSection", () => {
     expect(chipText).toBeInTheDocument();
   });
 
+  it("Renders a list element", () => {
+    render(
+      <ListFilterAsideSection
+        title={title}
+        options={options}
+        selectedOptionCount={count}
+      />,
+    );
+    const list = screen.getByRole("list");
+    expect(list).toBeInTheDocument();
+  });
+
+  it("Renders a list item for each option", () => {
+    render(
+      <ListFilterAsideSection
+        title={title}
+        options={options}
+        selectedOptionCount={count}
+      />,
+    );
+    const listItems = screen.getAllByRole("listitem");
+    expect(listItems).toHaveLength(3);
+    listItems.forEach((listItem) => {
+      expect(listItem).toBeInTheDocument();
+    });
+  });
+
   it("Renders options correctly", () => {
     render(
       <ListFilterAsideSection

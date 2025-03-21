@@ -1,16 +1,14 @@
-import { getTranslations } from "next-intl/server";
-
 import { cleanup, render, screen } from "@testing-library/react";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
+import { NextIntlClientWrapper } from "@/setupTests";
+
 import VehicleForm from ".";
 
-describe("VehicleForm", async () => {
-  const t = await getTranslations("vehicles");
-
-  beforeEach(async () => {
-    render(await VehicleForm());
+describe("VehicleForm", () => {
+  beforeEach(() => {
+    render(<VehicleForm />, { wrapper: NextIntlClientWrapper });
   });
 
   afterEach(() => {
@@ -27,7 +25,7 @@ describe("VehicleForm", async () => {
   it("Renders a heading containing the title", () => {
     const heading = screen.getByRole("heading", { level: 2 });
     expect(heading).toBeInTheDocument();
-    expect(heading).toHaveTextContent(t("form.title"));
+    expect(heading).toHaveTextContent(/interested\? your new vehicle awaits you/i);
   });
 
   it("Renders 4 text inputs and 1 textarea", () => {
@@ -43,17 +41,15 @@ describe("VehicleForm", async () => {
     expect(textArea).toHaveLength(1);
   });
 
-  it("Renders a button containing text Check Availability", async () => {
-    const t = await getTranslations("vehicles");
-    const buttonText = screen.getByText(t("checkAvailability"));
+  it("Renders a button containing text Check Availability", () => {
+    const buttonText = screen.getByText(/check availability/i);
     const button = buttonText.closest("button");
     expect(button).toBeInTheDocument();
     expect(buttonText).toBeInTheDocument();
   });
 
-  it("Renders a button containing text Schedule Test Drive", async () => {
-    const t = await getTranslations("vehicles");
-    const buttonText = screen.getByText(t("scheduleTestDrive"));
+  it("Renders a button containing text Schedule Test Drive", () => {
+    const buttonText = screen.getByText(/schedule test drive/i);
     const button = buttonText.closest("button");
     expect(button).toBeInTheDocument();
     expect(buttonText).toBeInTheDocument();

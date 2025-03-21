@@ -1,11 +1,10 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import Button from "@/components/Button";
 import TextField from "@/components/TextField";
 
-export default async function VehicleForm() {
-  const t = await getTranslations("vehicles");
-
+export default function VehicleForm() {
+  const t = useTranslations("vehicles");
   return (
     <form
       aria-label="Vehicle Form"

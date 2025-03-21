@@ -1,11 +1,11 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import HomeSection from "@/components/HomeSection";
 
 import BlogPost from "@/lib/blog/BlogPost";
 
-export default async function BlogPostList() {
-  const t = await getTranslations("home");
+export default function BlogPostList() {
+  const t = useTranslations("home");
   return (
     <HomeSection title={t("post.title")}>
       <ul className="grid grid-cols-1 gap-4 @md/homecontainer:grid-cols-2 @3xl/homecontainer:grid-cols-3">

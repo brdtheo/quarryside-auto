@@ -1,13 +1,12 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 import Container from "@/components/Container";
 import LocaleSwitcher from "@/components/LocaleSwitcher";
 import NavSection from "@/components/NavSection";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
-export default async function Footer() {
-  const t = await getTranslations("common");
-
+export default function Footer() {
+  const t = useTranslations("common");
   return (
     <footer className="bg-primary dark:bg-black flex justify-center dark:border-t dark:border-t-dividerdark @container/footer">
       <Container className="py-8 ">

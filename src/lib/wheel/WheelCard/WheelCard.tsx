@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 
 import {
@@ -14,12 +14,12 @@ import { Link } from "@/i18n/routing";
 
 import type { WheelCardProps } from ".";
 
-export default async function WheelCard({ wheel }: WheelCardProps) {
-  const t = await getTranslations("wheels");
+export default function WheelCard({ wheel }: WheelCardProps) {
+  const t = useTranslations("wheels");
 
   const thumbnail = (wheel?.medias ?? []).find((media) => media.is_thumbnail);
 
-  const { title, price, href, brand } = await useWheelDetails(wheel);
+  const { title, price, href, brand } = useWheelDetails(wheel);
 
   return (
     <article className="@container/wheelcard w-full @md/wheelcard:w-52">

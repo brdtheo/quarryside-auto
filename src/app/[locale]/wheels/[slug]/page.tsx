@@ -36,7 +36,7 @@ export async function generateMetadata({
     };
   }
 
-  const { title } = await useWheelDetails(wheel);
+  const { title } = useWheelDetails(wheel);
 
   return {
     title: t("details.meta.title", { wheel: title }),
@@ -95,7 +95,7 @@ export default async function Page({ params }: DetailsPageProps) {
     return <NotFound />;
   }
 
-  const { title, price, brand } = await useWheelDetails(wheel);
+  const { title, price, brand } = useWheelDetails(wheel);
 
   return (
     <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">

@@ -55,7 +55,7 @@ describe("WheelSpecificationSection", () => {
   });
 
   it("Renders the wheel brand if defined", () => {
-    if (wheel.brand !== "NO_BRAND") return;
+    if (wheel.brand === "NO_BRAND") return;
     render(<WheelSpecificationSection wheel={wheel} />, {
       wrapper: NextIntlClientWrapper,
     });

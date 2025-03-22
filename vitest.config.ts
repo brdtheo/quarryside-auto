@@ -9,20 +9,8 @@ export default defineConfig({
     environment: "happy-dom",
     coverage: {
       provider: "v8",
-      exclude: [
-        "src/lib/prisma.ts",
-        "src/app/global-error.tsx",
-        "src/app/robots.ts",
-        "src/app/sitemap.ts",
-        "src/lib/review",
-      ],
-      include: [
-        "src/app",
-        "src/components",
-        "src/lib",
-        "src/hooks",
-        "src/utils.ts",
-      ],
+      exclude: ["src/app", "src/lib/prisma.ts", "src/lib/review"],
+      include: ["src/components", "src/lib", "src/hooks", "src/utils.ts"],
     },
     setupFiles: "src/setupTests.tsx",
     server: {

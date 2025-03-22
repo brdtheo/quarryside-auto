@@ -3,9 +3,9 @@ import { WheelBrand } from "@prisma/client";
 export default {
   wheels: {
     meta: {
-      title: "Browse rims and tires for your vehicle - Quarryside Auto",
+      title: "BeamNG wheels for sale - Quarryside Auto",
       description:
-        "Discover our selection of wheels and tires for your vehicle at Quarryside Auto.",
+        "Discover our selection of BeamNG wheels among various rims and tires for your vehicle at Quarryside Auto. Quarryside Auto is a fictional dealership website set in the BeamNG.drive universe.",
     },
     title: "Rims & tires",
     availability: "Availability",

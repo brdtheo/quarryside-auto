@@ -11,9 +11,9 @@ import {
 export default {
   vehicles: {
     meta: {
-      title: "Browse used vehicles for sale - Quarryside Auto",
+      title: "BeamNG vehicles for sale - Quarryside Auto",
       description:
-        "Discover our wide range of used vehicles for sale at Quarryside Auto. Find your next dream car now and contact us for a test drive.",
+        "Discover our wide range of BeamNG vehicles for sale at Quarryside Auto. Find your next dream car now and contact us for a test drive. Quarryside Auto is a fictional dealership website set in the BeamNG.drive universe.",
     },
     title: "Used vehicles",
     wheels: "Wheels",
@@ -22,6 +22,7 @@ export default {
     details: {
       meta: {
         title: "{ vehicle } - Quarryside Auto",
+        description: "{ description }. Check out vehicle specifications and related wheels on Quarryside Auto",
       },
       specifications: "Specifications",
       performance: "Performance",

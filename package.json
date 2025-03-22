@@ -14,7 +14,8 @@
     "pretty-check": "npx prettier --check src/app",
     "postinstall": "npx prisma generate",
     "migrate": "npx prisma migrate dev",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "e2e": "npx playwright test"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
@@ -36,6 +37,7 @@
     "@eslint/js": "^9.20.0",
     "@faker-js/faker": "^9.6.0",
     "@next/eslint-plugin-next": "^15.1.6",
+    "@playwright/test": "^1.51.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/postcss": "^4.0.14",
     "@testing-library/dom": "^10.4.0",

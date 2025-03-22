@@ -27,7 +27,7 @@ describe("VehicleList", () => {
       <VehicleList
         data={vehicles}
         itemRender={(vehicle) => (
-          <li key={vehicle.id}>
+          <li key={vehicle.slug}>
             <h1>{vehicle.model}</h1>
             <p>{vehicle.description}</p>
           </li>

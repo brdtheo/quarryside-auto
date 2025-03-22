@@ -5,16 +5,17 @@ import NotFound from "@/app/[locale]/not-found";
 
 import Advertising from "@/components/Advertising";
 import Container from "@/components/Container";
-import PageTitle from "@/components/PageTitle";
 
-import MediaList from "@/lib/media/MediaList";
 import { prisma } from "@/lib/prisma";
 import VehicleForm from "@/lib/vehicle/VehicleForm";
+import VehicleMediaList from "@/lib/vehicle/VehicleMediaList";
+import VehiclePageTitle from "@/lib/vehicle/VehiclePageTitle";
 import VehiclePerformanceSection from "@/lib/vehicle/VehiclePerformanceSection";
+import VehiclePriceDescription from "@/lib/vehicle/VehiclePriceDescription";
 import VehicleRelatedWheelsSection from "@/lib/vehicle/VehicleRelatedWheelsSection";
 import VehicleRichData from "@/lib/vehicle/VehicleRichData";
 import VehicleSpecificationSection from "@/lib/vehicle/VehicleSpecificationSection";
-import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
+import { VehicleWithMedias } from "@/lib/vehicle/types";
 
 import { DOMAIN_URL } from "@/constants";
 
@@ -23,31 +24,38 @@ import type { DetailsPageProps } from "@/types";
 export async function generateMetadata({
   params,
 }: DetailsPageProps): Promise<Metadata> {
-  const t = await getTranslations("vehicles");
   const slug = (await params)?.slug ?? "";
 
-  const vehicle = await prisma.vehicle.findUnique({
+  const t = await getTranslations("vehicles");
+
+  const vehicle = (await prisma.vehicle.findUnique({
     where: { slug: slug ?? "" },
     include: { medias: { where: { is_thumbnail: true } } },
-  });
+  })) as VehicleWithMedias;
 
-  if (!vehicle) {
-    return {
-      title: "Quarryside Auto",
-    };
-  }
+  if (!vehicle) return {};
 
-  const { titleWithoutYear } = useVehicleDetails(vehicle);
+  const titleWithoutYear =
+    vehicle.brand && vehicle.model
+      ? [t(`filter.brand.option.${vehicle.brand}`), vehicle.model].join(" ")
+      : "";
+
+  const thumbnail =
+    (vehicle.medias ?? []).find((media) => media.is_thumbnail)?.url ?? "";
 
   return {
     title: t("details.meta.title", { vehicle: titleWithoutYear }),
-    description: vehicle.description,
+    description: t("details.meta.description", {
+      description: vehicle.description ?? "",
+    }),
     openGraph: {
       title: t("details.meta.title", { vehicle: titleWithoutYear }),
-      description: vehicle.description ?? undefined,
+      description: t("details.meta.description", {
+        description: vehicle.description ?? "",
+      }),
       siteName: "Quarryside Auto",
       images: {
-        url: vehicle?.medias?.[0]?.url,
+        url: thumbnail,
         alt: titleWithoutYear,
         width: 1562,
         height: 878,
@@ -56,9 +64,11 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: t("details.meta.title", { vehicle: titleWithoutYear }),
-      description: vehicle.description ?? undefined,
+      description: t("details.meta.description", {
+        description: vehicle.description ?? "",
+      }),
       images: {
-        url: vehicle?.medias?.[0]?.url,
+        url: thumbnail,
         alt: titleWithoutYear,
         width: 1562,
         height: 878,
@@ -96,20 +106,15 @@ export default async function Page({ params }: DetailsPageProps) {
     return <NotFound />;
   }
 
-  const { titleWithoutYear, price, priceWithoutCurrency, brand } =
-    useVehicleDetails(vehicle);
-
   return (
     <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">
-      <PageTitle>{titleWithoutYear}</PageTitle>
+      <VehiclePageTitle vehicle={vehicle} />
+
       <div className="flex flex-col xl:flex-row gap-8">
         <div className="w-full xl:w-[785px] flex flex-col gap-16 @container/detailsrightcolumn">
-          <MediaList mediaList={vehicle.medias} alt={titleWithoutYear} />
+          <VehicleMediaList vehicle={vehicle} />
 
-          <div className="flex flex-col gap-2">
-            <span className="font-bold text-2xl">{price}</span>
-            <p className="text-sm">{vehicle.description}</p>
-          </div>
+          <VehiclePriceDescription vehicle={vehicle} />
           <VehicleSpecificationSection vehicle={vehicle} />
           <VehiclePerformanceSection vehicle={vehicle} />
           <VehicleRelatedWheelsSection wheels={vehicle.vehicles_wheels} />
@@ -121,14 +126,7 @@ export default async function Page({ params }: DetailsPageProps) {
         </div>
       </div>
 
-      <VehicleRichData
-        description={vehicle.description ?? ""}
-        brand={brand}
-        medias={vehicle.medias}
-        name={titleWithoutYear}
-        price={priceWithoutCurrency ?? ""}
-        slug={slug}
-      />
+      <VehicleRichData vehicle={vehicle} />
     </Container>
   );
 }

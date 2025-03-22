@@ -9,20 +9,8 @@ export default defineConfig({
     environment: "happy-dom",
     coverage: {
       provider: "v8",
-      exclude: [
-        "src/lib/prisma.ts",
-        "src/app/global-error.tsx",
-        "src/app/robots.ts",
-        "src/app/sitemap.ts",
-        "src/lib/review",
-      ],
-      include: [
-        "src/app",
-        "src/components",
-        "src/lib",
-        "src/hooks",
-        "src/utils.ts",
-      ],
+      exclude: ["src/app", "src/lib/prisma.ts", "src/lib/review"],
+      include: ["src/components", "src/lib", "src/hooks", "src/utils.ts"],
     },
     setupFiles: "src/setupTests.tsx",
     server: {
@@ -31,6 +19,13 @@ export default defineConfig({
         inline: ["next-intl"],
       },
     },
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/e2e/**",
+      "**/.{idea,git,cache,output,temp}/**",
+      "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*",
+    ],
   },
   plugins: [tsconfigPaths(), react()],
 });

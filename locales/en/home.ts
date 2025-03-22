@@ -1,9 +1,9 @@
 export default {
   home: {
     meta: {
-      title: "Quarryside Auto - Your favourite dealership in Quarryside county",
+      title: "Explore BeamNG vehicles and auto parts - Quarryside Auto",
       description:
-        "Browse hundreds of used vehicles and auto parts at Quarryside Auto Sales. Quarryside Auto is a fictional dealership website set in the BeamNG.drive universe.",
+        "Browse hundreds of BeamNG vehicles and auto parts at Quarryside Auto. Quarryside Auto is a fictional dealership website set in the BeamNG.drive universe.",
     },
     hero: {
       title:

@@ -1,10 +1,9 @@
 export default {
   home: {
     meta: {
-      title:
-        "Quarryside Auto - ваш любимый дилерский центр в округе Quarryside",
+      title: "Исследуйте автомобили и автозапчасти BeamNG - Quarryside Auto",
       description:
-        "Просматривайте сотни подержанных автомобилей и автозапчастей в Quarryside Auto Sales. Quarryside Auto - это вымышленный сайт дилерского центра во вселенной BeamNG.drive.",
+        "Просмотрите сотни автомобилей BeamNG и автозапчастей в Quarryside Auto. Quarryside Auto - это вымышленный дилерский сайт, созданный во вселенной BeamNG.drive.",
     },
     hero: {
       title:

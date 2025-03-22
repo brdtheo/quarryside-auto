@@ -7,10 +7,10 @@ import type { IconButtonProps } from ".";
 export default function IconButton({
   className,
   children,
-  isDisabled,
   size,
   badgeCount,
   onClick,
+  ...props
 }: IconButtonProps) {
   const containerClassname = useMemo(() => {
     switch (size) {
@@ -25,23 +25,32 @@ export default function IconButton({
     }
   }, []);
 
+  const badgeValue = useMemo(() => {
+    if (!badgeCount) return null;
+    if (badgeCount > 99) {
+      return "99+";
+    }
+    return badgeCount;
+  }, []);
+
   return (
     <button
-      role="button"
+      role={props.role ?? "button"}
       onClick={onClick}
-      type="button"
-      disabled={isDisabled}
+      type={props.type ?? "button"}
+      disabled={props.disabled}
       className={clsx(
         "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:opacity-40 relative",
         "hover:opacity-90 rounded w-fit h-fit disabled:bg-gray-100 dark:disabled:bg-gray-600 disabled:opacity-40 relative",
         containerClassname,
         className,
       )}
+      {...props}
     >
       {children}
-      {!!badgeCount && (
+      {!!badgeValue && (
         <span className="bg-primary dark:bg-primarydark text-white dark:text-black text-xs font-semibold rounded px-1 py-0.5 inline-flex items-center justify-center absolute top-[-5px] right-[-5px] leading-none z-10">
-          {badgeCount}
+          {badgeValue}
         </span>
       )}
     </button>

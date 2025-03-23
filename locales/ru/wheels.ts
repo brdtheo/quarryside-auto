@@ -3,10 +3,9 @@ import { WheelBrand } from "@prisma/client";
 export default {
   wheels: {
     meta: {
-      title:
-        "Обзор колесных дисков и шин для вашего автомобиля - Quarryside Auto",
+      title: "Колеса BeamNG для продажи - Quarryside Auto",
       description:
-        "Откройте для себя наш выбор колес и шин для вашего автомобиля в Quarryside Auto.",
+        "Откройте для себя наш выбор колес BeamNG среди различных дисков и шин для вашего автомобиля в Quarryside Auto. Quarryside Auto - это вымышленный дилерский сайт во вселенной BeamNG.drive.",
     },
     title: "Обода и шины",
     availability: "Доступность",

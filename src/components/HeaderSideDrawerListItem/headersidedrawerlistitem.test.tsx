@@ -17,11 +17,7 @@ const text = faker.lorem.word();
 describe("HeaderSideDrawerListItem", () => {
   beforeEach(() => {
     render(
-      <HeaderSideDrawerListItem
-        icon={<IconHome />}
-        href={href}
-        onClick={() => {}}
-      >
+      <HeaderSideDrawerListItem icon={IconHome} href={href} onClick={() => {}}>
         {text}
       </HeaderSideDrawerListItem>,
       { wrapper: NextIntlClientWrapper },

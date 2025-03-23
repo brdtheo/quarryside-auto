@@ -17,7 +17,7 @@ describe("BenefitCard", () => {
       <BenefitCard
         title={title}
         description={description}
-        icon={<IconCalendarTime stroke={1.5} size={64} />}
+        icon={IconCalendarTime}
       />,
     );
   });

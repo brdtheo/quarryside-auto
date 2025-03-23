@@ -65,7 +65,7 @@ export default function Header() {
           className="text-white block md:hidden"
           size="sm"
         >
-          <IconMenu2 size={20} stroke={2} />
+          {IconMenu2}
         </IconButton>
 
         <HeaderSideDrawer

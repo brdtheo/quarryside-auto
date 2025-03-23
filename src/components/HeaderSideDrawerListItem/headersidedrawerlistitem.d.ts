@@ -1,7 +1,7 @@
-import { ReactElement } from "react";
+import { TablerIcon } from "@tabler/icons-react";
 
 export type HeaderSideDrawerListItemProps = {
-  icon: ReactElement;
+  icon: TablerIcon;
   href: string;
   children: string;
   onClick: MouseEventHandler<HTMLAnchorElement>;

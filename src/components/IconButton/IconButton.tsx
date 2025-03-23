@@ -25,6 +25,21 @@ export default function IconButton({
     }
   }, []);
 
+  const iconSize = useMemo(() => {
+    switch (size) {
+      case "xs":
+        return 14;
+      case "sm":
+        return 14;
+      case "lg":
+        return 18;
+      default:
+        return 16;
+    }
+  }, []);
+
+  const icon = { children };
+
   return (
     <button
       role="button"
@@ -38,7 +53,7 @@ export default function IconButton({
         className,
       )}
     >
-      {children}
+      <icon.children size={iconSize} />
       {!!badgeCount && (
         <span className="bg-primary dark:bg-primarydark text-white dark:text-black text-xs font-semibold rounded px-1 py-0.5 inline-flex items-center justify-center absolute top-[-5px] right-[-5px] leading-none z-10">
           {badgeCount}

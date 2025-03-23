@@ -1,12 +1,14 @@
 import { ReactNode } from "react";
 
+import { TablerIcon } from "@tabler/icons-react";
+
 import type { Url } from "@/types";
 
 export type ChipProps = {
   className?: string;
   children: string;
-  leftIcon?: ReactNode;
-  rightIcon?: ReactNode;
+  startIcon?: TablerIcon;
+  endIcon?: TablerIcon;
   /** If passed, the path is set to a Link element */
   iconHref?: Url;
 };

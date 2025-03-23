@@ -1,10 +1,5 @@
-import { Media, Vehicle } from "@prisma/client";
+import { VehicleWithMedias } from "@/lib/vehicle/types";
 
 export type VehicleRichDataProps = {
-  brand: string;
-  medias: Media[];
-  name: string;
-  description: string;
-  price: string;
-  slug: Vehicle["slug"];
+  vehicle: VehicleWithMedias;
 };

@@ -12,15 +12,15 @@ import Button from "@/components/Button";
 import Checkbox from "@/components/Checkbox";
 import Select from "@/components/Select";
 
+import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
+
 import { WheelFormProps } from ".";
 
-export default function WheelForm({
-  price,
-  isDeliveryAvailable,
-  isFreeOnSitePickup,
-}: WheelFormProps) {
+export default function WheelForm({ wheel }: WheelFormProps) {
   const [quantity, setQuantity] = useState<number>(2);
   const t = useTranslations("wheels");
+
+  const { price } = useWheelDetails(wheel);
 
   const wheelQuantityOptionList = useMemo(
     () =>
@@ -60,9 +60,9 @@ export default function WheelForm({
         </div>
       </div>
 
-      {(!!isFreeOnSitePickup || !!isDeliveryAvailable) && (
+      {(!!wheel.free_on_site_pickup || !!wheel.delivery_available) && (
         <ul className="flex flex-col gap-2">
-          {!!isFreeOnSitePickup && (
+          {!!wheel.free_on_site_pickup && (
             <li className="inline-flex items-center gap-1">
               <IconBuildingStore
                 className="text-primary dark:text-primarydark"
@@ -74,7 +74,7 @@ export default function WheelForm({
               </span>
             </li>
           )}
-          {!!isDeliveryAvailable && (
+          {!!wheel.delivery_available && (
             <li className="inline-flex items-center gap-1">
               <IconTruckDelivery
                 className="text-primary dark:text-primarydark"

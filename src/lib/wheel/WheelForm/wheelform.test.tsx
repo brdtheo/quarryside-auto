@@ -1,32 +1,19 @@
-import { cleanup, render, renderHook, screen } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { wheelFactory } from "@/lib/wheel/factory";
-import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
+import { WheelWithMedias } from "@/lib/wheel/types";
 
 import { NextIntlClientWrapper } from "@/setupTests";
 
 import WheelForm from ".";
 
 describe("WheelForm", () => {
-  const wheel = wheelFactory();
-  const {
-    result: { current },
-  } = renderHook(() => useWheelDetails(wheel), {
-    wrapper: NextIntlClientWrapper,
-  });
-  const wheelDetails = current;
+  const wheel = wheelFactory({ withMedia: true }) as WheelWithMedias;
 
   beforeEach(() => {
-    render(
-      <WheelForm
-        price={wheelDetails.price}
-        isDeliveryAvailable={wheel.delivery_available}
-        isFreeOnSitePickup={wheel.free_on_site_pickup}
-      />,
-      { wrapper: NextIntlClientWrapper },
-    );
+    render(<WheelForm wheel={wheel} />, { wrapper: NextIntlClientWrapper });
   });
 
   afterEach(() => {

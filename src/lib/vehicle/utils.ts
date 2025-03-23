@@ -102,11 +102,6 @@ export function getVehicleFindManyArgs(
     ? VEHICLE_LIST_PAGE_SIZE * (pageParam - 1)
     : null;
 
-  if (isCountArgs) {
-    const countArgs: Prisma.VehicleCountArgs = {};
-    return countArgs;
-  }
-
   const args: Prisma.VehicleFindManyArgs = {
     ...(!isCountArgs && {
       include: {

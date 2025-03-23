@@ -20,16 +20,7 @@ describe("VehicleRichData", () => {
   const vehicleDetails = current;
 
   beforeEach(() => {
-    render(
-      <VehicleRichData
-        brand={vehicleDetails.brand}
-        medias={vehicle.medias}
-        name={vehicleDetails.titleWithoutYear}
-        description={vehicle.description ?? ""}
-        price={vehicleDetails.priceWithoutCurrency ?? ""}
-        slug={vehicle.slug}
-      />,
-    );
+    render(<VehicleRichData vehicle={vehicle} />);
   });
 
   afterEach(() => {

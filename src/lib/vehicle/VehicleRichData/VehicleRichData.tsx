@@ -1,19 +1,16 @@
 import Script from "next/script";
 
+import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
 import { getVehicleRichData } from "@/lib/vehicle/utils";
 
 import type { VehicleRichDataProps } from ".";
 
-export default function VehicleRichData({
-  brand,
-  medias,
-  name,
-  price,
-  slug,
-  description,
-}: VehicleRichDataProps) {
+export default function VehicleRichData({ vehicle }: VehicleRichDataProps) {
   const thumbnail =
-    (medias ?? []).find((media) => media.is_thumbnail)?.url ?? "";
+    (vehicle.medias ?? []).find((media) => media.is_thumbnail)?.url ?? "";
+
+  const { titleWithoutYear, priceWithoutCurrency, brand } =
+    useVehicleDetails(vehicle);
 
   return (
     <Script
@@ -22,12 +19,12 @@ export default function VehicleRichData({
       dangerouslySetInnerHTML={getVehicleRichData({
         brand,
         thumbnail,
-        name,
-        price,
-        slug,
-        description,
+        name: titleWithoutYear,
+        price: priceWithoutCurrency ?? "",
+        slug: vehicle.slug,
+        description: vehicle.description ?? "",
       })}
-      id={slug}
+      id={vehicle.slug}
     />
   );
 }

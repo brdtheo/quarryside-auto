@@ -1,18 +1,15 @@
 import Script from "next/script";
 
+import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 import { getWheelRichData } from "@/lib/wheel/utils";
 
 import type { WheelRichDataProps } from ".";
 
-export default function WheelRichData({
-  brand,
-  medias,
-  name,
-  price,
-  slug,
-}: WheelRichDataProps) {
+export default function WheelRichData({ wheel }: WheelRichDataProps) {
   const thumbnail =
-    (medias ?? []).find((media) => media.is_thumbnail)?.url ?? "";
+    (wheel.medias ?? []).find((media) => media.is_thumbnail)?.url ?? "";
+
+  const { title, brand, price } = useWheelDetails(wheel);
 
   return (
     <Script
@@ -21,11 +18,11 @@ export default function WheelRichData({
       dangerouslySetInnerHTML={getWheelRichData({
         brand,
         thumbnail,
-        name,
+        name: title,
         price,
-        slug,
+        slug: wheel.slug,
       })}
-      id={slug}
+      id={wheel.slug}
     />
   );
 }

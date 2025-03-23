@@ -1,9 +1,5 @@
-import { Media, Wheel } from "@prisma/client";
+import { WheelWithMedias } from "@/lib/wheel/types";
 
 export type WheelRichDataProps = {
-  brand: string;
-  medias: Media[];
-  name: string;
-  price: string;
-  slug: Wheel["slug"];
+  wheel: WheelWithMedias;
 };

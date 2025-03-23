@@ -5,15 +5,14 @@ import NotFound from "@/app/[locale]/not-found";
 
 import Advertising from "@/components/Advertising";
 import Container from "@/components/Container";
-import PageTitle from "@/components/PageTitle";
 
-import MediaList from "@/lib/media/MediaList";
 import { prisma } from "@/lib/prisma";
 import WheelForm from "@/lib/wheel/WheelForm";
+import WheelMediaList from "@/lib/wheel/WheelMediaList";
+import WheelPageTitle from "@/lib/wheel/WheelPageTitle";
 import WheelRelatedVehiclesSection from "@/lib/wheel/WheelRelatedVehiclesSection";
 import WheelRichData from "@/lib/wheel/WheelRichData";
 import WheelSpecificationSection from "@/lib/wheel/WheelSpecificationSection";
-import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 
 import { DOMAIN_URL } from "@/constants";
 
@@ -36,7 +35,12 @@ export async function generateMetadata({
     };
   }
 
-  const { title } = useWheelDetails(wheel);
+  const title = [
+    ...(wheel.brand === "NO_BRAND"
+      ? []
+      : [t(`filter.brand.option.${wheel.brand}`)]),
+    wheel.model,
+  ].join(" ");
 
   return {
     title: t("details.meta.title", { wheel: title }),
@@ -95,36 +99,24 @@ export default async function Page({ params }: DetailsPageProps) {
     return <NotFound />;
   }
 
-  const { title, price, brand } = useWheelDetails(wheel);
-
   return (
     <Container className="m-auto gap-8 flex flex-col pt-6 pb-8">
-      <PageTitle>{title}</PageTitle>
+      <WheelPageTitle wheel={wheel} />
       <div className="flex flex-col xl:flex-row gap-4">
         <div className="w-full xl:w-[785px] flex flex-col gap-16">
-          <MediaList mediaList={wheel.medias} alt={title} />
+          <WheelMediaList wheel={wheel} />
 
           <WheelSpecificationSection wheel={wheel} />
           <WheelRelatedVehiclesSection vehicles={wheel.vehicles_wheels} />
         </div>
 
         <div className="flex flex-1 flex-col p-3 bg-white dark:bg-blacksecondary h-fit rounded @container/wheelform">
-          <WheelForm
-            price={price}
-            isDeliveryAvailable={wheel.delivery_available}
-            isFreeOnSitePickup={wheel.free_on_site_pickup}
-          />
+          <WheelForm wheel={wheel} />
           <Advertising className="mt-4" ratioMode="horizontal" />
         </div>
       </div>
 
-      <WheelRichData
-        brand={brand}
-        medias={wheel.medias}
-        name={title}
-        price={price}
-        slug={slug}
-      />
+      <WheelRichData wheel={wheel} />
     </Container>
   );
 }

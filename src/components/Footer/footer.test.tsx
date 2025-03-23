@@ -1,4 +1,4 @@
-import { cleanup, render } from "@testing-library/react";
+import { cleanup, render, screen } from "@testing-library/react";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
@@ -16,7 +16,7 @@ describe("Footer", () => {
   });
 
   it("Renders a footer element", () => {
-    const footer = document.querySelector("footer");
+    const footer = screen.getByRole("contentinfo");
     expect(footer).toBeInTheDocument();
   });
 });

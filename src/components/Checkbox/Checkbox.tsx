@@ -15,36 +15,34 @@ export default function Checkbox({
 }: CheckboxProps) {
   return (
     <Link
-      className="flex gap-3 py-1.5 items-start select-none w-full"
+      className="flex gap-3 py-1.5 items-center select-none w-full"
       href={href}
       scroll={false}
       onClick={onClick}
     >
-      <div className="relative">
-        <input
-          id={id}
-          className="invisible absolute"
-          type="checkbox"
-          role="checkbox"
-          name={id}
-          checked={checked}
-          readOnly
-        />
-        <div
-          className={clsx("w-4 h-4 rounded border flex items-center", {
-            "bg-white border-primary dark:bg-blacksecondary dark:border-transparent":
-              !checked,
-            "bg-primary border-transparent dark:bg-primarydark": checked,
+      <input
+        id={id}
+        className="hidden absolute"
+        type="checkbox"
+        role="checkbox"
+        name={label}
+        checked={checked}
+        readOnly
+      />
+      <div
+        className={clsx("w-4 h-4 rounded border flex items-center", {
+          "bg-white border-primary dark:bg-blacksecondary dark:border-transparent":
+            !checked,
+          "bg-primary border-transparent dark:bg-primarydark": checked,
+        })}
+      >
+        <IconCheck
+          className={clsx({
+            hidden: !checked,
+            "text-white dark:text-black": checked,
           })}
-        >
-          <IconCheck
-            className={clsx({
-              hidden: !checked,
-              "text-white dark:text-black": checked,
-            })}
-            size={18}
-          />
-        </div>
+          size={18}
+        />
       </div>
       <label
         className="text-sm cursor-pointer leading-none dark:text-white"

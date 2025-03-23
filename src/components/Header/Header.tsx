@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <header className="w-full z-20 bg-primary dark:bg-black fixed md:static flex justify-center h-[72px]">
       <Container className="flex h-full justify-between items-center">
-        <Link className="hidden md:block" href="/">
+        <Link aria-label="Home page" className="hidden md:block" href="/">
           <Image
             src="/quarryside_logo.png"
             alt="Quarryside Auto Sales company logo"
@@ -40,7 +40,7 @@ export default function Header() {
             blurDataURL="/quarryside_logo.png"
           />
         </Link>
-        <Link className="md:hidden" href="/">
+        <Link aria-label="Home page" className="md:hidden" href="/">
           <Image
             src="/quarryside_logo_mobile.png"
             alt="Quarryside Auto Sales company logo"

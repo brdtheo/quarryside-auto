@@ -10,7 +10,6 @@
 
 ## Checklist
 
-- [ ] My code follows guidelines of the repository
-- [ ] I did not detect any bugs when testing my code
+- [ ] There is no bug when manually testing my code
 - [ ] My changes does not trigger CI error(s)
-- [ ] If my changes include new util function(s) or component(s), it is fully documented and easily readable
+- [ ] If my changes include a new function/component/hook, it is easily readable and properly tested

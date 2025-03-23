@@ -81,7 +81,9 @@ export default function useVehicleDetails(vehicle: VehicleBase) {
       })
     : "";
 
-  const transmission = t(`filter.transmission.option.${vehicle.transmission}`);
+  const transmission = vehicle.transmission
+    ? t(`filter.transmission.option.${vehicle.transmission}`)
+    : "";
 
   const price = vehicle.price_cts ? getPrice(vehicle.price_cts) : "";
 

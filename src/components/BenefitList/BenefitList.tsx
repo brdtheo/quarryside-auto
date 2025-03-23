@@ -19,28 +19,28 @@ export default function BenefitList() {
           <BenefitCard
             title={t("benefitList.delivery.title")}
             description={t("benefitList.delivery.description")}
-            icon={<IconSteeringWheel stroke={1.5} size={64} />}
+            icon={IconSteeringWheel}
           />
         </li>
         <li>
           <BenefitCard
             title={t("benefitList.guarantee.title")}
             description={t("benefitList.guarantee.description")}
-            icon={<IconHeartHandshake stroke={1.5} size={64} />}
+            icon={IconHeartHandshake}
           />
         </li>
         <li>
           <BenefitCard
             title={t("benefitList.financing.title")}
             description={t("benefitList.financing.description")}
-            icon={<IconPigMoney stroke={1.5} size={64} />}
+            icon={IconPigMoney}
           />
         </li>
         <li>
           <BenefitCard
             title={t("benefitList.community.title")}
             description={t("benefitList.community.description")}
-            icon={<IconUsersGroup stroke={1.5} size={64} />}
+            icon={IconUsersGroup}
           />
         </li>
       </ul>

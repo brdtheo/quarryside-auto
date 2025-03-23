@@ -52,17 +52,14 @@ export function getWheelFindManyArgs(
     ? WHEEL_LIST_PAGE_SIZE * (pageParam - 1)
     : null;
 
-  if (isCountArgs) {
-    const countArgs: Prisma.WheelCountArgs = {};
-    return countArgs;
-  }
-
   const args: Prisma.WheelFindManyArgs = {
-    include: {
-      medias: { where: { is_thumbnail: true } },
-    },
-    take: WHEEL_LIST_PAGE_SIZE,
-    ...(prismaSkipParam ? { skip: prismaSkipParam } : {}),
+    ...(!isCountArgs && {
+      include: {
+        medias: { where: { is_thumbnail: true } },
+      },
+      take: WHEEL_LIST_PAGE_SIZE,
+      ...(prismaSkipParam ? { skip: prismaSkipParam } : {}),
+    }),
     ...((!!brandParam ||
       !!deliveryAvailableParm ||
       !!freeOnSitePickupParm ||

@@ -1,8 +1,8 @@
-import { ReactElement } from "react";
+import { TablerIcon } from "@tabler/icons-react";
 
 export type IconButtonProps = {
   className?: string;
-  children: ReactElement;
+  children: TablerIcon;
   size?: "xs" | "sm" | "lg";
   isDisabled?: boolean;
   badgeCount?: number;

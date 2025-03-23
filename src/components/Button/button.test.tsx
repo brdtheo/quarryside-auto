@@ -31,20 +31,20 @@ describe("Button", () => {
   });
 
   it("Renders a start icon if provided from props", () => {
-    render(<Button startIcon={<IconArrowLeft />}>{text}</Button>);
+    render(<Button startIcon={IconArrowLeft}>{text}</Button>);
     const startIcon = document.querySelector(".tabler-icon");
     expect(startIcon).toBeInTheDocument();
   });
 
   it("Renders a end icon if provided from props", () => {
-    render(<Button endIcon={<IconArrowRight />}>{text}</Button>);
+    render(<Button endIcon={IconArrowRight}>{text}</Button>);
     const endIcon = document.querySelector(".tabler-icon");
     expect(endIcon).toBeInTheDocument();
   });
 
   it("Renders both start and end icon if provided from props", () => {
     render(
-      <Button startIcon={<IconArrowLeft />} endIcon={<IconArrowRight />}>
+      <Button startIcon={IconArrowLeft} endIcon={IconArrowRight}>
         {text}
       </Button>,
     );

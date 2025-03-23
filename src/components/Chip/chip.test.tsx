@@ -22,21 +22,21 @@ describe("Chip", () => {
     expect(span).toBeInTheDocument();
   });
 
-  it("Renders a left icon if provided from props", () => {
-    render(<Chip leftIcon={<IconX />}>{text}</Chip>);
-    const leftIcon = document.querySelector(".tabler-icon");
-    expect(leftIcon).toBeInTheDocument();
+  it("Renders a start icon if provided from props", () => {
+    render(<Chip startIcon={IconX}>{text}</Chip>);
+    const startIcon = document.querySelector(".tabler-icon");
+    expect(startIcon).toBeInTheDocument();
   });
 
-  it("Renders a right icon if provided from props", () => {
-    render(<Chip rightIcon={<IconX />}>{text}</Chip>);
-    const rightIcon = document.querySelector(".tabler-icon");
-    expect(rightIcon).toBeInTheDocument();
+  it("Renders a end icon if provided from props", () => {
+    render(<Chip endIcon={IconX}>{text}</Chip>);
+    const endIcon = document.querySelector(".tabler-icon");
+    expect(endIcon).toBeInTheDocument();
   });
 
   it("Renders a link for icons when passing href prop", () => {
     render(
-      <Chip rightIcon={<IconX />} iconHref={href}>
+      <Chip endIcon={IconX} iconHref={href}>
         {text}
       </Chip>,
     );

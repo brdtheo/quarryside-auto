@@ -14,11 +14,7 @@ import {
 import HeaderSideDrawerListItem from "@/components/HeaderSideDrawerListItem";
 import SideDrawer from "@/components/SideDrawer";
 
-import {
-  HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE,
-  HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE,
-  type HeaderSideDrawerProps,
-} from ".";
+import type { HeaderSideDrawerProps } from ".";
 
 export default function HeaderSideDrawer({
   isOpen,
@@ -30,73 +26,39 @@ export default function HeaderSideDrawer({
     <SideDrawer isOpen={isOpen} onClose={onClose}>
       <nav className="flex flex-col justify-between flex-1">
         <ul className="flex flex-col">
-          <HeaderSideDrawerListItem
-            icon={
-              <IconHome
-                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
-                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
-              />
-            }
-            href="/"
-            onClick={onClose}
-          >
+          <HeaderSideDrawerListItem icon={IconHome} href="/" onClick={onClose}>
             {t("navigation.home")}
           </HeaderSideDrawerListItem>
           <HeaderSideDrawerListItem
-            icon={
-              <IconCar
-                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
-                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
-              />
-            }
+            icon={IconCar}
             href="/vehicles"
             onClick={onClose}
           >
             {t("navigation.usedVehicles.title")}
           </HeaderSideDrawerListItem>
           <HeaderSideDrawerListItem
-            icon={
-              <IconWheel
-                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
-                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
-              />
-            }
+            icon={IconWheel}
             href="/wheels"
             onClick={onClose}
           >
             {t("navigation.rimsTires.title")}
           </HeaderSideDrawerListItem>
           <HeaderSideDrawerListItem
-            icon={
-              <IconBriefcase
-                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
-                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
-              />
-            }
+            icon={IconBriefcase}
             href="#"
             onClick={onClose}
           >
             {t("navigation.careers.title")}
           </HeaderSideDrawerListItem>
           <HeaderSideDrawerListItem
-            icon={
-              <IconLifebuoy
-                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
-                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
-              />
-            }
+            icon={IconLifebuoy}
             href="#"
             onClick={onClose}
           >
             {t("navigation.helpCenter.title")}
           </HeaderSideDrawerListItem>
           <HeaderSideDrawerListItem
-            icon={
-              <IconInfoCircle
-                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
-                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
-              />
-            }
+            icon={IconInfoCircle}
             href="#"
             onClick={onClose}
           >
@@ -106,27 +68,13 @@ export default function HeaderSideDrawer({
 
         <ul>
           <HeaderSideDrawerListItem
-            icon={
-              <IconShoppingCart
-                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
-                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
-              />
-            }
+            icon={IconShoppingCart}
             href="#"
             onClick={onClose}
           >
             {t("header.myCart")}
           </HeaderSideDrawerListItem>
-          <HeaderSideDrawerListItem
-            icon={
-              <IconUser
-                size={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_SIZE}
-                stroke={HEADER_SIDE_DRAWER_LIST_ITEM_ICON_STROKE}
-              />
-            }
-            href="#"
-            onClick={onClose}
-          >
+          <HeaderSideDrawerListItem icon={IconUser} href="#" onClick={onClose}>
             {t("header.account")}
           </HeaderSideDrawerListItem>
         </ul>

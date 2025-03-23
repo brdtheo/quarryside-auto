@@ -31,20 +31,12 @@ export default function HomeHero() {
 
       <div className="hidden lg:flex gap-3 z-10 pt-2 xl:pt-8">
         <Link href="/vehicles">
-          <Button
-            endIcon={<IconArrowRight size={16} />}
-            rounded
-            color="primary"
-          >
+          <Button endIcon={IconArrowRight} rounded color="primary">
             {t("hero.browseUsedCars")}
           </Button>
         </Link>
         <Link href="/wheels">
-          <Button
-            endIcon={<IconArrowRight size={16} />}
-            rounded
-            color="primary"
-          >
+          <Button endIcon={IconArrowRight} rounded color="primary">
             {t("hero.browseRimsTires")}
           </Button>
         </Link>

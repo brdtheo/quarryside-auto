@@ -1,9 +1,9 @@
-import { ReactElement } from "react";
+import { TablerIcon } from "@tabler/icons-react";
 
 export type ButtonProps = {
   className?: string;
-  startIcon?: ReactElement;
-  endIcon?: ReactElement;
+  startIcon?: TablerIcon;
+  endIcon?: TablerIcon;
   children: string;
   size?: "xs" | "sm" | "lg";
   color?: "primary" | "secondary";

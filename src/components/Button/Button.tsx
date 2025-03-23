@@ -54,6 +54,19 @@ export default function Button({
     }
   }, []);
 
+  const iconSize = useMemo(() => {
+    switch (size) {
+      case "xs":
+        return 14;
+      case "sm":
+        return 14;
+      case "lg":
+        return 18;
+      default:
+        return 16;
+    }
+  }, []);
+
   const colorClassname = useMemo(() => {
     switch (color) {
       case "primary":
@@ -62,6 +75,11 @@ export default function Button({
         return "bg-secondary text-black dark:bg-secondarydark dark:text-white";
     }
   }, []);
+
+  const icons = {
+    start: startIcon,
+    end: endIcon,
+  };
 
   return (
     <button
@@ -77,9 +95,9 @@ export default function Button({
         className,
       )}
     >
-      {startIcon && <div className={textSizeClassname}>{startIcon}</div>}
+      {!!icons.start && <icons.start size={iconSize} />}
       <span className={clsx("flex-1", textSizeClassname)}>{children}</span>
-      {endIcon && <div className={textSizeClassname}>{endIcon}</div>}
+      {!!icons.end && <icons.end size={iconSize} />}
     </button>
   );
 }

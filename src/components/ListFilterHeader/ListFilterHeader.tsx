@@ -27,7 +27,7 @@ export default function ListFilterHeader({
           className="rounded border border-divider"
           onClick={() => {}}
         >
-          <IconSearch size={16} stroke={2} />
+          {IconSearch}
         </IconButton>
 
         <div className="flex gap-1">
@@ -36,14 +36,14 @@ export default function ListFilterHeader({
             onClick={handleOpenFilterDrawer}
             badgeCount={activeFilterCount}
           >
-            <IconAdjustmentsHorizontal size={16} stroke={1.5} />
+            {IconAdjustmentsHorizontal}
           </IconButton>
           <IconButton
             isDisabled
             className="rounded border border-divider"
             onClick={() => {}}
           >
-            <IconArrowsSort size={16} stroke={1.5} />
+            {IconArrowsSort}
           </IconButton>
         </div>
       </div>

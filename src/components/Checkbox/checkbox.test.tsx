@@ -27,7 +27,7 @@ describe("Checkbox", () => {
     expect(input).toHaveAttribute("readonly");
     expect(input).toHaveAttribute("type");
     expect(inputTypeAttribute).toBe("checkbox");
-    expect(inputNameAttribute).toBe(id);
+    expect(inputNameAttribute).toBe(label);
   });
 
   it("Renders a label with 'for' attribute set to passed id", () => {

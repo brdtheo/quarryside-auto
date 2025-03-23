@@ -48,7 +48,7 @@ export default function ListFilterHeader({
         </div>
       </div>
 
-      <p className="pb-3 pt-0 text-sm">
+      <p aria-label="result-count" className="pb-3 pt-0 text-sm">
         {t("resultCount", { count: resultCount })}
       </p>
     </>

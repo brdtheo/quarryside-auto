@@ -14,7 +14,8 @@
     "pretty-check": "npx prettier --check src/app",
     "postinstall": "npx prisma generate",
     "migrate": "npx prisma migrate dev",
-    "test": "vitest run --coverage"
+    "test": "vitest run --coverage",
+    "e2e": "npx playwright test"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
@@ -36,6 +37,7 @@
     "@eslint/js": "^9.20.0",
     "@faker-js/faker": "^9.6.0",
     "@next/eslint-plugin-next": "^15.1.6",
+    "@playwright/test": "^1.51.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/postcss": "^4.0.14",
     "@testing-library/dom": "^10.4.0",
@@ -66,5 +68,5 @@
     "typescript-eslint": "^8.23.0",
     "vitest": "3.0.8"
   },
-  "packageManager": "pnpm@10.6.4+sha512.da3d715bfd22a9a105e6e8088cfc7826699332ded60c423b14ec613a185f1602206702ff0fe4c438cb15c979081ce4cb02568e364b15174503a63c7a8e2a5f6c"
+  "packageManager": "pnpm@10.6.5+sha512.cdf928fca20832cd59ec53826492b7dc25dc524d4370b6b4adbf65803d32efaa6c1c88147c0ae4e8d579a6c9eec715757b50d4fa35eea179d868eada4ed043af"
 }

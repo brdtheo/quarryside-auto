@@ -65,6 +65,7 @@ export default function Button({
 
   return (
     <button
+      aria-label={children}
       role="button"
       type="button"
       disabled={isDisabled}

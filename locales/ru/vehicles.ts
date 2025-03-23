@@ -11,9 +11,9 @@ import {
 export default {
   vehicles: {
     meta: {
-      title: "Обзор подержанных автомобилей на продажу - Quarryside Auto",
+      title: "Автомобили BeamNG на продажу - Quarryside Auto",
       description:
-        "Откройте для себя широкий выбор подержанных автомобилей, выставленных на продажу в Quarryside Auto. Найдите свой следующий автомобиль мечты прямо сейчас и свяжитесь с нами для тест-драйва.",
+        "Откройте для себя широкий выбор автомобилей BeamNG для продажи в Quarryside Auto. Найдите свой следующий автомобиль мечты прямо сейчас и свяжитесь с нами для тест-драйва. Quarryside Auto - это вымышленный дилерский сайт во вселенной BeamNG.drive.",
     },
     title: "Подержанные автомобили",
     wheels: "колеса",
@@ -22,6 +22,8 @@ export default {
     details: {
       meta: {
         title: "{ vehicle } - Quarryside Auto",
+        description:
+          "{ description }. Проверьте технические характеристики автомобиля и сопутствующие колеса на Quarryside Auto",
       },
       specifications: "Технические характеристики",
       performance: "Производительность",

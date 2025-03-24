@@ -34,6 +34,7 @@ describe("MediaList", () => {
     render(<MediaList mediaList={[]} alt="" />);
     const skeleton = screen.getByTestId("media-skeleton");
     expect(skeleton).toBeInTheDocument();
+    expect(skeleton).toBeVisible();
   });
 
   it("Renders a button with an image within for the thumbnail", () => {

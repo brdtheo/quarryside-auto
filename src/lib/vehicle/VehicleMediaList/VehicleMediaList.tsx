@@ -4,7 +4,7 @@ import useVehicleDetails from "@/lib/vehicle/hooks/useVehicleDetails";
 import type { VehicleMediaListProps } from ".";
 
 export default function VehicleMediaList({ vehicle }: VehicleMediaListProps) {
-  if (!vehicle?.medias || vehicle?.medias.length === 0) {
+  if (!vehicle) {
     return null;
   }
   const { titleWithoutYear } = useVehicleDetails(vehicle);

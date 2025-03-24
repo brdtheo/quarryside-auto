@@ -44,10 +44,10 @@ export default function VehicleForm() {
       </div>
 
       <div className="flex flex-col gap-2">
-        <Button color="primary" size="lg" rounded>
+        <Button expanded color="primary" size="lg" rounded>
           {t("checkAvailability")}
         </Button>
-        <Button color="secondary" rounded>
+        <Button expanded color="secondary" rounded>
           {t("scheduleTestDrive")}
         </Button>
       </div>

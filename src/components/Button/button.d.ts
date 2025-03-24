@@ -9,4 +9,5 @@ export type ButtonProps = {
   color?: "primary" | "secondary";
   rounded?: boolean;
   isDisabled?: boolean;
+  expanded?: boolean;
 };

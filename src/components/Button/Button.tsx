@@ -13,6 +13,7 @@ export default function Button({
   size,
   color,
   rounded,
+  expanded,
 }: ButtonProps) {
   const roundedClassname = useMemo(() => {
     if (!rounded) return "";
@@ -89,6 +90,10 @@ export default function Button({
       disabled={isDisabled}
       className={clsx(
         "inline-flex items-center h-fit hover:opacity-90 leading-none",
+        {
+          "w-fit": !expanded,
+          "w-full": expanded,
+        },
         containerClassname,
         colorClassname,
         roundedClassname,

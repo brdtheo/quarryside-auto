@@ -12,7 +12,7 @@ export default function HeaderSideDrawerListItem({
   return (
     <li className="border-b border-b-divider last-of-type:border-b-transparent px-2 py-3">
       <Link onClick={onClick} className="flex items-center gap-3" href={href}>
-        <props.icon />
+        <props.icon size={16} />
         <h3 className="text-sm">{children}</h3>
       </Link>
     </li>

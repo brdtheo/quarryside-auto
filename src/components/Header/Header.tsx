@@ -63,7 +63,7 @@ export default function Header() {
         <IconButton
           onClick={handleOpenSideDrawer}
           className="text-white block md:hidden"
-          size="sm"
+          size="lg"
         >
           {IconMenu2}
         </IconButton>

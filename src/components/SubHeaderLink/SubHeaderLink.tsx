@@ -18,28 +18,30 @@ export default function SubHeaderLink({
   const segment = useSelectedLayoutSegment();
   const isActive = slug === segment;
 
-  if (isDisabled)
-    return (
-      <Button
-        size="sm"
-        className={clsx("text-gray-400 dark:text-gray-500")}
-        isDisabled
-      >
-        {label}
-      </Button>
-    );
-
   return (
-    <Link className="h-fit" href={`/${slug}`}>
-      <Button
-        size="sm"
-        className={clsx("dark:text-white", {
-          "bg-primary text-white dark:bg-blacksecondary": isActive,
-        })}
-        rounded
+    <div
+      className={clsx("h-11 inline-flex items-center border-b-2", {
+        "border-b-primary dark:border-b-primarydark": isActive,
+        "border-b-transparent": !isActive,
+      })}
+    >
+      <Link
+        className={clsx("inline-flex items-center")}
+        href={isDisabled ? "#" : `/${slug}`}
       >
-        {label}
-      </Button>
-    </Link>
+        <Button
+          size="sm"
+          className={clsx({
+            "dark:text-white hover:bg-gray-200/70 dark:hover:bg-white/20 transition-colors duration-100":
+              !isDisabled,
+            "text-gray-400 dark:text-gray-500": isDisabled,
+          })}
+          isDisabled={isDisabled}
+          rounded
+        >
+          {label}
+        </Button>
+      </Link>
+    </div>
   );
 }

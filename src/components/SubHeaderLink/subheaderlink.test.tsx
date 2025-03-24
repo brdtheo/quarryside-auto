@@ -28,12 +28,15 @@ describe("SubHeaderLink", () => {
     expect(linkButton).toBeInTheDocument();
   });
 
-  it("Renders a disabled button if disabled prop is passed", () => {
+  it("Renders a link with no href if disabled", () => {
     render(<SubHeaderLink slug={slug} label={label} isDisabled />, {
       wrapper: NextIntlClientWrapper,
     });
-    const button = screen.getByRole("button", { name: label });
-    expect(button).toBeInTheDocument();
-    expect(button).toBeDisabled();
+    const link = screen.getByRole("link");
+    const linkHref = link.getAttribute("href");
+    const linkButton = screen.getByText(label);
+    expect(link).toBeInTheDocument();
+    expect(linkHref).toBe("#");
+    expect(linkButton).toBeInTheDocument();
   });
 });

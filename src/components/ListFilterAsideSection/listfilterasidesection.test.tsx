@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 
 import { cleanup, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { afterEach, describe, expect, it } from "vitest";
 
@@ -10,10 +11,9 @@ import ListFilterAsideSection from ".";
 
 const title = faker.lorem.words(2);
 const count = faker.number.int({ min: 1, max: 99 });
-const optionLabel = faker.word.noun();
 const options = faker.helpers.multiple(
   () => ({
-    label: optionLabel,
+    label: faker.word.noun({ length: { min: 5, max: 10 } }),
     value: faker.string.alphanumeric(5).toUpperCase(),
     isChecked: faker.datatype.boolean(0.4),
     href: faker.internet.url(),
@@ -92,11 +92,9 @@ describe("ListFilterAsideSection", () => {
     const links = screen.getAllByRole("link");
     const inputs = screen.getAllByRole("checkbox");
     const inputCheckIcons = document.querySelectorAll(".tabler-icon");
-    const labels = screen.getAllByLabelText(optionLabel);
     expect(links).toHaveLength(3);
     expect(inputs).toHaveLength(3);
     expect(inputCheckIcons).toHaveLength(3);
-    expect(labels).toHaveLength(3);
     links.forEach((link) => {
       expect(link).toBeInTheDocument();
       expect(link).toHaveAttribute("href");
@@ -131,5 +129,23 @@ describe("ListFilterAsideSection", () => {
     );
     const searchInput = screen.getByRole("searchbox");
     expect(searchInput).toBeInTheDocument();
+  });
+
+  it("Renders relevant option(s) when typing inside the search field", async () => {
+    render(
+      <ListFilterAsideSection
+        title={title}
+        options={options}
+        selectedOptionCount={count}
+        isSearchable
+      />,
+      { wrapper: NextIntlClientWrapper },
+    );
+    const searchInput = screen.getByRole("searchbox");
+
+    await userEvent.type(searchInput, options[0].label.slice(0, 2)); // partially fill
+
+    const option = screen.getByRole("link", { name: options[0].label });
+    expect(option).toBeVisible();
   });
 });

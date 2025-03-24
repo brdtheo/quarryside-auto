@@ -51,8 +51,9 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
     [],
   );
 
-  if ((mediaList ?? []).length === 0 || !thumbnail)
+  if ((mediaList ?? []).length === 0 || !thumbnail) {
     return <MediaListSkeleton />;
+  }
 
   return (
     <div className="flex flex-col items-start gap-2 flex-1 @4xl/detailsrightcolumn:flex-row @7xl/detailsrightcolumn:flex-col">

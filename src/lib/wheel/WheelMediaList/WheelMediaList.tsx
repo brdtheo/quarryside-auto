@@ -4,7 +4,7 @@ import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 import type { WheelMediaListProps } from ".";
 
 export default function WheelMediaList({ wheel }: WheelMediaListProps) {
-  if (!wheel?.medias || wheel?.medias.length === 0) {
+  if (!wheel) {
     return null;
   }
   const { title } = useWheelDetails(wheel);

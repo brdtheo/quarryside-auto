@@ -23,7 +23,7 @@ import type { MediaListProps } from ".";
 
 export default function MediaList({ mediaList, alt }: MediaListProps) {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-  const [index, setIndex] = useState<number | null>(null);
+  const [index, setIndex] = useState<number | undefined>();
 
   const toggleOpenLightbox = useCallback(() => {
     setIsLightboxOpen((state) => !state);
@@ -58,6 +58,7 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
   return (
     <div className="flex flex-col items-start gap-2 flex-1 @4xl/detailsrightcolumn:flex-row @7xl/detailsrightcolumn:flex-col">
       <button
+        type="button"
         aria-label="Expand media thumbnail image"
         role="button"
         className="w-fit"
@@ -76,8 +77,9 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
           {(mediaList ?? []).map(
             (media, index) =>
               media && (
-                <li key={index}>
+                <li key={media.id}>
                   <button
+                    type="button"
                     aria-label="Select and expand media image"
                     role="button"
                     onClick={handleMediaClick(index)}

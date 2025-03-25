@@ -1,5 +1,2 @@
-import WheelForm from "./WheelForm";
-import type { WheelFormProps } from "./wheelform";
-
-export type { WheelFormProps };
-export default WheelForm;
+export { default } from "./WheelForm";
+export { type WheelFormProps } from "./wheelform";

@@ -99,9 +99,9 @@ describe("BlogPost", () => {
     const listItems = screen.getAllByRole("listitem");
     expect(list).toBeInTheDocument();
     expect(listItems).toHaveLength(3);
-    listItems.forEach((listItem) => {
+    for (const listItem of listItems) {
       expect(listItem).toBeInTheDocument();
-    });
+    }
   });
 
   it("Does not render a list with list items if tags are not provided", () => {

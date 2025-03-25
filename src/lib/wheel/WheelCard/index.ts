@@ -1,5 +1,2 @@
-import WheelCard from "./WheelCard";
-import type { WheelCardProps } from "./wheelcard";
-
-export type { WheelCardProps };
-export default WheelCard;
+export { default } from "./WheelCard";
+export { type WheelCardProps } from "./wheelcard";

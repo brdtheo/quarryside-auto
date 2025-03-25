@@ -1,3 +1,1 @@
-import WheelListFilterAside from "./WheelListFilterAside";
-
-export default WheelListFilterAside;
+export { default } from "./WheelListFilterAside";

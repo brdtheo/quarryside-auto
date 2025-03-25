@@ -1,5 +1,2 @@
-import PopularModelsList from "./PopularModelsList";
-import type { PopularModelsListProps } from "./popularmodelslist";
-
-export type { PopularModelsListProps };
-export default PopularModelsList;
+export { default } from "./PopularModelsList";
+export { type PopularModelsListProps } from "./popularmodelslist";

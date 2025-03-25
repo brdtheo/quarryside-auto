@@ -1,5 +1,2 @@
-import TextField from "./TextField";
-import type { TextFieldProps } from "./searchfield";
-
-export type { TextFieldProps };
-export default TextField;
+export { default } from "./TextField";
+export { type TextFieldProps } from "./searchfield";

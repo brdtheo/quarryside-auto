@@ -1,3 +1,1 @@
-import VehicleForm from "./VehicleForm";
-
-export default VehicleForm;
+export { default } from "./VehicleForm";

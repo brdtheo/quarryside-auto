@@ -76,9 +76,9 @@ describe("ListFilterAsideSection", () => {
     );
     const listItems = screen.getAllByRole("listitem");
     expect(listItems).toHaveLength(3);
-    listItems.forEach((listItem) => {
+    for (const listItem of listItems) {
       expect(listItem).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders options correctly", () => {
@@ -95,14 +95,14 @@ describe("ListFilterAsideSection", () => {
     expect(links).toHaveLength(3);
     expect(inputs).toHaveLength(3);
     expect(inputCheckIcons).toHaveLength(3);
-    links.forEach((link) => {
+    for (const link of links) {
       expect(link).toBeInTheDocument();
       expect(link).toHaveAttribute("href");
-    });
-    inputs.forEach((link) => {
+    }
+    for (const link of inputs) {
       expect(link).toBeInTheDocument();
       expect(link).toHaveAttribute("name");
-    });
+    }
   });
 
   it("Does not render a search field if not searchable", () => {

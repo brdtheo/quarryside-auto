@@ -67,20 +67,20 @@ describe("WheelSpecificationSection", () => {
     render(<WheelSpecificationSection wheel={wheel} />, {
       wrapper: NextIntlClientWrapper,
     });
-    (wheel.sizes ?? []).forEach((sizeName) => {
+    for (const sizeName of wheel.sizes ?? []) {
       const size = screen.getByText(sizeName);
       expect(size).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the wheel tires", () => {
     render(<WheelSpecificationSection wheel={wheel} />, {
       wrapper: NextIntlClientWrapper,
     });
-    (wheel.tires ?? []).forEach((tireName) => {
+    for (const tireName of wheel.tires ?? []) {
       const tire = screen.getByText(tireName);
       expect(tire).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the wheel availability", () => {

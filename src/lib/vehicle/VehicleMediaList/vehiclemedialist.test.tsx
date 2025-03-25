@@ -35,10 +35,10 @@ describe("MediaList", () => {
     const list = screen.getByRole("list");
     const listItems = within(list).getAllByRole("listitem");
     expect(listItems).toHaveLength(vehicle.medias.length);
-    listItems.forEach((listItem) => {
+    for (const listItem of listItems) {
       const button = within(listItem).getByRole("button", { name: /media/i });
       const image = within(button).getByRole("img");
       expect(image).toHaveAttribute("src");
-    });
+    }
   });
 });

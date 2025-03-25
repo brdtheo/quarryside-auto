@@ -1,3 +1,1 @@
-import BenefitList from "./BenefitList";
-
-export default BenefitList;
+export { default } from "./BenefitList";

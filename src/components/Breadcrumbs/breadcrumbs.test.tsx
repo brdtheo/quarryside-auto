@@ -32,19 +32,19 @@ describe("Breadcrumbs", () => {
 
   it("Renders a list item for each URL slug", () => {
     const pathname = usePathname();
-    const slugList = pathname
-      .split("/")
-      .filter((item) => !!item && item !== "en");
-    const slugLinks = screen.getAllByRole("link", {
-      name: slugList[0].replaceAll("-", " "),
-    });
-    expect(slugLinks).toHaveLength(slugList.length);
+    const slugList = pathname.split("/");
+    for (const slug of slugList) {
+      const slugLink = screen.getByRole("link", {
+        name: slug.replaceAll("-", " "),
+      });
+      expect(slugLink).toBeInTheDocument();
+    }
   });
 
   it("Renders a list item with a link as the last child", () => {
     const listItems = screen.getAllByRole("listitem");
-    const lastListItem = listItems[listItems.length - 1];
-    const lastListItemFirstChild = lastListItem.firstChild;
+    const lastListItem = listItems.at(-1);
+    const lastListItemFirstChild = lastListItem?.firstChild;
     expect(lastListItemFirstChild).not.toHaveClass("tabler-icon");
     expect(lastListItemFirstChild).toHaveRole("link");
   });

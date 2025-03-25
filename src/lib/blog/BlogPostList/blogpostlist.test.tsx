@@ -34,8 +34,8 @@ describe("BlogPostList", () => {
     const list = document.querySelector("section")?.lastElementChild;
     const listItems = list?.childNodes;
     expect(listItems).toHaveLength(3);
-    (listItems ?? []).forEach((listItem) => {
+    for (const listItem of listItems ?? []) {
       expect(listItem).toBeInTheDocument();
-    });
+    }
   });
 });

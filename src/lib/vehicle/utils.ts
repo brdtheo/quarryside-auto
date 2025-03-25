@@ -28,7 +28,7 @@ export function getVehicleFindManyArgs(
   isCountArgs?: boolean,
 ): Prisma.VehicleFindManyArgs | Prisma.VehicleCountArgs {
   const pageParam = searchParams?.page
-    ? parseInt(searchParams?.page as string, 10)
+    ? Number.parseInt(searchParams?.page as string, 10)
     : 1;
   const conditionParam =
     !!searchParams?.condition &&
@@ -36,13 +36,13 @@ export function getVehicleFindManyArgs(
       searchParams?.condition as VehicleCondition,
     )
       ? (searchParams?.condition?.split(",") as VehicleCondition[])
-      : null;
+      : undefined;
 
   const brandParam =
     !!searchParams?.brand &&
     Object.values(VehicleBrand).includes(searchParams?.brand as VehicleBrand)
       ? (searchParams?.brand?.split(",") as VehicleBrand[])
-      : null;
+      : undefined;
 
   const fuelTypeParam =
     !!searchParams?.fuel_type &&
@@ -50,21 +50,22 @@ export function getVehicleFindManyArgs(
       searchParams?.fuel_type as VehicleFuelType,
     )
       ? (searchParams?.fuel_type?.split(",") as VehicleFuelType[])
-      : null;
+      : undefined;
 
   const engineCylinderCountParamValues = searchParams?.engine_cylinder_count
     ? searchParams?.engine_cylinder_count
         .split(",")
-        .map((value) => parseInt(value, 10))
+        .map((value) => Number.parseInt(value, 10))
         .filter(
-          (value) => !!value && typeof value === "number" && !isNaN(value),
+          (value) =>
+            !!value && typeof value === "number" && !Number.isNaN(value),
         )
-    : null;
+    : undefined;
   const engineCylinderCountParam =
     !!engineCylinderCountParamValues &&
     engineCylinderCountParamValues.length > 0
       ? engineCylinderCountParamValues
-      : null;
+      : undefined;
 
   const transmissionParam =
     !!searchParams?.transmission &&
@@ -72,7 +73,7 @@ export function getVehicleFindManyArgs(
       searchParams?.transmission as VehicleTransmission,
     )
       ? (searchParams?.transmission?.split(",") as VehicleTransmission[])
-      : null;
+      : undefined;
 
   const drivetrainParam =
     !!searchParams?.drivetrain &&
@@ -80,7 +81,7 @@ export function getVehicleFindManyArgs(
       searchParams?.drivetrain as VehicleDrivetrain,
     )
       ? (searchParams?.drivetrain?.split(",") as VehicleDrivetrain[])
-      : null;
+      : undefined;
 
   const bodyStyleParam =
     !!searchParams?.body_style &&
@@ -88,7 +89,7 @@ export function getVehicleFindManyArgs(
       searchParams?.body_style as VehicleBodyStyle,
     )
       ? (searchParams?.body_style?.split(",") as VehicleBodyStyle[])
-      : null;
+      : undefined;
 
   const countryParam =
     !!searchParams?.country &&
@@ -96,11 +97,11 @@ export function getVehicleFindManyArgs(
       searchParams?.country as VehicleCountry,
     )
       ? (searchParams?.country?.split(",") as VehicleCountry[])
-      : null;
+      : undefined;
 
   const prismaSkipParam = searchParams?.page
     ? VEHICLE_LIST_PAGE_SIZE * (pageParam - 1)
-    : null;
+    : undefined;
 
   const args: Prisma.VehicleFindManyArgs = {
     ...(!isCountArgs && {

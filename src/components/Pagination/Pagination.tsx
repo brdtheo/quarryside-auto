@@ -15,7 +15,9 @@ export default function Pagination({
   pageCount,
   searchParams,
 }: PaginationProps) {
-  const pages = [...Array(pageCount).keys()].map((page) => page + 1);
+  const pages = [...Array.from({ length: pageCount }).keys()].map(
+    (page) => page + 1,
+  );
 
   const lastPage = pages.length;
 
@@ -33,12 +35,12 @@ export default function Pagination({
         </Link>
       )}
 
-      {(pages ?? []).map((currentPage, index) => {
+      {(pages ?? []).map((currentPage) => {
         if (
           currentPage < page - PAGINATION_PAGE_INDEX_THRESHOLD ||
           currentPage > page + PAGINATION_PAGE_INDEX_THRESHOLD
         ) {
-          return null;
+          return;
         }
         return (
           <Link
@@ -53,7 +55,7 @@ export default function Pagination({
                   currentPage === page,
               },
             )}
-            key={index}
+            key={currentPage}
           >
             {currentPage}
           </Link>

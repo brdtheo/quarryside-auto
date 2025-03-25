@@ -22,10 +22,7 @@ function BreadcrumbSeparator() {
 export default function Breadcrumbs() {
   const t = useTranslations("common");
   const paths = usePathname();
-  const pathNames = useMemo(
-    () => paths.split("/").filter((path) => path),
-    [paths],
-  );
+  const pathNames = useMemo(() => paths.split("/").filter(Boolean), [paths]);
 
   const getBreadcrumbHref = useCallback((index: number) => {
     return `/${pathNames.slice(0, index + 1).join("/")}`;
@@ -45,7 +42,7 @@ export default function Breadcrumbs() {
 
       {pathNames.map((link, index) => {
         return (
-          <Fragment key={index}>
+          <Fragment key={link}>
             <li className="line-clamp-1">
               <Link className="capitalize" href={getBreadcrumbHref(index)}>
                 {getBreadcrumbTitle(link)}

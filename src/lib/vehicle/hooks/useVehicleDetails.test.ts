@@ -26,17 +26,17 @@ describe("useVehicleDetails", () => {
     const {
       result: { current },
       // @ts-expect-error We simulate an unexpected behavior
-    } = renderHook(() => useVehicleDetails(undefined), {
+    } = renderHook(() => useVehicleDetails(), {
       wrapper: NextIntlClientWrapper,
     });
     const result = current;
     expect(result).toBeDefined();
-    Object.entries(current).forEach((entry) => {
+    for (const entry of Object.entries(current)) {
       const key = entry[0];
       const value = entry[1];
       expect(key).toBeTruthy();
       expect(value).toBe("");
-    });
+    }
   });
 
   it("Returns the vehicle's body style", () => {

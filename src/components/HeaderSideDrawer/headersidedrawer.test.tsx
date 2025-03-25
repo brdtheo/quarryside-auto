@@ -24,9 +24,9 @@ describe("HeaderSideDrawer", () => {
       wrapper: NextIntlClientWrapper,
     });
     const lists = screen.getAllByRole("list");
-    lists.forEach((list) => {
+    for (const list of lists) {
       expect(list).toBeInTheDocument();
-    });
+    }
   });
 
   it("Does not render anything if drawer is closed", () => {

@@ -28,10 +28,10 @@ const EXPECTED_MINIMAL_ARGS = {
 
 describe("Vehicle - utils", () => {
   test("Retrieves monthly estimate price", () => {
-    const priceFromBoolean = getMonthlyEstimatePrice(BigInt(false), undefined);
-    const priceFromString = getMonthlyEstimatePrice(BigInt("500"), undefined);
-    const priceFromNumber = getMonthlyEstimatePrice(BigInt(500000), undefined);
-    const priceWithOptions = getMonthlyEstimatePrice(BigInt(999999), {
+    const priceFromBoolean = getMonthlyEstimatePrice(BigInt(false));
+    const priceFromString = getMonthlyEstimatePrice(BigInt("500"));
+    const priceFromNumber = getMonthlyEstimatePrice(BigInt(500_000));
+    const priceWithOptions = getMonthlyEstimatePrice(BigInt(999_999), {
       precision: 2,
       fromCents: true,
       symbol: "",
@@ -58,10 +58,7 @@ describe("Vehicle - utils", () => {
 
   test("Retrieves pagination Prisma args", () => {
     const paginationArgs = getVehicleFindManyArgs({ page: "2" }, false);
-    const paginationWithCountArgs = getVehicleFindManyArgs(
-      { page: "3" },
-      undefined,
-    );
+    const paginationWithCountArgs = getVehicleFindManyArgs({ page: "3" });
     expect(paginationArgs).toStrictEqual({
       ...EXPECTED_MINIMAL_ARGS,
       skip: 15,
@@ -104,22 +101,19 @@ describe("Vehicle - utils", () => {
   });
 
   test("Retrieves Prisma args from incorrect params", () => {
-    const searchParamArgs = getVehicleFindManyArgs(
-      {
-        page: "?.,;'[]",
-        body_style: "helloworld" as VehicleBodyStyle,
-        brand: "helloworld" as VehicleBrand,
-        condition: "helloworld" as VehicleCondition,
-        country: "helloworld" as VehicleCountry,
-        drivetrain: "helloworld" as VehicleDrivetrain,
-        engine_cylinder_count: "undefined,null,NaN,helloworld",
-        fuel_type: "helloworld" as VehicleFuelType,
-        transmission: "helloworld" as VehicleTransmission,
-        undefined: "undefined",
-        123: "456",
-      },
-      undefined,
-    );
+    const searchParamArgs = getVehicleFindManyArgs({
+      page: "?.,;'[]",
+      body_style: "helloworld" as VehicleBodyStyle,
+      brand: "helloworld" as VehicleBrand,
+      condition: "helloworld" as VehicleCondition,
+      country: "helloworld" as VehicleCountry,
+      drivetrain: "helloworld" as VehicleDrivetrain,
+      engine_cylinder_count: "undefined,null,NaN,helloworld",
+      fuel_type: "helloworld" as VehicleFuelType,
+      transmission: "helloworld" as VehicleTransmission,
+      undefined: "undefined",
+      123: "456",
+    });
     expect(searchParamArgs).toStrictEqual(EXPECTED_MINIMAL_ARGS);
   });
 

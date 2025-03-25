@@ -57,10 +57,10 @@ describe("WheelRelatedVehiclesSection", () => {
     });
     const listItems = screen.getAllByRole("listitem");
     expect(listItems).toHaveLength(3);
-    listItems.forEach((listItem) => {
+    for (const listItem of listItems) {
       const article = within(listItem).getByRole("article");
       expect(listItem).toBeInTheDocument();
       expect(article).toBeInTheDocument();
-    });
+    }
   });
 });

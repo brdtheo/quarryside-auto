@@ -1,5 +1,2 @@
-import BenefitCard from "./BenefitCard";
-import type { BenefitCardProps } from "./benefitcard";
-
-export type { BenefitCardProps };
-export default BenefitCard;
+export { default } from "./BenefitCard";
+export { type BenefitCardProps } from "./benefitcard";

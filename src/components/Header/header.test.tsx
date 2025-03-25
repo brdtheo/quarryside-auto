@@ -29,9 +29,9 @@ describe("Header", () => {
   it("Renders 4 link elements", () => {
     const links = screen.getAllByRole("link");
     expect(links).toHaveLength(4);
-    links.forEach((link) => {
+    for (const link of links) {
       expect(link).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders a menu icon button", () => {

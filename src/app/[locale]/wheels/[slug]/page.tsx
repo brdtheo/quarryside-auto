@@ -16,6 +16,8 @@ import WheelSpecificationSection from "@/lib/wheel/WheelSpecificationSection";
 
 import { DOMAIN_URL } from "@/constants";
 
+import { getWheel } from "@data/wheel";
+
 import type { DetailsPageProps } from "@/types";
 
 export async function generateMetadata({
@@ -78,22 +80,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: DetailsPageProps) {
   const slug = (await params)?.slug ?? "";
-
-  const wheel = await prisma.wheel.findUnique({
-    where: { slug: slug ?? "" },
-    include: {
-      vehicles_wheels: {
-        select: {
-          vehicles: {
-            include: {
-              medias: { where: { is_thumbnail: true } },
-            },
-          },
-        },
-      },
-      medias: true,
-    },
-  });
+  const wheel = await getWheel(slug);
 
   if (!wheel) {
     return <NotFound />;

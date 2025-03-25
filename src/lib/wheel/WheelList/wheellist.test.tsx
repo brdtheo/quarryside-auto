@@ -16,6 +16,22 @@ describe("WheelList", () => {
     cleanup();
   });
 
+  it("Renders a placeholder if no data to display", () => {
+    render(<WheelList data={[]} itemRender={() => {}} />);
+    const list = screen.queryByRole("list");
+    const listItem = screen.queryByRole("listitem");
+    const heading = screen.getByRole("heading", { level: 2 });
+    const paragraph = screen.getByRole("paragraph");
+    const icon = document.querySelector(
+      "svg.tabler-icon.tabler-icon-zoom-exclamation",
+    );
+    expect(list).not.toBeInTheDocument();
+    expect(listItem).not.toBeInTheDocument();
+    expect(heading).toBeInTheDocument();
+    expect(paragraph).toBeInTheDocument();
+    expect(icon).toBeInTheDocument();
+  });
+
   it("Renders a list element", () => {
     render(<WheelList data={wheels} itemRender={() => {}} />);
     const list = screen.getByRole("list");

@@ -1,8 +1,27 @@
 import { prisma } from "@/lib/prisma";
 
-import { LOCAL_VEHICLES_PAGE_URL } from "@/constants";
+import {
+  LOCAL_VEHICLES_EMPTY_SEARCH_RESULT_URL,
+  LOCAL_VEHICLES_PAGE_URL,
+} from "@/constants";
 
 import { expect, test } from "@playwright/test";
+
+test("empty search result", async ({ page }) => {
+  await page.goto(LOCAL_VEHICLES_EMPTY_SEARCH_RESULT_URL);
+
+  await page.waitForURL(/vehicles/i);
+
+  const resultCount = await page.getByLabel("result-count");
+  const searchResultTitle = await page.getByText(/no vehicles found/i);
+  const searchResultDescription = await page.getByText(
+    /there are no results that match your search/i,
+  );
+  await expect(page).toHaveURL(LOCAL_VEHICLES_EMPTY_SEARCH_RESULT_URL);
+  await expect(resultCount).toHaveText(/0 result/i);
+  await expect(searchResultTitle).toBeVisible();
+  await expect(searchResultDescription).toBeVisible();
+});
 
 test("remove applied filter", async ({ page }) => {
   const optionLabel = "Used";

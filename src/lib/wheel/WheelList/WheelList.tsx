@@ -1,4 +1,8 @@
+import { useTranslations } from "next-intl";
+
 import clsx from "clsx";
+
+import EmptySearchResult from "@/components/EmptySearchResult";
 
 import type { WheelListProps } from ".";
 
@@ -7,6 +11,12 @@ export default function WheelList({
   data,
   itemRender,
 }: WheelListProps) {
+  const t = useTranslations("wheels");
+
+  if (!data || !(data ?? {}).length) {
+    return <EmptySearchResult title={t("noWheelsFound")} />;
+  }
+
   return (
     <ul
       className={clsx(

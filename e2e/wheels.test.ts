@@ -1,8 +1,27 @@
 import { prisma } from "@/lib/prisma";
 
-import { LOCAL_WHEELS_PAGE_URL } from "@/constants";
+import {
+  LOCAL_WHEELS_EMPTY_SEARCH_RESULT_URL,
+  LOCAL_WHEELS_PAGE_URL,
+} from "@/constants";
 
 import { expect, test } from "@playwright/test";
+
+test("empty search result", async ({ page }) => {
+  await page.goto(LOCAL_WHEELS_EMPTY_SEARCH_RESULT_URL);
+
+  await page.waitForURL(/wheels/i);
+
+  const resultCount = await page.getByLabel("result-count");
+  const searchResultTitle = await page.getByText(/no wheels found/i);
+  const searchResultDescription = await page.getByText(
+    /there are no results that match your search/i,
+  );
+  await expect(page).toHaveURL(LOCAL_WHEELS_EMPTY_SEARCH_RESULT_URL);
+  await expect(resultCount).toHaveText(/0 result/i);
+  await expect(searchResultTitle).toBeVisible();
+  await expect(searchResultDescription).toBeVisible();
+});
 
 test("remove applied filter", async ({ page }) => {
   const optionLabel = "TIMS";

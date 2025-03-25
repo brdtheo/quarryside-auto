@@ -8,7 +8,8 @@ export default {
     notFoundTitle: "Not found",
     notFoundDescription:
       "It looks like the content you're looking for does not exist or has been moved. Enjoy this bouncing Covet instead:",
-    emptySearchDescription: "There are no results that match your search. Try using different filters.",
+    emptySearchDescription:
+      "There are no results that match your search. Try using different filters.",
     reviews: "Reviews",
     search: "Search",
     resultCount: "{ count } result(s)",

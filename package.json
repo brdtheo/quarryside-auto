@@ -34,6 +34,7 @@
     "yet-another-react-lightbox": "^3.21.7"
   },
   "devDependencies": {
+    "@eslint-react/eslint-plugin": "^1.38.0",
     "@eslint/js": "^9.20.0",
     "@faker-js/faker": "^9.6.0",
     "@next/eslint-plugin-next": "^15.1.6",

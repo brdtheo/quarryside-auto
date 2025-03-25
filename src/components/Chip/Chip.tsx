@@ -46,7 +46,7 @@ export default function Chip({
     >
       {!!icons.start && (
         <ChipIcon className="pr-1 pl-2" href={iconHref}>
-          <icons.start />
+          <icons.start size={16} />
         </ChipIcon>
       )}
       <span
@@ -60,7 +60,7 @@ export default function Chip({
       </span>
       {!!icons.end && (
         <ChipIcon className="pl-1 pr-2" href={iconHref}>
-          <icons.end />
+          <icons.end size={16} />
         </ChipIcon>
       )}
     </div>

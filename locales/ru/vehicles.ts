@@ -19,6 +19,7 @@ export default {
     wheels: "колеса",
     checkAvailability: "Проверить наличие",
     scheduleTestDrive: "Запланируйте тест-драйв",
+    noVehiclesFound: "Автомобили не найдены",
     details: {
       meta: {
         title: "{ vehicle } - Quarryside Auto",

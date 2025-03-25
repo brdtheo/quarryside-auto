@@ -1,5 +1,5 @@
-import ListFilterAside from "./ListFilterAside";
-import { AppliedListFilter, ListFilterAsideProps } from "./listfilteraside";
-
-export type { AppliedListFilter, ListFilterAsideProps };
-export default ListFilterAside;
+export { default } from "./ListFilterAside";
+export {
+  type AppliedListFilter,
+  type ListFilterAsideProps,
+} from "./listfilteraside";

@@ -6,7 +6,7 @@ export default function VehiclePriceDescription({
   vehicle,
 }: VehiclePriceDescriptionProps) {
   if (!vehicle) {
-    return null;
+    return;
   }
 
   const { price } = useVehicleDetails(vehicle);

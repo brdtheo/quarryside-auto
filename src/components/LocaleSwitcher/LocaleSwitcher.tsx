@@ -38,6 +38,7 @@ export default function LocaleSwitcher() {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
         <button
+          type="button"
           className="text-white hover:bg-white/10 rounded px-2 flex items-center text-sm gap-1"
           aria-label="Change language"
         >

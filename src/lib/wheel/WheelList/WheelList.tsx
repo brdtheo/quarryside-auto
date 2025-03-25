@@ -13,7 +13,7 @@ export default function WheelList({
 }: WheelListProps) {
   const t = useTranslations("wheels");
 
-  if (!data || !(data ?? {}).length) {
+  if (!data || (data ?? {}).length === 0) {
     return <EmptySearchResult title={t("noWheelsFound")} />;
   }
 
@@ -24,7 +24,7 @@ export default function WheelList({
         className,
       )}
     >
-      {(data ?? []).map(itemRender)}
+      {(data ?? []).map((element) => itemRender(element))}
     </ul>
   );
 }

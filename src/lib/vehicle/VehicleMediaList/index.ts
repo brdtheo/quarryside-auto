@@ -1,5 +1,2 @@
-import VehicleMediaList from "./VehicleMediaList";
-import type { VehicleMediaListProps } from "./vehiclemedialist";
-
-export type { VehicleMediaListProps };
-export default VehicleMediaList;
+export { default } from "./VehicleMediaList";
+export { type VehicleMediaListProps } from "./vehiclemedialist";

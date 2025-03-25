@@ -13,7 +13,7 @@ export default function WheelSpecificationSection({
   const t = useTranslations("wheels");
 
   if (!wheel) {
-    return null;
+    return;
   }
 
   const { brand } = useWheelDetails(wheel);
@@ -22,14 +22,14 @@ export default function WheelSpecificationSection({
     <DetailSection title={t("details.specifications")}>
       <Table
         rows={[
-          ...(wheel.brand !== "NO_BRAND"
-            ? [
+          ...(wheel.brand === "NO_BRAND"
+            ? []
+            : [
                 {
                   name: t("filter.brand.title"),
                   data: brand,
                 },
-              ]
-            : []),
+              ]),
           {
             name: t("details.availableSizes.title"),
             data: wheel.sizes ?? "",

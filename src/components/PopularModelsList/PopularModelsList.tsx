@@ -12,7 +12,7 @@ export default function PopularModelsList({
   const t = useTranslations("home");
 
   if (!vehicles || (vehicles ?? []).length === 0) {
-    return null;
+    return;
   }
 
   return (

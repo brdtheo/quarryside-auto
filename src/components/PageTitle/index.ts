@@ -1,5 +1,2 @@
-import PageTitle from "./PageTitle";
-import type { PageTitleProps } from "./pagetitle";
-
-export type { PageTitleProps };
-export default PageTitle;
+export { default } from "./PageTitle";
+export { type PageTitleProps } from "./pagetitle";

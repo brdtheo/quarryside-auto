@@ -1,3 +1,1 @@
-import VehicleListFilterAside from "./VehicleListFilterAside";
-
-export default VehicleListFilterAside;
+export { default } from "./VehicleListFilterAside";

@@ -53,9 +53,9 @@ describe("ListFilterAside", () => {
       name: "Follow advertisement link",
     });
     expect(links).toHaveLength(2);
-    links.forEach((link) => {
+    for (const link of links) {
       expect(link).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders a chip element for each applied filter", () => {
@@ -115,8 +115,8 @@ describe("ListFilterAside", () => {
     );
     const fieldsetElements = screen.getAllByRole("group");
     expect(fieldsetElements).toHaveLength(3);
-    fieldsetElements.forEach((fieldset) => {
+    for (const fieldset of fieldsetElements) {
       expect(fieldset).toBeInTheDocument();
-    });
+    }
   });
 });

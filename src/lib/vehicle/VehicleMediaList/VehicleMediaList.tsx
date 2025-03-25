@@ -5,7 +5,7 @@ import type { VehicleMediaListProps } from ".";
 
 export default function VehicleMediaList({ vehicle }: VehicleMediaListProps) {
   if (!vehicle) {
-    return null;
+    return;
   }
   const { titleWithoutYear } = useVehicleDetails(vehicle);
   return <MediaList mediaList={vehicle.medias} alt={titleWithoutYear} />;

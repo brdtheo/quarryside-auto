@@ -31,11 +31,11 @@ describe("VehicleListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(Object.entries(VehicleCondition).length);
-    Object.values(VehicleCondition).forEach((value) => {
+    for (const value of Object.values(VehicleCondition)) {
       const labelText = t(`filter.condition.option.${value}`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the brand field fieldset its options", () => {
@@ -43,11 +43,11 @@ describe("VehicleListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(Object.entries(VehicleBrand).length);
-    Object.values(VehicleBrand).forEach((value) => {
+    for (const value of Object.values(VehicleBrand)) {
       const labelText = t(`filter.brand.option.${value}`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the body style fieldset with its options", () => {
@@ -55,11 +55,11 @@ describe("VehicleListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(Object.entries(VehicleBodyStyle).length);
-    Object.values(VehicleBodyStyle).forEach((value) => {
+    for (const value of Object.values(VehicleBodyStyle)) {
       const labelText = t(`filter.body_style.option.${value}`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the fuel type fieldset with its options", () => {
@@ -67,11 +67,11 @@ describe("VehicleListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(Object.entries(VehicleFuelType).length);
-    Object.values(VehicleFuelType).forEach((value) => {
+    for (const value of Object.values(VehicleFuelType)) {
       const labelText = t(`filter.fuel_type.option.${value}`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the cylinders fieldset with its options", () => {
@@ -80,11 +80,11 @@ describe("VehicleListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(values.length);
-    values.forEach((value) => {
+    for (const value of values) {
       const labelText = t(`filter.engine_cylinder_count.option.${value}`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the transmission fieldset with its options", () => {
@@ -92,11 +92,11 @@ describe("VehicleListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(Object.entries(VehicleTransmission).length);
-    Object.values(VehicleTransmission).forEach((value) => {
+    for (const value of Object.values(VehicleTransmission)) {
       const labelText = t(`filter.transmission.option.${value}`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the drivetrain fieldset with its options", () => {
@@ -104,11 +104,11 @@ describe("VehicleListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(Object.entries(VehicleDrivetrain).length);
-    Object.values(VehicleDrivetrain).forEach((value) => {
+    for (const value of Object.values(VehicleDrivetrain)) {
       const labelText = t(`filter.drivetrain.option.${value}`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the country fieldset with its options", () => {
@@ -116,10 +116,10 @@ describe("VehicleListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(Object.entries(VehicleCountry).length);
-    Object.values(VehicleCountry).forEach((value) => {
+    for (const value of Object.values(VehicleCountry)) {
       const labelText = t(`filter.country.option.${value}`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 });

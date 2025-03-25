@@ -20,7 +20,7 @@ import {
 function AdvertisingHeader() {
   return (
     <div className="absolute top-0 right-0 flex bg-ad-background z-10">
-      <button aria-label="Advertisement details" role="button">
+      <button type="button" aria-label="Advertisement details" role="button">
         <IconInfoTriangle
           className="text-ad-text cursor-pointer hover:bg-gray-400"
           stroke={2}
@@ -28,7 +28,7 @@ function AdvertisingHeader() {
           height={16}
         />
       </button>
-      <button aria-label="Close advertisement" role="button">
+      <button type="button" aria-label="Close advertisement" role="button">
         <IconX
           className="text-ad-text cursor-pointer hover:bg-gray-400"
           stroke={2}
@@ -44,9 +44,9 @@ export default function Advertising({
   className,
   ratioMode,
 }: AdvertisingProps) {
-  const [generatedImageURL, setGeneratedImageURL] = useState<string | null>(
-    null,
-  );
+  const [generatedImageURL, setGeneratedImageURL] = useState<
+    string | undefined
+  >();
 
   useEffect(() => {
     if (generatedImageURL || !ratioMode) {
@@ -60,7 +60,7 @@ export default function Advertising({
   }, []);
 
   if (!generatedImageURL) {
-    return null;
+    return;
   }
 
   return (

@@ -1,5 +1,2 @@
-import VehicleSpecificationSection from "./VehicleSpecificationSection";
-import type { VehicleSpecificationSectionProps } from "./vehiclespecificationsection";
-
-export type { VehicleSpecificationSectionProps };
-export default VehicleSpecificationSection;
+export { default } from "./VehicleSpecificationSection";
+export { type VehicleSpecificationSectionProps } from "./vehiclespecificationsection";

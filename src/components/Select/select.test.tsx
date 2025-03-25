@@ -46,8 +46,8 @@ describe("Select", () => {
     render(<Select options={options} value="" onChange={() => {}} />);
     const optionElements = screen.getAllByRole("option");
     expect(optionElements).toHaveLength(options.length);
-    optionElements.forEach((optionElement) => {
+    for (const optionElement of optionElements) {
       expect(optionElement).toBeInTheDocument();
-    });
+    }
   });
 });

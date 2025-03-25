@@ -1,5 +1,2 @@
-import VehicleCard from "./VehicleCard";
-import { VehicleCardProps } from "./vehiclecard";
-
-export type { VehicleCardProps };
-export default VehicleCard;
+export { default } from "./VehicleCard";
+export { type VehicleCardProps } from "./vehiclecard";

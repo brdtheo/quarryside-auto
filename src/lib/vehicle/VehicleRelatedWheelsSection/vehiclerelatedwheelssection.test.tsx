@@ -54,9 +54,9 @@ describe("VehicleRelatedWheelsSection", () => {
     });
     const articles = screen.getAllByRole("article");
     expect(articles).toHaveLength(3);
-    articles.forEach((article) => {
+    for (const article of articles) {
       expect(article).toBeInTheDocument();
       expect(article.parentElement?.tagName.toLowerCase()).toBe("li");
-    });
+    }
   });
 });

@@ -1,5 +1,6 @@
 import pluginNext from "@next/eslint-plugin-next";
 
+import eslintReact from "@eslint-react/eslint-plugin";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import globals from "globals";
 import tseslint from "typescript-eslint";
@@ -8,6 +9,7 @@ import tseslint from "typescript-eslint";
 export default [
   ...tseslint.configs.recommended,
   eslintPluginUnicorn.configs.recommended,
+  eslintReact.configs.recommended,
   {
     rules: {
       "unicorn/better-regex": "warn",

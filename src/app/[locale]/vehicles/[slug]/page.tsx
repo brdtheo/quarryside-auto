@@ -19,6 +19,8 @@ import { VehicleWithMedias } from "@/lib/vehicle/types";
 
 import { DOMAIN_URL } from "@/constants";
 
+import { getVehicle } from "@data/vehicle";
+
 import type { DetailsPageProps } from "@/types";
 
 export async function generateMetadata({
@@ -85,22 +87,7 @@ export async function generateMetadata({
 
 export default async function Page({ params }: DetailsPageProps) {
   const slug = (await params)?.slug ?? "";
-
-  const vehicle = await prisma.vehicle.findUnique({
-    where: { slug: slug ?? "" },
-    include: {
-      vehicles_wheels: {
-        select: {
-          wheels: {
-            include: {
-              medias: { where: { is_thumbnail: true } },
-            },
-          },
-        },
-      },
-      medias: true,
-    },
-  });
+  const vehicle = await getVehicle(slug);
 
   if (!vehicle) {
     return <NotFound />;

@@ -12,6 +12,7 @@ export default {
     availableOn: "Available on",
     addToCart: "Add to cart",
     assemblyWithoutAppointment: "Assembly without appointment",
+    noWheelsFound: "No wheels found",
     details: {
       meta: {
         title: "{ wheel } - Quarryside Auto",

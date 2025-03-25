@@ -12,6 +12,7 @@ export default {
     availableOn: "Доступно на",
     addToCart: "Добавить в корзину",
     assemblyWithoutAppointment: "Сбор без предварительной записи",
+    noWheelsFound: "Колеса не найдены",
     details: {
       meta: {
         title: "{ wheel } - Quarryside Auto",

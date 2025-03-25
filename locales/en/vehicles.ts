@@ -19,10 +19,12 @@ export default {
     wheels: "Wheels",
     checkAvailability: "Check availability",
     scheduleTestDrive: "Schedule test drive",
+    noVehiclesFound: "No vehicles found",
     details: {
       meta: {
         title: "{ vehicle } - Quarryside Auto",
-        description: "{ description }. Check out vehicle specifications and related wheels on Quarryside Auto",
+        description:
+          "{ description }. Check out vehicle specifications and related wheels on Quarryside Auto",
       },
       specifications: "Specifications",
       performance: "Performance",

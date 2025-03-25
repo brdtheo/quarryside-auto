@@ -3,6 +3,9 @@
   "semi": true,
   "singleQuote": false,
   "importOrder": [
+    "use client",
+    "use server",
+    "server-only",
     "^react$",
     "next",
     "^next/(.*)$",
@@ -21,6 +24,7 @@
     "^@/utils",
     "^@/hooks",
     "^@/constants",
+    "^@data",
     "^[a-zA-Z0-9@](.*)$",
     "^[./]"
   ],

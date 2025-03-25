@@ -14,27 +14,35 @@ export default function IconButton({
 }: IconButtonProps) {
   const containerClassname = useMemo(() => {
     switch (size) {
-      case "xs":
+      case "xs": {
         return "p-0.5";
-      case "sm":
+      }
+      case "sm": {
         return "p-1";
-      case "lg":
+      }
+      case "lg": {
         return "p-2";
-      default:
+      }
+      default: {
         return "p-2";
+      }
     }
   }, []);
 
   const iconSize = useMemo(() => {
     switch (size) {
-      case "xs":
+      case "xs": {
         return 14;
-      case "sm":
+      }
+      case "sm": {
         return 14;
-      case "lg":
+      }
+      case "lg": {
         return 18;
-      default:
+      }
+      default: {
         return 16;
+      }
     }
   }, []);
 

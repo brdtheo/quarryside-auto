@@ -67,7 +67,7 @@ export default async function Page({ searchParams }: PageProps) {
   const t = await getTranslations("wheels");
 
   const params = await searchParams;
-  const page = params?.page ? parseInt(params?.page as string, 10) : 1;
+  const page = params?.page ? Number.parseInt(params?.page as string, 10) : 1;
 
   const wheels = await getWheelList(params);
   const wheelCount = await getWheelListCount(params);

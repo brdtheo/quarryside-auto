@@ -1,5 +1,2 @@
-import ClientFeedback from "./ClientFeedback";
-import type { ClientFeedbackProps } from "./clientfeedback";
-
-export type { ClientFeedbackProps };
-export default ClientFeedback;
+export { default } from "./ClientFeedback";
+export { type ClientFeedbackProps } from "./clientfeedback";

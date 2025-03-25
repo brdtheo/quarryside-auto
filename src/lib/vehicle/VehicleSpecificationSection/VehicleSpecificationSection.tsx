@@ -13,7 +13,7 @@ export default function VehicleSpecificationSection({
   const t = useTranslations("vehicles");
 
   if (!vehicle) {
-    return null;
+    return;
   }
 
   const {

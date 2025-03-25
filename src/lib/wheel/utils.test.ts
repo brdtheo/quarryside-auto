@@ -31,10 +31,7 @@ describe("Wheel - utils", () => {
 
   test("Retrieves pagination Prisma args", () => {
     const paginationArgs = getWheelFindManyArgs({ page: "2" }, false);
-    const paginationWithCountArgs = getWheelFindManyArgs(
-      { page: "3" },
-      undefined,
-    );
+    const paginationWithCountArgs = getWheelFindManyArgs({ page: "3" });
     expect(paginationArgs).toStrictEqual({
       ...EXPECTED_MINIMAL_ARGS,
       skip: 20,
@@ -63,18 +60,15 @@ describe("Wheel - utils", () => {
   });
 
   test("Retrieves Prisma args from incorrect params", () => {
-    const mixedArgsAndParams = getWheelFindManyArgs(
-      {
-        page: "?.,;'[]",
-        is_three_lug: "false",
-        brand: "hello-world",
-        free_on_site_pickup: "1",
-        delivery_available: "false",
-        undefined: "undefined",
-        7: "8",
-      },
-      undefined,
-    );
+    const mixedArgsAndParams = getWheelFindManyArgs({
+      page: "?.,;'[]",
+      is_three_lug: "false",
+      brand: "hello-world",
+      free_on_site_pickup: "1",
+      delivery_available: "false",
+      undefined: "undefined",
+      7: "8",
+    });
     expect(mixedArgsAndParams).toStrictEqual(EXPECTED_MINIMAL_ARGS);
   });
 

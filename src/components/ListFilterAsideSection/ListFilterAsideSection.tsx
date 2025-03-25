@@ -28,7 +28,7 @@ export default function ListFilterAsideSection({
 
   const getCheckboxId = useCallback(
     (label: string, index: number) =>
-      [index, label].join(" ").toLowerCase().replace(/\s/g, "-"),
+      [index, label].join(" ").toLowerCase().replaceAll(/\s/g, "-"),
     [],
   );
 
@@ -70,7 +70,7 @@ export default function ListFilterAsideSection({
 
         {!isSearchable &&
           (options ?? []).map((option, index) => (
-            <li key={index}>
+            <li key={option.href}>
               <Checkbox
                 key={option.value}
                 id={getCheckboxId(option.label, index)}
@@ -84,7 +84,7 @@ export default function ListFilterAsideSection({
         {isSearchable && (
           <div className="mt-2 flex flex-col h-28 overflow-y-auto">
             {optionList.map((option, index) => (
-              <li key={index}>
+              <li key={option.href}>
                 <Checkbox
                   onClick={handleResetSearchResults}
                   key={option.value}

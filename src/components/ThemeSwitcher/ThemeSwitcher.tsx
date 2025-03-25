@@ -14,14 +14,14 @@ const ICON_SIZE = 14;
 
 export default function ThemeSwitcher() {
   // A local state sync with local storage theme
-  const [syncTheme, setSyncTheme] = useState<"light" | "dark" | null>(null);
+  const [syncTheme, setSyncTheme] = useState<"light" | "dark" | undefined>();
 
   useEffect(() => {
     document.documentElement.classList.toggle(
       "dark",
       syncTheme === "dark" ||
         (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches),
+          globalThis.matchMedia("(prefers-color-scheme: dark)").matches),
     );
   }, [syncTheme]);
 
@@ -33,7 +33,7 @@ export default function ThemeSwitcher() {
   }, []);
 
   const handleSetTheme = useCallback(
-    (theme: "light" | "dark" | null) => () => {
+    (theme: "light" | "dark" | undefined) => () => {
       setSyncTheme(theme);
       return theme
         ? localStorage.setItem("theme", theme)
@@ -50,17 +50,19 @@ export default function ThemeSwitcher() {
   return (
     <div className="flex rounded-2xl border border-divider w-fit h-fit">
       <button
+        type="button"
         aria-label="Set color theme to system default"
         role="button"
         className={clsx(baseButtonClassname, {
           "border-grey-secondary bg-white text-black": !syncTheme,
           "border-transparent text-white hover:text-gray-300": !!syncTheme,
         })}
-        onClick={handleSetTheme(null)}
+        onClick={handleSetTheme(undefined)}
       >
         <IconDeviceDesktop color="currentColor" size={ICON_SIZE} stroke={2} />
       </button>
       <button
+        type="button"
         aria-label="Set color theme to dark"
         role="button"
         className={clsx(baseButtonClassname, {
@@ -73,6 +75,7 @@ export default function ThemeSwitcher() {
         <IconMoon color="currentColor" size={ICON_SIZE} stroke={2} />
       </button>
       <button
+        type="button"
         name="light"
         aria-label="Set color theme to light"
         role="button"

@@ -26,8 +26,8 @@ import type { DetailsPageProps } from "@/types";
 export async function generateMetadata({
   params,
 }: DetailsPageProps): Promise<Metadata> {
-  const slug = (await params)?.slug ?? "";
-
+  const initializedParams = await params;
+  const slug = initializedParams?.slug ?? "";
   const t = await getTranslations("vehicles");
 
   const vehicle = (await prisma.vehicle.findUnique({
@@ -86,7 +86,8 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: DetailsPageProps) {
-  const slug = (await params)?.slug ?? "";
+  const initializedParams = await params;
+  const slug = initializedParams?.slug ?? "";
   const vehicle = await getVehicle(slug);
 
   if (!vehicle) {

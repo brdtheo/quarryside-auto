@@ -65,7 +65,7 @@ export async function generateMetadata({
 
 export default async function Page({ searchParams }: PageProps) {
   const params = await searchParams;
-  const page = params?.page ? parseInt(params?.page as string, 10) : 1;
+  const page = params?.page ? Number.parseInt(params?.page as string, 10) : 1;
 
   const vehicles = await getVehicleList(params);
   const vehiclesCount = await getVehicleListCount(params);

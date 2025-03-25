@@ -24,7 +24,8 @@ export async function generateMetadata({
   params,
 }: DetailsPageProps): Promise<Metadata> {
   const t = await getTranslations("wheels");
-  const slug = (await params)?.slug ?? "";
+  const initializedParams = await params;
+  const slug = initializedParams?.slug ?? "";
 
   const wheel = await prisma.wheel.findUnique({
     where: { slug: slug ?? "" },
@@ -79,7 +80,8 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: DetailsPageProps) {
-  const slug = (await params)?.slug ?? "";
+  const initializedParams = await params;
+  const slug = initializedParams?.slug ?? "";
   const wheel = await getWheel(slug);
 
   if (!wheel) {

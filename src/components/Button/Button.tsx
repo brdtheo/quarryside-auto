@@ -18,62 +18,80 @@ export default function Button({
   const roundedClassname = useMemo(() => {
     if (!rounded) return "";
     switch (size) {
-      case "xs":
+      case "xs": {
         return "rounded-xs";
-      case "sm":
+      }
+      case "sm": {
         return "rounded";
-      case "lg":
+      }
+      case "lg": {
         return "rounded";
-      default:
+      }
+      default: {
         return "rounded";
+      }
     }
   }, []);
 
   const containerClassname = useMemo(() => {
     switch (size) {
-      case "xs":
+      case "xs": {
         return "gap-0.5 px-1 py-0.5 h-4";
-      case "sm":
+      }
+      case "sm": {
         return "gap-0.5 px-1.5 py-0.5 h-6";
-      case "lg":
+      }
+      case "lg": {
         return "gap-1 px-3 py-2 h-10";
-      default:
+      }
+      default: {
         return "gap-1 px-2.5 py-1 h-8";
+      }
     }
   }, []);
 
   const textSizeClassname = useMemo(() => {
     switch (size) {
-      case "xs":
+      case "xs": {
         return "text-xs";
-      case "sm":
+      }
+      case "sm": {
         return "text-sm";
-      case "lg":
+      }
+      case "lg": {
         return "text-base font-medium";
-      default:
+      }
+      default: {
         return "text-base";
+      }
     }
   }, []);
 
   const iconSize = useMemo(() => {
     switch (size) {
-      case "xs":
+      case "xs": {
         return 14;
-      case "sm":
+      }
+      case "sm": {
         return 14;
-      case "lg":
+      }
+      case "lg": {
         return 18;
-      default:
+      }
+      default: {
         return 16;
+      }
     }
   }, []);
 
   const colorClassname = useMemo(() => {
     switch (color) {
-      case "primary":
+      case "primary": {
         return "bg-primary text-white dark:text-black dark:bg-primarydark";
-      case "secondary":
+      }
+      case "secondary": {
         return "bg-secondary text-black dark:bg-secondarydark dark:text-white";
+      }
     }
   }, []);
 

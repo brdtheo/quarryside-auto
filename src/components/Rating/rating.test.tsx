@@ -18,7 +18,8 @@ describe("Rating", () => {
   });
 
   it("Renders related elements even if score is not provided", () => {
-    const { container } = render(<Rating score={null} />);
+    // @ts-expect-error We simulate an unexpected behavior
+    const { container } = render(<Rating />);
     expect(container).not.toBeEmptyDOMElement();
   });
 

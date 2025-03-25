@@ -1,5 +1,2 @@
-import ReviewCard from "./ReviewCard";
-import { ReviewCardProps } from "./reviewcard";
-
-export type { ReviewCardProps };
-export default ReviewCard;
+export { default } from "./ReviewCard";
+export { type ReviewCardProps } from "./reviewcard";

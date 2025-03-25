@@ -32,12 +32,12 @@ describe("ListFilterHeader", () => {
     const iconButtonsSVG = document.querySelectorAll("svg");
     expect(iconButtons).toHaveLength(3);
     expect(iconButtonsSVG).toHaveLength(3);
-    iconButtons.forEach((iconButton) => {
+    for (const iconButton of iconButtons) {
       expect(iconButton).toBeInTheDocument();
-    });
-    iconButtonsSVG.forEach((svg) => {
+    }
+    for (const svg of iconButtonsSVG) {
       expect(svg).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders a paragraph with the result count", () => {

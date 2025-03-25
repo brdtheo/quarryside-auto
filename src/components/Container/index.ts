@@ -1,5 +1,2 @@
-import Container from "./Container";
-import { ContainerProps } from "./container";
-
-export type { ContainerProps };
-export default Container;
+export { default } from "./Container";
+export { type ContainerProps } from "./container";

@@ -25,8 +25,8 @@ export default function Select({
           {placeholder}
         </option>
       )}
-      {(options ?? []).map((option, index) => (
-        <option className="dark:text-black" key={index} value={option.value}>
+      {(options ?? []).map((option) => (
+        <option className="dark:text-black" key={option.value} value={option.value}>
           {option.label}
         </option>
       ))}

@@ -23,16 +23,16 @@ describe("ThemeSwitcher", () => {
     ];
     const buttons = screen.getAllByRole("button");
     expect(buttons).toHaveLength(3);
-    buttons.forEach((button) => {
+    for (const button of buttons) {
       expect(button).toBeInTheDocument();
-    });
-    iconClassNames.forEach((iconClassName) => {
+    }
+    for (const iconClassName of iconClassNames) {
       const buttonIcon = document.querySelector(
         `.tabler-icon.${iconClassName}`,
       );
       expect(buttonIcon).toBeInTheDocument();
       expect(buttonIcon?.tagName.toLowerCase()).toBe("svg");
-    });
+    }
   });
 
   it("Changes the theme to light mode when on user click", async () => {

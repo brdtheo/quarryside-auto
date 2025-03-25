@@ -7,12 +7,12 @@ import type { ContainerProps } from "./container";
  */
 export default function Container({ children, className }: ContainerProps) {
   if (!children) {
-    return null;
+    return;
   }
 
   return (
     <div className={clsx("w-full px-8 xl:px-0 xl:w-[1200px]", className)}>
-      <>{children}</>
+      {children}
     </div>
   );
 }

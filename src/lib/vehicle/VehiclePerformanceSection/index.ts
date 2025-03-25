@@ -1,5 +1,2 @@
-import VehiclePerformanceSection from "./VehiclePerformanceSection";
-import type { VehiclePerformanceSectionProps } from "./vehicleperformancesection";
-
-export type { VehiclePerformanceSectionProps };
-export default VehiclePerformanceSection;
+export { default } from "./VehiclePerformanceSection";
+export { type VehiclePerformanceSectionProps } from "./vehicleperformancesection";

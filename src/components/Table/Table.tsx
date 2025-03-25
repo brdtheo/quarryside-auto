@@ -8,12 +8,15 @@ export default function Table({ rows }: TableProps) {
   const getPaddingClass = useCallback(
     (index: number) => {
       switch (index) {
-        case 0:
+        case 0: {
           return "pb-3";
-        case rows?.length - 1:
+        }
+        case rows?.length - 1: {
           return "pt-3";
-        default:
+        }
+        default: {
           return "py-3";
+        }
       }
     },
     [rows?.length],
@@ -22,10 +25,12 @@ export default function Table({ rows }: TableProps) {
   const getBorderClass = useCallback(
     (index: number) => {
       switch (index) {
-        case rows?.length - 1:
+        case rows?.length - 1: {
           return "";
-        default:
+        }
+        default: {
           return "border-b border-b-divider dark:border-b-dividerdark";
+        }
       }
     },
     [rows?.length],
@@ -37,7 +42,7 @@ export default function Table({ rows }: TableProps) {
         {(rows ?? []).map((row, index) => {
           if (Array.isArray(row.data)) {
             return (
-              <tr key={index} className={getBorderClass(index)}>
+              <tr key={row.name} className={getBorderClass(index)}>
                 <th
                   className={clsx(
                     "text-sm font-semibold text-left align-top",
@@ -53,8 +58,8 @@ export default function Table({ rows }: TableProps) {
                   )}
                 >
                   <ul className="flex flex-col">
-                    {(row.data ?? []).map((value, index) => (
-                      <li key={index}>{value}</li>
+                    {(row.data ?? []).map((value) => (
+                      <li key={value}>{value}</li>
                     ))}
                   </ul>
                 </td>
@@ -62,7 +67,7 @@ export default function Table({ rows }: TableProps) {
             );
           }
           return (
-            <tr key={index} className={getBorderClass(index)}>
+            <tr key={row.name} className={getBorderClass(index)}>
               <th
                 className={clsx(
                   "text-sm font-semibold text-left",

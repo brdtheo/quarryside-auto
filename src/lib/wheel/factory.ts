@@ -18,7 +18,7 @@ export function wheelFactory(
     thumbnail_url: faker.image.url(),
     brand: faker.helpers.arrayElement(Object.values(WheelBrand)),
     model: faker.lorem.words(3),
-    price_cts: BigInt(faker.number.int({ min: 35000, max: 120000 })),
+    price_cts: BigInt(faker.number.int({ min: 35_000, max: 120_000 })),
     date_created: faker.date.recent(),
     delivery_available: faker.datatype.boolean(),
     free_on_site_pickup: faker.datatype.boolean(),

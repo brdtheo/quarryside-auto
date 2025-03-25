@@ -46,11 +46,11 @@ describe("Table", () => {
   it("Renders a list with list items if row data has multiple values", () => {
     render(<Table rows={rowMultipleData} />);
     const list = screen.getByRole("list");
-    rowMultipleData[0].data.forEach((data) => {
+    for (const data of rowMultipleData[0].data) {
       const listItem = screen.getByText(data);
       expect(listItem).toBeInTheDocument();
       expect(listItem.tagName.toLowerCase()).toBe("li");
-    });
+    }
     expect(list).toBeInTheDocument();
   });
 });

@@ -21,16 +21,16 @@ describe("ClientFeedbackList", () => {
     const listItems = screen.getAllByRole("listitem");
     expect(list).toBeInTheDocument();
     expect(listItems).toHaveLength(3);
-    listItems.forEach((listItem) => {
+    for (const listItem of listItems) {
       expect(listItem).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders 3 quote elements", () => {
     const quotes = document.querySelectorAll("q");
     expect(quotes).toHaveLength(3);
-    quotes.forEach((quote) => {
+    for (const quote of quotes) {
       expect(quote).toBeInTheDocument();
-    });
+    }
   });
 });

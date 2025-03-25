@@ -16,8 +16,8 @@ export default function NavSection({
       </h3>
       <nav>
         <ul className="gap-2 flex flex-col">
-          {(links ?? []).map((link, index) => (
-            <li key={index} className="text-sm">
+          {(links ?? []).map((link) => (
+            <li key={link.title} className="text-sm">
               <Link
                 target={link.isTargetBlank ? "_blank" : undefined}
                 onClick={link.onClick}

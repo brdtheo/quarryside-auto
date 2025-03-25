@@ -26,7 +26,7 @@ export default function MediaListSlide({ slide }: RenderSlideProps<Slide>) {
   const cover = isImageSlide(slide) && isImageFitCover(slide, imageFit);
 
   if (!isNextJsImage(slide as SlideImage) || !slide) {
-    return undefined;
+    return;
   }
 
   return (

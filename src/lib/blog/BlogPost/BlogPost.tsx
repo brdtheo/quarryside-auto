@@ -43,8 +43,8 @@ export default function BlogPost({
         <div className="flex flex-col pt-4 pb-3 px-4">
           {tags?.length > 0 && (
             <ul className="flex flex-wrap gap-1">
-              {(tags ?? []).map((tag, index) => (
-                <li key={index}>
+              {(tags ?? []).map((tag) => (
+                <li key={tag}>
                   <Chip>{tag}</Chip>
                 </li>
               ))}

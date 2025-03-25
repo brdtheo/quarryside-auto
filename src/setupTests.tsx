@@ -79,9 +79,12 @@ vi.mock("next/navigation", async (importOriginal) => {
     ...actual,
     usePathname: () => {
       faker.seed(777);
-      const randomSlug = encodeURIComponent(faker.internet.domainWord());
+      const randomSlugs = faker.helpers.multiple(
+        () => encodeURIComponent(faker.internet.domainWord()),
+        { count: 3 },
+      );
       faker.seed();
-      return `/${randomSlug}/${randomSlug}/${randomSlug}`;
+      return randomSlugs.join("/");
     },
     useSearchParams: () => {
       faker.seed(777);

@@ -16,41 +16,49 @@ export function getWheelFindManyArgs(
   isCountArgs?: boolean,
 ): Prisma.WheelFindManyArgs | Prisma.WheelCountArgs {
   const pageParam = searchParams?.page
-    ? parseInt(searchParams?.page as string, 10)
+    ? Number.parseInt(searchParams?.page as string, 10)
     : 1;
   const brandParam =
     !!searchParams?.brand &&
     Object.values(WheelBrand).includes(searchParams?.brand as WheelBrand)
       ? (searchParams?.brand?.split(",") as WheelBrand[])
-      : null;
+      : undefined;
   const deliveryAvailableParm =
     searchParams?.delivery_available === "true"
       ? searchParams?.delivery_available
-      : null;
+      : undefined;
   const freeOnSitePickupParm =
     searchParams?.free_on_site_pickup === "true"
       ? searchParams?.free_on_site_pickup
-      : null;
+      : undefined;
   const isThreeLugParam =
-    searchParams?.is_three_lug === "true" ? searchParams?.is_three_lug : null;
+    searchParams?.is_three_lug === "true"
+      ? searchParams?.is_three_lug
+      : undefined;
   const isFourLugParam =
-    searchParams?.is_four_lug === "true" ? searchParams?.is_four_lug : null;
+    searchParams?.is_four_lug === "true"
+      ? searchParams?.is_four_lug
+      : undefined;
   const isFiveLugParam =
-    searchParams?.is_five_lug === "true" ? searchParams?.is_five_lug : null;
+    searchParams?.is_five_lug === "true"
+      ? searchParams?.is_five_lug
+      : undefined;
   const isSixLugParam =
-    searchParams?.is_six_lug === "true" ? searchParams?.is_six_lug : null;
+    searchParams?.is_six_lug === "true" ? searchParams?.is_six_lug : undefined;
   const isEightLugParam =
-    searchParams?.is_eight_lug === "true" ? searchParams?.is_eight_lug : null;
+    searchParams?.is_eight_lug === "true"
+      ? searchParams?.is_eight_lug
+      : undefined;
   const isTenLugParam =
-    searchParams?.is_ten_lug === "true" ? searchParams?.is_ten_lug : null;
+    searchParams?.is_ten_lug === "true" ? searchParams?.is_ten_lug : undefined;
   const isCentralLugParam =
     searchParams?.is_central_lug === "true"
       ? searchParams?.is_central_lug
-      : null;
+      : undefined;
 
   const prismaSkipParam = searchParams?.page
     ? WHEEL_LIST_PAGE_SIZE * (pageParam - 1)
-    : null;
+    : undefined;
 
   const args: Prisma.WheelFindManyArgs = {
     ...(!isCountArgs && {

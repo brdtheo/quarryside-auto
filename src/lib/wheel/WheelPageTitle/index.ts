@@ -1,5 +1,2 @@
-import WheelPageTitle from "./WheelPageTitle";
-import type { WheelPageTitleProps } from "./wheelpagetitle";
-
-export type { WheelPageTitleProps };
-export default WheelPageTitle;
+export { default } from "./WheelPageTitle";
+export { type WheelPageTitleProps } from "./wheelpagetitle";

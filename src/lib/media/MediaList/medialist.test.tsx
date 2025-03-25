@@ -63,15 +63,15 @@ describe("MediaList", () => {
     const listItem = screen.getAllByRole("listitem");
     expect(list).toBeInTheDocument();
     expect(listItem).toHaveLength(5);
-    listItem.forEach((listItem) => {
-      const button = within(listItem).getByRole("button");
+    for (const item of listItem) {
+      const button = within(item).getByRole("button");
       const image = within(button).getByRole("img");
       expect(button).toBeInTheDocument();
-      expect(listItem).toBeInTheDocument();
+      expect(item).toBeInTheDocument();
       expect(image).toBeInTheDocument();
       expect(image).toHaveAttribute("src");
       expect(image).toHaveAttribute("alt");
-    });
+    }
   });
 
   it("Renders the expanded view when clicking on a media", async () => {

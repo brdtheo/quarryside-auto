@@ -1,5 +1,2 @@
-import WheelList from "./WheelList";
-import { WheelListProps } from "./wheellist";
-
-export type { WheelListProps };
-export default WheelList;
+export { default } from "./WheelList";
+export { type WheelListProps } from "./wheellist";

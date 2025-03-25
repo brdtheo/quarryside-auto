@@ -30,35 +30,40 @@ export default function ListFilterAside({
 
   const { getUpdatedURLFromSearchParam } = useURLSearchParams(searchParams);
 
-  const appliedFilterList = useMemo(() => {
-    return Object.entries(searchParams).reduce<AppliedListFilter[]>(
-      (prev, current) => {
-        const paramName = current[0];
-        const paramValues = (current[1] ?? [])?.split(",");
+  const appliedFilterList = useMemo<AppliedListFilter[]>(() => {
+    const searchParamsEntries = Object.entries(searchParams);
+    const appliedFilters: AppliedListFilter[] = [];
 
-        if (APPLIED_FILTER_BLACKLIST.includes(paramName)) {
-          return prev;
-        }
+    for (const entry of searchParamsEntries) {
+      const paramName = entry[0];
+      const paramValues = (entry[1] ?? [])?.split(",");
 
-        const paramItems = (paramValues ?? "").map((paramValue: string) => ({
-          paramName,
-          paramValue,
-          deleteHref: getUpdatedURLFromSearchParam(paramName, paramValue, true),
-        }));
+      if (!APPLIED_FILTER_BLACKLIST.includes(paramName)) {
+        const paramFilterList = (paramValues ?? "").map(
+          (paramValue: string) => ({
+            paramName,
+            paramValue,
+            deleteHref: getUpdatedURLFromSearchParam(
+              paramName,
+              paramValue,
+              true,
+            ),
+          }),
+        );
+        appliedFilters.push(...paramFilterList);
+      }
+    }
 
-        return [...prev, ...paramItems];
-      },
-      [],
-    );
+    return appliedFilters;
   }, [getUpdatedURLFromSearchParam, searchParams]);
 
   return (
     <aside className={clsx("w-full md:w-60 flex flex-col gap-4", className)}>
       {(appliedFilterList ?? []).length > 0 && (
         <div className="pb-2 flex gap-2 flex-wrap">
-          {(appliedFilterList ?? []).map((appliedFilter, index) => (
+          {(appliedFilterList ?? []).map((appliedFilter) => (
             <Chip
-              key={index}
+              key={appliedFilter.paramValue}
               iconHref={appliedFilter.deleteHref}
               endIcon={IconX}
             >
@@ -71,9 +76,9 @@ export default function ListFilterAside({
       )}
 
       <form role="form" className="flex flex-col gap-4">
-        {(sections ?? []).map((section, index) => (
+        {(sections ?? []).map((section) => (
           <ListFilterAsideSection
-            key={index}
+            key={section.title}
             title={section.title}
             options={section.options}
             isSearchable={section.isSearchable}

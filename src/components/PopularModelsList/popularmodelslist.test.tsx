@@ -52,8 +52,8 @@ describe("PopularModelsList", () => {
     });
     const listItems = screen.getAllByRole("listitem");
     expect(listItems).toHaveLength(3);
-    listItems.forEach((listItem) => {
+    for (const listItem of listItems) {
       expect(listItem).toBeInTheDocument();
-    });
+    }
   });
 });

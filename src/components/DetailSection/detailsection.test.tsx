@@ -32,7 +32,7 @@ describe("DetailSection", () => {
   it("Renders a children element correctly", () => {
     render(
       <DetailSection title={sectionTitle}>
-        <button>{buttonText}</button>
+        <button type="button">{buttonText}</button>
       </DetailSection>,
     );
     const button = screen.getByRole("button");
@@ -45,7 +45,7 @@ describe("DetailSection", () => {
       <DetailSection title={sectionTitle}>
         <p>{paragraphText}</p>
         <q>{quoteText}</q>
-        <button>{buttonText}</button>
+        <button type="button">{buttonText}</button>
       </DetailSection>,
     );
     const paragraph = screen.getByRole("paragraph");

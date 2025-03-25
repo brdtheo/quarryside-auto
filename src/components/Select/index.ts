@@ -1,5 +1,2 @@
-import Select from "./Select";
-import type { SelectOption, SelectProps } from "./select";
-
-export type { SelectProps, SelectOption };
-export default Select;
+export { default } from "./Select";
+export { type SelectOption, type SelectProps } from "./select";

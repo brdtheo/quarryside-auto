@@ -50,14 +50,14 @@ describe("NavSection", () => {
     const listItems = screen.getAllByRole("listitem");
     expect(list).toBeInTheDocument();
     expect(listItems).toHaveLength(3);
-    listItems.forEach((listItem) => {
+    for (const listItem of listItems) {
       expect(listItem).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders each list item title in a link element", () => {
     const listItems = screen.getAllByRole("listitem");
-    listItems.forEach((listItem, index) => {
+    for (const [index, listItem] of listItems.entries()) {
       const listItemLink = within(listItem).getByRole("link", {
         name: links[index].title,
       });
@@ -66,7 +66,7 @@ describe("NavSection", () => {
       expect(listItemLink).toBeInTheDocument();
       expect(listItemLink).toHaveAttribute("href");
       expect(listItemLinkHref).toBe(links[index].href);
-    });
+    }
   });
 
   it("Renders an external link icon if the list item is marked as target blank", () => {

@@ -1,5 +1,2 @@
-import WheelRichData from "./WheelRichData";
-import type { WheelRichDataProps } from "./wheelrichdata";
-
-export type { WheelRichDataProps };
-export default WheelRichData;
+export { default } from "./WheelRichData";
+export { type WheelRichDataProps } from "./wheelrichdata";

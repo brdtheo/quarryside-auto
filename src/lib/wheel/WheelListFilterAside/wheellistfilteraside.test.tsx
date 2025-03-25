@@ -23,11 +23,11 @@ describe("WheelListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(Object.entries(WheelBrand).length);
-    Object.values(WheelBrand).forEach((value) => {
+    for (const value of Object.values(WheelBrand)) {
       const labelText = t(`filter.brand.option.${value}`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the availability fieldset with its options", () => {
@@ -44,11 +44,11 @@ describe("WheelListFilterAside", () => {
     const options = within(section).getAllByRole("listitem");
     expect(section).toBeInTheDocument();
     expect(options).toHaveLength(values.length);
-    values.forEach((value) => {
+    for (const value of values) {
       const labelText = t(`filter.${value}.option.true`);
       const label = within(section).getByLabelText(labelText);
       expect(label).toBeInTheDocument();
-    });
+    }
   });
 
   it("Renders the delivery fieldset with its option", () => {

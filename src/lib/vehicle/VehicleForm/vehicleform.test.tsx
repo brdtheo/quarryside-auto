@@ -25,7 +25,9 @@ describe("VehicleForm", () => {
   it("Renders a heading containing the title", () => {
     const heading = screen.getByRole("heading", { level: 2 });
     expect(heading).toBeInTheDocument();
-    expect(heading).toHaveTextContent(/interested\? your new vehicle awaits you/i);
+    expect(heading).toHaveTextContent(
+      /interested\? your new vehicle awaits you/i,
+    );
   });
 
   it("Renders 4 text inputs and 1 textarea", () => {

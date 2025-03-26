@@ -28,7 +28,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="w-full bg-primary dark:bg-black fixed md:static flex justify-center h-16">
+    <header className="w-full z-20 bg-primary dark:bg-black fixed md:static flex justify-center h-16">
       <Container className="flex h-full justify-between items-center">
         <Link aria-label="Home page" className="hidden md:block" href="/">
           <Image

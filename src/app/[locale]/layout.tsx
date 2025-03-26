@@ -53,7 +53,7 @@ export default async function LocaleLayout({
           <Header />
           <SubHeader />
           <main
-            className="pt-[72px] md:pt-0"
+            className="pt-16 md:pt-0"
             style={{
               minHeight: "calc(100dvh - 72px - 38px)",
             }}

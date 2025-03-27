@@ -15,7 +15,7 @@ import { PageSearchParams } from "@/types";
  */
 export async function getVehicle(slug: string) {
   if (!slug) {
-    throw Error("Could not retrieve vehicle: no slug provided");
+    throw new Error("Could not retrieve vehicle: no slug provided");
   }
 
   const vehicle = await prisma.vehicle.findUnique({

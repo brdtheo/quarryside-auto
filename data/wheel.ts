@@ -15,7 +15,7 @@ import { PageSearchParams } from "@/types";
  */
 export async function getWheel(slug: string) {
   if (!slug) {
-    throw Error("Could not retrieve wheel: no slug provided");
+    throw new Error("Could not retrieve wheel: no slug provided");
   }
 
   const wheel = await prisma.wheel.findUnique({

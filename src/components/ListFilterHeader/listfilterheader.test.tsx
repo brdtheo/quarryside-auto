@@ -27,22 +27,17 @@ describe("ListFilterHeader", () => {
     cleanup();
   });
 
-  it("Renders all icon buttons for mobile display", () => {
-    const iconButtons = screen.getAllByRole("button");
-    const iconButtonsSVG = document.querySelectorAll("svg");
-    expect(iconButtons).toHaveLength(3);
-    expect(iconButtonsSVG).toHaveLength(3);
-    for (const iconButton of iconButtons) {
-      expect(iconButton).toBeInTheDocument();
-    }
-    for (const svg of iconButtonsSVG) {
-      expect(svg).toBeInTheDocument();
-    }
-  });
-
   it("Renders a paragraph with the result count", () => {
     const paragraph = screen.getByRole("paragraph");
     expect(paragraph).toBeInTheDocument();
     expect(paragraph).toHaveTextContent(`${resultCount} result(s)`);
+  });
+
+  it("Render a search box", () => {
+    const searchFields = screen.getAllByRole("searchbox");
+    expect(searchFields).toHaveLength(2);
+    for (const searchField of searchFields) {
+      expect(searchField).toBeInTheDocument();
+    }
   });
 });

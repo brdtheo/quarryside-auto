@@ -1,8 +1,9 @@
 import { faker } from "@faker-js/faker";
 
 import { cleanup, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 
 import { NextIntlClientWrapper } from "@/setupTests";
 
@@ -52,5 +53,59 @@ describe("SearchField", () => {
     });
     const input = screen.getByRole("searchbox");
     expect(input).toBeDisabled();
+  });
+
+  it("Renders a clear button if search field is clearable", () => {
+    render(
+      <SearchField
+        isClearable
+        value={value}
+        onChange={() => {}}
+        onClear={() => {}}
+      />,
+      {
+        wrapper: NextIntlClientWrapper,
+      },
+    );
+    const input = screen.getByRole("searchbox");
+    const clearButton = screen.getByRole("button", { name: /clear/i });
+    expect(input).toBeInTheDocument();
+    expect(clearButton).toBeVisible();
+  });
+
+  it("Calls the onClear callback when clicking the clear button", async () => {
+    const onClear = vi.fn();
+    render(
+      <SearchField
+        isClearable
+        value={value}
+        onChange={() => {}}
+        onClear={onClear}
+      />,
+      {
+        wrapper: NextIntlClientWrapper,
+      },
+    );
+    const clearButton = screen.getByRole("button", { name: /clear/i });
+    await userEvent.click(clearButton);
+    expect(onClear).toBeCalledTimes(1);
+  });
+
+  it("Calls the onSearch callback when pressing the enter key", async () => {
+    const onSearch = vi.fn();
+    render(
+      <SearchField
+        isClearable
+        value={value}
+        onChange={() => {}}
+        onSearch={onSearch}
+      />,
+      {
+        wrapper: NextIntlClientWrapper,
+      },
+    );
+    const input = screen.getByRole("searchbox");
+    await userEvent.type(input, "[Enter]");
+    expect(onSearch).toBeCalledTimes(1);
   });
 });

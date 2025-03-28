@@ -39,6 +39,7 @@ export default function VehicleListFilterHeader({
   return (
     <>
       <ListFilterHeader
+        pageSearchParams={searchParams}
         activeFilterCount={activeFilterCount}
         handleOpenFilterDrawer={handleOpenFilterDrawer}
         textSearch={textSearch}

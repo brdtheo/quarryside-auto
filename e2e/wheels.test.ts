@@ -3,9 +3,23 @@ import { prisma } from "@/lib/prisma";
 import {
   LOCAL_WHEELS_EMPTY_SEARCH_RESULT_URL,
   LOCAL_WHEELS_PAGE_URL,
+  LOCAL_WHEELS_TEXT_SEARCH_RESULT_URL,
 } from "@/constants";
 
 import { expect, test } from "@playwright/test";
+
+test("text search result", async ({ page }) => {
+  await page.goto(LOCAL_WHEELS_TEXT_SEARCH_RESULT_URL);
+
+  await page.waitForURL(/wheels/i);
+
+  const rowsCount = (await prisma.wheel.count()).toString();
+  const resultCount = await page.getByLabel("result-count");
+  const searchField = await page.locator("input[value='type']").last();
+  await expect(page).toHaveURL(/q=type/i);
+  await expect(resultCount).not.toHaveText(new RegExp(rowsCount));
+  await expect(searchField).toBeVisible();
+});
 
 test("empty search result", async ({ page }) => {
   await page.goto(LOCAL_WHEELS_EMPTY_SEARCH_RESULT_URL);

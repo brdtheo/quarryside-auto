@@ -53,6 +53,12 @@ export default [
     },
   },
   {
+    files: ["e2e/**"],
+    rules: {
+      "unicorn/no-await-expression-member": "off",
+    },
+  },
+  {
     ignores: [
       "src/setupTests.tsx",
       "src/middleware.ts",

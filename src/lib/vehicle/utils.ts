@@ -30,6 +30,11 @@ export function getVehicleFindManyArgs(
   const pageParam = searchParams?.page
     ? Number.parseInt(searchParams?.page as string, 10)
     : 1;
+
+  const searchQueryParam = searchParams?.q
+    ? decodeURIComponent(searchParams?.q)
+    : undefined;
+
   const conditionParam =
     !!searchParams?.condition &&
     Object.values(VehicleCondition).includes(
@@ -118,9 +123,20 @@ export function getVehicleFindManyArgs(
       !!drivetrainParam ||
       !!countryParam ||
       !!bodyStyleParam ||
-      !!transmissionParam) && {
+      !!transmissionParam ||
+      !!searchQueryParam) && {
       where: {
         AND: [
+          ...(searchQueryParam
+            ? [
+                {
+                  model: {
+                    contains: searchQueryParam,
+                    mode: "insensitive" as Prisma.QueryMode,
+                  },
+                },
+              ]
+            : []),
           ...(brandParam ? [{ brand: { in: brandParam } }] : []),
           ...(conditionParam ? [{ condition: { in: conditionParam } }] : []),
           ...(engineCylinderCountParam

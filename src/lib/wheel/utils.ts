@@ -18,6 +18,10 @@ export function getWheelFindManyArgs(
   const pageParam = searchParams?.page
     ? Number.parseInt(searchParams?.page as string, 10)
     : 1;
+
+  const searchQueryParam = searchParams?.q
+    ? decodeURIComponent(searchParams?.q)
+    : undefined;
   const brandParam =
     !!searchParams?.brand &&
     Object.values(WheelBrand).includes(searchParams?.brand as WheelBrand)
@@ -77,9 +81,20 @@ export function getWheelFindManyArgs(
       !!isSixLugParam ||
       !!isEightLugParam ||
       !!isTenLugParam ||
-      !!isCentralLugParam) && {
+      !!isCentralLugParam ||
+      !!searchQueryParam) && {
       where: {
         AND: [
+          ...(searchQueryParam
+            ? [
+                {
+                  model: {
+                    contains: searchQueryParam,
+                    mode: "insensitive" as Prisma.QueryMode,
+                  },
+                },
+              ]
+            : []),
           ...(brandParam ? [{ brand: { in: brandParam } }] : []),
           ...(deliveryAvailableParm ? [{ delivery_available: true }] : []),
           ...(freeOnSitePickupParm ? [{ free_on_site_pickup: true }] : []),

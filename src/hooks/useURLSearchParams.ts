@@ -48,7 +48,20 @@ export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
   const createQueryString = useCallback(
     (paramName: string, paramValue: string) => {
       const params = new URLSearchParams(searchParams.toString());
-      params.set(paramName, paramValue);
+      const pageParam = params.get("page");
+
+      // Handle param value
+      if (paramValue) {
+        params.set(paramName, encodeURIComponent(paramValue));
+      } else {
+        params.delete(paramName);
+      }
+
+      // Reset the pagination
+      if (!!pageParam && paramName !== "page") {
+        params.set("page", "1");
+      }
+
       return params.toString();
     },
     [searchParams],

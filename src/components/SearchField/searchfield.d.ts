@@ -1,8 +1,11 @@
-import { ChangeEventHandler } from "react";
+import { ChangeEventHandler, ComponentProps } from "react";
 
-export type SearchFieldProps = {
+export type SearchFieldProps = ComponentProps<"search"> & {
   className?: string;
   value: string;
   isDisabled?: boolean;
-  onChange: ChangeEventHandler;
+  isClearable?: boolean;
+  onChange: ChangeEventHandler<HTMLInputElement>;
+  onSearch?: (value: string) => void;
+  onClear?: () => void;
 };

@@ -65,7 +65,12 @@ export default function ListFilterAsideSection({
 
       <ul className="py-2 flex flex-col">
         {isSearchable && (
-          <SearchField value={searchValue} onChange={handleSearchFieldChange} />
+          <SearchField
+            value={searchValue}
+            onChange={handleSearchFieldChange}
+            isClearable
+            onClear={handleResetSearchResults}
+          />
         )}
 
         {!isSearchable &&

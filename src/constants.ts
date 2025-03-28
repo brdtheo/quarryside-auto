@@ -15,3 +15,5 @@ export const WHEELS_PAGE_TITLE_REGEX = /beamng wheels for sale/i;
 export const LOCAL_WHEELS_PAGE_URL = `${LOCAL_URL}/wheels`;
 export const LOCAL_VEHICLES_EMPTY_SEARCH_RESULT_URL = `${LOCAL_URL}/vehicles?fuel_type=BATTERY&engine_cylinder_count=3`;
 export const LOCAL_WHEELS_EMPTY_SEARCH_RESULT_URL = `${LOCAL_URL}/wheels?page=1&is_central_lug=true&is_three_lug=true`;
+export const LOCAL_VEHICLES_TEXT_SEARCH_URL = `${LOCAL_URL}/vehicles?q=bastion`;
+export const LOCAL_WHEELS_TEXT_SEARCH_RESULT_URL = `${LOCAL_URL}/wheels?q=type`;

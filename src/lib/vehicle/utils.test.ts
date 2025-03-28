@@ -72,6 +72,7 @@ describe("Vehicle - utils", () => {
   test("Retrieves search params Prisma args", () => {
     const searchParamArgs = getVehicleFindManyArgs(
       {
+        q: "bastion",
         body_style: VehicleBodyStyle.COUPE,
         brand: VehicleBrand.GAVRIL,
         condition: VehicleCondition.USED,
@@ -87,6 +88,12 @@ describe("Vehicle - utils", () => {
       ...EXPECTED_MINIMAL_ARGS,
       where: {
         AND: [
+          {
+            model: {
+              contains: "bastion",
+              mode: "insensitive",
+            },
+          },
           { brand: { in: [VehicleBrand.GAVRIL] } },
           { condition: { in: [VehicleCondition.USED] } },
           { engine_cylinder_count: { in: [6, 8] } },
@@ -102,6 +109,8 @@ describe("Vehicle - utils", () => {
 
   test("Retrieves Prisma args from incorrect params", () => {
     const searchParamArgs = getVehicleFindManyArgs({
+      // @ts-expect-error We simulate an unexpected behavior
+      q: undefined,
       page: "?.,;'[]",
       body_style: "helloworld" as VehicleBodyStyle,
       brand: "helloworld" as VehicleBrand,

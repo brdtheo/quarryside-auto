@@ -39,6 +39,7 @@ export default function WheelListFilterHeader({
   return (
     <>
       <ListFilterHeader
+        pageSearchParams={searchParams}
         activeFilterCount={activeFilterCount}
         handleOpenFilterDrawer={handleOpenFilterDrawer}
         textSearch={textSearch}

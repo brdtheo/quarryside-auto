@@ -45,6 +45,7 @@ describe("Wheel - utils", () => {
   test("Retrieves search params Prisma args", () => {
     const searchParamArgs = getWheelFindManyArgs(
       {
+        q: "type",
         is_ten_lug: "true",
         brand: WheelBrand.FOLK,
         delivery_available: "false",
@@ -54,13 +55,24 @@ describe("Wheel - utils", () => {
     expect(searchParamArgs).toStrictEqual({
       ...EXPECTED_MINIMAL_ARGS,
       where: {
-        AND: [{ brand: { in: [WheelBrand.FOLK] } }, { is_ten_lug: true }],
+        AND: [
+          {
+            model: {
+              contains: "type",
+              mode: "insensitive",
+            },
+          },
+          { brand: { in: [WheelBrand.FOLK] } },
+          { is_ten_lug: true },
+        ],
       },
     });
   });
 
   test("Retrieves Prisma args from incorrect params", () => {
     const mixedArgsAndParams = getWheelFindManyArgs({
+      // @ts-expect-error We simulate an unexpected behavior
+      q: undefined,
       page: "?.,;'[]",
       is_three_lug: "false",
       brand: "hello-world",

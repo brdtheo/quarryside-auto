@@ -63,7 +63,7 @@ export default function ListFilterAside({
         <div className="pb-2 flex gap-2 flex-wrap">
           {(appliedFilterList ?? []).map((appliedFilter) => (
             <Chip
-              key={appliedFilter.paramValue}
+              key={appliedFilter.deleteHref}
               iconHref={appliedFilter.deleteHref}
               endIcon={IconX}
             >

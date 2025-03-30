@@ -77,7 +77,7 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
           {(mediaList ?? []).map(
             (media, index) =>
               media && (
-                <li key={media.id}>
+                <li key={media.url}>
                   <button
                     type="button"
                     aria-label="Select and expand media image"

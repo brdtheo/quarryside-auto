@@ -1,7 +1,8 @@
-import { TablerIcon } from "@tabler/icons-react";
 import { ComponentProps } from "react";
 
-export type IconButtonProps = ComponentProps<"button"> & {
+import { TablerIcon } from "@tabler/icons-react";
+
+export type IconButtonProps = Omit<ComponentProps<"button">, "children"> & {
   className?: string;
   children: TablerIcon;
   size?: "xs" | "sm" | "lg";

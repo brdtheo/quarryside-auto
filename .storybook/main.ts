@@ -7,6 +7,7 @@ const config: StorybookConfig = {
   addons: [
     "@storybook/addon-essentials",
     "@storybook/experimental-addon-test",
+    "storybook-next-intl",
   ],
   framework: {
     name: "@storybook/experimental-nextjs-vite",

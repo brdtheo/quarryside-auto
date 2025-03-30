@@ -49,7 +49,7 @@ export default function IconButton({
   const icon = { children };
 
   const badgeValue = useMemo(() => {
-    if (!badgeCount) return null;
+    if (!badgeCount) return;
     if (badgeCount > 99) {
       return "99+";
     }

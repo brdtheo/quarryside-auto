@@ -10,12 +10,17 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "i.ibb.co", // TEMP
+        hostname: "loremflickr.com", // fakerjs
         port: "",
       },
       {
         protocol: "https",
-        hostname: "art.pixilart.com", // TEMP
+        hostname: "picsum.photos", // fakerjs
+        port: "",
+      },
+      {
+        protocol: "https",
+        hostname: "i.ibb.co", // TEMP
         port: "",
       },
       {

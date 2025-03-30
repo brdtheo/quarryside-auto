@@ -61,12 +61,11 @@ export default function Header() {
         </nav>
 
         <IconButton
+          icon={IconMenu2}
           onClick={handleOpenSideDrawer}
           className="text-white block md:hidden"
           size="lg"
-        >
-          {IconMenu2}
-        </IconButton>
+        />
 
         <HeaderSideDrawer
           onClose={handleCloseSideDrawer}

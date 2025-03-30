@@ -6,7 +6,6 @@ import type { IconButtonProps } from ".";
 
 export default function IconButton({
   className,
-  children,
   size,
   badgeCount,
   onClick,
@@ -46,8 +45,6 @@ export default function IconButton({
     }
   }, []);
 
-  const icon = { children };
-
   const badgeValue = useMemo(() => {
     if (!badgeCount) return;
     if (badgeCount > 99) {
@@ -70,7 +67,7 @@ export default function IconButton({
       )}
       {...props}
     >
-      <icon.children size={iconSize} />
+      <props.icon size={iconSize} />
       {!!badgeCount && (
         <span className="bg-primary dark:bg-primarydark text-white dark:text-black text-xs font-semibold rounded px-1 py-0.5 inline-flex items-center justify-center absolute top-[-5px] right-[-5px] leading-none z-10">
           {badgeValue}

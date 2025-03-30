@@ -60,6 +60,12 @@ export default [
     },
   },
   {
+    files: [".storybook/**"],
+    rules: {
+      "unicorn/prefer-module": "off",
+    },
+  },
+  {
     ignores: [
       "src/setupTests.tsx",
       "src/middleware.ts",

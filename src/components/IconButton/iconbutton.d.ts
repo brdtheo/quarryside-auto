@@ -2,9 +2,9 @@ import { ComponentProps } from "react";
 
 import { TablerIcon } from "@tabler/icons-react";
 
-export type IconButtonProps = Omit<ComponentProps<"button">, "children"> & {
+export type IconButtonProps = ComponentProps<"button"> & {
   className?: string;
-  children: TablerIcon;
+  icon: TablerIcon;
   size?: "xs" | "sm" | "lg";
   badgeCount?: number;
   onClick: () => void;

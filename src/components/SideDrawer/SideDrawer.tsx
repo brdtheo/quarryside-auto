@@ -20,10 +20,11 @@ export default function SideDrawer({
           onClick={onClose}
         />
         <div className="w-60 bg-background dark:bg-backgrounddark border-l border-l-divider dark:border-l-dividerdark fixed top-0 right-0 h-dvh px-4 py-6 gap-6 flex flex-col overflow-y-scroll">
-          <IconButton className="border border-divider" onClick={onClose}>
-            {IconX}
-          </IconButton>
-
+          <IconButton
+            icon={IconX}
+            className="border border-divider"
+            onClick={onClose}
+          />
           {children}
         </div>
       </div>

@@ -15,6 +15,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      # Storybook test execution
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
       - name: ✨ Prettier ✨
         run: pnpm pretty-check
 

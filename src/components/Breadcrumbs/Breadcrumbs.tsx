@@ -21,7 +21,7 @@ function BreadcrumbSeparator() {
 
 export default function Breadcrumbs() {
   const t = useTranslations("common");
-  const paths = usePathname();
+  const paths = usePathname() ?? "";
   const pathNames = useMemo(() => paths.split("/").filter(Boolean), [paths]);
 
   const getBreadcrumbHref = useCallback((index: number) => {

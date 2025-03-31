@@ -12,7 +12,7 @@ import type { PageSearchParams } from "@/types";
  */
 export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  const searchParams = useSearchParams() ?? {};
 
   /**
    * Retrieve the total number of search params

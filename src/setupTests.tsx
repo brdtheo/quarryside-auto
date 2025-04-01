@@ -24,6 +24,17 @@ export const NextIntlClientWrapper = ({
 );
 
 /**
+ * Mock Image component to render unoptimized version in tests
+ */
+vi.mock("next/image", () => {
+  return {
+    default: ({ src, alt }: { src: string; alt: string }) => {
+      return <img src={src} alt={alt} />;
+    },
+  };
+});
+
+/**
  * Mock translations getter used in server components
  */
 vi.mock("next-intl", async (importOriginal) => {

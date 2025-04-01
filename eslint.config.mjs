@@ -48,6 +48,7 @@ export default [
       "src/lib/vehicle/factory.ts",
       "src/lib/media/MediaList/MediaList.tsx",
       "src/lib/media/MediaList/medialist.test.tsx",
+      "src/lib/media/MediaList/MediaList.stories.tsx",
     ],
     rules: {
       "unicorn/no-null": "off",

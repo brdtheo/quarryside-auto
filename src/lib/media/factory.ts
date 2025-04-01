@@ -7,7 +7,7 @@ export function mediaFactory(): Media {
     id: faker.number.int({ max: 1000 }),
     vehicle: faker.helpers.arrayElement([null, faker.number.int()]),
     wheel: faker.helpers.arrayElement([null, faker.number.int()]),
-    url: faker.image.url(),
+    url: faker.image.url({ width: 1000, height: 562 }),
     is_thumbnail: faker.datatype.boolean(),
     date_created: faker.date.recent(),
   };

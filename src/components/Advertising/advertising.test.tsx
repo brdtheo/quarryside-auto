@@ -42,6 +42,6 @@ describe("Advertising", () => {
     const src = image.getAttribute("src");
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute("src");
-    expect(src).toContain(encodeURIComponent(ADVERTISING_BASE_URL));
+    expect(src).toContain(ADVERTISING_BASE_URL);
   });
 });

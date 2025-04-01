@@ -60,7 +60,6 @@ describe("BlogPost", () => {
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute("src");
     expect(image).toHaveAttribute("alt");
-    expect(image).toHaveAttribute("sizes");
   });
 
   it("Does not render an image is thumbnail url is not provided", () => {

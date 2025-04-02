@@ -18,13 +18,6 @@ const config: StorybookConfig = {
     config.resolve ??= {};
     config.resolve.alias ??= {
       "@": path.resolve(__dirname, "../src"),
-      /**
-       * Using a workaround for this prisma issue
-       * @see https://github.com/prisma/prisma/issues/12504#issuecomment-1827097530
-       */
-      //
-      ".prisma/client/index-browser":
-        "../node_modules/@prisma/client/index-browser.js",
     };
     return config;
   },

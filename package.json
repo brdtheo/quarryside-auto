@@ -48,7 +48,7 @@
     "@storybook/react": "^8.6.12",
     "@storybook/test": "^8.6.12",
     "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/postcss": "^4.0.14",
+    "@tailwindcss/postcss": "^4.1.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
@@ -78,7 +78,7 @@
     "prisma": "^6.2.1",
     "storybook": "^8.6.12",
     "storybook-next-intl": "^1.2.6",
-    "tailwindcss": "^4.0.14",
+    "tailwindcss": "^4.1.1",
     "typescript": "^5",
     "typescript-eslint": "^8.29.0",
     "vitest": "3.0.8"

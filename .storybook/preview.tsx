@@ -14,6 +14,12 @@ BigInt.prototype.toJSON = function () {
   return this.toString();
 };
 
+/**
+ * Instanciates a static seed for faker
+ * to have predictable data in visual tests
+ */
+faker.seed(123);
+
 const preview: Preview = {
   //👇 Enables auto-generated documentation for all stories
   tags: ["autodocs"],
@@ -31,11 +37,6 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => {
-      /**
-       * Instanciates a static seed for faker
-       * to have predictable data in visual tests
-       */
-      faker.seed(123);
       return (
         <NextIntlClientProvider locale="en">
           <Story />

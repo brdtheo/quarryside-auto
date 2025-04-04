@@ -5,12 +5,15 @@ import { faker } from "@faker-js/faker";
 import { mediaListFactory } from "@/lib/media/factory";
 import { WheelWithMedias } from "@/lib/wheel/types";
 
-type WheelFactoryOptions = {
-  withMedia?: boolean;
-};
+import { FactoryOptions } from "@/types";
 
+/**
+ * Generate a fake wheel
+ * @param options Options to alter the properties of the wheel
+ * @returns {Wheel}
+ */
 export function wheelFactory(
-  options?: WheelFactoryOptions,
+  options?: FactoryOptions,
 ): Wheel | WheelWithMedias {
   return {
     id: faker.number.int({ max: 1000 }),
@@ -40,9 +43,14 @@ export function wheelFactory(
   };
 }
 
+/**
+ * Generate a list of fake wheels
+ * @param count The number of objects to generate
+ * @returns {Wheel[]}
+ */
 export function wheelListFactory(
   count: number = 5,
-  options?: WheelFactoryOptions,
+  options?: FactoryOptions,
 ): Wheel[] | WheelWithMedias[] {
   return faker.helpers.multiple(() => wheelFactory(options), { count });
 }

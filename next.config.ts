@@ -15,17 +15,12 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "art.pixilart.com", // TEMP
+        hostname: "d84dt5rvw1knk.cloudfront.net", // vehicles
         port: "",
       },
       {
         protocol: "https",
-        hostname: "quarryside-auto-vehicle.s3.eu-west-3.amazonaws.com",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "quarryside-auto-wheel.s3.eu-west-3.amazonaws.com",
+        hostname: "d2d6s0rtg9yjy3.cloudfront.net", // wheels
         port: "",
       },
       {

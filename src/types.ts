@@ -12,3 +12,8 @@ export type Url = string | UrlObject;
 export type DetailsPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+/** A common type used for Factories */
+export type FactoryOptions = {
+  withMedia?: boolean;
+};

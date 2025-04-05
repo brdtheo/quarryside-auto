@@ -101,7 +101,7 @@ vi.mock("next/navigation", async (importOriginal) => {
       faker.seed(777);
       const searchParams = new URLSearchParams({
         a: `${faker.string.numeric(5)}`,
-        b: `${faker.string.numeric(5)},${faker.string.numeric(5)}`,
+        b: `${faker.string.numeric(5)},${faker.string.numeric(6)}`,
         c: `${faker.string.numeric(5)}`,
       });
       faker.seed();

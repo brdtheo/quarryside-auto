@@ -16,7 +16,7 @@ import ListFilterAside from "@/components/ListFilterAside";
 import { ListFilterAsideSectionProps } from "@/components/ListFilterAsideSection";
 
 import useQueryParamValues from "@/hooks/useQueryParamValues";
-import useURLSearchParams from "@/hooks/useURLSearchParams";
+import useQueryParamLink from "@/hooks/useQueryParamLink";
 
 import { PageSearchParams } from "@/types";
 
@@ -29,7 +29,7 @@ export default function VehicleListFilterAside({
 }) {
   const t = useTranslations("vehicles");
 
-  const { getUpdatedURLFromSearchParam } = useURLSearchParams(searchParams);
+  const getQueryParamLink = useQueryParamLink(searchParams);
 
   const vehicleListFilterSections: ListFilterAsideSectionProps[] = [
     {
@@ -38,7 +38,7 @@ export default function VehicleListFilterAside({
         label: t(`filter.condition.option.${condition}`),
         value: condition,
         isChecked: (searchParams?.condition ?? "").includes(condition),
-        href: getUpdatedURLFromSearchParam("condition", `${condition}`, true),
+        href: getQueryParamLink("condition", `${condition}`, true),
       })),
       isSearchable: false,
       selectedOptionCount: useQueryParamValues("condition", true),
@@ -49,7 +49,7 @@ export default function VehicleListFilterAside({
         label: t(`filter.brand.option.${brand}`),
         value: brand.toLowerCase(),
         isChecked: (searchParams?.brand ?? "").includes(brand),
-        href: getUpdatedURLFromSearchParam("brand", `${brand}`, true),
+        href: getQueryParamLink("brand", `${brand}`, true),
       })),
       isSearchable: true,
       selectedOptionCount: useQueryParamValues("brand", true),
@@ -60,7 +60,7 @@ export default function VehicleListFilterAside({
         label: t(`filter.body_style.option.${bodyStyle}`),
         value: bodyStyle.toLowerCase(),
         isChecked: (searchParams?.body_style ?? "").includes(bodyStyle),
-        href: getUpdatedURLFromSearchParam("body_style", `${bodyStyle}`, true),
+        href: getQueryParamLink("body_style", `${bodyStyle}`, true),
       })),
       isSearchable: true,
       selectedOptionCount: useQueryParamValues("body_style", true),
@@ -71,7 +71,7 @@ export default function VehicleListFilterAside({
         label: t(`filter.fuel_type.option.${fuelType}`),
         value: fuelType.toLowerCase(),
         isChecked: (searchParams?.fuel_type ?? "").includes(fuelType),
-        href: getUpdatedURLFromSearchParam("fuel_type", `${fuelType}`, true),
+        href: getQueryParamLink("fuel_type", `${fuelType}`, true),
       })),
       isSearchable: false,
       selectedOptionCount: useQueryParamValues("fuel_type", true),
@@ -83,7 +83,7 @@ export default function VehicleListFilterAside({
           label: t("filter.engine_cylinder_count.option.3"),
           value: "3",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("3"),
-          href: getUpdatedURLFromSearchParam(
+          href: getQueryParamLink(
             "engine_cylinder_count",
             "3",
             true,
@@ -93,7 +93,7 @@ export default function VehicleListFilterAside({
           label: t("filter.engine_cylinder_count.option.4"),
           value: "4",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("4"),
-          href: getUpdatedURLFromSearchParam(
+          href: getQueryParamLink(
             "engine_cylinder_count",
             "4",
             true,
@@ -103,7 +103,7 @@ export default function VehicleListFilterAside({
           label: t("filter.engine_cylinder_count.option.5"),
           value: "5",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("5"),
-          href: getUpdatedURLFromSearchParam(
+          href: getQueryParamLink(
             "engine_cylinder_count",
             "5",
             true,
@@ -113,7 +113,7 @@ export default function VehicleListFilterAside({
           label: t("filter.engine_cylinder_count.option.6"),
           value: "6",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("6"),
-          href: getUpdatedURLFromSearchParam(
+          href: getQueryParamLink(
             "engine_cylinder_count",
             "6",
             true,
@@ -123,7 +123,7 @@ export default function VehicleListFilterAside({
           label: t("filter.engine_cylinder_count.option.8"),
           value: "8",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("8"),
-          href: getUpdatedURLFromSearchParam(
+          href: getQueryParamLink(
             "engine_cylinder_count",
             "8",
             true,
@@ -133,7 +133,7 @@ export default function VehicleListFilterAside({
           label: t("filter.engine_cylinder_count.option.10"),
           value: "10",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("10"),
-          href: getUpdatedURLFromSearchParam(
+          href: getQueryParamLink(
             "engine_cylinder_count",
             "10",
             true,
@@ -149,7 +149,7 @@ export default function VehicleListFilterAside({
         label: t(`filter.transmission.option.${transmission}`),
         value: transmission.toLowerCase(),
         isChecked: (searchParams?.transmission ?? "").includes(transmission),
-        href: getUpdatedURLFromSearchParam(
+        href: getQueryParamLink(
           "transmission",
           `${transmission}`,
           true,
@@ -164,7 +164,7 @@ export default function VehicleListFilterAside({
         label: t(`filter.drivetrain.option.${drivetrain}`),
         value: drivetrain.toLowerCase(),
         isChecked: (searchParams?.drivetrain ?? "").includes(drivetrain),
-        href: getUpdatedURLFromSearchParam("drivetrain", `${drivetrain}`, true),
+        href: getQueryParamLink("drivetrain", `${drivetrain}`, true),
       })),
       isSearchable: true,
       selectedOptionCount: useQueryParamValues("drivetrain", true),
@@ -175,7 +175,7 @@ export default function VehicleListFilterAside({
         label: t(`filter.country.option.${country}`),
         value: country.toLowerCase(),
         isChecked: (searchParams?.country ?? "").includes(country),
-        href: getUpdatedURLFromSearchParam("country", `${country}`, true),
+        href: getQueryParamLink("country", `${country}`, true),
       })),
       isSearchable: true,
       selectedOptionCount: useQueryParamValues("country", true),

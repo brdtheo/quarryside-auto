@@ -10,7 +10,7 @@ import { IconAdjustmentsHorizontal, IconArrowsSort } from "@tabler/icons-react";
 import IconButton from "@/components/IconButton";
 import SearchField from "@/components/SearchField";
 
-import useURLSearchParams from "@/hooks/useURLSearchParams";
+import useQueryParamLink from "@/hooks/useQueryParamLink";
 
 import type { ListFilterHeaderProps } from ".";
 
@@ -22,7 +22,7 @@ export default function ListFilterHeader({
 }: ListFilterHeaderProps) {
   const t = useTranslations("common");
 
-  const { getUpdatedURLFromSearchParam } = useURLSearchParams(pageSearchParams);
+  const getQueryParamLink = useQueryParamLink(pageSearchParams);
 
   const [searchText, setSearchText] = useState<string>("");
 
@@ -42,7 +42,7 @@ export default function ListFilterHeader({
 
   const handleSearch = useCallback(
     (value: string) => {
-      const url = getUpdatedURLFromSearchParam("q", value);
+      const url = getQueryParamLink("q", value);
       redirect(url);
     },
     [searchText, pageSearchParams],
@@ -50,7 +50,7 @@ export default function ListFilterHeader({
 
   const handleClear = useCallback(() => {
     setSearchText("");
-    const url = getUpdatedURLFromSearchParam("q", searchText);
+    const url = getQueryParamLink("q", searchText);
     redirect(url);
   }, [searchText, pageSearchParams]);
 

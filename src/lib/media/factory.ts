@@ -2,6 +2,11 @@ import { Media } from "@prisma/client";
 
 import { faker } from "@faker-js/faker";
 
+/**
+ * Generate a fake media
+ * @param options Options to alter the properties of the media
+ * @returns {Media}
+ */
 export function mediaFactory(options?: { isThumbnail: boolean }): Media {
   return {
     id: faker.number.int({ max: 1000 }),
@@ -13,6 +18,11 @@ export function mediaFactory(options?: { isThumbnail: boolean }): Media {
   };
 }
 
+/**
+ * Generate a list of fake medias
+ * @param count The number of objects to generate
+ * @returns {Media[]}
+ */
 export function mediaListFactory(count: number = 5): Media[] {
   return [
     mediaFactory({ isThumbnail: true }),

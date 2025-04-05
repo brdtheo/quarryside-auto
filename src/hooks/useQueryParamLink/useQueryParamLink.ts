@@ -2,49 +2,17 @@ import { useCallback } from "react";
 
 import { usePathname, useSearchParams } from "next/navigation";
 
-import { APPLIED_FILTER_BLACKLIST } from "@/constants";
-
-import type { PageSearchParams } from "@/types";
+import { PageSearchParams } from "@/types";
 
 /**
- * Handles URL query params related to filtering/pagination
- * @param {PageSearchParams} pageSearchParams The current page query params
+ * Handler for generating links from URL query parameters
+ * @param queryParams The current page query parameters
  */
-export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
+export default function useQueryParamLink(queryParams: PageSearchParams) {
   const pathname = usePathname();
   const searchParams = useSearchParams() ?? {};
 
-  /**
-   * Retrieve the total number of search params
-   */
-  const getActiveFilterCount = useCallback(() => {
-    const paramList: string[] = [];
-    if (!searchParams) {
-      return paramList.length;
-    }
-
-    for (const [param, value] of searchParams.entries()) {
-      if (!APPLIED_FILTER_BLACKLIST.includes(param)) {
-        paramList.push(value);
-      }
-    }
-    return paramList.length;
-  }, [searchParams]);
-
-  /**
-   * Retrieve the number of values associated with a search param
-   */
-  const getSearchParamValueCount = useCallback(
-    (paramName: string) => {
-      const values = pageSearchParams[paramName]?.split(",") ?? [];
-      return values.length;
-    },
-    [pageSearchParams],
-  );
-
-  /**
-   * Returns an URL while handling the search param with a single value
-   */
+  /** Handles the query parameter links with a single values */
   const createQueryString = useCallback(
     (paramName: string, paramValue: string) => {
       const params = new URLSearchParams(searchParams.toString());
@@ -67,15 +35,13 @@ export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
     [searchParams],
   );
 
-  /**
-   * Returns an URL while handling the search param with multiple values
-   */
+  /** Handles the query parameter links with multiple values */
   const createQueryStringMulti = useCallback(
     (paramName: string, paramValue: string) => {
       const params = new URLSearchParams(searchParams.toString());
 
       const currentParamValues: string[] =
-        pageSearchParams[paramName]?.split(",") ?? [];
+        queryParams[paramName]?.split(",") ?? [];
 
       if (
         currentParamValues.length === 1 &&
@@ -104,7 +70,7 @@ export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
         params.set(paramName, newParamValues);
       }
 
-      if (!pageSearchParams[paramName] && !!paramValue) {
+      if (!queryParams[paramName] && !!paramValue) {
         // Set the value from a non-existing search param
         params.set(paramName, paramValue);
       }
@@ -116,23 +82,32 @@ export default function useURLSearchParams(pageSearchParams: PageSearchParams) {
 
       return params.toString();
     },
-    [pageSearchParams, searchParams],
+    [queryParams, searchParams],
   );
 
-  const getUpdatedURLFromSearchParam = useCallback(
-    (paramName: string, paramValue: string, isMulti?: boolean) => {
+  /**
+   * Generates a link from a query parameter
+   * Handles one or multiple values for a query parameter
+   * @param name The relate query parameter name
+   * @param value The relate query parameter value
+   * @param allowMultipleValues If set to `true`, the query parameter accepts multiple values
+   * @example
+   * // https://domain.com?foo=bar
+   * const { getQueryParamLink } = useQueryParamLink(searchParams);
+   * const deletion = getQueryParamLink('foo', 'bar'); // https://domain.com
+   * const singleValue = getQueryParamLink('foo', 'baz'); // https://domain.com?foo=baz
+   * const multipleValues = getQueryParamLink('foo', 'baz', true); // https://domain.com?foo=bar,baz
+   */
+  const getQueryParamLink = useCallback(
+    (name: string, value: string, allowMultipleValues?: boolean) => {
       const baseURL = `${pathname}?`;
-      if (isMulti) {
-        return baseURL + createQueryStringMulti(paramName, paramValue);
+      if (allowMultipleValues) {
+        return baseURL + createQueryStringMulti(name, value);
       }
-      return baseURL + createQueryString(paramName, paramValue);
+      return baseURL + createQueryString(name, value);
     },
     [createQueryString, createQueryStringMulti, pathname],
   );
 
-  return {
-    getUpdatedURLFromSearchParam,
-    getSearchParamValueCount,
-    getActiveFilterCount,
-  };
+  return getQueryParamLink;
 }

@@ -16,12 +16,15 @@ import { faker } from "@faker-js/faker";
 import { mediaListFactory } from "@/lib/media/factory";
 import { VehicleWithMedias } from "@/lib/vehicle/types";
 
-type VehicleFactoryOptions = {
-  withMedia?: boolean;
-};
+import { FactoryOptions } from "@/types";
 
+/**
+ * Generate a fake vehicle
+ * @param options Options to alter the properties of the vehicle
+ * @returns {Vehicle}
+ */
 export function vehicleFactory(
-  options?: VehicleFactoryOptions,
+  options?: FactoryOptions,
 ): Vehicle | VehicleWithMedias {
   const engineCylinderCount = faker.helpers.arrayElement([
     null,
@@ -90,9 +93,14 @@ export function vehicleFactory(
   };
 }
 
+/**
+ * Generate a list of fake vehicles
+ * @param count The number of objects to generate
+ * @returns {Vehicle[]}
+ */
 export function vehicleListFactory(
   count: number = 5,
-  options?: VehicleFactoryOptions,
+  options?: FactoryOptions,
 ): Vehicle[] | VehicleWithMedias[] {
   return faker.helpers.multiple(() => vehicleFactory(options), { count });
 }

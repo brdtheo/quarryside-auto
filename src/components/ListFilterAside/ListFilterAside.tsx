@@ -16,7 +16,7 @@ import type {
 } from "@/components/ListFilterAside";
 import ListFilterAsideSection from "@/components/ListFilterAsideSection";
 
-import useURLSearchParams from "@/hooks/useURLSearchParams";
+import useQueryParamLink from "@/hooks/useQueryParamLink";
 
 import { APPLIED_FILTER_BLACKLIST } from "@/constants";
 
@@ -28,7 +28,7 @@ export default function ListFilterAside({
 }: ListFilterAsideProps) {
   const t = useTranslations(nameSpace);
 
-  const { getUpdatedURLFromSearchParam } = useURLSearchParams(searchParams);
+  const getQueryParamLink = useQueryParamLink(searchParams);
 
   const appliedFilterList = useMemo<AppliedListFilter[]>(() => {
     const searchParamsEntries = Object.entries(searchParams);
@@ -43,7 +43,7 @@ export default function ListFilterAside({
           (paramValue: string) => ({
             paramName,
             paramValue,
-            deleteHref: getUpdatedURLFromSearchParam(
+            deleteHref: getQueryParamLink(
               paramName,
               paramValue,
               true,
@@ -55,7 +55,7 @@ export default function ListFilterAside({
     }
 
     return appliedFilters;
-  }, [getUpdatedURLFromSearchParam, searchParams]);
+  }, [getQueryParamLink, searchParams]);
 
   return (
     <aside className={clsx("w-full md:w-60 flex flex-col gap-4", className)}>

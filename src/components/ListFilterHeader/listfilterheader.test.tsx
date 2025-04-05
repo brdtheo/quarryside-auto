@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 
 import { cleanup, render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
@@ -46,5 +47,18 @@ describe("ListFilterHeader", () => {
   it("Set the field value to the query param if existing", () => {
     const searchField = screen.getAllByRole("searchbox")[0];
     expect(searchField).toHaveValue(query);
+  });
+
+  it("Triggers the search callback without throwing any error when pressing enter", async () => {
+    const searchField = screen.getAllByRole("searchbox")[0];
+    await userEvent.type(searchField, "[Enter]");
+  });
+
+  it("Removes the current input value when clearing the field", async () => {
+    const searchField = screen.getAllByRole("searchbox")[0];
+    const clearButton = screen.getAllByRole("button", { name: /clear/i })[0];
+    await userEvent.click(clearButton);
+    const searchFieldValue = searchField.getAttribute("value");
+    expect(searchFieldValue).toBe("");
   });
 });

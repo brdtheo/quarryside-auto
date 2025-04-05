@@ -9,7 +9,7 @@ import SideDrawer from "@/components/SideDrawer";
 
 import VehicleListFilterAside from "@/lib/vehicle/VehicleListFilterAside";
 
-import useURLSearchParams from "@/hooks/useURLSearchParams";
+import useQueryParamCount from "@/hooks/useQueryParamCount";
 
 import type { VehicleListFilterHeaderProps } from ".";
 
@@ -32,15 +32,13 @@ export default function VehicleListFilterHeader({
     setIsFilterDrawerOpen((state) => !state);
   }, []);
 
-  const { getActiveFilterCount } = useURLSearchParams(searchParams);
-
-  const activeFilterCount = getActiveFilterCount();
+  const queryParamCount = useQueryParamCount();
 
   return (
     <>
       <ListFilterHeader
         pageSearchParams={searchParams}
-        activeFilterCount={activeFilterCount}
+        activeFilterCount={queryParamCount}
         handleOpenFilterDrawer={handleOpenFilterDrawer}
         textSearch={textSearch}
         sortOptionList={[

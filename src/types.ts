@@ -1,6 +1,7 @@
 import type { UrlObject } from "url";
 
-export type PageSearchParams = { [key: string]: string };
+/** A common type for URL query parameters */
+export type PageSearchParams = Record<string, string>;
 
 /** A common type that represents page props */
 export type PageProps = { searchParams: Promise<PageSearchParams> };

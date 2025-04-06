@@ -1,0 +1,45 @@
+name: Chromatic
+
+on: [push]
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 23.5.0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Install dependencies
+        run: rm -rf node_modules && pnpm install
+
+      - name: Fix Prisma import
+        run: pnpm run prisma.fiximport
+
+      - name: Force Clean Storybook Build
+        run: rm -rf node_modules/.cache/ && pnpm build-storybook
+
+      - name: Fix Prisma import
+        run: pnpm run prisma.fiximport
+
+      # Using Chromatic GitHub Action does not work
+      # https://github.com/prisma/prisma/issues/12504
+      #
+      # - name: Run Chromatic
+      #   uses: chromaui/action@latest
+      #   with:
+      #     storybookBuildDir: storybook-static
+      #     projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+      - name: Run Chromatic
+        run: pnpm run chromatic --exit-zero-on-changes --storybook-build-dir=storybook-static
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

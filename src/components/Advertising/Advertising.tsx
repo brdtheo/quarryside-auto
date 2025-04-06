@@ -84,6 +84,7 @@ export default function Advertising({
       >
         {generatedImageURL ? (
           <Image
+            data-chromatic="ignore"
             sizes={ratioMode === "vertical" ? "150px" : "200px"}
             className={clsx({
               "object-contain": ratioMode === "horizontal",

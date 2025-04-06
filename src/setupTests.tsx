@@ -113,6 +113,7 @@ vi.mock("next/navigation", async (importOriginal) => {
       faker.seed();
       return segment;
     },
+    redirect: vi.fn(),
     useRouter: vi.fn(() => ({
       push: vi.fn(),
       replace: vi.fn(),

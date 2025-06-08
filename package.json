@@ -7,17 +7,19 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "next dev",
-    "build": "npx prisma generate && next build",
+    "prisma.fiximport": "sed -i 's|@prisma/client/index-browser|../../.prisma/client|' node_modules/@prisma/client/index-browser.js",
+    "build": "npx prisma generate && pnpm run prisma.fiximport && next build",
     "start": "next dev",
     "lint": "npx tsc && next lint",
     "pretty": "npx prettier --write src locales",
     "pretty-check": "npx prettier --check src/app",
-    "postinstall": "npx prisma generate",
-    "migrate": "npx prisma migrate dev",
+    "postinstall": "npx prisma generate && pnpm run prisma.fiximport",
+    "migrate": "npx prisma migrate dev && pnpm run prisma.fiximport",
+    "generate": "npx prisma generate && pnpm run prisma.fiximport",
     "test": "vitest run --coverage",
     "e2e": "npx playwright test",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "pnpm run prisma.fiximport && storybook build"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",

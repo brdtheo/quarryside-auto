@@ -10,7 +10,12 @@ type Props = {
 // is required, even if it's just passing children through.
 export default function RootLayout({ children }: Props) {
   return (
-    <PlausibleProvider domain="quarryside-auto.com">
+    <PlausibleProvider
+      customDomain="https://analytics.brdtheo.com/"
+      selfHosted
+      trackLocalhost
+      domain="quarryside-auto.com"
+    >
       {children}
     </PlausibleProvider>
   );

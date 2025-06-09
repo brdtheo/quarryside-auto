@@ -11,7 +11,7 @@ type Props = {
 export default function RootLayout({ children }: Props) {
   return (
     <PlausibleProvider
-      customDomain="https://analytics.brdtheo.com/"
+      customDomain="https://analytics.brdtheo.com"
       selfHosted
       trackLocalhost
       domain="quarryside-auto.com"

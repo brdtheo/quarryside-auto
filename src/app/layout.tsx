@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 
-import PlausibleProvider from "next-plausible";
+import { OpenPanelComponent } from "@openpanel/nextjs";
 
 type Props = {
   children: ReactNode;
@@ -10,13 +10,15 @@ type Props = {
 // is required, even if it's just passing children through.
 export default function RootLayout({ children }: Props) {
   return (
-    <PlausibleProvider
-      customDomain="https://analytics.brdtheo.com"
-      selfHosted
-      trackLocalhost
-      domain="quarryside-auto.com"
-    >
+    <>
+      <OpenPanelComponent
+        apiUrl="https://analytics-api.brdtheo.com"
+        clientId="caca0f2b-f7ed-4ade-85ea-e30a1e0d7371"
+        trackScreenViews={true}
+        trackAttributes={true}
+        trackOutgoingLinks={true}
+      />
       {children}
-    </PlausibleProvider>
+    </>
   );
 }

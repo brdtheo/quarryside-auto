@@ -1,2 +1,2 @@
 export { default } from "./VehicleCard";
-export { type VehicleCardProps } from "./vehiclecard";
+export { type VehicleCardProps } from "./types";

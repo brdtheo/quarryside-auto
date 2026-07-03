@@ -2,9 +2,9 @@ import { useCallback } from "react";
 
 import clsx from "clsx";
 
-import type { TableProps } from ".";
+import type { TableProps as TableProperties } from "./types";
 
-export default function Table({ rows }: TableProps) {
+export default function Table({ rows }: TableProperties) {
   const getPaddingClass = useCallback(
     (index: number) => {
       switch (index) {

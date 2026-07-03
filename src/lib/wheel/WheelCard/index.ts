@@ -1,2 +1,2 @@
 export { default } from "./WheelCard";
-export { type WheelCardProps } from "./wheelcard";
+export { type WheelCardProps } from "./types";

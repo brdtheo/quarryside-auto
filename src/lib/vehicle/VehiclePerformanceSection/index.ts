@@ -1,2 +1,2 @@
 export { default } from "./VehiclePerformanceSection";
-export { type VehiclePerformanceSectionProps } from "./vehicleperformancesection";
+export { type VehiclePerformanceSectionProps } from "./types";

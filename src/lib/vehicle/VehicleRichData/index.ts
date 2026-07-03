@@ -1,2 +1,2 @@
 export { default } from "./VehicleRichData";
-export { type VehicleRichDataProps } from "./vehiclerichdata";
+export { type VehicleRichDataProps } from "./types";

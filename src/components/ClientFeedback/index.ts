@@ -1,2 +1,2 @@
 export { default } from "./ClientFeedback";
-export { type ClientFeedbackProps } from "./clientfeedback";
+export { type ClientFeedbackProps } from "./types";

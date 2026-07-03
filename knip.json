@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "tags": [
+    "-lintignore"
+  ],
+  "entry": [
+    "{index,cli,main}.{js,cjs,jsx,ts,cts,mts,tsx}",
+    "src/{index,cli,main}.{js,cjs,jsx,ts,cts,mts,tsx}"
+  ],
+  "project": [
+    "**/*.{js,cjs,jsx,ts,cts,mts,tsx}!"
+  ],
+  "workspaces": {
+    "packages/lib": {
+      "vite": {
+        "config": []
+      }
+    }
+  }
+}

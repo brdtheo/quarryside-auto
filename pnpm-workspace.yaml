@@ -1,3 +1,21 @@
+allowBuilds:
+  '@parcel/watcher': true
+  '@prisma/engines': true
+  '@sentry/cli': true
+  '@swc/core': true
+  better-sqlite3: true
+  esbuild: true
+  msw: true
+  prisma: true
+  sharp: true
+  sqlite3: true
+  unrs-resolver: true
 onlyBuiltDependencies:
+  - '@prisma/engines'
+  - '@sentry/cli'
+  - better-sqlite3
+  - esbuild
   - msw
   - prisma
+  - sharp
+  - sqlite3

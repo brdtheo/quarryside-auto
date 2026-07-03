@@ -59,7 +59,7 @@ export default function ListFilterAsideSection({
       <legend className="inline-flex font-semibold text-md gap-1 dark:text-white">
         {title}
         {selectedOptionCount > 0 && (
-          <Chip className="dark:text-white">{`${selectedOptionCount}`}</Chip>
+          <Chip className="dark:text-white">{String(selectedOptionCount)}</Chip>
         )}
       </legend>
 

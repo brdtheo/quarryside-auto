@@ -1,2 +1,2 @@
 export { default } from "./TextField";
-export { type TextFieldProps } from "./searchfield";
+export { type TextFieldProps } from "./types";

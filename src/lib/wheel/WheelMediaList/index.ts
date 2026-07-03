@@ -1,2 +1,2 @@
 export { default } from "./WheelMediaList";
-export { type WheelMediaListProps } from "./wheelmedialist";
+export { type WheelMediaListProps } from "./types";

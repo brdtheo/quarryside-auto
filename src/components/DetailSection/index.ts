@@ -1,2 +1,2 @@
 export { default } from "./DetailSection";
-export { type DetailSectionProps } from "./detailsection";
+export { type DetailSectionProps } from "./types";

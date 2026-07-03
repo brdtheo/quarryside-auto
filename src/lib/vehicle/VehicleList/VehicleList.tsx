@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 
 import EmptySearchResult from "@/components/EmptySearchResult";
 
-import type { VehicleListProps } from "./vehiclelist";
+import type { VehicleListProps } from ".";
 
 export default function VehicleList({ data, itemRender }: VehicleListProps) {
   const t = useTranslations("vehicles");

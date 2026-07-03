@@ -1,2 +1,2 @@
 export { default } from "./BlogPost";
-export { type BlogPostProps } from "./blogpost";
+export { type BlogPostProps } from "./types";

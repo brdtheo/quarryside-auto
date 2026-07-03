@@ -1,2 +1,2 @@
 export { default } from "./VehiclePriceDescription";
-export { type VehiclePriceDescriptionProps } from "./vehiclepricedescription";
+export { type VehiclePriceDescriptionProps } from "./types";

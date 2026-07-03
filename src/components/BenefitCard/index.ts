@@ -1,2 +1,2 @@
 export { default } from "./BenefitCard";
-export { type BenefitCardProps } from "./benefitcard";
+export { type BenefitCardProps } from "./types";

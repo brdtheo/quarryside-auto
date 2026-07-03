@@ -1,2 +1,2 @@
 export { default } from "./NavSection";
-export { type NavSectionLink, type NavSectionProps } from "./navsection";
+export { type NavSectionLink, type NavSectionProps } from "./types";

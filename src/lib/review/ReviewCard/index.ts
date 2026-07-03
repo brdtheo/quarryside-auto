@@ -1,2 +1,2 @@
 export { default } from "./ReviewCard";
-export { type ReviewCardProps } from "./reviewcard";
+export { type ReviewCardProps } from "./types";

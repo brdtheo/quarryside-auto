@@ -1,2 +1,2 @@
 export { default } from "./VehicleList";
-export { type VehicleListProps } from "./vehiclelist";
+export { type VehicleListProps } from "./types";

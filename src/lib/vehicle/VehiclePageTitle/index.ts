@@ -1,2 +1,2 @@
 export { default } from "./VehiclePageTitle";
-export { type VehiclePageTitleProps } from "./vehiclepagetitle";
+export { type VehiclePageTitleProps } from "./types";

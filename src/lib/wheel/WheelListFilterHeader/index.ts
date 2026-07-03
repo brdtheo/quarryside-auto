@@ -1,2 +1,2 @@
 export { default } from "./WheelListFilterHeader";
-export { type WheelListFilterHeaderProps } from "./wheellistfilterheader";
+export { type WheelListFilterHeaderProps } from "./types";

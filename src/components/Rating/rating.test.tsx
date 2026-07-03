@@ -24,7 +24,7 @@ describe("Rating", () => {
 
   it("Renders a span element with the score as text content", () => {
     render(<Rating score={score} />);
-    const span = screen.getByText(`${score}`);
+    const span = screen.getByText(String(score));
     expect(span).toBeInTheDocument();
     expect(span.tagName.toLowerCase()).toBe("span");
   });

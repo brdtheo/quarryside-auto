@@ -1,6 +1,6 @@
 import clsx from "clsx";
 
-import type { ContainerProps } from "./container";
+import type { ContainerProps } from ".";
 
 /**
  * Wraps the children node in a 1200px container

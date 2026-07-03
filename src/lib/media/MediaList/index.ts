@@ -1,2 +1,2 @@
 export { default } from "./MediaList";
-export { type MediaListProps } from "./medialist";
+export { type MediaListProps } from "./types";

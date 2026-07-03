@@ -1,2 +1,2 @@
 export { default } from "./ListFilterHeader";
-export { type ListFilterHeaderProps } from "./listfilterheader";
+export { type ListFilterHeaderProps } from "./types";

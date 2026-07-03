@@ -1,2 +1,2 @@
 export { default } from "./SubHeaderLink";
-export { type SubHeaderLinkProps } from "./subheaderlink";
+export { type SubHeaderLinkProps } from "./types";

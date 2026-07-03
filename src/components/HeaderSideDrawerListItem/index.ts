@@ -1,2 +1,2 @@
 export { default } from "./HeaderSideDrawerListItem";
-export { type HeaderSideDrawerListItemProps } from "./headersidedrawerlistitem";
+export { type HeaderSideDrawerListItemProps } from "./types";

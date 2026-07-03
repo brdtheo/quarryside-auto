@@ -1,2 +1,2 @@
 export { default } from "./WheelPageTitle";
-export { type WheelPageTitleProps } from "./wheelpagetitle";
+export { type WheelPageTitleProps } from "./types";

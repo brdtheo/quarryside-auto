@@ -1,2 +1,2 @@
 export { default } from "./VehicleRelatedWheelsSection";
-export { type VehicleRelatedWheelsSectionProps } from "./vehiclerelatedwheelssection";
+export { type VehicleRelatedWheelsSectionProps } from "./types";

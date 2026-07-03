@@ -1,2 +1,2 @@
 export { default } from "./WheelForm";
-export { type WheelFormProps } from "./wheelform";
+export { type WheelFormProps } from "./types";

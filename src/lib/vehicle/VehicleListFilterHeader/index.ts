@@ -1,2 +1,2 @@
 export { default } from "./VehicleListFilterHeader";
-export { type VehicleListFilterHeaderProps } from "./vehiclelistfilterheader";
+export { type VehicleListFilterHeaderProps } from "./types";

@@ -9,7 +9,7 @@ import {
   VehicleEngineLayout,
   VehicleFuelType,
   VehicleTransmission,
-} from "@prisma/client";
+} from "@prisma/generated/client";
 
 import { faker } from "@faker-js/faker";
 

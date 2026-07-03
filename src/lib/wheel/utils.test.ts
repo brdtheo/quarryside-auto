@@ -1,4 +1,4 @@
-import { WheelBrand } from "@prisma/client";
+import { WheelBrand } from "@prisma/generated/client";
 
 import { describe, expect, expectTypeOf, test } from "vitest";
 

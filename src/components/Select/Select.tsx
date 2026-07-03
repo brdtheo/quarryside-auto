@@ -26,7 +26,11 @@ export default function Select({
         </option>
       )}
       {(options ?? []).map((option) => (
-        <option className="dark:text-black" key={option.value} value={option.value}>
+        <option
+          className="dark:text-black"
+          key={option.value}
+          value={option.value}
+        >
           {option.label}
         </option>
       ))}

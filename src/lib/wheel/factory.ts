@@ -1,4 +1,4 @@
-import { Wheel, WheelBrand } from "@prisma/client";
+import { Wheel, WheelBrand } from "@prisma/generated/client";
 
 import { faker } from "@faker-js/faker";
 

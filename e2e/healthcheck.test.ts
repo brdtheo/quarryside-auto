@@ -2,7 +2,7 @@
  * HEALTH CHECK
  * Ensure all routes are available for end users
  */
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@prisma/index";
 
 import {
   HOME_PAGE_TITLE_REGEX,

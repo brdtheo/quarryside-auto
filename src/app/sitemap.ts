@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@prisma/index";
 
 import { DOMAIN_URL } from "@/constants";
 

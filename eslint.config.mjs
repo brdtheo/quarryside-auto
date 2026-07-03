@@ -74,6 +74,24 @@ export default [
       "src/i18n/request.ts",
     ],
   },
+  {
+    rules: {
+      "unicorn/name-replacements": [
+        "error",
+        {
+          replacements: {
+            param: false,
+            params: false,
+            prev: false,
+            prop: false,
+            props: false,
+            ref: false,
+            refs: false,
+          },
+        },
+      ],
+    },
+  },
   { languageOptions: { globals: globals.browser } },
   { plugins: { "@next/next": pluginNext } },
   { plugins: { "testing-library": eslintPluginTestingLibrary } },

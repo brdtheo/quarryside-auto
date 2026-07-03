@@ -12,10 +12,10 @@ export const config = {
   // if one of them matches, the middleware will be invoked.
   matcher: [
     // Skip Next.js internals and all static files, unless found in search params
-    "/((?!_next|monitoring|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|xml|txt|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+    String.raw`/((?!_next|monitoring|[^?]*\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|xml|txt|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)`,
     // Match all pathnames except for
     // - … if they start with `/api`, `/_next` or `/_vercel`
     // - … the ones containing a dot (e.g. `favicon.ico`)
-    "/((?!api|_next|_vercel|.*\\..*).*)",
+    String.raw`/((?!api|_next|_vercel|.*\..*).*)`,
   ],
 };

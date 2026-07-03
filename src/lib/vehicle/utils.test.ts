@@ -6,7 +6,7 @@ import {
   VehicleDrivetrain,
   VehicleFuelType,
   VehicleTransmission,
-} from "@prisma/client";
+} from "@prisma/generated/client";
 
 import { describe, expect, expectTypeOf, test } from "vitest";
 

@@ -10,13 +10,13 @@ import {
   VehicleDrivetrain,
   VehicleFuelType,
   VehicleTransmission,
-} from "@prisma/client";
+} from "@prisma/generated/client";
 
 import ListFilterAside from "@/components/ListFilterAside";
 import { ListFilterAsideSectionProps } from "@/components/ListFilterAsideSection";
 
-import useQueryParamValues from "@/hooks/useQueryParamValues";
 import useQueryParamLink from "@/hooks/useQueryParamLink";
+import useQueryParamValues from "@/hooks/useQueryParamValues";
 
 import { PageSearchParams } from "@/types";
 
@@ -83,61 +83,37 @@ export default function VehicleListFilterAside({
           label: t("filter.engine_cylinder_count.option.3"),
           value: "3",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("3"),
-          href: getQueryParamLink(
-            "engine_cylinder_count",
-            "3",
-            true,
-          ),
+          href: getQueryParamLink("engine_cylinder_count", "3", true),
         },
         {
           label: t("filter.engine_cylinder_count.option.4"),
           value: "4",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("4"),
-          href: getQueryParamLink(
-            "engine_cylinder_count",
-            "4",
-            true,
-          ),
+          href: getQueryParamLink("engine_cylinder_count", "4", true),
         },
         {
           label: t("filter.engine_cylinder_count.option.5"),
           value: "5",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("5"),
-          href: getQueryParamLink(
-            "engine_cylinder_count",
-            "5",
-            true,
-          ),
+          href: getQueryParamLink("engine_cylinder_count", "5", true),
         },
         {
           label: t("filter.engine_cylinder_count.option.6"),
           value: "6",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("6"),
-          href: getQueryParamLink(
-            "engine_cylinder_count",
-            "6",
-            true,
-          ),
+          href: getQueryParamLink("engine_cylinder_count", "6", true),
         },
         {
           label: t("filter.engine_cylinder_count.option.8"),
           value: "8",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("8"),
-          href: getQueryParamLink(
-            "engine_cylinder_count",
-            "8",
-            true,
-          ),
+          href: getQueryParamLink("engine_cylinder_count", "8", true),
         },
         {
           label: t("filter.engine_cylinder_count.option.10"),
           value: "10",
           isChecked: (searchParams?.engine_cylinder_count ?? "").includes("10"),
-          href: getQueryParamLink(
-            "engine_cylinder_count",
-            "10",
-            true,
-          ),
+          href: getQueryParamLink("engine_cylinder_count", "10", true),
         },
       ],
       isSearchable: true,
@@ -149,11 +125,7 @@ export default function VehicleListFilterAside({
         label: t(`filter.transmission.option.${transmission}`),
         value: transmission.toLowerCase(),
         isChecked: (searchParams?.transmission ?? "").includes(transmission),
-        href: getQueryParamLink(
-          "transmission",
-          `${transmission}`,
-          true,
-        ),
+        href: getQueryParamLink("transmission", `${transmission}`, true),
       })),
       isSearchable: true,
       selectedOptionCount: useQueryParamValues("transmission", true),

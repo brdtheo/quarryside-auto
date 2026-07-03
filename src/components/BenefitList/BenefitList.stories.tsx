@@ -12,8 +12,7 @@ const meta = {
   parameters: {
     layout: "centered",
     docs: {
-      subtitle:
-        "A list of company services shown on the home page",
+      subtitle: "A list of company services shown on the home page",
     },
   },
   argTypes: {

@@ -1,12 +1,13 @@
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+import { prisma } from "@prisma/index";
+
 import NotFound from "@/app/[locale]/not-found";
 
 import Advertising from "@/components/Advertising";
 import Container from "@/components/Container";
 
-import { prisma } from "@/lib/prisma";
 import VehicleForm from "@/lib/vehicle/VehicleForm";
 import VehicleMediaList from "@/lib/vehicle/VehicleMediaList";
 import VehiclePageTitle from "@/lib/vehicle/VehiclePageTitle";

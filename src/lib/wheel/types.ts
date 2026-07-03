@@ -1,4 +1,4 @@
-import { Media, Wheel } from "@prisma/client";
+import { Media, Wheel } from "@prisma/generated/client";
 
 export type WheelWithMedias = Wheel & { medias: Media[] };
 

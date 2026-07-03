@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/generated/client";
 
 import { faker } from "@faker-js/faker";
 
@@ -18,7 +18,6 @@ describe("Rating", () => {
   });
 
   it("Renders related elements even if score is not provided", () => {
-    // @ts-expect-error We simulate an unexpected behavior
     const { container } = render(<Rating />);
     expect(container).not.toBeEmptyDOMElement();
   });

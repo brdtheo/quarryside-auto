@@ -1,59 +1,58 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearchPostgres"]
+  provider = "prisma-client"
+  output   = "./generated/prisma"
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "sqlite"
 }
 
 model Media {
   id           Int       @id @default(autoincrement())
-  vehicle      Int?      @db.SmallInt
-  wheel        Int?      @db.SmallInt
-  url          String    @db.VarChar
+  vehicle      Int?
+  wheel        Int?
+  url          String
   is_thumbnail Boolean   @default(false)
-  date_created DateTime? @default(now()) @db.Timestamptz(6)
-  vehicles     Vehicle?  @relation(fields: [vehicle], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
-  wheels       Wheel?    @relation(fields: [wheel], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
+  date_created DateTime? @default(now())
+  vehicles     Vehicle?  @relation(fields: [vehicle], references: [id], onDelete: Cascade)
+  wheels       Wheel?    @relation(fields: [wheel], references: [id], onDelete: Cascade)
 }
 
 model Review {
   id           Int       @id @default(autoincrement())
-  vehicle      Int?      @db.SmallInt
-  wheel        Int?      @db.SmallInt
-  title        String?   @db.VarChar(128)
-  description  String?   @db.VarChar
-  rating       Decimal?  @db.Decimal
-  date_created DateTime? @default(now()) @db.Timestamptz(6)
-  vehicles     Vehicle?  @relation(fields: [vehicle], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
-  wheels       Wheel?    @relation(fields: [wheel], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
+  vehicle      Int?
+  wheel        Int?
+  title        String?
+  description  String?
+  rating       Decimal?
+  date_created DateTime? @default(now())
+  vehicles     Vehicle?  @relation(fields: [vehicle], references: [id], onDelete: Cascade)
+  wheels       Wheel?    @relation(fields: [wheel], references: [id], onDelete: Cascade)
 }
 
 model Vehicle {
   id                                Int                  @id @default(autoincrement())
-  slug                              String               @unique @db.VarChar(255)
-  thumbnail_url                     String?              @db.VarChar
-  model                             String               @db.VarChar
+  slug                              String               @unique
+  thumbnail_url                     String?
+  model                             String
   mileage                           Int?
   price_cts                         BigInt?
-  date_created                      DateTime?            @default(now()) @db.Timestamptz(6)
-  year                              Int?                 @db.SmallInt
-  description                       String?              @db.VarChar
+  date_created                      DateTime?            @default(now())
+  year                              Int?
+  description                       String?
   brand                             VehicleBrand?
   country                           VehicleCountry?
   body_style                        VehicleBodyStyle?
   weight_lbs                        Int?
   power_bhp                         Int?
-  zero_to_sixty_seconds             Decimal?             @db.Decimal
-  top_speed_mph                     Int?                 @db.SmallInt
+  zero_to_sixty_seconds             Decimal?
+  top_speed_mph                     Int?
   fuel_type                         VehicleFuelType?
   drivetrain                        VehicleDrivetrain?
   transmission                      VehicleTransmission?
   condition                         VehicleCondition?
   engine_cylinder_count             Int?
-  engine_displacement_volume_liters Decimal?             @db.Decimal
+  engine_displacement_volume_liters Decimal?
   engine_layout                     VehicleEngineLayout?
   medias                            Media[]
   reviews                           Review[]
@@ -61,25 +60,28 @@ model Vehicle {
 }
 
 model Vehicles_Wheels {
-  id         Int     @id @default(autoincrement())
+  id         Int @id @default(autoincrement())
   wheel_id   Int
   vehicle_id Int
-  vehicles   Vehicle @relation(fields: [vehicle_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_vehicle")
-  wheels     Wheel   @relation(fields: [wheel_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_wheel")
+
+  vehicles Vehicle @relation(fields: [vehicle_id], references: [id], onDelete: Cascade)
+  wheels   Wheel   @relation(fields: [wheel_id], references: [id], onDelete: Cascade)
+
+  @@unique([vehicle_id, wheel_id])
 }
 
 model Wheel {
   id                  Int               @id @default(autoincrement())
-  slug                String            @unique @db.VarChar(255)
-  thumbnail_url       String?           @db.VarChar
+  slug                String            @unique
+  thumbnail_url       String?
   brand               WheelBrand?
-  model               String?           @db.VarChar(128)
+  model               String?
   price_cts           BigInt?
-  date_created        DateTime?         @default(now()) @db.Timestamptz(6)
+  date_created        DateTime?         @default(now())
   delivery_available  Boolean           @default(false)
   free_on_site_pickup Boolean           @default(false)
-  sizes               String[]          @db.VarChar
-  tires               String[]          @db.VarChar
+  sizes               Json
+  tires               Json
   consumption         WheelConsumption?
   is_four_lug         Boolean           @default(false)
   is_five_lug         Boolean           @default(false)

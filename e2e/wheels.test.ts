@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@prisma/index";
 
 import {
   LOCAL_WHEELS_EMPTY_SEARCH_RESULT_URL,

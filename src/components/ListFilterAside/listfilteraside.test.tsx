@@ -1,4 +1,4 @@
-import { VehicleBrand, VehicleFuelType } from "@prisma/client";
+import { VehicleBrand, VehicleFuelType } from "@prisma/generated/client";
 
 import { faker } from "@faker-js/faker";
 

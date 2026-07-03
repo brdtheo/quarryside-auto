@@ -8,7 +8,7 @@ import {
   VehicleDrivetrain,
   VehicleFuelType,
   VehicleTransmission,
-} from "@prisma/client";
+} from "@prisma/generated/client";
 
 import currency from "currency.js";
 

@@ -11,8 +11,7 @@ const meta = {
   parameters: {
     layout: "centered",
     docs: {
-      subtitle:
-        "Alter a behavior based on a choice of options",
+      subtitle: "Alter a behavior based on a choice of options",
     },
   },
   args: { onChange: fn() },

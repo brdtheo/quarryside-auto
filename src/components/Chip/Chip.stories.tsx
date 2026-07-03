@@ -1,4 +1,8 @@
-import { IconExternalLink, IconHeadphones, IconPlugConnected } from "@tabler/icons-react";
+import {
+  IconExternalLink,
+  IconHeadphones,
+  IconPlugConnected,
+} from "@tabler/icons-react";
 
 import { faker } from "@faker-js/faker";
 

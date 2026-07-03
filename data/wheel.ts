@@ -1,8 +1,6 @@
-import "server-only";
+import { Prisma } from "@prisma/generated/client";
+import { prisma } from "@prisma/index";
 
-import { Prisma } from "@prisma/client";
-
-import { prisma } from "@/lib/prisma";
 import { WheelWithMedias } from "@/lib/wheel/types";
 import { getWheelFindManyArgs } from "@/lib/wheel/utils";
 

@@ -43,11 +43,7 @@ export default function ListFilterAside({
           (paramValue: string) => ({
             paramName,
             paramValue,
-            deleteHref: getQueryParamLink(
-              paramName,
-              paramValue,
-              true,
-            ),
+            deleteHref: getQueryParamLink(paramName, paramValue, true),
           }),
         );
         appliedFilters.push(...paramFilterList);

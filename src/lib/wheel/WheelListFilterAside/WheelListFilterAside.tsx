@@ -2,13 +2,13 @@
 
 import { useTranslations } from "next-intl";
 
-import { WheelBrand } from "@prisma/client";
+import { WheelBrand } from "@prisma/generated/client";
 
 import ListFilterAside from "@/components/ListFilterAside";
 import { ListFilterAsideSectionProps } from "@/components/ListFilterAsideSection";
 
-import useQueryParamValues from "@/hooks/useQueryParamValues";
 import useQueryParamLink from "@/hooks/useQueryParamLink";
+import useQueryParamValues from "@/hooks/useQueryParamValues";
 
 import { PageSearchParams } from "@/types";
 
@@ -91,11 +91,7 @@ export default function WheelListFilterAside({
           label: t("filter.delivery_available.option.true"),
           value: "true",
           isChecked: (searchParams?.delivery_available ?? "").includes("true"),
-          href: getQueryParamLink(
-            "delivery_available",
-            "true",
-            true,
-          ),
+          href: getQueryParamLink("delivery_available", "true", true),
         },
       ],
       isSearchable: false,
@@ -108,11 +104,7 @@ export default function WheelListFilterAside({
           label: t("filter.free_on_site_pickup.option.true"),
           value: "true",
           isChecked: (searchParams?.free_on_site_pickup ?? "").includes("true"),
-          href: getQueryParamLink(
-            "free_on_site_pickup",
-            "true",
-            true,
-          ),
+          href: getQueryParamLink("free_on_site_pickup", "true", true),
         },
       ],
       isSearchable: false,

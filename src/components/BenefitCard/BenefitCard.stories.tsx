@@ -11,7 +11,10 @@ const meta = {
   component: BenefitCard,
   parameters: {
     layout: "centered",
-    docs: { subtitle: "A card component representing a company's service shown on the home page" },
+    docs: {
+      subtitle:
+        "A card component representing a company's service shown on the home page",
+    },
   },
   argTypes: {
     title: { control: "text" },

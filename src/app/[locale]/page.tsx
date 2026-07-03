@@ -1,6 +1,8 @@
 import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 
+import { prisma } from "@prisma/index";
+
 import BenefitList from "@/components/BenefitList";
 import ClientFeedbackList from "@/components/ClientFeedbackList";
 import Container from "@/components/Container";
@@ -8,7 +10,6 @@ import HomeHero from "@/components/HomeHero";
 import PopularModelsList from "@/components/PopularModelsList";
 
 import BlogPostList from "@/lib/blog/BlogPostList/BlogPostList";
-import { prisma } from "@/lib/prisma";
 import { VehicleWithMedias } from "@/lib/vehicle/types";
 
 import { getHomeFindManyArgs } from "@/utils";

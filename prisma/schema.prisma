@@ -36,7 +36,7 @@ model Vehicle {
   thumbnail_url                     String?
   model                             String
   mileage                           Int?
-  price_cts                         BigInt?
+  price_cts                         Int?
   date_created                      DateTime?            @default(now())
   year                              Int?
   description                       String?
@@ -76,7 +76,7 @@ model Wheel {
   thumbnail_url       String?
   brand               WheelBrand?
   model               String?
-  price_cts           BigInt?
+  price_cts           Int?
   date_created        DateTime?         @default(now())
   delivery_available  Boolean           @default(false)
   free_on_site_pickup Boolean           @default(false)

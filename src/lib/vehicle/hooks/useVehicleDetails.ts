@@ -85,7 +85,9 @@ export default function useVehicleDetails(vehicle: VehicleBase) {
     ? t(`filter.transmission.option.${vehicle.transmission}`)
     : "";
 
-  const price = vehicle.price_cts ? getPrice(vehicle.price_cts) : "";
+  const price = vehicle.price_cts
+    ? getPrice(vehicle.price_cts, { symbol: "", precision: 0 })
+    : "";
 
   const priceWithoutCurrency = vehicle.price_cts
     ? getPrice(vehicle.price_cts, { symbol: "" })
@@ -111,7 +113,7 @@ export default function useVehicleDetails(vehicle: VehicleBase) {
       : "";
 
   const monthlyEstimatePrice = vehicle.price_cts
-    ? getMonthlyEstimatePrice(vehicle.price_cts)
+    ? getMonthlyEstimatePrice(vehicle.price_cts, { symbol: "" })
     : "";
 
   const fuelType = vehicle.fuel_type

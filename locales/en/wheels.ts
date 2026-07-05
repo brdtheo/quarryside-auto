@@ -1,4 +1,4 @@
-import { WheelBrand } from "@prisma/generated/client";
+import { WheelBrand } from "@prisma/generated/browser";
 
 export default {
   wheels: {

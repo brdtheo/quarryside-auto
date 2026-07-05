@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { WheelBrand } from "@prisma/generated/client";
+import { WheelBrand } from "@prisma/generated/browser";
 
 import { cleanup, render, screen, within } from "@testing-library/react";
 

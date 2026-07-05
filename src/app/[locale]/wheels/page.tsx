@@ -54,10 +54,10 @@ export async function generateMetadata({
       },
     },
     ...(hasSearchParams && {
-          robots: {
-            index: false,
-          },
-        }),
+      robots: {
+        index: false,
+      },
+    }),
   };
 }
 

@@ -8,7 +8,7 @@ import {
   VehicleDrivetrain,
   VehicleFuelType,
   VehicleTransmission,
-} from "@prisma/generated/client";
+} from "@prisma/generated/browser";
 
 import { cleanup, render, screen, within } from "@testing-library/react";
 

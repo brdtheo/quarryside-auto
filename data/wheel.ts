@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/generated/client";
+import { Prisma } from "@prisma/generated/browser";
 import { prisma } from "@prisma/index";
 
 import { WheelWithMedias } from "@/lib/wheel/types";

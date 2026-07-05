@@ -1,4 +1,4 @@
-import { Review } from "@prisma/generated/client";
+import { Review } from "@prisma/generated/browser";
 
 export type RatingProps = {
   score: Review["rating"];

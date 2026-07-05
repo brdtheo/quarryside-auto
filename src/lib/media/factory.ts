@@ -1,4 +1,4 @@
-import { Media } from "@prisma/generated/client";
+import { Media } from "@prisma/generated/browser";
 
 import { faker } from "@faker-js/faker";
 

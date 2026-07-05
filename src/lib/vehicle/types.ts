@@ -1,4 +1,4 @@
-import { Media, Review, Vehicle } from "@prisma/generated/client";
+import { Media, Review, Vehicle } from "@prisma/generated/browser";
 
 export type VehicleWithReview = Vehicle & Pick<Review, "rating">;
 

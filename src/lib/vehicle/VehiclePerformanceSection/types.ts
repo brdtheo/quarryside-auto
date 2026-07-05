@@ -1,4 +1,4 @@
-import { Vehicle } from "@prisma/generated/client";
+import { Vehicle } from "@prisma/generated/browser";
 
 export type VehiclePerformanceSectionProps = {
   vehicle: Vehicle;

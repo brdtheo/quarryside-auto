@@ -90,7 +90,6 @@ export function getWheelFindManyArgs(
                 {
                   model: {
                     contains: searchQueryParam,
-                    mode: "insensitive" as Prisma.QueryMode,
                   },
                 },
               ]

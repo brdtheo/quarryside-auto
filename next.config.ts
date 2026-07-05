@@ -2,16 +2,15 @@ import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
-const withNextIntl = createNextIntlPlugin();
-
 const nextConfig: NextConfig = {
   output: "standalone",
   productionBrowserSourceMaps: true,
+  devIndicators: false,
   images: {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "i.ibb.co", // TEMP
+        hostname: "i.ibb.co",
         port: "",
       },
       {
@@ -42,6 +41,8 @@ const nextConfig: NextConfig = {
     ],
   },
 };
+
+const withNextIntl = createNextIntlPlugin();
 
 export default withSentryConfig(withNextIntl(nextConfig), {
   // For all available options, see:

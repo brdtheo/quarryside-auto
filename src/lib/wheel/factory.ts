@@ -1,4 +1,4 @@
-import { Wheel, WheelBrand } from "@prisma/generated/client";
+import { Wheel, WheelBrand } from "@prisma/generated/browser";
 
 import { faker } from "@faker-js/faker";
 
@@ -36,8 +36,8 @@ export function wheelFactory(
     is_three_lug: faker.datatype.boolean(),
     is_ten_lug: faker.datatype.boolean(),
     ...(options?.withMedia && {
-          medias: mediaListFactory(),
-        }),
+      medias: mediaListFactory(),
+    }),
   };
 }
 

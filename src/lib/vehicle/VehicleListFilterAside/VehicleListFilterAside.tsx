@@ -10,7 +10,7 @@ import {
   VehicleDrivetrain,
   VehicleFuelType,
   VehicleTransmission,
-} from "@prisma/generated/client";
+} from "@prisma/generated/browser";
 
 import ListFilterAside from "@/components/ListFilterAside";
 import { ListFilterAsideSectionProps } from "@/components/ListFilterAsideSection";

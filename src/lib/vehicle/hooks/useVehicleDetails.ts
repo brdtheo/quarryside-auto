@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { Vehicle } from "@prisma/generated/client";
+import { Vehicle } from "@prisma/generated/browser";
 
 import { getMonthlyEstimatePrice } from "@/lib/vehicle/utils";
 

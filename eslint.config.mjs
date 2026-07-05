@@ -1,109 +1,40 @@
-import pluginNext from "@next/eslint-plugin-next";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
 import eslintReact from "@eslint-react/eslint-plugin";
 import eslintPluginTestingLibrary from "eslint-plugin-testing-library";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
+import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
 /** @type {import('eslint').Linter.Config[]} */
-export default [
-  ...tseslint.configs.recommended,
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
   eslintPluginUnicorn.configs.recommended,
-  eslintReact.configs.recommended,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
   {
-    files: [
-      "src/app/*.{js,mjs,cjs,ts,jsx,tsx}",
-      "src/components/*.{js,mjs,cjs,ts,jsx,tsx}",
-      "src/hooks/*.{js,mjs,cjs,ts,jsx,tsx}",
-      "src/lib/*.{js,mjs,cjs,ts,jsx,tsx}",
-      "data/*.ts",
+    settings: {
+      // Fix for ESLint 10+: eslint-plugin-react uses context.getFilename() (legacy API)
+      // which was removed in ESLint 10 flat config. Declaring the version explicitly
+      // prevents the plugin from trying to auto-detect it and failing.
+      react: { version: "19" },
+    },
+    "unicorn/name-replacements": [
+      "error",
+      {
+        checkFilenames: false,
+      },
     ],
   },
-  {
-    rules: {
-      "unicorn/better-regex": "warn",
-      "unicorn/prevent-abbreviations": "off",
-      "unicorn/filename-case": "off",
-    },
-  },
-  {
-    files: ["src/components/ThemeSwitcher/ThemeSwitcher.tsx"],
-    rules: {
-      "unicorn/no-useless-undefined": "off",
-    },
-  },
-  {
-    files: [
-      "src/lib/wheel/WheelRichData/WheelRichData.tsx",
-      "src/lib/vehicle/VehicleRichData/VehicleRichData.tsx",
-    ],
-    rules: {
-      "@eslint-react/dom/no-dangerously-set-innerhtml": "off",
-    },
-  },
-  {
-    files: [
-      "src/lib/media/factory.ts",
-      "src/lib/vehicle/factory.ts",
-      "src/lib/media/MediaList/MediaList.tsx",
-      "src/lib/media/MediaList/medialist.test.tsx",
-      "src/lib/media/MediaList/MediaList.stories.tsx",
-    ],
-    rules: {
-      "unicorn/no-null": "off",
-    },
-  },
-  {
-    files: ["e2e/**"],
-    rules: {
-      "unicorn/no-await-expression-member": "off",
-    },
-  },
-  {
-    files: [".storybook/**"],
-    rules: {
-      "unicorn/prefer-module": "off",
-    },
-  },
-  {
-    ignores: [
-      "src/setupTests.tsx",
-      "src/middleware.ts",
-      "src/types.ts",
-      "src/i18n/request.ts",
-    ],
-  },
-  {
-    rules: {
-      "unicorn/name-replacements": [
-        "error",
-        {
-          replacements: {
-            param: false,
-            params: false,
-            prev: false,
-            prop: false,
-            props: false,
-            ref: false,
-            refs: false,
-          },
-        },
-      ],
-    },
-  },
-  { languageOptions: { globals: globals.browser } },
-  { plugins: { "@next/next": pluginNext } },
-  { plugins: { "testing-library": eslintPluginTestingLibrary } },
-  {
-    rules: {
-      "react/react-in-jsx-scope": "off",
-      ...pluginNext.configs.recommended.rules, // importing the rules
-    },
-  },
-  {
-    rules: {
-      "@eslint-react/hooks-extra/no-direct-set-state-in-use-effect": "off",
-    },
-  },
-];
+]);
+
+export default eslintConfig;

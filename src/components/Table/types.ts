@@ -1,6 +1,6 @@
 type TableRow = {
   name: string;
-  data: string | string[];
+  data: unknown;
 };
 
 export type TableProps = {

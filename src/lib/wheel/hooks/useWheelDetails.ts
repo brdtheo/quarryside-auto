@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { Wheel } from "@prisma/generated/client";
+import { Wheel } from "@prisma/generated/browser";
 
 import { getPrice } from "@/utils";
 

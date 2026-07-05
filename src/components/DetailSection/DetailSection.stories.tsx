@@ -26,7 +26,11 @@ const image = faker.image.dataUri();
 
 export const Default: Story = {
   render: (arguments_) => {
-    return <DetailSection title={arguments_.title}>{arguments_.children}</DetailSection>;
+    return (
+      <DetailSection title={arguments_.title}>
+        {arguments_.children}
+      </DetailSection>
+    );
   },
   args: {
     title,

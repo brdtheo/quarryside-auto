@@ -6,7 +6,7 @@ import {
   VehicleDrivetrain,
   VehicleFuelType,
   VehicleTransmission,
-} from "@prisma/generated/client";
+} from "@prisma/generated/browser";
 
 import { describe, expect, expectTypeOf, test } from "vitest";
 
@@ -44,14 +44,20 @@ describe("Vehicle - utils", () => {
 
   test("Retrieves default Prisma args", () => {
     const arguments_ = getVehicleFindManyArgs({}, false);
-    const randomParamsArguments = getVehicleFindManyArgs({ a: "b", c: "d" }, false);
+    const randomParamsArguments = getVehicleFindManyArgs(
+      { a: "b", c: "d" },
+      false,
+    );
     expect(arguments_).toStrictEqual(EXPECTED_MINIMAL_ARGS);
     expect(randomParamsArguments).toStrictEqual(EXPECTED_MINIMAL_ARGS);
   });
 
   test("Retrieves count Prisma args", () => {
     const arguments_ = getVehicleFindManyArgs({}, true);
-    const randomParamsArguments = getVehicleFindManyArgs({ a: "b", c: "d" }, true);
+    const randomParamsArguments = getVehicleFindManyArgs(
+      { a: "b", c: "d" },
+      true,
+    );
     expect(arguments_).toStrictEqual({});
     expect(randomParamsArguments).toStrictEqual({});
   });

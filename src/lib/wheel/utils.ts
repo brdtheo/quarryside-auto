@@ -1,4 +1,4 @@
-import { Prisma, WheelBrand } from "@prisma/generated/client";
+import { Prisma, WheelBrand } from "@prisma/generated/browser";
 
 import { WHEEL_LIST_PAGE_SIZE } from "@/lib/wheel/constants";
 import type { WheelRichDataParams } from "@/lib/wheel/types";

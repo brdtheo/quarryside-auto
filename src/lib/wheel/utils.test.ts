@@ -1,4 +1,4 @@
-import { WheelBrand } from "@prisma/generated/client";
+import { WheelBrand } from "@prisma/generated/browser";
 
 import { describe, expect, expectTypeOf, test } from "vitest";
 
@@ -17,14 +17,20 @@ const EXPECTED_MINIMAL_ARGS = {
 describe("Wheel - utils", () => {
   test("Retrieves default Prisma args", () => {
     const arguments_ = getWheelFindManyArgs({}, false);
-    const randomParamsArguments = getWheelFindManyArgs({ a: "b", c: "d" }, false);
+    const randomParamsArguments = getWheelFindManyArgs(
+      { a: "b", c: "d" },
+      false,
+    );
     expect(arguments_).toStrictEqual(EXPECTED_MINIMAL_ARGS);
     expect(randomParamsArguments).toStrictEqual(EXPECTED_MINIMAL_ARGS);
   });
 
   test("Retrieves count Prisma args", () => {
     const arguments_ = getWheelFindManyArgs({}, true);
-    const randomParamsArguments = getWheelFindManyArgs({ a: "b", c: "d" }, true);
+    const randomParamsArguments = getWheelFindManyArgs(
+      { a: "b", c: "d" },
+      true,
+    );
     expect(arguments_).toStrictEqual({});
     expect(randomParamsArguments).toStrictEqual({});
   });

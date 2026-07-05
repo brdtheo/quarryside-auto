@@ -9,7 +9,7 @@ import {
   VehicleEngineLayout,
   VehicleFuelType,
   VehicleTransmission,
-} from "@prisma/generated/client";
+} from "@prisma/generated/browser";
 
 import { faker } from "@faker-js/faker";
 
@@ -86,8 +86,8 @@ export function vehicleFactory(
           fuel_type: VehicleFuelType.BATTERY,
         }),
     ...(options?.withMedia && {
-          medias: mediaListFactory(),
-        }),
+      medias: mediaListFactory(),
+    }),
   };
 }
 

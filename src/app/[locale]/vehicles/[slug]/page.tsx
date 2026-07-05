@@ -100,7 +100,7 @@ export default async function Page({ params }: DetailsPageProps) {
       <VehiclePageTitle vehicle={vehicle} />
 
       <div className="flex flex-col xl:flex-row gap-8">
-        <div className="w-full xl:w-[785px] flex flex-col gap-16 @container/detailsrightcolumn">
+        <div className="w-full xl:w-196.25 flex flex-col gap-16 @container/detailsrightcolumn">
           <VehicleMediaList vehicle={vehicle} />
 
           <VehiclePriceDescription vehicle={vehicle} />

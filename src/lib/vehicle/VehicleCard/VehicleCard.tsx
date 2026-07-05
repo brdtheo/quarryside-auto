@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
+import Beambucks from "@/components/Beambucks";
 import Button from "@/components/Button";
 
 import MediaSkeleton from "@/lib/media/MediaSkeleton";
@@ -32,7 +33,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
         href={href}
         className="border border-divider dark:border-blacksecondary rounded flex flex-col @lg/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary bg-clip-content overflow-hidden"
       >
-        <div className="w-full @lg/vehiclecard:w-[340px] flex self-center h-48 @sm/vehiclecard:h-64 @md/vehiclecard:h-56 relative">
+        <div className="w-full @lg/vehiclecard:w-85 flex self-center h-48 @sm/vehiclecard:h-64 @md/vehiclecard:h-56 relative">
           {!thumbnail && <MediaSkeleton className="w-full h-full" />}
           {!!thumbnail && (
             <Image
@@ -61,10 +62,14 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
 
           <div className="flex flex-col @2xl/vehiclecard:flex-row justify-between @2xl/vehiclecard:items-end">
             <div className="flex flex-col">
-              <span className="font-semibold text-xl">{price}</span>
+              <span className="font-semibold text-xl">
+                <Beambucks className="text-base mr-0.5" />
+                {price}
+              </span>
               <div className="flex items-baseline">
                 <span className="text-xs">{t("details.estimate")}</span>
                 <span className="ml-1 font-semibold text-sm">
+                  <Beambucks className="text-xs mr-0.5" />
                   {monthlyEstimatePrice}
                 </span>
                 <span className="text-xs">{t("details.perMonth")}</span>

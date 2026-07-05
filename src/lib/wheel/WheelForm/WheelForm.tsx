@@ -8,6 +8,7 @@ import { IconBuildingStore, IconTruckDelivery } from "@tabler/icons-react";
 
 import currency from "currency.js";
 
+import Beambucks from "@/components/Beambucks";
 import Button from "@/components/Button";
 import Checkbox from "@/components/Checkbox";
 import Select from "@/components/Select";
@@ -53,8 +54,8 @@ export default function WheelForm({ wheel }: WheelFormProps) {
     >
       <div className="bg-yellow flex border border-yellow mt-1 w-fit rounded">
         <div className="flex flex-1 items-start px-1">
-          <span className="text-red font-bold text-normal">$</span>
           <span className="text-red font-extrabold text-3xl">
+            <Beambucks className="mr-0.5 text-2xl" />
             {computedPrice}
           </span>
         </div>

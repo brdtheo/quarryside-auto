@@ -124,7 +124,7 @@ describe("WheelSpecificationSection", () => {
     render(<WheelSpecificationSection wheel={wheel} />, {
       wrapper: NextIntlClientWrapper,
     });
-    const consumption = screen.getByText(`${wheel.consumption}`);
+    const consumption = screen.getByText(String(wheel.consumption));
     expect(consumption).toBeInTheDocument();
   });
 });

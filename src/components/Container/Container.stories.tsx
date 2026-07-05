@@ -21,8 +21,8 @@ type Story = StoryObj<typeof meta>;
 const text = faker.lorem.paragraphs();
 
 export const Default: Story = {
-  render: (args) => {
-    return <Container>{args.children}</Container>;
+  render: (arguments_) => {
+    return <Container>{arguments_.children}</Container>;
   },
   args: { children: <p>{text}</p> },
 };

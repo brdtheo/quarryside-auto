@@ -24,8 +24,8 @@ const text = faker.lorem.paragraphs();
 const image = faker.image.dataUri();
 
 export const Default: Story = {
-  render: (args) => {
-    return <HomeSection title={args.title}>{args.children}</HomeSection>;
+  render: (arguments_) => {
+    return <HomeSection title={arguments_.title}>{arguments_.children}</HomeSection>;
   },
   args: {
     title,

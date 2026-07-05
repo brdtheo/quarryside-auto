@@ -16,34 +16,34 @@ const EXPECTED_MINIMAL_ARGS = {
 
 describe("Wheel - utils", () => {
   test("Retrieves default Prisma args", () => {
-    const args = getWheelFindManyArgs({}, false);
-    const randomParamsArgs = getWheelFindManyArgs({ a: "b", c: "d" }, false);
-    expect(args).toStrictEqual(EXPECTED_MINIMAL_ARGS);
-    expect(randomParamsArgs).toStrictEqual(EXPECTED_MINIMAL_ARGS);
+    const arguments_ = getWheelFindManyArgs({}, false);
+    const randomParamsArguments = getWheelFindManyArgs({ a: "b", c: "d" }, false);
+    expect(arguments_).toStrictEqual(EXPECTED_MINIMAL_ARGS);
+    expect(randomParamsArguments).toStrictEqual(EXPECTED_MINIMAL_ARGS);
   });
 
   test("Retrieves count Prisma args", () => {
-    const args = getWheelFindManyArgs({}, true);
-    const randomParamsArgs = getWheelFindManyArgs({ a: "b", c: "d" }, true);
-    expect(args).toStrictEqual({});
-    expect(randomParamsArgs).toStrictEqual({});
+    const arguments_ = getWheelFindManyArgs({}, true);
+    const randomParamsArguments = getWheelFindManyArgs({ a: "b", c: "d" }, true);
+    expect(arguments_).toStrictEqual({});
+    expect(randomParamsArguments).toStrictEqual({});
   });
 
   test("Retrieves pagination Prisma args", () => {
-    const paginationArgs = getWheelFindManyArgs({ page: "2" }, false);
-    const paginationWithCountArgs = getWheelFindManyArgs({ page: "3" });
-    expect(paginationArgs).toStrictEqual({
+    const paginationArguments = getWheelFindManyArgs({ page: "2" }, false);
+    const paginationWithCountArguments = getWheelFindManyArgs({ page: "3" });
+    expect(paginationArguments).toStrictEqual({
       ...EXPECTED_MINIMAL_ARGS,
       skip: 20,
     });
-    expect(paginationWithCountArgs).toStrictEqual({
+    expect(paginationWithCountArguments).toStrictEqual({
       ...EXPECTED_MINIMAL_ARGS,
       skip: 40,
     });
   });
 
   test("Retrieves search params Prisma args", () => {
-    const searchParamArgs = getWheelFindManyArgs(
+    const searchParamArguments = getWheelFindManyArgs(
       {
         q: "type",
         is_ten_lug: "true",
@@ -52,7 +52,7 @@ describe("Wheel - utils", () => {
       },
       false,
     );
-    expect(searchParamArgs).toStrictEqual({
+    expect(searchParamArguments).toStrictEqual({
       ...EXPECTED_MINIMAL_ARGS,
       where: {
         AND: [
@@ -70,7 +70,7 @@ describe("Wheel - utils", () => {
   });
 
   test("Retrieves Prisma args from incorrect params", () => {
-    const mixedArgsAndParams = getWheelFindManyArgs({
+    const mixedArgumentsAndParams = getWheelFindManyArgs({
       // @ts-expect-error We simulate an unexpected behavior
       q: undefined,
       page: "?.,;'[]",
@@ -81,7 +81,7 @@ describe("Wheel - utils", () => {
       undefined: "undefined",
       7: "8",
     });
-    expect(mixedArgsAndParams).toStrictEqual(EXPECTED_MINIMAL_ARGS);
+    expect(mixedArgumentsAndParams).toStrictEqual(EXPECTED_MINIMAL_ARGS);
   });
 
   test("Retrieves rich data", () => {

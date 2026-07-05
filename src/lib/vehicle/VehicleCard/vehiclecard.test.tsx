@@ -52,12 +52,12 @@ describe("VehicleCard", () => {
     const thumbnail = vehicle.medias.find((media) => media.is_thumbnail);
     if (!thumbnail) return;
     const image = screen.getByRole("img");
-    const imageSrc = image.getAttribute("src");
+    const imageSource = image.getAttribute("src");
     const imagAlt = image.getAttribute("alt");
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute("src");
     expect(image).toHaveAttribute("alt");
-    expect(imageSrc).toBeTruthy();
+    expect(imageSource).toBeTruthy();
     expect(imagAlt).toBeTruthy();
   });
 

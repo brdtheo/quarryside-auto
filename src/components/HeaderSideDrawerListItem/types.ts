@@ -1,3 +1,5 @@
+import { MouseEventHandler } from "react";
+
 import { TablerIcon } from "@tabler/icons-react";
 
 export type HeaderSideDrawerListItemProps = {

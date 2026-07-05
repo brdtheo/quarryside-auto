@@ -21,8 +21,8 @@ type Story = StoryObj<typeof meta>;
 const title = faker.lorem.words(3);
 
 export const Default: Story = {
-  render: (args) => {
-    return <PageTitle {...args} />;
+  render: (arguments_) => {
+    return <PageTitle {...arguments_} />;
   },
   args: {
     children: title,

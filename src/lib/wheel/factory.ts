@@ -35,11 +35,9 @@ export function wheelFactory(
     is_central_lug: faker.datatype.boolean(),
     is_three_lug: faker.datatype.boolean(),
     is_ten_lug: faker.datatype.boolean(),
-    ...(options?.withMedia
-      ? {
+    ...(options?.withMedia && {
           medias: mediaListFactory(),
-        }
-      : {}),
+        }),
   };
 }
 

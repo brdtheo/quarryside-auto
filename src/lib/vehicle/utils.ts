@@ -132,7 +132,6 @@ export function getVehicleFindManyArgs(
                 {
                   model: {
                     contains: searchQueryParam,
-                    mode: "insensitive" as Prisma.QueryMode,
                   },
                 },
               ]

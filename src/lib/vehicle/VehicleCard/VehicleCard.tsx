@@ -31,17 +31,18 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
     <article className="@container/vehiclecard w-full">
       <Link
         href={href}
-        className="border border-divider dark:border-blacksecondary rounded flex flex-col @lg/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary bg-clip-content overflow-hidden"
+        className="border border-divider dark:border-blacksecondary rounded flex flex-col @2xl/vehiclecard:flex-row w-full bg-white dark:bg-blacksecondary bg-clip-content overflow-hidden"
       >
-        <div className="w-full @lg/vehiclecard:w-85 flex self-center h-48 @sm/vehiclecard:h-64 @md/vehiclecard:h-56 relative">
+        <div className="w-full @2xl/vehiclecard:w-85 @2xl:h-56 flex self-center relative">
           {!thumbnail && <MediaSkeleton className="w-full h-full" />}
           {!!thumbnail && (
             <Image
+              width={750}
+              height={422}
               src={thumbnail.url}
-              sizes="340px"
+              sizes="100%"
               alt={titleWithoutYear}
-              fill
-              className="object-contain"
+              className="@2xl:object-contain"
             />
           )}
         </div>

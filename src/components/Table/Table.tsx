@@ -2,6 +2,8 @@ import { useCallback } from "react";
 
 import clsx from "clsx";
 
+import { parseRowData } from "@/components/Table/utils";
+
 import type { TableProps as TableProperties } from "./types";
 
 export default function Table({ rows }: TableProperties) {
@@ -40,7 +42,8 @@ export default function Table({ rows }: TableProperties) {
     <table className="w-full @md:w-3/4">
       <tbody>
         {(rows ?? []).map((row, index) => {
-          if (Array.isArray(row.data)) {
+          const data = parseRowData(row.data);
+          if (Array.isArray(data)) {
             return (
               <tr key={row.name} className={getBorderClass(index)}>
                 <th
@@ -58,7 +61,7 @@ export default function Table({ rows }: TableProperties) {
                   )}
                 >
                   <ul className="flex flex-col">
-                    {(row.data ?? []).map((value) => (
+                    {(data ?? []).map((value) => (
                       <li key={value}>{value}</li>
                     ))}
                   </ul>
@@ -79,7 +82,7 @@ export default function Table({ rows }: TableProperties) {
               <td
                 className={clsx("font-regular text-sm", getPaddingClass(index))}
               >
-                {row.data}
+                {data}
               </td>
             </tr>
           );

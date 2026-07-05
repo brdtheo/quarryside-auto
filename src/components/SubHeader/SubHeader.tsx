@@ -9,7 +9,7 @@ export default function SubHeader() {
   return (
     <div className="bg-background brightness-98 dark:bg-black hidden md:flex justify-center h-11 border-b border-b-divider dark:border-y dark:border-y-dividerdark">
       <Container className="flex justify-start items-center h-11">
-        <nav className="inline-flex items-center h-8 gap-2">
+        <nav className="inline-flex w-full items-center h-8 gap-2">
           <SubHeaderLink slug="vehicles" label={t("subHeader.usedVehicles")} />
           <SubHeaderLink slug="wheels" label={t("subHeader.rimsTires")} />
           <SubHeaderLink slug="#" label={t("subHeader.careers")} isDisabled />
@@ -19,6 +19,15 @@ export default function SubHeader() {
             isDisabled
           />
           <SubHeaderLink slug="#" label={t("subHeader.about")} isDisabled />
+
+          <div className="flex flex-1 justify-end">
+            <div
+              role="presentation"
+              className="pointer-events-none uppercase font-semibold text-xs bg-yellow-200 text-yellow-700 dark:bg-yellow-300 rounded px-1 py-0.5"
+            >
+              0.34 data
+            </div>
+          </div>
         </nav>
       </Container>
     </div>

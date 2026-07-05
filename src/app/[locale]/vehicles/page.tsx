@@ -53,19 +53,17 @@ export async function generateMetadata({
         "ru-RU": `${DOMAIN_URL}/ru/vehicles`,
       },
     },
-    ...(hasSearchParams
-      ? {
-          robots: {
-            index: false,
-          },
-        }
-      : {}),
+    ...(hasSearchParams && {
+      robots: {
+        index: false,
+      },
+    }),
   };
 }
 
 export default async function Page({ searchParams }: PageProps) {
   const params = await searchParams;
-  const page = params?.page ? Number.parseInt(params?.page as string, 10) : 1;
+  const page = params?.page ? Math.trunc(Number(params?.page as string)) : 1;
 
   const vehicles = await getVehicleList(params);
   const vehiclesCount = await getVehicleListCount(params);

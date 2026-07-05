@@ -30,10 +30,10 @@ const links = faker.helpers.multiple(
 );
 
 export const Default: Story = {
-  render: (args) => {
+  render: (arguments_) => {
     return (
       <div className="bg-primary p-4">
-        <NavSection {...args} />
+        <NavSection {...arguments_} />
       </div>
     );
   },

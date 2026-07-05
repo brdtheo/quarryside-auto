@@ -53,13 +53,11 @@ export async function generateMetadata({
         "ru-RU": `${DOMAIN_URL}/ru/wheels`,
       },
     },
-    ...(hasSearchParams
-      ? {
+    ...(hasSearchParams && {
           robots: {
             index: false,
           },
-        }
-      : {}),
+        }),
   };
 }
 
@@ -67,7 +65,7 @@ export default async function Page({ searchParams }: PageProps) {
   const t = await getTranslations("wheels");
 
   const params = await searchParams;
-  const page = params?.page ? Number.parseInt(params?.page as string, 10) : 1;
+  const page = params?.page ? Math.trunc(Number(params?.page as string)) : 1;
 
   const wheels = await getWheelList(params);
   const wheelCount = await getWheelListCount(params);

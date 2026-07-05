@@ -85,11 +85,9 @@ export function vehicleFactory(
           engine_layout: null,
           fuel_type: VehicleFuelType.BATTERY,
         }),
-    ...(options?.withMedia
-      ? {
+    ...(options?.withMedia && {
           medias: mediaListFactory(),
-        }
-      : {}),
+        }),
   };
 }
 

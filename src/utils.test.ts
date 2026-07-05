@@ -4,8 +4,8 @@ import { getHomeFindManyArgs } from "@/utils";
 
 describe("Utils", () => {
   test("Retrieves Prisma args for home page", () => {
-    const args = getHomeFindManyArgs();
-    expect(args).toStrictEqual({
+    const arguments_ = getHomeFindManyArgs();
+    expect(arguments_).toStrictEqual({
       where: {
         slug: {
           in: [

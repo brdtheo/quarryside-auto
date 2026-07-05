@@ -64,13 +64,13 @@ export function getWheelFindManyArgs(
     ? WHEEL_LIST_PAGE_SIZE * (pageParam - 1)
     : undefined;
 
-  const args: Prisma.WheelFindManyArgs = {
+  const arguments_: Prisma.WheelFindManyArgs = {
     ...(!isCountArgs && {
       include: {
         medias: { where: { is_thumbnail: true } },
       },
       take: WHEEL_LIST_PAGE_SIZE,
-      ...(prismaSkipParam ? { skip: prismaSkipParam } : {}),
+      ...(prismaSkipParam && { skip: prismaSkipParam }),
     }),
     ...((!!brandParam ||
       !!deliveryAvailableParm ||
@@ -109,7 +109,7 @@ export function getWheelFindManyArgs(
       },
     }),
   };
-  return args;
+  return arguments_;
 }
 
 /**

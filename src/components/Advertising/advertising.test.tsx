@@ -39,9 +39,9 @@ describe("Advertising", () => {
   it("Renders an image with a random URL", () => {
     render(<Advertising ratioMode="horizontal" />);
     const image = screen.getByRole("img", { name: "advertisement" });
-    const src = image.getAttribute("src");
+    const source = image.getAttribute("src");
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute("src");
-    expect(src).toContain(ADVERTISING_BASE_URL);
+    expect(source).toContain(ADVERTISING_BASE_URL);
   });
 });

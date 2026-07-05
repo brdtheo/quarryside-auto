@@ -29,9 +29,9 @@ const EXPECTED_MINIMAL_ARGS = {
 describe("Vehicle - utils", () => {
   test("Retrieves monthly estimate price", () => {
     const priceFromBoolean = getMonthlyEstimatePrice(BigInt(false));
-    const priceFromString = getMonthlyEstimatePrice(BigInt("500"));
-    const priceFromNumber = getMonthlyEstimatePrice(BigInt(500_000));
-    const priceWithOptions = getMonthlyEstimatePrice(BigInt(999_999), {
+    const priceFromString = getMonthlyEstimatePrice(500n);
+    const priceFromNumber = getMonthlyEstimatePrice(500_000n);
+    const priceWithOptions = getMonthlyEstimatePrice(999_999n, {
       precision: 2,
       fromCents: true,
       symbol: "",
@@ -43,34 +43,34 @@ describe("Vehicle - utils", () => {
   });
 
   test("Retrieves default Prisma args", () => {
-    const args = getVehicleFindManyArgs({}, false);
-    const randomParamsArgs = getVehicleFindManyArgs({ a: "b", c: "d" }, false);
-    expect(args).toStrictEqual(EXPECTED_MINIMAL_ARGS);
-    expect(randomParamsArgs).toStrictEqual(EXPECTED_MINIMAL_ARGS);
+    const arguments_ = getVehicleFindManyArgs({}, false);
+    const randomParamsArguments = getVehicleFindManyArgs({ a: "b", c: "d" }, false);
+    expect(arguments_).toStrictEqual(EXPECTED_MINIMAL_ARGS);
+    expect(randomParamsArguments).toStrictEqual(EXPECTED_MINIMAL_ARGS);
   });
 
   test("Retrieves count Prisma args", () => {
-    const args = getVehicleFindManyArgs({}, true);
-    const randomParamsArgs = getVehicleFindManyArgs({ a: "b", c: "d" }, true);
-    expect(args).toStrictEqual({});
-    expect(randomParamsArgs).toStrictEqual({});
+    const arguments_ = getVehicleFindManyArgs({}, true);
+    const randomParamsArguments = getVehicleFindManyArgs({ a: "b", c: "d" }, true);
+    expect(arguments_).toStrictEqual({});
+    expect(randomParamsArguments).toStrictEqual({});
   });
 
   test("Retrieves pagination Prisma args", () => {
-    const paginationArgs = getVehicleFindManyArgs({ page: "2" }, false);
-    const paginationWithCountArgs = getVehicleFindManyArgs({ page: "3" });
-    expect(paginationArgs).toStrictEqual({
+    const paginationArguments = getVehicleFindManyArgs({ page: "2" }, false);
+    const paginationWithCountArguments = getVehicleFindManyArgs({ page: "3" });
+    expect(paginationArguments).toStrictEqual({
       ...EXPECTED_MINIMAL_ARGS,
       skip: 15,
     });
-    expect(paginationWithCountArgs).toStrictEqual({
+    expect(paginationWithCountArguments).toStrictEqual({
       ...EXPECTED_MINIMAL_ARGS,
       skip: 30,
     });
   });
 
   test("Retrieves search params Prisma args", () => {
-    const searchParamArgs = getVehicleFindManyArgs(
+    const searchParamArguments = getVehicleFindManyArgs(
       {
         q: "bastion",
         body_style: VehicleBodyStyle.COUPE,
@@ -84,7 +84,7 @@ describe("Vehicle - utils", () => {
       },
       false,
     );
-    expect(searchParamArgs).toStrictEqual({
+    expect(searchParamArguments).toStrictEqual({
       ...EXPECTED_MINIMAL_ARGS,
       where: {
         AND: [
@@ -108,7 +108,7 @@ describe("Vehicle - utils", () => {
   });
 
   test("Retrieves Prisma args from incorrect params", () => {
-    const searchParamArgs = getVehicleFindManyArgs({
+    const searchParamArguments = getVehicleFindManyArgs({
       // @ts-expect-error We simulate an unexpected behavior
       q: undefined,
       page: "?.,;'[]",
@@ -123,7 +123,7 @@ describe("Vehicle - utils", () => {
       undefined: "undefined",
       123: "456",
     });
-    expect(searchParamArgs).toStrictEqual(EXPECTED_MINIMAL_ARGS);
+    expect(searchParamArguments).toStrictEqual(EXPECTED_MINIMAL_ARGS);
   });
 
   test("Retrieves rich data", () => {

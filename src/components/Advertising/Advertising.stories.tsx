@@ -24,10 +24,10 @@ export const Vertical: Story = {
 };
 
 export const Horizontal: Story = {
-  render: (args) => {
+  render: (arguments_) => {
     return (
       <div className="w-80">
-        <Advertising {...args} />
+        <Advertising {...arguments_} />
       </div>
     );
   },

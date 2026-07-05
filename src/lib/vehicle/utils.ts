@@ -28,7 +28,7 @@ export function getVehicleFindManyArgs(
   isCountArgs?: boolean,
 ): Prisma.VehicleFindManyArgs | Prisma.VehicleCountArgs {
   const pageParam = searchParams?.page
-    ? Number.parseInt(searchParams?.page as string, 10)
+    ? Math.trunc(Number(searchParams?.page as string))
     : 1;
 
   const searchQueryParam = searchParams?.q
@@ -60,7 +60,7 @@ export function getVehicleFindManyArgs(
   const engineCylinderCountParamValues = searchParams?.engine_cylinder_count
     ? searchParams?.engine_cylinder_count
         .split(",")
-        .map((value) => Number.parseInt(value, 10))
+        .map((value) => Math.trunc(Number(value)))
         .filter(
           (value) =>
             !!value && typeof value === "number" && !Number.isNaN(value),
@@ -108,13 +108,13 @@ export function getVehicleFindManyArgs(
     ? VEHICLE_LIST_PAGE_SIZE * (pageParam - 1)
     : undefined;
 
-  const args: Prisma.VehicleFindManyArgs = {
+  const arguments_: Prisma.VehicleFindManyArgs = {
     ...(!isCountArgs && {
       include: {
         medias: { where: { is_thumbnail: true } },
       },
       take: VEHICLE_LIST_PAGE_SIZE,
-      ...(prismaSkipParam ? { skip: prismaSkipParam } : {}),
+      ...(prismaSkipParam && { skip: prismaSkipParam }),
     }),
     ...((!!brandParam ||
       !!conditionParam ||
@@ -153,7 +153,7 @@ export function getVehicleFindManyArgs(
       },
     }),
   };
-  return args;
+  return arguments_;
 }
 
 /**
@@ -166,8 +166,8 @@ export const getMonthlyEstimatePrice = (
   priceCts: Vehicle["price_cts"],
   options?: currency.Options,
 ) => {
-  const currencyOptions = options ?? { precision: 0 };
   if (!priceCts || typeof priceCts !== "bigint") return "";
+  const currencyOptions = options ?? { precision: 0 };
   const price = Number(priceCts) / 100;
   const monthlyPrice = price / 48;
   return currency(monthlyPrice, currencyOptions).format();

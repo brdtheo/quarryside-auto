@@ -27,12 +27,12 @@ describe("HomeHero", () => {
     const div = screen.getByRole("presentation");
     const image = within(div).getByRole("img");
     const imageAlt = image.getAttribute("alt");
-    const imageSrc = image.getAttribute("src");
+    const imageSource = image.getAttribute("src");
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute("src");
     expect(image).toHaveAttribute("alt");
     expect(imageAlt).toBe("Lined Ibishu Pessima cars");
-    expect(imageSrc).toContain(
+    expect(imageSource).toContain(
       "quarryside-auto-misc.s3.eu-west-3.amazonaws.com",
     );
   });

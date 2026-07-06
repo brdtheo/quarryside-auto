@@ -78,7 +78,7 @@ export default function VehicleCard({ vehicle }: VehicleCardProps) {
             </div>
 
             <Button
-              className="mt-2 w-full @lg/vehiclecard:w-fit @2xl/vehiclecard:mt-0"
+              className="mt-2 w-full @2xl/vehiclecard:w-fit @2xl/vehiclecard:mt-0"
               rounded
               color="primary"
             >

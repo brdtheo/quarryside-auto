@@ -3,7 +3,7 @@ import { IconSettings } from "@tabler/icons-react";
 import { faker } from "@faker-js/faker";
 
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn } from "@storybook/test";
+import { fn } from "storybook/test";
 
 import HeaderSideDrawerListItem from ".";
 

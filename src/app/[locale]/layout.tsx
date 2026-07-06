@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 
 import clsx from "clsx";
 
+import DeprecationNoticeBanner from "@/components/DeprecationNoticeBanner";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import SubHeader from "@/components/SubHeader";
@@ -61,6 +62,7 @@ export default async function LocaleLayout({
             {children}
           </main>
           <Footer />
+          <DeprecationNoticeBanner />
         </NextIntlClientProvider>
       </body>
     </html>

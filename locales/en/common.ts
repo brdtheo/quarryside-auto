@@ -5,6 +5,9 @@ export default {
       en: "English",
       ru: "Russian",
     },
+    deprecatedNoticeBadge: "0.34 data",
+    deprecatedNotice:
+      "This website is deprecated as the data is based off 0.34",
     notFoundTitle: "Not found",
     notFoundDescription:
       "It looks like the content you're looking for does not exist or has been moved. Enjoy this bouncing Covet instead:",

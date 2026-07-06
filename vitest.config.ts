@@ -5,7 +5,6 @@ import { defineConfig } from "vitest/config";
 import react from "@vitejs/plugin-react";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 const dirname =
   import.meta.dirname === undefined
@@ -13,6 +12,9 @@ const dirname =
     : import.meta.dirname;
 
 export default defineConfig({
+  resolve: {
+    tsconfigPaths: true,
+  },
   optimizeDeps: {
     include: [
       "@faker-js/faker",
@@ -63,7 +65,6 @@ export default defineConfig({
     ],
   },
   plugins: [
-    tsconfigPaths(),
     react(),
     // The plugin will run tests for the stories defined in your Storybook config
     // See options at: https://storybook.js.org/docs/writing-tests/test-addon#storybooktest

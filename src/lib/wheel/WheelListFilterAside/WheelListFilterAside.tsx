@@ -30,7 +30,7 @@ export default function WheelListFilterAside({
         label: t(`filter.brand.option.${brand}`),
         value: brand.toLowerCase(),
         isChecked: (searchParams?.brand ?? "").includes(brand),
-        href: getQueryParamLink("brand", `${brand}`, true),
+        href: getQueryParamLink("brand", String(brand), true),
       })),
       isSearchable: true,
       selectedOptionCount: useQueryParamValues("brand", true),

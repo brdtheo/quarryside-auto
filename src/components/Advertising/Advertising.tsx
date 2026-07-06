@@ -52,12 +52,13 @@ export default function Advertising({
     if (generatedImageURL || !ratioMode) {
       return;
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setGeneratedImageURL(
       `${ADVERTISING_BASE_URL}/${ratioMode}/${ratioMode}_${Math.floor(
         Math.random() * MAX_IMAGE_COUNT_PER_RATIO_MODE_MAPPER[ratioMode],
       )}.jpg`,
     );
-  }, []);
+  }, [generatedImageURL, ratioMode]);
 
   if (!generatedImageURL) {
     return;
@@ -78,7 +79,7 @@ export default function Advertising({
         aria-label="Follow advertisement link"
         role="button"
         className={clsx("block relative", {
-          "w-36 h-[450px]": ratioMode === "vertical",
+          "w-36 h-112.5": ratioMode === "vertical",
           "w-full h-48": ratioMode === "horizontal",
         })}
       >

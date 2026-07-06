@@ -7,6 +7,8 @@ import { afterEach, describe, expect, it } from "vitest";
 import { wheelFactory } from "@/lib/wheel/factory";
 import useWheelDetails from "@/lib/wheel/hooks/useWheelDetails";
 
+import { parseJsonData } from "@/utils";
+
 import { NextIntlClientWrapper } from "@/setupTests";
 
 import WheelSpecificationSection from ".";
@@ -67,7 +69,8 @@ describe("WheelSpecificationSection", () => {
     render(<WheelSpecificationSection wheel={wheel} />, {
       wrapper: NextIntlClientWrapper,
     });
-    for (const sizeName of wheel.sizes ?? []) {
+    const wheelSizes = parseJsonData(wheel.sizes);
+    for (const sizeName of wheelSizes) {
       const size = screen.getByText(sizeName);
       expect(size).toBeInTheDocument();
     }
@@ -77,7 +80,8 @@ describe("WheelSpecificationSection", () => {
     render(<WheelSpecificationSection wheel={wheel} />, {
       wrapper: NextIntlClientWrapper,
     });
-    for (const tireName of wheel.tires ?? []) {
+    const wheelTires = parseJsonData(wheel.tires);
+    for (const tireName of wheelTires) {
       const tire = screen.getByText(tireName);
       expect(tire).toBeInTheDocument();
     }

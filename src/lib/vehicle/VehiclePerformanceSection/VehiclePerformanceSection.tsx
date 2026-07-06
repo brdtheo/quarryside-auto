@@ -12,11 +12,11 @@ export default function VehiclePerformanceSection({
 }: VehiclePerformanceSectionProps) {
   const t = useTranslations("vehicles");
 
+  const { power, zeroToSixtySeconds, topSpeed } = useVehicleDetails(vehicle);
+
   if (!vehicle) {
     return;
   }
-
-  const { power, zeroToSixtySeconds, topSpeed } = useVehicleDetails(vehicle);
 
   return (
     (power || zeroToSixtySeconds || topSpeed) && (

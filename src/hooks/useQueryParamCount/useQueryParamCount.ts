@@ -22,7 +22,7 @@ export default function useQueryParamCount() {
       }
     }
     return count;
-  }, [searchParams.keys()]);
+  }, [searchParams]);
 
   return activeFilterCount;
 }

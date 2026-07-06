@@ -24,9 +24,12 @@ export default function Breadcrumbs() {
   const paths = usePathname() ?? "";
   const pathNames = useMemo(() => paths.split("/").filter(Boolean), [paths]);
 
-  const getBreadcrumbHref = useCallback((index: number) => {
-    return `/${pathNames.slice(0, index + 1).join("/")}`;
-  }, []);
+  const getBreadcrumbHref = useCallback(
+    (index: number) => {
+      return `/${pathNames.slice(0, index + 1).join("/")}`;
+    },
+    [pathNames],
+  );
 
   const getBreadcrumbTitle = useCallback((value: string) => {
     return value.replaceAll("-", " ");

@@ -12,10 +12,6 @@ export default function VehicleSpecificationSection({
 }: VehicleSpecificationSectionProps) {
   const t = useTranslations("vehicles");
 
-  if (!vehicle) {
-    return;
-  }
-
   const {
     bodyStyle,
     brand,
@@ -27,6 +23,10 @@ export default function VehicleSpecificationSection({
     transmission,
     weight,
   } = useVehicleDetails(vehicle);
+
+  if (!vehicle) {
+    return;
+  }
 
   return (
     <DetailSection title={t("details.specifications")}>
@@ -58,7 +58,7 @@ export default function VehicleSpecificationSection({
             : []),
           {
             name: t("details.year.title"),
-            data: `${vehicle.year}`,
+            data: String(vehicle.year),
           },
           ...(drivetrain
             ? [

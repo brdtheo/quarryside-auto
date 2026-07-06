@@ -4,9 +4,9 @@ import clsx from "clsx";
 
 import { parseJsonData } from "@/utils";
 
-import type { TableProps as TableProperties } from "./types";
+import type { TableProps } from ".";
 
-export default function Table({ rows }: TableProperties) {
+export default function Table({ rows }: TableProps) {
   const getPaddingClass = useCallback(
     (index: number) => {
       switch (index) {

@@ -17,5 +17,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Generate Prisma client
+        run: pnpm prisma generate
+
       - name: 📖 Build Storybook 📖
         run: pnpm build-storybook

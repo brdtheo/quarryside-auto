@@ -6,39 +6,41 @@ import react from "@vitejs/plugin-react";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const dirname =
-  import.meta.dirname === undefined
-    ? path.dirname(fileURLToPath(import.meta.url))
-    : import.meta.dirname;
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   resolve: {
     tsconfigPaths: true,
+    alias: {
+      "@": path.resolve(dirname, "./src"),
+      "@prisma/generated": path.resolve(dirname, "./prisma/generated"),
+    },
   },
   optimizeDeps: {
     include: [
       "@faker-js/faker",
-      "@prisma/client",
-      "@storybook/experimental-nextjs-vite",
       "@tabler/icons-react",
       "clsx",
       "next-intl",
       "next/link",
       "react",
       "@storybook/test",
+      // prevents first-run optimizer/reload issues
+      "sb-original/default-loader",
+      "sb-original/image-context",
     ],
   },
+  plugins: [react()],
   test: {
     environment: "happy-dom",
     coverage: {
       provider: "v8",
-      exclude: ["src/app", "src/lib/prisma.ts", "src/lib/review"],
+      exclude: ["src/app", "prisma/index.ts", "src/lib/review", "locales"],
       include: ["src/components", "src/lib", "src/hooks", "src/utils.ts"],
     },
     setupFiles: "src/setupTests.tsx",
     server: {
       deps: {
-        // https://github.com/vercel/next.js/issues/77200
         inline: ["next-intl"],
       },
     },
@@ -48,9 +50,17 @@ export default defineConfig({
       "**/e2e/**",
       "**/.{idea,git,cache,output,temp}/**",
       "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build,eslint,prettier}.config.*",
+      "**/locales/**",
     ],
     projects: [
       {
+        extends: true,
+        plugins: [
+          storybookTest({
+            configDir: path.join(dirname, ".storybook"),
+            storybookScript: "pnpm storybook --no-open",
+          }),
+        ],
         test: {
           name: "storybook",
           browser: {
@@ -59,15 +69,8 @@ export default defineConfig({
             provider: playwright(),
             instances: [{ browser: "chromium" }],
           },
-          setupFiles: [".storybook/vitest.setup.ts"],
         },
       },
     ],
   },
-  plugins: [
-    react(),
-    // The plugin will run tests for the stories defined in your Storybook config
-    // See options at: https://storybook.js.org/docs/writing-tests/test-addon#storybooktest
-    storybookTest({ configDir: path.join(dirname, ".storybook") }),
-  ],
 });

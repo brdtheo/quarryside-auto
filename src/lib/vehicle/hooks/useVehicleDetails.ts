@@ -113,7 +113,7 @@ export default function useVehicleDetails(vehicle: VehicleBase) {
       : "";
 
   const monthlyEstimatePrice = vehicle.price_cts
-    ? getMonthlyEstimatePrice(vehicle.price_cts, { symbol: "" })
+    ? getMonthlyEstimatePrice(vehicle.price_cts, { symbol: "", precision: 0 })
     : "";
 
   const fuelType = vehicle.fuel_type

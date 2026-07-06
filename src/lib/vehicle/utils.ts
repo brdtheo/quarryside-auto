@@ -165,7 +165,7 @@ export const getMonthlyEstimatePrice = (
   priceCts: Vehicle["price_cts"],
   options?: currency.Options,
 ) => {
-  if (!priceCts || typeof priceCts !== "bigint") return "";
+  if (!priceCts) return "";
   const currencyOptions = options ?? { precision: 0 };
   const price = Number(priceCts) / 100;
   const monthlyPrice = price / 48;

@@ -11,12 +11,11 @@ export default function WheelSpecificationSection({
   wheel,
 }: WheelSpecificationSectionProps) {
   const t = useTranslations("wheels");
+  const { brand } = useWheelDetails(wheel);
 
   if (!wheel) {
-    return;
+    return null;
   }
-
-  const { brand } = useWheelDetails(wheel);
 
   return (
     <DetailSection title={t("details.specifications")}>

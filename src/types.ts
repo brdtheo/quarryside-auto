@@ -1,4 +1,4 @@
-import type { UrlObject } from "url";
+import type { UrlObject } from "node:url";
 
 /** A common type for URL query parameters */
 export type PageSearchParams = Record<string, string>;

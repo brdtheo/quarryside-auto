@@ -10,7 +10,7 @@ import { PageSearchParams } from "@/types";
  */
 export default function useQueryParamLink(queryParams: PageSearchParams) {
   const pathname = usePathname();
-  const searchParams = useSearchParams() ?? {};
+  const searchParams = useSearchParams();
 
   /** Handles the query parameter links with a single values */
   const createQueryString = useCallback(

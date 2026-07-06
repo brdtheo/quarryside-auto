@@ -21,16 +21,17 @@ export default function ThemeSwitcher() {
       "dark",
       syncTheme === "dark" ||
         (!("theme" in localStorage) &&
-          globalThis.matchMedia("(prefers-color-scheme: dark)").matches),
+          matchMedia("(prefers-color-scheme: dark)").matches),
     );
   }, [syncTheme]);
 
   useEffect(() => {
     const localStorageTheme = localStorage.theme;
     if (localStorageTheme !== syncTheme) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSyncTheme(localStorageTheme);
     }
-  }, []);
+  }, [syncTheme]);
 
   const handleSetTheme = useCallback(
     (theme: "light" | "dark" | undefined) => () => {

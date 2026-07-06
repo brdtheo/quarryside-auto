@@ -25,9 +25,9 @@ export default function WheelForm({ wheel }: WheelFormProps) {
 
   const wheelQuantityOptionList = useMemo(
     () =>
-      Array.from({ length: 10 }).map((_, index) => ({
-        label: `${index + 1}`,
-        value: `${index + 1}`,
+      Array.from({ length: 10 }, (_, index) => ({
+        label: String(index + 1),
+        value: String(index + 1),
       })),
     [],
   );

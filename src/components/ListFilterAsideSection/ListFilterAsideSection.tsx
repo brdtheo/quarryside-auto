@@ -39,7 +39,8 @@ export default function ListFilterAsideSection({
       const results = fuse.search(value);
       setSearchResults(results);
     },
-    [options],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
   );
 
   const handleResetSearchResults = useCallback(() => {

@@ -34,12 +34,12 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
       setIndex(index);
       toggleOpenLightbox();
     },
-    [],
+    [toggleOpenLightbox],
   );
 
   const thumbnail = useMemo(
     () => (mediaList ?? []).find((media) => media.is_thumbnail),
-    [],
+    [mediaList],
   );
 
   const lightboxSlides = useMemo(
@@ -48,7 +48,7 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
         src: media.url,
         alt,
       })),
-    [],
+    [alt, mediaList],
   );
 
   if ((mediaList ?? []).length === 0 || !thumbnail) {
@@ -73,7 +73,7 @@ export default function MediaList({ mediaList, alt }: MediaListProps) {
         />
       </button>
       {(mediaList ?? []).length > 1 && (
-        <ul className="flex flex-wrap gap-1 @4xl/detailsrightcolumn:max-w-[300px] @7xl/detailsrightcolumn:max-w-none">
+        <ul className="flex flex-wrap gap-1 @4xl/detailsrightcolumn:max-w-75 @7xl/detailsrightcolumn:max-w-none">
           {(mediaList ?? []).map(
             (media, index) =>
               media && (

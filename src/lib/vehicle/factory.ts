@@ -53,7 +53,7 @@ export function vehicleFactory(
     thumbnail_url: faker.image.url(),
     model: faker.lorem.words(3),
     mileage: faker.number.int({ min: 50_000, max: 150_000 }),
-    price_cts: BigInt(faker.number.int({ min: 10_000, max: 100_000 })),
+    price_cts: faker.number.int({ min: 10_000, max: 100_000 }),
     date_created: faker.date.recent(),
     year: faker.date.past().getFullYear(),
     description: faker.lorem.sentence(10),

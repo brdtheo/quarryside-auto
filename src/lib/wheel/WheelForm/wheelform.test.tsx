@@ -29,15 +29,15 @@ describe("WheelForm", () => {
 
   it("Renders a list with dynamic list items from delivery/on site pickup options ", () => {
     const list = screen.queryByRole("list");
+    if (!wheel.free_on_site_pickup && !wheel.delivery_available) {
+      return expect(list).not.toBeInTheDocument();
+    }
     const deliveryListItem = document
       .querySelector("svg.tabler-icon.tabler-icon-truck-delivery")
       ?.closest("li");
     const onSitePickupListItem = document
       .querySelector("svg.tabler-icon.tabler-icon-building-store")
       ?.closest("li");
-    if (!wheel.free_on_site_pickup && !wheel.delivery_available) {
-      return expect(list).not.toBeInTheDocument();
-    }
     expect(list).toBeInTheDocument();
     if (wheel.free_on_site_pickup) {
       expect(onSitePickupListItem).toBeInTheDocument();

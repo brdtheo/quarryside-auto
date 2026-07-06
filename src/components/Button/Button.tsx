@@ -31,7 +31,7 @@ export default function Button({
         return "rounded";
       }
     }
-  }, []);
+  }, [rounded, size]);
 
   const containerClassname = useMemo(() => {
     switch (size) {
@@ -48,7 +48,7 @@ export default function Button({
         return "gap-1 px-2.5 py-1 h-8";
       }
     }
-  }, []);
+  }, [size]);
 
   const textSizeClassname = useMemo(() => {
     switch (size) {
@@ -65,7 +65,7 @@ export default function Button({
         return "text-base";
       }
     }
-  }, []);
+  }, [size]);
 
   const iconSize = useMemo(() => {
     switch (size) {
@@ -82,7 +82,7 @@ export default function Button({
         return 16;
       }
     }
-  }, []);
+  }, [size]);
 
   const colorClassname = useMemo(() => {
     switch (color) {
@@ -93,7 +93,7 @@ export default function Button({
         return "bg-secondary text-black dark:bg-secondarydark dark:text-white";
       }
     }
-  }, []);
+  }, [color]);
 
   const icons = {
     start: startIcon,

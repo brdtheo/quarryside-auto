@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 import clsx from "clsx";
 
-import { parseRowData } from "@/components/Table/utils";
+import { parseJsonData } from "@/utils";
 
 import type { TableProps as TableProperties } from "./types";
 
@@ -42,7 +42,7 @@ export default function Table({ rows }: TableProperties) {
     <table className="w-full @md:w-3/4">
       <tbody>
         {(rows ?? []).map((row, index) => {
-          const data = parseRowData(row.data);
+          const data = parseJsonData(row.data);
           if (Array.isArray(data)) {
             return (
               <tr key={row.name} className={getBorderClass(index)}>

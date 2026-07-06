@@ -45,17 +45,16 @@ export default function SearchField({
         onSearch(currentValue);
       }
     },
-    [],
+    [onSearch],
   );
 
   const handleClear = useCallback(() => {
     onClear?.();
-  }, []);
+  }, [onClear]);
 
   return (
     <div
       role="search"
-      aria-disabled={isDisabled}
       className={clsx(
         "flex border px-1 md:px-0 border-gray-300 dark:border-blacksecondary dark:hover:border-white rounded h-8 md:pr-3 w-fit transition-border duration-100 outline-2 outline-offset-1 outline-transparent focus-within:outline-primary dark:focus-within:outline-primarydark",
         {

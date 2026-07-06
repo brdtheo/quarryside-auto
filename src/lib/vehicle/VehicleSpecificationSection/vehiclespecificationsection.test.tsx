@@ -79,7 +79,7 @@ describe("VehicleSpecificationSection", () => {
     render(<VehicleSpecificationSection vehicle={vehicle} />, {
       wrapper: NextIntlClientWrapper,
     });
-    const year = screen.getByText(`${vehicle.year}`);
+    const year = screen.getByText(String(vehicle.year));
     expect(year).toBeInTheDocument();
   });
 

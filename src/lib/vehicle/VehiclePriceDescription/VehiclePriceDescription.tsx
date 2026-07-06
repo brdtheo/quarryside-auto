@@ -7,11 +7,11 @@ import { VehiclePriceDescriptionProps } from ".";
 export default function VehiclePriceDescription({
   vehicle,
 }: VehiclePriceDescriptionProps) {
+  const { price } = useVehicleDetails(vehicle);
+
   if (!vehicle) {
     return;
   }
-
-  const { price } = useVehicleDetails(vehicle);
 
   return (
     <div className="flex flex-col gap-2">

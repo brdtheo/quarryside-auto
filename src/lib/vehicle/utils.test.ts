@@ -28,9 +28,13 @@ const EXPECTED_MINIMAL_ARGS = {
 
 describe("Vehicle - utils", () => {
   test("Retrieves monthly estimate price", () => {
-    const priceFromBoolean = getMonthlyEstimatePrice(BigInt(false));
+    // @ts-expect-error - wrong type on purpose
+    const priceFromBoolean = getMonthlyEstimatePrice(false);
+    // @ts-expect-error - wrong type on purpose
     const priceFromString = getMonthlyEstimatePrice(500n);
+    // @ts-expect-error - wrong type on purpose
     const priceFromNumber = getMonthlyEstimatePrice(500_000n);
+    // @ts-expect-error - wrong type on purpose
     const priceWithOptions = getMonthlyEstimatePrice(999_999n, {
       precision: 2,
       fromCents: true,

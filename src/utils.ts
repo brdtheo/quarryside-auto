@@ -9,7 +9,7 @@ import currency from "currency.js";
  * @returns {string}
  */
 export const getPrice = (
-  priceCts: bigint | null,
+  priceCts: number | null,
   options?: currency.Options,
 ) => {
   if (!priceCts) return "";

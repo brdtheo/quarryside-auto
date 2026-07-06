@@ -58,7 +58,7 @@ async function main() {
   await prisma.vehicle.createMany({
     data: (vehicles as any[]).map((item) => ({
       ...item,
-      price_cts: item.price_cts ? BigInt(item.price_cts) : null,
+      price_cts: item.price_cts ? item.price_cts : null,
       date_created: fixDate(item.date_created),
       drivetrain: fixDrivetrain(item.drivetrain),
     })),
@@ -66,7 +66,7 @@ async function main() {
   await prisma.wheel.createMany({
     data: wheels.map((item) => ({
       ...item,
-      price_cts: item.price_cts ? BigInt(item.price_cts) : null,
+      price_cts: item.price_cts ? item.price_cts : null,
       date_created: fixDate(item.date_created),
     })),
   });

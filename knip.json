@@ -3,18 +3,28 @@
   "tags": [
     "-lintignore"
   ],
-  "entry": [
-    "{index,cli,main}.{js,cjs,jsx,ts,cts,mts,tsx}",
-    "src/{index,cli,main}.{js,cjs,jsx,ts,cts,mts,tsx}"
+  "ignore": [
+    "src/lib/media/factory.ts"
+  ],
+  "ignoreFiles": [
+    "seed.ts"
+  ],
+  "ignoreDependencies": [
+    "@prisma/client",
+    "sqlite3",
+    "tailwindcss",
+    "globals",
+    "typescript-eslint",
+    "postcss-load-config",
+    "@eslint/js",
+    "@eslint-react/eslint-plugin",
+    "@next/eslint-plugin-next",
+    "eslint-config-prettier",
+    "eslint-plugin-react",
+    "eslint-plugin-storybook",
+    "eslint-plugin-testing-library"
   ],
   "project": [
-    "**/*.{js,cjs,jsx,ts,cts,mts,tsx}!"
-  ],
-  "workspaces": {
-    "packages/lib": {
-      "vite": {
-        "config": []
-      }
-    }
-  }
+    "**/*.{js,jsx,ts,tsx}"
+  ]
 }

@@ -29,10 +29,7 @@ const config: StorybookConfig = {
           )
         : existingAliases),
       "@": path.resolve(__dirname, "../src"),
-      "@prisma/generated": path.resolve(
-        __dirname,
-        "../prisma/generated/prisma",
-      ),
+      "@prisma/generated": path.resolve(__dirname, "../prisma/generated"),
     };
     return viteConfig;
   },

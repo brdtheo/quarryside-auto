@@ -19,6 +19,7 @@ const eslintConfig = defineConfig([
     "**/*.test.ts",
     "prisma/generated/**",
     ".storybook/**",
+    "storybook-static/**",
     "coverage/**",
     "locales/**",
     "messages/**",

@@ -27,11 +27,13 @@ export default function ListFilterHeader({
   const [searchText, setSearchText] = useState<string>("");
 
   useEffect(() => {
-    if (pageSearchParams?.q) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setSearchText(pageSearchParams?.q);
+    if (!pageSearchParams?.q) {
+      return;
     }
-  }, [pageSearchParams?.q]);
+    const querySearchParam = decodeURIComponent(pageSearchParams.q);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSearchText(querySearchParam);
+  }, [pageSearchParams.q]);
 
   const handleChangeSearchText = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -50,10 +52,10 @@ export default function ListFilterHeader({
   );
 
   const handleClear = useCallback(() => {
+    const url = getQueryParamLink("q", "");
     setSearchText("");
-    const url = getQueryParamLink("q", searchText);
     redirect(url);
-  }, [getQueryParamLink, searchText]);
+  }, [getQueryParamLink]);
 
   return (
     <>

@@ -9,7 +9,7 @@ export default function Footer() {
   const t = useTranslations("common");
   return (
     <footer className="bg-primary dark:bg-black flex justify-center dark:border-t dark:border-t-dividerdark @container/footer">
-      <Container className="py-8 ">
+      <Container className="py-8">
         <div className="grid grid-cols-1 gap-8 @sm/footer:grid-cols-2 @lg:grid-cols-3 @3xl:grid-cols-4 @4xl:grid-cols-5">
           <NavSection
             titleHref="/vehicles"

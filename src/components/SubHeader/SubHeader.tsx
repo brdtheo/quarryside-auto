@@ -21,12 +21,12 @@ export default function SubHeader() {
           <SubHeaderLink slug="#" label={t("subHeader.about")} isDisabled />
 
           <div className="flex flex-1 justify-end">
-            <div
-              role="presentation"
-              className="pointer-events-none uppercase font-semibold text-xs bg-yellow-200 text-yellow-700 dark:bg-yellow-300 rounded px-1 py-0.5"
+            <a
+              href="#deprecated"
+              className="select-none uppercase font-semibold text-xs bg-yellow-200 text-yellow-700 dark:bg-yellow-300 rounded px-1 py-0.5"
             >
-              0.34 data
-            </div>
+              {t("deprecatedNoticeBadge")}
+            </a>
           </div>
         </nav>
       </Container>

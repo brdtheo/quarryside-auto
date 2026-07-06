@@ -16,7 +16,7 @@ export default function VehiclePriceDescription({
   return (
     <div className="flex flex-col gap-2">
       <span aria-label="vehicle-price" className="font-bold text-2xl">
-        <Beambucks className="mr-0.5" />
+        <Beambucks className="mr-0.5 text-lg" />
         {price}
       </span>
       <p className="text-sm">{vehicle.description}</p>
